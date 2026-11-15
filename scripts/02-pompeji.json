@@ -13,7 +13,9 @@
       "effekte": [
         "funken",
         "rauch"
-      ]
+      ],
+      "bild": "night in an ancient Roman bakery in Pompeii, {figur} slides bread into a glowing brick dome oven with a long wooden peel, embers, lava-stone hourglass millstones in the background",
+      "licht": "feuer"
     },
     {
       "ab_satz": 1,
@@ -21,7 +23,9 @@
       "beschreibung": "Runde Brote auf dem Tresen im Ofenlicht",
       "effekte": [
         "staub"
-      ]
+      ],
+      "bild": "close-up of round Roman loaves of bread scored into eight segments on a stone counter, warm oven light, flour dust in the air",
+      "licht": "feuer"
     },
     {
       "ab_satz": 2,
@@ -30,7 +34,8 @@
       "effekte": [
         "staub"
       ],
-      "beben": true
+      "beben": true,
+      "bild": "a sunny street in ancient Pompeii with large stepping stones, merchants with amphorae, plastered house facades, Mount Vesuvius in the distance at the end of the street"
     },
     {
       "ab_satz": 4,
@@ -38,7 +43,8 @@
       "beschreibung": "Wolke wächst über dem Vesuv wie ein Baum",
       "effekte": [
         "rauch"
-      ]
+      ],
+      "bild": "wide view over the red-tiled rooftops of ancient Pompeii, an enormous dark eruption column rising from Mount Vesuvius and spreading at the top like an umbrella pine tree, darkening sky"
     },
     {
       "ab_satz": 6,
@@ -48,7 +54,8 @@
         "asche",
         "steine"
       ],
-      "wendepunkt": true
+      "wendepunkt": true,
+      "bild": "an ancient Pompeii street darkened by falling grey volcanic ash and small pumice stones, people covering their heads with cloth, stone columns"
     },
     {
       "ab_satz": 9,
@@ -57,7 +64,8 @@
       "effekte": [
         "asche"
       ],
-      "wendepunkt": true
+      "wendepunkt": true,
+      "bild": "crowds of Romans running through a dark ash-filled street of Pompeii toward the harbor, ships in the distance, panic, motion blur"
     },
     {
       "ab_satz": 10,
@@ -67,7 +75,9 @@
         "asche",
         "funken"
       ],
-      "wendepunkt": true
+      "wendepunkt": true,
+      "bild": "{figur} standing in the doorway of his bakery, the glowing oven behind him, grey volcanic ash falling in front of him, hesitant worried expression",
+      "licht": "feuer"
     }
   ],
   "endkarte": "Teil 2 folgt",
@@ -93,5 +103,6 @@
     "asche",
     "steine",
     "zögere"
-  ]
+  ],
+  "figur_bild": "a stocky Roman baker in his forties, short dark hair grey at the temples, beard stubble, flour on his face, simple beige wool tunic and flour-dusted leather apron"
 }

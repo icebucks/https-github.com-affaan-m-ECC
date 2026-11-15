@@ -13,7 +13,9 @@
       "effekte": [
         "funken",
         "rauch"
-      ]
+      ],
+      "bild": "the boiler room of an ocean liner in 1912, huge riveted boilers with glowing open furnace doors, {figur} shoveling coal into the fire, sparks and coal dust",
+      "licht": "kessel"
     },
     {
       "ab_satz": 2,
@@ -22,7 +24,9 @@
       "effekte": [
         "staub",
         "funken"
-      ]
+      ],
+      "bild": "close-up portrait of {figur} in orange furnace light, sweat and soot on his face, exhausted eyes",
+      "licht": "kessel"
     },
     {
       "ab_satz": 4,
@@ -30,7 +34,8 @@
       "beschreibung": "Kontrast: warmes Licht, Kronleuchter, leere Prunktreppe oben",
       "effekte": [
         "staub"
-      ]
+      ],
+      "bild": "the empty grand staircase of an Edwardian ocean liner at night, carved oak balustrades, wrought iron and a glass dome, crystal chandelier, warm golden light, nobody there"
     },
     {
       "ab_satz": 5,
@@ -38,7 +43,9 @@
       "beschreibung": "Schaufeln im Takt, Feuer lodert",
       "effekte": [
         "funken"
-      ]
+      ],
+      "bild": "several stokers shoveling coal in rhythm in front of open roaring furnaces in a steel boiler room of an ocean liner, 1912",
+      "licht": "kessel"
     },
     {
       "ab_satz": 6,
@@ -48,7 +55,8 @@
         "funken",
         "staub"
       ],
-      "wendepunkt": true
+      "wendepunkt": true,
+      "bild": "riveted steel hull plates of a ship's boiler room buckling inward, popping rivets, dust in the air, flickering electric lights, 1912"
     },
     {
       "ab_satz": 8,
@@ -58,7 +66,8 @@
         "wasser",
         "gischt"
       ],
-      "wendepunkt": true
+      "wendepunkt": true,
+      "bild": "ice-cold seawater bursting in a hard jet through the riveted steel wall of a ship's boiler room, {figur} staggering back, water on the floor"
     },
     {
       "ab_satz": 9,
@@ -68,7 +77,9 @@
         "wasser",
         "gischt"
       ],
-      "wendepunkt": true
+      "wendepunkt": true,
+      "bild": "a heavy steel watertight door sliding down in a ship's boiler room, red alarm light, {figur} standing in front of it, water at his feet",
+      "licht": "alarm"
     }
   ],
   "endkarte": "Teil 2 folgt",
@@ -95,5 +106,6 @@
     "ruck",
     "eiskaltes",
     "falschen"
-  ]
+  ],
+  "figur_bild": "a young ship stoker in 1912, soot-covered face with sweat streaks, short hair under a dark flat cap, sleeveless grey undershirt, work trousers with braces"
 }

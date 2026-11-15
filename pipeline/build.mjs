@@ -4,6 +4,7 @@
 //          npm run build -- <id> --no-render (nur Komposition, z. B. für die Vorschau)
 //          npm run build -- <id> --draft     (schnelles Test-Rendering)
 import fs from "node:fs";
+import crypto from "node:crypto";
 import path from "node:path";
 import { execFileSync, spawnSync } from "node:child_process";
 import { makePlan, writeProject } from "./lib/compose.mjs";
@@ -67,6 +68,8 @@ export async function buildVideo(id, { render = true, quality = "delivery", stri
   const viral = viralCheck(script, plan, words);
   fs.writeFileSync(path.join(assetDir, "viral_check.txt"), viral.join("\n") + "\n");
   for (const v of viral) console.log(`  ${v}`);
+  // 2b) Realistische Szenenbilder + Tiefenkarten (Szenen mit "bild"); gecacht über Prompt-Hash
+  const bilder = prepareImages(script, plan, assetDir);
   // 3) Komposition schreiben
   const { events } = writeProject({ script, plan, projDir, audioFile: "mix.wav" });
   // 4) Audio: Atmo + Musik + Effekte + Stimme, -14 LUFS
@@ -87,6 +90,10 @@ export async function buildVideo(id, { render = true, quality = "delivery", stri
   console.log("  Audio mischen …");
   execFileSync("python3", [path.join(ROOT, "pipeline", "audio_mix.py"), path.join(assetDir, "audio_plan.json")], { stdio: ["ignore", "ignore", "inherit"] });
   fs.mkdirSync(path.join(projDir, "assets"), { recursive: true });
+  if (bilder.length) {
+    fs.mkdirSync(path.join(projDir, "assets", "bilder"), { recursive: true });
+    for (const k of bilder) for (const f of [`${k}.jpg`, `${k}_depth.png`]) fs.copyFileSync(path.join(assetDir, "bilder", f), path.join(projDir, "assets", "bilder", f));
+  }
   fs.copyFileSync(path.join(assetDir, "mix.wav"), path.join(projDir, "assets", "mix.wav"));
   // 4b) Ist der Erzähler im fertigen Mix klar verständlich? (Whisper prüft)
   if (process.env.SKIP_MIX_CHECK !== "1") {
@@ -118,6 +125,29 @@ export async function buildVideo(id, { render = true, quality = "delivery", stri
   console.log(`  Fertig: ${path.relative(ROOT, out)} (${dur.toFixed(1)} s, ${lufs} LUFS)`);
   writeUploadTxt(script, path.join(outDir, `${id}_upload.txt`));
   return { out, plan, lufs, dur };
+}
+
+// Stil-Zusatz für alle realistischen Bilder (einheitlicher Look des Kanals)
+const BILD_STIL = "cinematic film still, vertical composition, photorealistic, natural skin texture, 35mm lens, film grain, dramatic natural lighting, historically accurate clothing and setting";
+
+export function prepareImages(script, plan, assetDir) {
+  const items = new Map();
+  for (const sc of plan.scenes) {
+    if (!sc.bild) continue;
+    const prompt = `${sc.bild.replaceAll("{figur}", script.figur_bild || "")}, ${script.bild_stil || BILD_STIL}`;
+    const seed = sc.seed ?? 7;
+    const h = crypto.createHash("sha1").update(prompt + "|" + seed).digest("hex").slice(0, 10);
+    const key = `b-${h}`;
+    sc.bild_key = key;
+    items.set(key, { key, prompt, seed });
+  }
+  if (!items.size) return [];
+  const req = path.join(assetDir, "bilder_request.json");
+  fs.writeFileSync(req, JSON.stringify({ out_dir: path.join(assetDir, "bilder"), items: [...items.values()] }, null, 1));
+  console.log(`  Szenenbilder: ${items.size} (realistisch, lokal) …`);
+  execFileSync("python3", [path.join(ROOT, "pipeline", "scene_images.py"), req], { stdio: ["ignore", "ignore", "inherit"] });
+  fs.rmSync(req);
+  return [...items.keys()];
 }
 
 export function measureLufs(file) {

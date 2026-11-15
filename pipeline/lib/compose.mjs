@@ -84,7 +84,7 @@ function sceneHtml(script, plan, scene, index, pal) {
   const offset = r3(scene.start - base);
   const satz = (i) => r3((plan.sentStart[i] ?? base) - base);
   const ctx = { pal, r, sid, dur: full, seed, scene, script, satz };
-  const m = motif(scene.motiv)(ctx);
+  const m = scene.bild_key ? fotoMotif(ctx) : motif(scene.motiv)(ctx);
   let cam = m.camera || { from: { scale: 1, x: 0, y: 0 }, to: { scale: 1.08, x: 0, y: 0 } };
   if (scene.variant) {
     // zweite Einstellung derselben Szene: näher dran, Bewegung in Gegenrichtung
@@ -138,6 +138,7 @@ ${RUNTIME}
 (function () {
   const tl = gsap.timeline({ paused: true });
   ${js.join("\n  ")}
+${m.webgl ? glSetup(sid, m.webgl, scene, offset, full, slot) : ""}
   const fxB = hfMakeFx(document.getElementById("${sid}-back"), ${JSON.stringify((m.fxBack || []).map((s) => scaleSpec(s, 0.5)))}, ${seed % 100000});
   const fxF = hfMakeFx(document.getElementById("${sid}-front"), ${JSON.stringify(m.fxFront || [])}, ${(seed % 100000) + 1});
   const lights = ${lightSpec}.map((L, i) => ({ ...L, el: document.getElementById("${sid}-light" + i) }));
@@ -145,6 +146,7 @@ ${RUNTIME}
   // Daumenkino-Figuren (Geh-/Lauf-/Arbeitszyklen): pro Bild genau ein Einzelbild sichtbar
   const walkers = ${JSON.stringify(m.walkers || [])}.map((w) => ({ ...w, frames: Array.from(document.getElementById(w.id)?.children || []) }));
   function render(t) {
+    ${m.webgl ? "glDraw(t);" : ""}
     fxB(t);
     fxF(t);
     for (const w of walkers) {
@@ -187,7 +189,7 @@ ${RUNTIME}
 #${sid}-dark { position: absolute; inset: 0; background: #000; opacity: 0; }
 </style>
 <div id="root" data-composition-id="${sid}" data-width="${FW}" data-height="${FH}" data-layout-allow-overflow data-layout-allow-overlap>
-  <div id="${sid}-fade"><div id="${sid}-shake"><div id="${sid}-cam">${inner}</div></div>
+  <div id="${sid}-fade"><div id="${sid}-shake">${m.webgl ? `<canvas id="${sid}-gl" width="${FW}" height="${FH}" style="position:absolute;left:0;top:0;width:${FW}px;height:${FH}px"></canvas>` : ""}<div id="${sid}-cam">${inner}</div></div>
   <canvas id="${sid}-front" width="${FW}" height="${FH}"></canvas>
   <div id="${sid}-grade"></div>
   <div id="${sid}-dark"></div></div>
@@ -205,6 +207,93 @@ function scaleSpec(s, k) {
   for (const key of ["size", "y0", "y1", "speed"]) if (o[key] != null) o[key] = o[key] * k;
   if (o.region) o.region = o.region.map((v) => v * k);
   return o;
+}
+
+// ------------------------------------------------------------------ Foto-Modus (realistisch, 2.5D)
+// Ein realistisches Standbild + Tiefenkarte; ein Shader verschiebt Vorder- und Hintergrund unterschiedlich
+// (Parallax), dazu Zoom/Schwenk, Partikel und Licht.
+const FX = {
+  regen: (p) => ({ type: "regen", count: 380, angle: 14, speed: 2300, len: 80, alpha: 0.28, color: p.rain }),
+  nebel: (p) => ({ type: "nebel", count: 7, size: 560, alpha: 0.12, rgb: p.fog, y0: 900, y1: 1900, speed: 18 }),
+  asche: () => ({ type: "asche", count: 420, speed: 110, size: 3.2, alpha: 0.7, sway: 40, color: "rgba(190,182,172,1)" }),
+  steine: () => ({ type: "steine", rock: true, count: 50, speed: 900, size: 6, alpha: 0.9, sway: 6, color: "rgba(60,52,46,1)" }),
+  funken: () => ({ type: "funken", count: 50, region: [80, 1350, 920, 400], speed: 170, size: 3 }),
+  staub: () => ({ type: "staub", count: 80, alpha: 0.35, size: 2.2, color: "rgba(255,225,180,1)" }),
+  rauch: () => ({ type: "rauch", count: 8, region: [0, 1900, 1080], speed: 70, size: 260, alpha: 0.18, rgb: "40,36,34" }),
+  gischt: () => ({ type: "gischt", count: 220, origin: [900, 1000], dir: 190, spread: 0.6, speed: 1300, size: 4.5, alpha: 0.6 }),
+  schnee: () => ({ type: "schnee", count: 300, speed: 90, size: 3, alpha: 0.8, sway: 50, color: "rgba(240,245,250,1)" }),
+};
+const LIGHT = {
+  fackel: (p) => [{ x: 140, y: 1200, r: 900, color: p.accent, intensity: 0.35, flicker: true }],
+  feuer: (p) => [{ x: 540, y: 1700, r: 1000, color: p.accent, intensity: 0.4, flicker: true }],
+  kessel: (p) => [{ x: 540, y: 1500, r: 1000, color: p.accent, intensity: 0.4, flicker: true, fast: true }],
+  alarm: () => [{ x: 540, y: 300, r: 900, color: "#ff2a1a", intensity: 0.35, flicker: true, fast: true }],
+};
+function fotoMotif(ctx) {
+  const { pal, scene, r } = ctx;
+  const fx = (scene.effekte || []).filter((e) => FX[e]).map((e) => FX[e](pal));
+  // Wendepunkt: mehr Bewegung; sonst ruhige, je Szene unterschiedliche Fahrt
+  const w = !!scene.wendepunkt;
+  const dir = r() > 0.5 ? 1 : -1;
+  const zin = r() > 0.35; // meist hineinzoomen
+  const z0 = w ? 1.04 : zin ? 1.04 : 1.16, z1 = w ? 1.24 : zin ? 1.15 : 1.05;
+  const cam = {
+    z0, z1,
+    px0: -0.012 * dir, px1: 0.012 * dir, py0: 0.008 * (r() - 0.5), py1: -0.01 * (r() - 0.3),
+    ox0: -0.028 * dir, ox1: 0.028 * dir, oy0: 0.006, oy1: -0.006,
+  };
+  return {
+    layers: [],
+    webgl: { img: `assets/bilder/${scene.bild_key}.jpg`, depth: `assets/bilder/${scene.bild_key}_depth.png`, cam },
+    fxBack: [],
+    fxFront: fx,
+    lights: LIGHT[scene.licht] ? LIGHT[scene.licht](pal) : [],
+    shake: w ? 4 : 0,
+    events: scene.events || [],
+  };
+}
+function glSetup(sid, gl, scene, offset, full, slot) {
+  const v = scene.variant ? { z: 0.14 * scene.variant, x: 0.05 * (scene.variant % 2 ? 1 : -1), y: -0.03 } : { z: 0, x: 0, y: 0 };
+  return `
+  const GLC = ${JSON.stringify(gl.cam)}, GLV = ${JSON.stringify(v)}, GLD = ${full};
+  const glCanvas = document.getElementById("${sid}-gl");
+  const g = glCanvas.getContext("webgl", { preserveDrawingBuffer: true, antialias: false });
+  let glReady = false, glU = null;
+  const glVS = "attribute vec2 p; varying vec2 v; void main(){ v = vec2(p.x*0.5+0.5, 0.5-p.y*0.5); gl_Position = vec4(p,0.0,1.0); }";
+  const glFS = "precision highp float; varying vec2 v; uniform sampler2D img; uniform sampler2D dep; uniform float zoom; uniform vec2 pan; uniform vec2 off; uniform float ax;" +
+    "void main(){ vec2 c = (v-0.5)/zoom; c.x *= ax; vec2 uv0 = c + 0.5 + pan; vec2 uv = uv0;" +
+    " for(int i=0;i<4;i++){ float d = texture2D(dep, clamp(uv,0.0,1.0)).r; uv = uv0 + off*(d-0.45); }" +
+    " gl_FragColor = texture2D(img, clamp(uv, 0.002, 0.998)); }";
+  function glLoad(src) { const im = new Image(); im.src = src; return im.decode().then(() => im); }
+  function glTex(unit, im) {
+    const t = g.createTexture(); g.activeTexture(g.TEXTURE0 + unit); g.bindTexture(g.TEXTURE_2D, t);
+    g.texParameteri(g.TEXTURE_2D, g.TEXTURE_WRAP_S, g.CLAMP_TO_EDGE); g.texParameteri(g.TEXTURE_2D, g.TEXTURE_WRAP_T, g.CLAMP_TO_EDGE);
+    g.texParameteri(g.TEXTURE_2D, g.TEXTURE_MIN_FILTER, g.LINEAR); g.texParameteri(g.TEXTURE_2D, g.TEXTURE_MAG_FILTER, g.LINEAR);
+    g.texImage2D(g.TEXTURE_2D, 0, g.RGBA, g.RGBA, g.UNSIGNED_BYTE, im);
+  }
+  function glDraw(t) {
+    if (!glReady) return;
+    const k = Math.min(1, Math.max(0, t / GLD)), e = k * k * (3 - 2 * k);
+    const L = (a, b) => a + (b - a) * e;
+    g.uniform1f(glU.zoom, L(GLC.z0, GLC.z1) + GLV.z);
+    g.uniform2f(glU.pan, L(GLC.px0, GLC.px1) + GLV.x, L(GLC.py0, GLC.py1) + GLV.y);
+    g.uniform2f(glU.off, L(GLC.ox0, GLC.ox1), L(GLC.oy0, GLC.oy1));
+    g.drawArrays(g.TRIANGLE_STRIP, 0, 4);
+  }
+  window.__hf = window.__hf || {}; window.__hf.buildReady = window.__hf.buildReady || {};
+  window.__hf.buildReady["${sid}-gl"] = Promise.all([glLoad("${gl.img}"), glLoad("${gl.depth}")]).then(([im, dp]) => {
+    const sh = (type, src) => { const o = g.createShader(type); g.shaderSource(o, src); g.compileShader(o); return o; };
+    const pr = g.createProgram(); g.attachShader(pr, sh(g.VERTEX_SHADER, glVS)); g.attachShader(pr, sh(g.FRAGMENT_SHADER, glFS)); g.linkProgram(pr); g.useProgram(pr);
+    const b = g.createBuffer(); g.bindBuffer(g.ARRAY_BUFFER, b); g.bufferData(g.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), g.STATIC_DRAW);
+    const loc = g.getAttribLocation(pr, "p"); g.enableVertexAttribArray(loc); g.vertexAttribPointer(loc, 2, g.FLOAT, false, 0, 0);
+    glTex(0, im); glTex(1, dp);
+    g.uniform1i(g.getUniformLocation(pr, "img"), 0); g.uniform1i(g.getUniformLocation(pr, "dep"), 1);
+    g.uniform1f(g.getUniformLocation(pr, "ax"), (${FW} / ${FH}) / (im.width / im.height));
+    glU = { zoom: g.getUniformLocation(pr, "zoom"), pan: g.getUniformLocation(pr, "pan"), off: g.getUniformLocation(pr, "off") };
+    g.viewport(0, 0, ${FW}, ${FH});
+    glReady = true; glDraw(${offset});
+    const px = new Uint8Array(4); g.readPixels(0, 0, 1, 1, g.RGBA, g.UNSIGNED_BYTE, px);
+  });`;
 }
 
 // ------------------------------------------------------------------ Hook
