@@ -22,7 +22,7 @@ export async function makeVoice(script, outDir) {
   const sentences = splitSentences(script.erzaehltext);
   const useEleven = Boolean(process.env.ELEVENLABS_API_KEY);
   const lexHash = crypto.createHash("sha1").update(fs.readFileSync(path.join(ROOT, "pipeline", "aussprache.json"))).digest("hex").slice(0, 8);
-  const engine = useEleven ? `elevenlabs:${process.env.ELEVENLABS_VOICE_ID || "default"}` : LOCAL === "omni" ? "omni:erzaehler-v1" : LOCAL === "coqui" ? `coqui:thorsten-vits:lex${lexHash}` : `piper:${PIPER_VOICE}`;
+  const engine = useEleven ? `elevenlabs:${process.env.ELEVENLABS_VOICE_ID || "default"}` : LOCAL === "omni" ? "omni:erzaehler-v2-B" : LOCAL === "coqui" ? `coqui:thorsten-vits:lex${lexHash}` : `piper:${PIPER_VOICE}`;
   const hash = crypto.createHash("sha1").update(engine + "\n" + sentences.join("\n")).digest("hex").slice(0, 12);
   const wav = path.join(outDir, "voice.wav");
   const wordsFile = path.join(outDir, "words.json");
@@ -45,7 +45,7 @@ export async function makeVoice(script, outDir) {
 
 function omni(sentences, wav, wordsFile) {
   const req = path.join(path.dirname(wav), "tts_request.json");
-  fs.writeFileSync(req, JSON.stringify({ sentences, out_wav: wav, out_words: wordsFile, speed: 0.92, num_step: 32 }, null, 1));
+  fs.writeFileSync(req, JSON.stringify({ sentences, out_wav: wav, out_words: wordsFile, speed: 0.9, num_step: 32 }, null, 1));
   execFileSync("python3", [path.join(ROOT, "pipeline", "tts_omni.py"), req], { stdio: ["ignore", "ignore", "inherit"] });
   fs.rmSync(req);
 }

@@ -25,7 +25,7 @@
         "regen",
         "nebel"
       ],
-      "bild": "a long column of Roman legionaries marching on a narrow muddy path through a dense misty pine forest in rain, {figur} in the foreground",
+      "bild": "a long column of Roman legionaries in plain iron helmets without crests marching on a narrow muddy path through a dense misty pine forest in rain, {figur} in the foreground",
       "bewegung": "the legionaries march forward through the mud in the rain, the column moves past the camera"
     },
     {
@@ -66,7 +66,7 @@
         "regen",
         "funken"
       ],
-      "bild": "night, beside a Roman military tent and a burning torch, a Roman general in a bronze muscle cuirass and red cloak talks with a young Germanic nobleman with long hair and a dark wool cloak, rain",
+      "bild": "night, beside a Roman military tent and a burning torch, a Roman general in a bronze muscle cuirass and red cloak talks with a young Germanic nobleman with long hair, beard, no armor, wearing a dark wool cloak with a bronze brooch, rain",
       "licht": "fackel",
       "bewegung": "the two men talk, the general gestures calmly, the torch flame flickers in the rain"
     },
@@ -89,7 +89,7 @@
         "nebel"
       ],
       "wendepunkt": true,
-      "bild": "Roman legionaries raising their rectangular shields in a dark rainy forest, spears flying out of the dense undergrowth toward them, motion blur, chaos, no blood",
+      "bild": "many wooden spears with iron tips clearly visible flying through the air out of the dark forest toward Roman legionaries who raise their rectangular shields, rain, motion, no blood",
       "bewegung": "spears fly through the air, the legionaries raise and brace their shields, rain, chaos"
     },
     {
@@ -101,7 +101,7 @@
         "funken"
       ],
       "wendepunkt": true,
-      "bild": "low angle, on a hilltop in the rain at dusk, Germanic warriors with torches and spears stand around their young leader in a dark cloak, looking down into a forest valley",
+      "bild": "low angle, on a hilltop in the rain at dusk, Germanic warriors with long hair, beards, wool cloaks, torches and spears stand around their young leader in a dark cloak, looking down into a forest valley, no Roman armor",
       "licht": "fackel",
       "bewegung": "the warriors raise their torches and spears, the leader slowly turns his head, cloak moving in the wind"
     }
@@ -130,5 +130,5 @@
     "speere",
     "verraten"
   ],
-  "figur_bild": "a weary young Roman legionary, short dark hair, stubble, brown eyes, iron Imperial Gallic helmet with hinged cheek guards, segmented lorica armor of horizontal iron bands over a faded red wool tunic"
+  "figur_bild": "a weary young Roman legionary, short dark hair, stubble, brown eyes, plain iron Imperial Gallic helmet without crest, with hinged cheek guards, segmented lorica armor of horizontal iron bands over a faded red wool tunic"
 }
