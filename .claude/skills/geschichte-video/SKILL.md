@@ -75,6 +75,14 @@ npm run aussprache -- scripts/<id>.json
 ## 5. Visuelle Regeln
 - 1080×1920, 30 fps. Stil „animiertes Gemälde“: Silhouetten-Ebenen (SVG) + Partikel (Canvas) + Licht + Kamerafahrt.
 - **Ich-Figur** = Silhouette mit **Rim-Light in der Akzentfarbe** (`rimmed(...)` in `figures.mjs`) – in jeder Szene, in der sie vorkommt.
+- **Realistische Menschen** (Nutzerwunsch): Figuren immer über das Skelett-Rig `pipeline/lib/rig.mjs` bauen –
+  `human(c, { pose, phase, costume, detail })` mit realistischen Proportionen, Händen, Schuhen, Gesichtsprofil.
+  Posen: `stand, idle, walk, march, run, arms_up, carry, shovel, brace, look_up` (eigene Posen = Gelenkwinkel in `pose()` ergänzen).
+  Kostüm: `head` (helmet, crest, hair, longhair, cap, scarf), `body` (tunika, lorica, stola, hose, mantel), `cloak`, `apron`, `pack`, `shield` (scutum, rund), `weapon` (pilum, speer, schwert, schaufel, brotschieber).
+  Neue Epochen: neue Kopfbedeckungen/Kleidung im Rig ergänzen, statt Figuren aus Kreisen und Linien zu bauen.
+- **Keine eingefrorenen Menschen**: Wer geht, läuft oder arbeitet, bekommt einen Bewegungszyklus –
+  `cycle(id, (ph) => human(..., { phase: ph }))` im SVG und `walkers: [{ id, rate, phase }]` im Motiv
+  (rate ≈ 0,85 Gehen, 1,5 Laufen, 0,8 Schaufeln, 0,2–0,3 Atmen/Gewicht verlagern bei stehenden Figuren).
 - **Jede Epoche eigene Palette** (`pipeline/lib/palettes.mjs`). Neue Epoche → neuen Eintrag anlegen (Farben deutlich anders als bestehende).
 - **Jedes Video sichtbar anders**: eigene Motive, eigene Partikel-Kombination, eigene Kamerabewegungen. Motive aus anderen Epochen nicht 1:1 wiederverwenden.
 - Safe-Zone: Untertitel auf ~60–70 % Höhe (fest im Generator), oben 168 px und rechts ~150 px frei halten; keine Schrift im unteren Fünftel.

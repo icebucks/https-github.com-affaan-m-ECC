@@ -231,15 +231,23 @@ function hfMakeFx(canvas, specs, seed) {
   tl.fromTo("#s06-L-vesuv", {x:-6.9}, {x:6.9,duration:8.139,ease:"none"}, 0);
   tl.fromTo("#s06-L-town", {x:-27.6}, {x:27.6,duration:8.139,ease:"none"}, 0);
   tl.fromTo("#s06-fade", {opacity:0}, {opacity:1,duration:0.4,ease:"power1.out"}, 3.812);
-  tl.fromTo("#s06-cloud", {x:0, y:350, scale:0.25, transformOrigin:"50% 95%"}, {scale:1.15, y:150, duration:8.139, ease:"power1.out"}, 0);
+  tl.fromTo("#s06-cloud", {x:0, y:420, scale:0.25, transformOrigin:"50% 95%"}, {scale:0.88, y:330, duration:8.139, ease:"power1.out"}, 0);
   tl.fromTo("#s06-L-sky", {filter:"brightness(1)"}, {filter:"brightness(0.45)", duration:8.139, ease:"none"}, 0);
   const fxB = hfMakeFx(document.getElementById("s06-back"), [], 61445);
   const fxF = hfMakeFx(document.getElementById("s06-front"), [{"type":"asche","count":60,"speed":50,"size":2.5,"alpha":0.4,"sway":40,"color":"rgba(170,160,150,1)","ramp":[4.0695,8.139,0,1]}], 61446);
   const lights = [{"i":0.35,"f":true,"fast":false}].map((L, i) => ({ ...L, el: document.getElementById("s06-light" + i) }));
   const shake = 0, shakeFrom = 0;
+  // Daumenkino-Figuren (Geh-/Lauf-/Arbeitszyklen): pro Bild genau ein Einzelbild sichtbar
+  const walkers = [].map((w) => ({ ...w, frames: Array.from(document.getElementById(w.id)?.children || []) }));
   function render(t) {
     fxB(t);
     fxF(t);
+    for (const w of walkers) {
+      const n = w.frames.length;
+      if (!n) continue;
+      const k = Math.floor((((t * w.rate + (w.phase || 0)) % 1) + 1) % 1 * n) % n;
+      w.frames.forEach((fr, j) => fr.setAttribute("opacity", j === k ? "1" : "0"));
+    }
     lights.forEach((L, i) => { if (L.f) L.el.style.opacity = (L.i * hfFlicker(t * (L.fast ? 2.2 : 1), i + 1)).toFixed(3); });
     if (shake && t >= shakeFrom) {
       const k = shake * (0.6 + 0.4 * Math.abs(Math.sin(t * 2.1)));

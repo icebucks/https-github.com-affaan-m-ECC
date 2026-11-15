@@ -1,6 +1,6 @@
 // Motive Titanic (1912): Stahlblau + Kesselorange.
 import { CW, CH, svg, linGrad, rect, g, path, poly } from "../svg.mjs";
-import { person, bustCivil, rimmed, rimFilter, boilerFront, chandelier } from "../figures.mjs";
+import { person, bustCivil, rimmed, rimFilter, boilerFront, chandelier, cycle, human } from "../figures.mjs";
 
 const bg = (id, stops) => svg(rect(`url(#${id})`), { defs: linGrad(id, stops) });
 const stoker = (c) => person(c, { hat: "kappe", tool: "schaufel", dress: "hose" });
@@ -33,13 +33,14 @@ export const motifs = {
         { name: "sky", depth: 0, svg: bg(`${sid}-bg`, ["#05090d", "#0d1824", "#111c28"]) },
         { name: "pipes", depth: 0.15, svg: svg(pipes(pal.mid, r), { blur: 3, id: `${sid}-p` }) },
         { name: "boilers", depth: 0.35, svg: svg(g(boilerFront(pal.mid, pal.accent, pal.cold), { x: 230, y: 1150, s: 1.0 }) + g(boilerFront(pal.mid, pal.accent, pal.cold), { x: 1030, y: 1150, s: 1.0 }) + rect(pal.near, -40, 1480, CW + 80, 900)) },
-        { name: "hero", depth: 0.8, svg: svg(g(rimmed(stoker, pal.fg, pal.accent, rim, -10, -4), { x: 560, y: 2330, s: 2.9 }) + rect(pal.fg, -40, 2290, CW + 80, 200), { defs: rimFilter(rim, 7) }) },
+        { name: "hero", depth: 0.8, svg: svg(g(cycle(`${sid}-hero`, (ph) => rimmed((c) => human(c, { pose: "shovel", phase: ph, costume: { head: "cap", body: "hose", weapon: "schaufel" } }), pal.fg, pal.accent, rim, -10, -4), 10), { x: 520, y: 2330, s: 2.9 }) + rect(pal.fg, -40, 2290, CW + 80, 200), { defs: rimFilter(rim, 7) }) },
       ],
       lights: [
         { x: 230, y: 1300, r: 700, color: pal.accent, intensity: 0.8, flicker: true },
         { x: 1030, y: 1300, r: 700, color: pal.accent, intensity: 0.75, flicker: true },
       ],
       fxBack: [{ type: "rauch", count: 8, region: [0, 1500, CW], speed: 60, size: 260, alpha: 0.25, rgb: "30,30,34" }],
+      walkers: [{ id: `${sid}-hero`, rate: 0.8 }],
       fxFront: [{ type: "funken", count: 70, region: [80, 1300, 920, 200], speed: 170, size: 3 }, { type: "staub", count: 80, alpha: 0.3, color: "rgba(140,140,150,1)" }],
       camera: { from: { scale: 1.08, x: -40, y: 0 }, to: { scale: 1.0, x: 40, y: -20 } },
     };
@@ -98,18 +99,13 @@ export const motifs = {
     const rim = `${sid}-rim`;
     const coal = path(`M-60,2400 L-60,1950 C100,1880 260,1900 420,1980 C520,2040 600,2150 640,2400Z`, pal.fg);
     // Schaufel als eigenes Objekt (schwingt im Takt)
-    const shovel = `<rect x="0" y="-8" width="420" height="16" rx="6" fill="${pal.fg}"/><path d="M400,-50 L520,-40 L530,40 L400,50Z" fill="${pal.fg}"/>`;
-    const swings = Math.max(1, Math.floor(ctx.dur / 1.1));
     return {
       layers: [
         { name: "sky", depth: 0, svg: bg(`${sid}-bg`, ["#05090d", "#0b1520", "#101b27"]) },
         { name: "boiler", depth: 0.3, svg: svg(g(boilerFront(pal.mid, pal.accent, pal.cold), { x: 760, y: 1150, s: 1.5 })) },
-        { name: "hero", depth: 0.7, svg: svg(g(rimmed((c) => person(c, { hat: "kappe", dress: "hose", arms: "swing", pose: "walk", phase: 1 }), pal.fg, pal.accent, rim, -10, 0), { x: 280, y: 2250, s: 2.2 }) + coal, { defs: rimFilter(rim, 7) }) },
+        { name: "hero", depth: 0.7, svg: svg(g(cycle(`${sid}-hero`, (ph) => rimmed((c) => human(c, { pose: "shovel", phase: ph, costume: { head: "cap", body: "hose", weapon: "schaufel" } }), pal.fg, pal.accent, rim, -10, 0), 10), { x: 300, y: 2250, s: 2.3 }) + coal, { defs: rimFilter(rim, 7) }) },
       ],
-      objects: [{ name: "shovel", w: 540, h: 120, vb: "0 -60 540 120", svg: shovel }],
-      anims: [
-        `tl.fromTo("#${sid}-shovel", {x:380, y:1640, rotation:30, transformOrigin:"0% 50%"}, {rotation:-25, x:460, y:1560, duration:0.55, ease:"power2.inOut", repeat:${swings * 2 - 1}, yoyo:true}, 0);`,
-      ],
+      walkers: [{ id: `${sid}-hero`, rate: 0.85 }],
       lights: [
         { x: 760, y: 1400, r: 900, color: pal.accent, intensity: 0.9, flicker: true, fast: true },
         { x: 760, y: 1400, r: 400, color: pal.accent2, intensity: 0.5, flicker: true, fast: true },
@@ -186,7 +182,7 @@ export const motifs = {
       layers: [
         { name: "beyond", depth: 0.1, svg: svg(beyond) },
         { name: "frame", depth: 0.3, svg: svg(frame) },
-        { name: "hero", depth: 0.8, svg: svg(g(rimmed((c) => person(c, { hat: "kappe", dress: "hose" }), pal.fg, "#ff3b2f", rim, 0, -6), { x: 630, y: 2400, s: 2.6, flip: true }), { defs: rimFilter(rim, 8) }) },
+        { name: "hero", depth: 0.8, svg: svg(g(cycle(`${sid}-hero`, (ph) => rimmed((c) => human(c, { pose: "idle", phase: ph, costume: { head: "cap", body: "hose" } }), pal.fg, "#ff3b2f", rim, 0, -6)), { x: 630, y: 2400, s: 2.6, flip: true }), { defs: rimFilter(rim, 8) }) },
       ],
       objects: [{ name: "door", w: 520, h: 1120, svg: door, before: "frame" }],
       anims: [
@@ -202,6 +198,7 @@ export const motifs = {
       fxFront: [{ type: "gischt", count: 120, origin: [1100, 1700], dir: 200, spread: 0.6, speed: 700, size: 4, alpha: 0.5 }, { type: "staub", count: 60, alpha: 0.3, color: "rgba(160,170,180,1)" }],
       camera: { from: { scale: 1.0, x: 0, y: 0 }, to: { scale: 1.15, x: 0, y: -60 }, ease: "power1.in" },
       shake: 2.5,
+      walkers: [{ id: `${sid}-hero`, rate: 0.6 }],
       events: [{ dt: 0.05, typ: "glocke", gain: 0.45 }, { dt: t10 + 0.1, typ: "boom", gain: 0.4 }],
     };
   },

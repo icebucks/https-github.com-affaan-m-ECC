@@ -1,11 +1,11 @@
 // Motive Pompeji (79 n. Chr.): Ocker + Aschgrau + Glutrot.
 import { CW, CH, svg, linGrad, rect, hills, g, path, poly } from "../svg.mjs";
-import { person, bustCivil, rimmed, rimFilter, millstone, loaf, amphora } from "../figures.mjs";
+import { person, bustCivil, rimmed, rimFilter, millstone, loaf, amphora, cycle } from "../figures.mjs";
 
 const sky = (id, stops) => svg(rect(`url(#${id})`), { defs: linGrad(id, stops) });
 const night = (pal) => ["#0c0705", "#1e120b", "#2c1a10"];
 const dark = (pal) => ["#1a1512", "#3a322c", "#4d433a"];
-const baker = (c) => person(c, { tool: "brotschieber" });
+const baker = (c) => person(c, { tool: "brotschieber", apron: true });
 
 // Vesuv: breiter Kegel mit zwei Gipfeln (Monte Somma)
 function vesuv(c, y = 1250) {
@@ -86,9 +86,9 @@ export const motifs = {
     let left = path(`M-60,2400 L-60,700 L580,1250 L580,1330 L380,2400Z`, pal.mid) + [0, 1, 2].map((i) => `<rect x="${60 + i * 150}" y="${1150 + i * 90}" width="60" height="${110 - i * 20}" fill="${pal.accent2}" opacity="0.35"/>`).join("");
     let right = path(`M1320,2400 L1320,700 L700,1250 L700,1330 L900,2400Z`, pal.mid);
     let people = g(person(pal.fg, { dress: "stola", hat: "tuch" }), { x: 280, y: 2050, s: 1.0 }) +
-      g(person(pal.fg, { pose: "walk", phase: 1 }), { x: 980, y: 2080, s: 1.05, flip: true }) +
+      g(cycle(`${sid}-w1`, (ph) => person(pal.fg, { pose: "walk", phase: ph })), { x: 980, y: 2080, s: 1.05, flip: true }) +
       g(amphora(pal.fg), { x: 140, y: 2120, s: 1.1 }) + g(amphora(pal.fg), { x: 210, y: 2130, s: 0.9 }) +
-      g(person(pal.near, { pose: "walk", phase: 2 }), { x: 620, y: 1500, s: 0.45 });
+      g(cycle(`${sid}-w2`, (ph) => person(pal.near, { pose: "walk", phase: ph })), { x: 620, y: 1500, s: 0.45 });
     return {
       layers: [
         { name: "sky", depth: 0, svg: sky(`${sid}-sky`, pal.sky) },
@@ -101,6 +101,7 @@ export const motifs = {
       fxFront: [{ type: "staub", count: 60, alpha: 0.35, color: "rgba(255,225,180,1)" }],
       camera: { from: { scale: 1.0, x: 0, y: 30 }, to: { scale: 1.1, x: 0, y: -10 } },
       shake: 5,
+      walkers: [{ id: `${sid}-w1`, rate: 0.8 }, { id: `${sid}-w2`, rate: 0.8, phase: 0.5 }],
       shakeFrom: Math.max(0, ctx.satz(2)),
       events: [{ dt: Math.max(0.1, ctx.satz(2)), typ: "beben", gain: 0.7 }],
     };
@@ -157,7 +158,8 @@ export const motifs = {
     const { pal, r, sid } = ctx;
     let runners = "";
     for (let i = 0; i < 9; i++) {
-      runners += g(person(i < 3 ? pal.fg : pal.near, { pose: "run", arms: "swing", phase: i * 1.7, dress: i % 3 === 1 ? "stola" : "tunika", hat: i % 3 === 1 ? "tuch" : null }), { x: 1100 - i * 120 + r() * 40, y: 2050 - (i > 2 ? 160 : 0) - (i > 5 ? 120 : 0), s: i < 3 ? 1.2 : i < 6 ? 0.8 : 0.55, flip: true, rot: -8 });
+      const rc = i < 3 ? pal.fg : pal.near, ri = i;
+      runners += g(cycle(`${sid}-r${i}`, (ph) => person(rc, { pose: "run", phase: ph, dress: ri % 3 === 1 ? "stola" : "tunika", hat: ri % 3 === 1 ? "tuch" : null })), { x: 1100 - i * 120 + r() * 40, y: 2050 - (i > 2 ? 160 : 0) - (i > 5 ? 120 : 0), s: i < 3 ? 1.2 : i < 6 ? 0.8 : 0.55, flip: true, rot: -8 });
     }
     let masts = "";
     for (let i = 0; i < 4; i++) masts += `<rect x="${120 + i * 110}" y="${1300 - i * 30}" width="10" height="400" fill="${pal.mid}"/><path d="M${80 + i * 110},${1700} L${240 + i * 110},${1700} L${210 + i * 110},${1760} L${110 + i * 110},${1760}Z" fill="${pal.mid}"/>`;
@@ -172,6 +174,7 @@ export const motifs = {
       fxFront: [{ type: "asche", count: 600, speed: 140, size: 3.4, alpha: 0.75, sway: 30, color: "rgba(180,172,162,1)" }],
       camera: { from: { scale: 1.06, x: 60, y: 0 }, to: { scale: 1.0, x: -80, y: 0 }, ease: "none" },
       march: { name: "runners", dx: -60 },
+      walkers: Array.from({ length: 9 }, (_, i) => ({ id: `${sid}-r${i}`, rate: 1.5, phase: (i * 0.31) % 1 })),
       shake: 3,
     };
   },
@@ -185,13 +188,14 @@ export const motifs = {
     return {
       layers: [
         { name: "inner", depth: 0.1, svg: svg(door + g(millstone(pal.near), { x: 760, y: 1900, s: 1.0 }), { blur: 4, id: `${sid}-in` }) },
-        { name: "hero", depth: 0.45, svg: svg(g(rimmed((c) => person(c, {}), pal.fg, pal.accent, rim, 0, -8), { x: 630, y: 2250, s: 2.6 }), { defs: rimFilter(rim, 9) }) },
+        { name: "hero", depth: 0.45, svg: svg(g(cycle(`${sid}-hero`, (ph) => rimmed((c) => person(c, { pose: "idle", phase: ph, apron: true }), pal.fg, pal.accent, rim, 0, -8)), { x: 630, y: 2250, s: 2.6 }), { defs: rimFilter(rim, 9) }) },
         { name: "wall", depth: 0.7, svg: svg(wall) },
       ],
       lights: [{ x: 630, y: 1300, r: 900, color: pal.accent, intensity: 0.7, flicker: true }],
       fxBack: [],
       fxFront: [{ type: "asche", count: 500, speed: 120, size: 3.3, alpha: 0.7, sway: 40, color: "rgba(185,178,168,1)" }, { type: "funken", count: 24, region: [400, 1500, 460, 200], speed: 120, size: 2.6 }],
       camera: { from: { scale: 1.0, x: 0, y: 0 }, to: { scale: 1.14, x: 0, y: -40 }, ease: "power1.inOut" },
+      walkers: [{ id: `${sid}-hero`, rate: 0.3 }],
     };
   },
 };

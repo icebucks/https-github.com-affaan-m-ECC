@@ -141,9 +141,17 @@ ${RUNTIME}
   const fxF = hfMakeFx(document.getElementById("${sid}-front"), ${JSON.stringify(m.fxFront || [])}, ${(seed % 100000) + 1});
   const lights = ${lightSpec}.map((L, i) => ({ ...L, el: document.getElementById("${sid}-light" + i) }));
   const shake = ${m.shake || 0}, shakeFrom = ${m.shakeFrom || 0};
+  // Daumenkino-Figuren (Geh-/Lauf-/Arbeitszyklen): pro Bild genau ein Einzelbild sichtbar
+  const walkers = ${JSON.stringify(m.walkers || [])}.map((w) => ({ ...w, frames: Array.from(document.getElementById(w.id)?.children || []) }));
   function render(t) {
     fxB(t);
     fxF(t);
+    for (const w of walkers) {
+      const n = w.frames.length;
+      if (!n) continue;
+      const k = Math.floor((((t * w.rate + (w.phase || 0)) % 1) + 1) % 1 * n) % n;
+      w.frames.forEach((fr, j) => fr.setAttribute("opacity", j === k ? "1" : "0"));
+    }
     lights.forEach((L, i) => { if (L.f) L.el.style.opacity = (L.i * hfFlicker(t * (L.fast ? 2.2 : 1), i + 1)).toFixed(3); });
     if (shake && t >= shakeFrom) {
       const k = shake * (0.6 + 0.4 * Math.abs(Math.sin(t * 2.1)));

@@ -237,9 +237,17 @@ function hfMakeFx(canvas, specs, seed) {
   const fxF = hfMakeFx(document.getElementById("s08-front"), [{"type":"funken","count":80,"region":[100,900,900,700],"speed":60,"drift":140,"size":3.4,"ramp":[2.12,2.52,0,1]},{"type":"staub","count":120,"alpha":0.4,"color":"rgba(150,160,170,1)"}], 83127);
   const lights = [{"i":0.35,"f":true,"fast":true},{"i":0.4,"f":true,"fast":false}].map((L, i) => ({ ...L, el: document.getElementById("s08-light" + i) }));
   const shake = 10, shakeFrom = 0;
+  // Daumenkino-Figuren (Geh-/Lauf-/Arbeitszyklen): pro Bild genau ein Einzelbild sichtbar
+  const walkers = [].map((w) => ({ ...w, frames: Array.from(document.getElementById(w.id)?.children || []) }));
   function render(t) {
     fxB(t);
     fxF(t);
+    for (const w of walkers) {
+      const n = w.frames.length;
+      if (!n) continue;
+      const k = Math.floor((((t * w.rate + (w.phase || 0)) % 1) + 1) % 1 * n) % n;
+      w.frames.forEach((fr, j) => fr.setAttribute("opacity", j === k ? "1" : "0"));
+    }
     lights.forEach((L, i) => { if (L.f) L.el.style.opacity = (L.i * hfFlicker(t * (L.fast ? 2.2 : 1), i + 1)).toFixed(3); });
     if (shake && t >= shakeFrom) {
       const k = shake * (0.6 + 0.4 * Math.abs(Math.sin(t * 2.1)));

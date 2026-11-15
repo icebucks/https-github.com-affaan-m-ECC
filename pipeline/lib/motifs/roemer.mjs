@@ -1,7 +1,7 @@
 // Motive für die Römerzeit (Germanien). Jedes Motiv liefert Ebenen, Licht,
 // Partikel, Kamera und optionale Animationen/Ereignisse.
 import { CW, CH, svg, linGrad, rect, treeline, trunk, ferns, hills, g, conifer, path } from "../svg.mjs";
-import { legionary, officer, germanic, bustProfile, bustDetail, rimmed, rimFilter, spear, torch } from "../figures.mjs";
+import { legionary, officer, germanic, bustProfile, bustDetail, rimmed, rimFilter, spear, torch, cycle, human } from "../figures.mjs";
 
 const sky = (ctx, id, stops) => svg(rect(`url(#${id})`), { defs: linGrad(id, stops || ctx.pal.sky) });
 
@@ -45,21 +45,24 @@ export const motifs = {
     const { pal, r, sid } = ctx;
     const rim = `${sid}-rim`;
     let col = "";
+    const walkers = [];
     const N = 16;
     for (let i = N - 1; i >= 1; i--) {
       const z = i / N; // 0 = nah, 1 = fern
       const s = 1.35 * Math.pow(1 - z, 1.4) + 0.14;
       const x = 720 - 330 * Math.pow(1 - z, 1.1) + Math.sin(z * 6) * 50;
       const y = 1300 + 800 * Math.pow(1 - z, 1.5);
-      col += g(legionary(z > 0.55 ? pal.far : pal.mid, { phase: i * 1.3 }), { x, y, s });
+      const col_c = z > 0.55 ? pal.far : pal.mid;
+      col += g(cycle(`${sid}-m${i}`, (ph) => legionary(col_c, { phase: ph })), { x, y, s });
+      walkers.push({ id: `${sid}-m${i}`, rate: 0.85, phase: (i * 0.37) % 1 });
     }
-    const near = (c) => legionary(c, { phase: 0.4 });
+    const near = (ph) => (c) => legionary(c, { phase: ph, detail: pal.mid });
     return {
       layers: [
         ...forestBack(ctx),
         { name: "road", depth: 0.45, svg: svg(path(`M250,2300 C380,1800 700,1500 700,1290 L760,1290 C800,1500 760,1900 1000,2300Z`, pal.cold, `opacity="0.16"`), { blur: 6, id: `${sid}-road` }) },
         { name: "col", depth: 0.55, svg: svg(col, { blur: 1.2, id: `${sid}-col` }) },
-        { name: "hero", depth: 0.8, svg: svg(g(rimmed(near, pal.fg, pal.accent, rim, -10, -4), { x: 400, y: 2330, s: 2.3 }), { defs: rimFilter(rim, 6) }) },
+        { name: "hero", depth: 0.8, svg: svg(g(cycle(`${sid}-hero`, (ph) => rimmed(near(ph), pal.fg, pal.accent, rim, -10, -4)), { x: 400, y: 2330, s: 2.3 }), { defs: rimFilter(rim, 6) }) },
         { name: "fg", depth: 1.0, svg: svg(trunk(30, 150, pal.fg, r, 30) + trunk(1230, 170, pal.fg, r, -40) + ferns(2150, pal.fg, r, { n: 28, h: 220 })) },
       ],
       lights: [
@@ -70,17 +73,18 @@ export const motifs = {
       fxFront: [rain(ctx)],
       camera: { from: { scale: 1.06, x: 30, y: 0 }, to: { scale: 1.0, x: -40, y: -20 } },
       march: { name: "col", dx: -26 },
+      walkers: [...walkers, { id: `${sid}-hero`, rate: 0.85, phase: 0.2 }],
     };
   },
 
   gepaeck(ctx) {
     const { pal, r, sid } = ctx;
     const rim = `${sid}-rim`;
-    const hero = (c) => legionary(c, { pose: "stand", pilum: true });
+    const hero = (ph) => (c) => human(c, { pose: "idle", phase: ph, detail: pal.mid, costume: { head: "helmet", body: "lorica", pack: true, shield: "scutum", weapon: "pilum" } });
     return {
       layers: [
         ...forestBack(ctx, { blur1: 10, blur2: 6 }),
-        { name: "hero", depth: 0.8, svg: svg(g(rimmed(hero, pal.fg, pal.accent, rim, -6, -3), { x: 690, y: 2420, s: 3.3, flip: true }), { defs: rimFilter(rim, 5) }) },
+        { name: "hero", depth: 0.8, svg: svg(g(cycle(`${sid}-hero`, (ph) => rimmed(hero(ph), pal.fg, pal.accent, rim, -6, -3)), { x: 690, y: 2420, s: 3.3, flip: true }), { defs: rimFilter(rim, 5) }) },
         { name: "fg", depth: 1.0, svg: svg(ferns(2180, pal.fg, r, { n: 20, h: 160 })) },
       ],
       lights: [
@@ -89,6 +93,7 @@ export const motifs = {
       ],
       fxBack: [fog(ctx, { y0: 1000, y1: 1600 })],
       fxFront: [rain(ctx, { count: 480 })],
+      walkers: [{ id: `${sid}-hero`, rate: 0.22 }],
       camera: { from: { scale: 1.12, x: 0, y: 140 }, to: { scale: 1.02, x: 0, y: -60 } },
     };
   },
@@ -201,7 +206,7 @@ export const motifs = {
     let col = "";
     for (let i = 0; i < 7; i++) {
       const x = 200 + i * 140 + (r() - 0.5) * 40;
-      col += g(legionary(pal.near, { pose: i % 2 ? "walk" : "stand", phase: i, pack: false }), { x, y: 1880 - (i % 2) * 30, s: 0.9 + r() * 0.2, flip: i % 3 === 0 });
+      col += g(cycle(`${sid}-m${i}`, (ph) => legionary(pal.near, { phase: ph, pack: false })), { x, y: 1880 - (i % 2) * 30, s: 0.9 + r() * 0.2, flip: i % 3 === 0 });
     }
     // Speere: Startpunkt im Dickicht links/rechts, Ziel in der Kolonne
     const n = Math.max(6, Math.min(12, Math.round(dur * 2.2)));
@@ -231,6 +236,7 @@ export const motifs = {
       camera: { from: { scale: 1.12, x: 0, y: 0 }, to: { scale: 1.0, x: 0, y: 0 }, ease: "power2.out" },
       shake: 9,
       events,
+      walkers: Array.from({ length: 7 }, (_, i) => ({ id: `${sid}-m${i}`, rate: 1.1, phase: (i * 0.29) % 1 })),
     };
   },
 

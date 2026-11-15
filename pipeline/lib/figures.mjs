@@ -1,6 +1,8 @@
 // Silhouetten-Figuren. Lokales Koordinatensystem: Füße bei (0,0), Kopf bei y≈-400,
 // Blickrichtung nach rechts. Mit g({x,y,s,flip}) platzieren.
 const f = (n) => Math.round(n * 10) / 10;
+// Ganzkörper-Figuren kommen aus dem Skelett-Rig (realistische Proportionen und Bewegung)
+export { legionary, officer, germanic, person, human, cycle, pose } from "./rig.mjs";
 const line = (pts, w, c) =>
   `<polyline points="${pts.map(([x, y]) => `${f(x)},${f(y)}`).join(" ")}" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>`;
 const poly = (pts, c) => `<polygon points="${pts.map(([x, y]) => `${f(x)},${f(y)}`).join(" ")}" fill="${c}"/>`;
@@ -52,37 +54,6 @@ function head(c, { helmet = null, hair = false } = {}) {
 
 function cloak(c, len = 120) {
   return `<path d="M-30,-318 C-60,-300 -76,-200 -80,${-200 + len} L-20,${-190 + len} L-30,-226Z" fill="${c}"/>`;
-}
-
-// ---------------------------------------------------------------- Römer
-export function legionary(c, { pose = "walk", phase = 0, pack = true, shield = true, pilum = true, helmet = "legion" } = {}) {
-  let s = "";
-  if (pack) {
-    s += line([[10, -312], [-80, -392]], 7, c);
-    s += `<ellipse cx="-78" cy="-366" rx="26" ry="32" fill="${c}"/>` + `<circle cx="-60" cy="-338" r="16" fill="${c}"/>` + `<rect x="-96" y="-402" width="30" height="16" rx="4" fill="${c}"/>`;
-  }
-  if (shield) s += `<path d="M-66,-334 Q-50,-340 -34,-334 L-32,-168 Q-50,-162 -68,-168Z" fill="${c}"/>`;
-  s += legs(c, pose, phase) + torso(c) + head(c, { helmet });
-  if (pilum) {
-    s += line([[36, -40], [74, -470]], 7, c) + line([[74, -470], [80, -540]], 3.5, c) + poly([[77, -560], [85, -536], [75, -537]], c);
-  }
-  s += line([[22, -302], [34, -252], [46, -238]], 20, c);
-  return s;
-}
-
-export function officer(c, { crest = true } = {}) {
-  // Feldherr: Helmbusch, langer Umhang, Schwert
-  return cloak(c, 210) + legs(c, "stand") + torso(c, { bulk: 1.05 }) + head(c, { helmet: crest ? "crest" : "legion" }) +
-    line([[24, -302], [42, -250], [36, -200]], 20, c) + line([[-24, -300], [-34, -250], [-26, -208]], 20, c) +
-    line([[30, -200], [60, -110]], 8, c);
-}
-
-export function germanic(c, { spear = true, shield = true, cloakLen = 150 } = {}) {
-  let s = cloak(c, cloakLen) + legs(c, "stand") + torso(c) + head(c, { hair: true });
-  s += line([[24, -302], [40, -250], [58, -240]], 20, c);
-  if (spear) s += line([[50, -30], [64, -540]], 6, c) + `<path d="M64,-590 Q74,-560 65,-532 Q56,-560 64,-590Z" fill="${c}"/>`;
-  if (shield) s += `<ellipse cx="-34" cy="-250" rx="20" ry="70" fill="${c}"/>`;
-  return s;
 }
 
 // Große Profil-Büste (Blick nach links) – die „Ich-Figur“ in Nahaufnahmen.
@@ -139,35 +110,6 @@ export function rimFilter(id, std = 5) {
 }
 
 // ---------------------------------------------------------------- Zivilisten (alle Epochen)
-function runLegs(c, phase = 0) {
-  const a = Math.sin(phase);
-  return (
-    line([[8, -172], [40 + a * 20, -110], [30 + a * 50, -20]], 26, c) +
-    line([[-6, -172], [-30 - a * 20, -120], [-70 - a * 30, -70]], 26, c)
-  );
-}
-
-// Allgemeine Person: dress = "tunika" | "stola" | "hose"; hat = null | "kappe" | "tuch"; tool = null | "schaufel" | "brotschieber"
-export function person(c, { pose = "stand", phase = 0, dress = "tunika", hat = null, tool = null, lean = 0, arms = "down" } = {}) {
-  let s = "";
-  if (pose === "run") s += runLegs(c, phase);
-  else if (pose === "walk") s += legs(c, "walk", phase);
-  else s += legs(c, "stand");
-  if (dress === "stola") s += poly([[-34, -300], [36, -300], [62, -40], [-60, -40]], c);
-  else if (dress === "hose") s += poly([[-30, -236], [30, -236], [34, -170], [-34, -170]], c);
-  s += torso(c);
-  s += `<circle cx="6" cy="-354" r="24" fill="${c}"/>` + poly([[24, -362], [36, -350], [26, -342]], c);
-  if (hat === "kappe") s += `<path d="M-22,-362 C-22,-392 30,-392 30,-366 L52,-360 L50,-354 L-22,-356Z" fill="${c}"/>`;
-  if (hat === "tuch") s += `<path d="M-26,-350 C-30,-396 36,-400 34,-360 L28,-330 L-30,-300 L-40,-320Z" fill="${c}"/>`;
-  if (!hat) s += `<path d="M-20,-362 C-22,-386 26,-388 30,-368 C20,-376 0,-376 -10,-368Z" fill="${c}"/>`;
-  if (arms === "up") s += line([[22, -302], [30, -360], [10, -392]], 20, c) + line([[-20, -300], [-30, -360], [-6, -394]], 20, c);
-  else if (arms === "swing") s += line([[22, -302], [56, -262], [74, -290]], 20, c) + line([[-20, -300], [-50, -250], [-64, -214]], 20, c);
-  else s += line([[22, -302], [32, -250], [36, -200]], 20, c);
-  if (tool === "schaufel") s += line([[36, -205], [150, -60]], 9, c) + poly([[138, -76], [196, -20], [168, 4], [122, -50]], c);
-  if (tool === "brotschieber") s += line([[36, -205], [190, -330]], 8, c) + `<ellipse cx="214" cy="-350" rx="44" ry="20" transform="rotate(-38 214 -350)" fill="${c}"/>`;
-  return lean ? `<g transform="rotate(${lean})">${s}</g>` : s;
-}
-
 // Profil-Büste ohne Helm (Kopf mit kurzem Haar oder Kappe) – nutzt dieselbe Kopfform wie der Legionär
 export function bustCivil(c, { cap = null } = {}) {
   let s = bustProfile(c, { helmet: null });
