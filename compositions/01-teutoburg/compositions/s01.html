@@ -227,7 +227,7 @@ function hfMakeFx(canvas, specs, seed) {
 
 (function () {
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#s01-cam", {scale:1,x:0,y:20}, {scale:1.09,x:-30,y:-10,duration:4.039,ease:"sine.inOut"}, 0);
+  tl.fromTo("#s01-cam", {scale:1,x:0,y:20}, {scale:1.09,x:-30,y:-10,duration:2.22,ease:"sine.inOut"}, 0);
   tl.fromTo("#s01-L-far", {x:6.9}, {x:-6.9,duration:4.039,ease:"none"}, 0);
   tl.fromTo("#s01-L-mid", {x:16.1}, {x:-16.1,duration:4.039,ease:"none"}, 0);
   tl.fromTo("#s01-L-hero", {x:36.8}, {x:-36.8,duration:4.039,ease:"none"}, 0);
@@ -254,7 +254,11 @@ function hfMakeFx(canvas, specs, seed) {
   }
   const P = { t: 0 };
   tl.to(P, { t: 4.039, duration: 4.039, ease: "none", onUpdate: () => render(P.t) }, 0);
-  render(0);
-  window.__timelines["s01"] = tl;
+  // Einstellung = Ausschnitt 0s..2.22s der ganzen Szene
+  const shot = gsap.timeline({ paused: true });
+  const Q = { t: 0 };
+  shot.to(Q, { t: 2.22, duration: 2.22, ease: "none", onUpdate: () => tl.seek(Q.t, false) }, 0);
+  tl.seek(0, false);
+  window.__timelines["s01"] = shot;
 })();</script>
 </template>

@@ -35,9 +35,45 @@ npm run setup        # Node-Pakete, Python (Coqui, gruut, piper, torch), Stimmen
 - Kurze Sätze (3–12 Wörter). Ein Satz = ein Bild. Sehr kurze Sätze („Kein Wind.“) bekommen automatisch längere Pausen.
 - `bildunterschrift`: 1–2 Sätze + `frage` an die Zuschauer. `hashtags`: 5–8, Mischung aus groß (#geschichte #history) und speziell.
 
+## 2b. TikTok-Viralität – Pflicht bei JEDEM Video (Nutzerwunsch)
+Ziel: maximale Wiedergabedauer, Komplett-Ansichten, Kommentare, Shares, Follows. Der Build prüft vieles automatisch
+(„Viral-Check“, `assets/<id>/viral_check.txt`) – jede ⚠-Zeile vor dem Rendern beheben.
+
+**Hook (0–3 s) – entscheidet über alles**
+- Erstes Bild = stärkstes Bild + `jahr_ort` + `hook_text` (Neugier-Zeile, max. 6 Wörter, historisch korrekt,
+  z. B. „Drei Legionen. Ein Hinterhalt.“). Bewegung ab Frame 0, nie schwarz, nie Logo.
+- Erster Satz ≤ 3 s und mit Spannung statt Vorstellung, wenn möglich: „Dieser Wald wird zur Falle.“ vor „Ich bin …“.
+  Varianten: Ergebnis vorwegnehmen („Heute Nacht sinkt dieses Schiff.“), Widerspruch, direkte Frage.
+- Keine Begrüßung, kein „Heute erzähle ich euch …“.
+
+**Spannungsbogen (Retention)**
+- Offene Schleife in den ersten 5 s (eine Frage, die erst am Ende beantwortet wird).
+- Bildwechsel alle 2–3,5 s (der Generator teilt automatisch bei > 3,4 s), Zoom-Impuls bei jedem Schnitt.
+- Kurze Sätze, ein Satz = ein Bild. Konkrete Sinnesdetails (Gewicht, Kälte, Geruch, Geräusch) statt Allgemeinplätze.
+- Stakes früh klar machen (was steht für den Erzähler auf dem Spiel?).
+- Wendepunkt spätestens bei 75 % der Länge; davor ein Moment der Stille (`"ton": "stille"`) als Kontrast.
+- `betonung`: 2–5 Schlüsselwörter, die in den Untertiteln groß aufpoppen (z. B. „Stille“, „Speere“, „verraten“).
+
+**Ende (Rewatch + Follow)**
+- Cliffhanger im letzten Satz vor „Teil zwei folgt.“ – die Frage aus dem Hook bleibt offen.
+- Endkarte max. 2 s (lange Endkarten kosten Komplett-Ansichten).
+- Teil 2 beginnt mit 1 Satz Rückblick („Gestern: Speere aus dem Wald.“) und löst die offene Frage auf.
+
+**Länge**
+- Teil 1: 21–40 s (hohe Komplett-Ansichtsrate). Teil 2: bis 55 s. Für das Creator-Programm einzelne Videos
+  mit `"lang": true` und 61–95 s, dann mit zwei Wendepunkten und Zwischen-Cliffhanger nach ~30 s.
+
+**Caption & Upload**
+- `bildunterschrift`: 1. Satz = Hook mit Jahr + Stakes, dann „Ich war dabei.“-Gefühl; `frage`: polarisierende,
+  leicht beantwortbare Frage („Hättest du Arminius vertraut?“) + „Teil 2 folgt – folg mir …“.
+- Hashtags 5–8: 2 große (#geschichte #history), 2 Nische (#geschichtetiktok #römer), 2–3 Thema (#varusschlacht).
+- Posten 12–13 Uhr und 18–20 Uhr; Teil 2 nach 24 h und im Kommentar von Teil 1 verlinken; erste Kommentare beantworten.
+- KI-Label immer aktivieren.
+
 ## 3. Skript-Format (`scripts/<id>.json`)
 ```json
 { "id": "04-hannibal", "titel": "…", "jahr_ort": "218 v. Chr. – Alpen", "epoche": "antike_berge", "figur": "elefantentreiber",
+  "hook_text": "Dreißig Elefanten. Ein Gebirge.", "betonung": ["schnee", "abgrund", "elefanten"],
   "erzaehltext": "Ich bin … Teil zwei folgt.",
   "szenen": [ { "ab_satz": 0, "motiv": "<motiv>", "beschreibung": "…", "effekte": ["schnee"] },
               { "ab_satz": 7, "motiv": "<motiv>", "beschreibung": "…", "wendepunkt": true },

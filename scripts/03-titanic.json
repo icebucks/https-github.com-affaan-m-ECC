@@ -88,5 +88,12 @@
     "#schiff",
     "#heizer"
   ],
-  "hinweise": "Historisch geprüft: Die Titanic hatte keinen Ballsaal; Kollision am Sonntag, 14. April 1912, gegen 23:40 Uhr. Wasser drang u. a. in Kesselraum 6 ein, die wasserdichten Türen wurden von der Brücke geschlossen."
+  "hinweise": "Historisch geprüft: Die Titanic hatte keinen Ballsaal; Kollision am Sonntag, 14. April 1912, gegen 23:40 Uhr. Wasser drang u. a. in Kesselraum 6 ein, die wasserdichten Türen wurden von der Brücke geschlossen.",
+  "hook_text": "Ganz unten merkt man es zuerst.",
+  "betonung": [
+    "luxus",
+    "ruck",
+    "eiskaltes",
+    "falschen"
+  ]
 }

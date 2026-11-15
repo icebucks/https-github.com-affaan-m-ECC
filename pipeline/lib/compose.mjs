@@ -45,7 +45,7 @@ export function makePlan(script, wordsData) {
   });
   scenes.forEach((s, i) => { s.end = i < scenes.length - 1 ? scenes[i + 1].start : duration; });
   // Lange Szenen in zwei Einstellungen teilen (Schnitt alle 3–5 s), bevorzugt an Satzgrenzen
-  const MAX_SHOT = 5.2;
+  const MAX_SHOT = 3.4; // TikTok: Bildwechsel alle 2–3,5 s halten die Aufmerksamkeit
   for (let guard = 0; guard < 40; guard++) {
     const i = scenes.findIndex((s) => s.end - s.start > MAX_SHOT && !(s.end === duration && hasEndcard && s.end - s.start < MAX_SHOT + (duration - endcardStart)));
     if (i === -1) break;
@@ -63,8 +63,9 @@ export function makePlan(script, wordsData) {
   const wende = scenes.find((s) => s.wendepunkt);
   return {
     sentences, sentStart, sentEnd, scenes, duration, endcardStart, hasEndcard,
-    hookEnd: 2.2, wendeStart: wende ? wende.start : null,
+    hookEnd: script.hook_text ? 2.8 : 2.2, wendeStart: wende ? wende.start : null,
     captionWords: words.filter((w) => !(hasEndcard && w.satz === last)),
+    betonung: (script.betonung || []).map((w) => w.toLowerCase()),
   };
 }
 
@@ -121,7 +122,7 @@ function sceneHtml(script, plan, scene, index, pal) {
     const extra = m.march && m.march.name === l.name ? m.march.dx * slot : 0;
     js.push(`tl.fromTo("#${sid}-L-${l.name}", {x:${r3(-P)}}, {x:${r3(P + extra)},duration:${full},ease:"none"}, 0);`);
   }
-  if (index > 0) js.push(`tl.fromTo("#${sid}-fade", {opacity:0}, {opacity:1,duration:0.4,ease:"power1.out"}, ${offset});`);
+  if (index > 0) js.push(`tl.fromTo("#${sid}-fade", {opacity:0, scale:1.07}, {opacity:1, scale:1, duration:0.4, ease:"power2.out"}, ${offset});`);
   (m.spears || []).forEach((s, i) => {
     js.push(`tl.fromTo("#${sid}-sp${i}", {x:${r3(s.x0)},y:${r3(s.y0)},rotation:${r3(s.rot)},scale:${r3(s.s)}}, {x:${r3(s.x1)},y:${r3(s.y1)},duration:0.42,ease:"power2.in"}, ${r3(s.t0)});`);
   });
@@ -218,13 +219,15 @@ function hookHtml(script, pal) {
 #hook-year { font-family: "Playfair Display", serif; font-weight: 900; font-size: ${size}px; line-height: 1; color: #fff; text-shadow: 0 0 40px ${pal.accent}aa, 0 6px 20px rgba(0,0,0,0.8); }
 #hook-line { width: 520px; height: 6px; margin: 34px auto 30px; background: ${pal.accent}; box-shadow: 0 0 24px ${pal.accent}; transform-origin: 50% 50%; }
 #hook-place { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 68px; letter-spacing: 0.22em; color: ${pal.accent2}; text-transform: uppercase; text-shadow: 0 4px 16px rgba(0,0,0,0.9); }
+#hook-text { margin-top: 40px; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 58px; line-height: 1.1; color: #fff; -webkit-text-stroke: 10px #000; paint-order: stroke fill; text-shadow: 0 6px 18px rgba(0,0,0,0.8); }
 </style>
 <div id="root" data-composition-id="hook" data-width="${FW}" data-height="${FH}">
   <div id="hook-scrim"></div>
   <div id="hook-box">
     <div id="hook-year">${esc(a)}</div>
     <div id="hook-line"></div>
-    <div id="hook-place">${esc(b || "")}</div>
+    <div id="hook-place">${esc(b || "")}</div>${script.hook_text ? `
+    <div id="hook-text">${esc(script.hook_text)}</div>` : ""}
   </div>
 </div>
 <script>
@@ -233,8 +236,9 @@ function hookHtml(script, pal) {
   tl.fromTo("#hook-box", { scale: 1.14, y: 0, opacity: 1 }, { scale: 1, duration: 0.7, ease: "power3.out" }, 0);
   tl.fromTo("#hook-line", { scaleX: 0.1 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 0.05);
   tl.fromTo("#hook-place", { scale: 1.25, opacity: 0.6 }, { scale: 1, opacity: 1, duration: 0.9, ease: "power3.out" }, 0);
-  tl.to("#hook-box", { opacity: 0, y: -40, duration: 0.4, ease: "power2.in" }, 1.75);
-  tl.fromTo("#hook-scrim", { opacity: 1 }, { opacity: 0, duration: 0.45, ease: "power1.in" }, 1.7);
+  ${script.hook_text ? `tl.fromTo("#hook-text", { scale: 1.3 }, { scale: 1, duration: 0.35, ease: "back.out(2)" }, 0);` : ""}
+  tl.to("#hook-box", { opacity: 0, y: -40, duration: 0.4, ease: "power2.in" }, ${script.hook_text ? 2.35 : 1.75});
+  tl.fromTo("#hook-scrim", { opacity: 1 }, { opacity: 0, duration: 0.45, ease: "power1.in" }, ${script.hook_text ? 2.3 : 1.7});
   window.__timelines["hook"] = tl;
 })();
 </script>
@@ -313,7 +317,8 @@ function captionsHtml(plan, pal, dur) {
     gw.forEach((w, wi) => {
       const ws = r3(Math.max(start, w.start));
       const we = r3(Math.max(ws + 0.1, Math.min(end - 0.02, wi < gw.length - 1 ? gw[wi + 1].start : w.end + 0.15)));
-      js += `tl.fromTo("#${gid}-w${wi}", {color:"#ffffff", scale:1}, {color:"${pal.accent}", scale:1.1, duration:0.08, ease:"power2.out"}, ${ws});\n`;
+      const strong = (plan.betonung || []).includes(w.text.toLowerCase());
+      js += `tl.fromTo("#${gid}-w${wi}", {color:"#ffffff", scale:1}, {color:"${strong ? pal.accent2 : pal.accent}", scale:${strong ? 1.32 : 1.1}, duration:${strong ? 0.12 : 0.08}, ease:"${strong ? "back.out(3)" : "power2.out"}"}, ${ws});\n`;
       js += `tl.to("#${gid}-w${wi}", {color:"#ffffff", scale:1, duration:0.1, ease:"power1.out"}, ${we});\n`;
     });
     js += `tl.to("#${gid}-i", {opacity:0, duration:0.1, ease:"power2.in"}, ${r3(end - 0.1)});\n`;

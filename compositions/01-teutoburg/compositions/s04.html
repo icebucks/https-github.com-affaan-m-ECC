@@ -227,12 +227,12 @@ function hfMakeFx(canvas, specs, seed) {
 
 (function () {
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#s04-cam", {scale:1.18,x:-50,y:-130}, {scale:1.32,x:30,y:-90,duration:2.742,ease:"sine.inOut"}, 3.95);
+  tl.fromTo("#s04-cam", {scale:1.12,x:0,y:140}, {scale:1.02,x:0,y:-60,duration:2.375,ease:"sine.inOut"}, 0);
   tl.fromTo("#s04-L-far", {x:-6.9}, {x:6.9,duration:6.692,ease:"none"}, 0);
   tl.fromTo("#s04-L-mid", {x:-16.1}, {x:16.1,duration:6.692,ease:"none"}, 0);
   tl.fromTo("#s04-L-hero", {x:-36.8}, {x:36.8,duration:6.692,ease:"none"}, 0);
   tl.fromTo("#s04-L-fg", {x:-46}, {x:46,duration:6.692,ease:"none"}, 0);
-  tl.fromTo("#s04-fade", {opacity:0}, {opacity:1,duration:0.4,ease:"power1.out"}, 3.95);
+  tl.fromTo("#s04-fade", {opacity:0, scale:1.07}, {opacity:1, scale:1, duration:0.4, ease:"power2.out"}, 0);
   const fxB = hfMakeFx(document.getElementById("s04-back"), [{"type":"nebel","count":9,"size":280,"alpha":0.16,"rgb":"150,168,156","y0":500,"y1":800,"speed":11}], 64092);
   const fxF = hfMakeFx(document.getElementById("s04-front"), [{"type":"regen","count":480,"angle":14,"speed":2300,"len":80,"alpha":0.32,"color":"rgba(190,210,205,1)"}], 64093);
   const lights = [{"i":0.6,"f":true,"fast":false},{"i":0.2,"f":false,"fast":false}].map((L, i) => ({ ...L, el: document.getElementById("s04-light" + i) }));
@@ -256,11 +256,11 @@ function hfMakeFx(canvas, specs, seed) {
   }
   const P = { t: 0 };
   tl.to(P, { t: 6.692, duration: 6.692, ease: "none", onUpdate: () => render(P.t) }, 0);
-  // Einstellung = Ausschnitt 3.95s..6.692s der ganzen Szene
+  // Einstellung = Ausschnitt 0s..2.375s der ganzen Szene
   const shot = gsap.timeline({ paused: true });
-  const Q = { t: 3.95 };
-  shot.to(Q, { t: 6.692, duration: 2.742, ease: "none", onUpdate: () => tl.seek(Q.t, false) }, 0);
-  tl.seek(3.95, false);
+  const Q = { t: 0 };
+  shot.to(Q, { t: 2.375, duration: 2.375, ease: "none", onUpdate: () => tl.seek(Q.t, false) }, 0);
+  tl.seek(0, false);
   window.__timelines["s04"] = shot;
 })();</script>
 </template>

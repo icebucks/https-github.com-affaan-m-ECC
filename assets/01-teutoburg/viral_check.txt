@@ -1,0 +1,8 @@
+✓ Hook-Satz endet nach 3.0 s
+✓ Hook-Text im ersten Bild
+✓ Länge 38.1 s
+✓ Bildwechsel alle 2.5 s
+✓ Wendepunkt vor dem letzten Fünftel
+✓ Frage an die Zuschauer (Kommentare)
+✓ 7 Hashtags
+✓ Schlüsselwörter betont
