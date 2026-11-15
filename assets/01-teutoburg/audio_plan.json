@@ -91,22 +91,5 @@
  "hook_hit": 0,
  "wende_start": 26.966,
  "endcard_start": 31.978,
- "events": [
-  {
-   "t": 27.396,
-   "typ": "speer"
-  },
-  {
-   "t": 28.034,
-   "typ": "speer"
-  },
-  {
-   "t": 28.672,
-   "typ": "speer"
-  },
-  {
-   "t": 29.31,
-   "typ": "speer"
-  }
- ]
+ "events": []
 }
