@@ -22,6 +22,20 @@ npm run setup        # Node-Pakete, Python (Coqui, gruut, piper, torch), Stimmen
 4. Danach `status` aktualisieren (`teil1` → `fertig` mit `teil2: "<id>"`; `offen` → `teil1` mit `teil1: "<id>"`).
 5. IDs fortlaufend: `NN-slug` bzw. `NN-slug-teil2` (NN = nächste freie Nummer in `scripts/`).
 
+## 1b. Format: Kurzfilme (Nutzerwunsch – langfristiger Aufbau)
+Jede Geschichte wird ein **Kurzfilm** und liefert drei Uploads:
+1. **Teil 1** (21–40 s, Cliffhanger) · 2. **Teil 2** am Folgetag (25–55 s, Auflösung) ·
+3. **Ganzer Film** = `npm run film -- <slug>` direkt nach Teil 2 (> 60 s → Creator-Programm, YouTube).
+Darum: Teil 1 und Teil 2 zusammen müssen als ein Film funktionieren (gleiche Figur, gleiche Bildwelt, Teil 2 knüpft nahtlos an).
+Der Film entsteht ohne „Teil 2 folgt“-Endkarte; `film-<slug>_upload.txt` enthält die Caption.
+
+**Realistische Bilder statt Silhouetten:** jede Szene bekommt `"bild"` (englischer Bild-Prompt, `{figur}` = Ich-Figur aus
+`"figur_bild"`, wortgleich in allen Szenen und in Teil 2). Ohne `"bild"` fällt die Szene auf die Silhouetten-Motive zurück.
+**Echte Bewegung:** jede Szene mit Handlung (gehen, laufen, kämpfen, arbeiten, Wasser/Feuer in Bewegung) bekommt
+`"bewegung"` (englisch, eine durchgehende Bewegung, z. B. „the baker slides the bread into the glowing oven, sparks rise“).
+Daraus wird per Bild-zu-Video (Wan 2.2) ein echter Clip; ohne Kontingent automatisch 2.5D-Kamerafahrt mit Tiefen-Parallax.
+Statische Szenen (Nahaufnahme Helm, Landschaft) ohne `"bewegung"`. `"licht"`: fackel | feuer | kessel | alarm.
+
 ## 2. Geschichte schreiben – Regeln (strikt)
 - Ich-Perspektive einer **einfachen Person**, die dabei war (kein König, kein Feldherr als Erzähler).
 - **Historisch korrekt**: keine erfundenen Zahlen, Namen, Zitate. Unsicheres allgemeiner formulieren.

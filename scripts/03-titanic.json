@@ -15,7 +15,8 @@
         "rauch"
       ],
       "bild": "the boiler room of an ocean liner in 1912, huge riveted boilers with glowing open furnace doors, {figur} shoveling coal into the fire, sparks and coal dust",
-      "licht": "kessel"
+      "licht": "kessel",
+      "bewegung": "the stoker shovels coal into the glowing furnace, sparks fly"
     },
     {
       "ab_satz": 2,
@@ -45,7 +46,8 @@
         "funken"
       ],
       "bild": "several stokers shoveling coal in rhythm in front of open roaring furnaces in a steel boiler room of an ocean liner, 1912",
-      "licht": "kessel"
+      "licht": "kessel",
+      "bewegung": "the stokers shovel coal in rhythm, flames roar in the furnaces"
     },
     {
       "ab_satz": 6,
@@ -56,7 +58,8 @@
         "staub"
       ],
       "wendepunkt": true,
-      "bild": "riveted steel hull plates of a ship's boiler room buckling inward, popping rivets, dust in the air, flickering electric lights, 1912"
+      "bild": "riveted steel hull plates of a ship's boiler room buckling inward, popping rivets, dust in the air, flickering electric lights, 1912",
+      "bewegung": "the steel plates shake and buckle, rivets pop, dust falls"
     },
     {
       "ab_satz": 8,
@@ -67,7 +70,8 @@
         "gischt"
       ],
       "wendepunkt": true,
-      "bild": "ice-cold seawater bursting in a hard jet through the riveted steel wall of a ship's boiler room, {figur} staggering back, water on the floor"
+      "bild": "ice-cold seawater bursting in a hard jet through the riveted steel wall of a ship's boiler room, {figur} staggering back, water on the floor",
+      "bewegung": "seawater bursts through the wall in a hard jet, the stoker staggers back"
     },
     {
       "ab_satz": 9,
@@ -79,7 +83,8 @@
       ],
       "wendepunkt": true,
       "bild": "a heavy steel watertight door sliding down in a ship's boiler room, red alarm light, {figur} standing in front of it, water at his feet",
-      "licht": "alarm"
+      "licht": "alarm",
+      "bewegung": "the heavy steel door slides down slowly, the red alarm light pulses"
     }
   ],
   "endkarte": "Teil 2 folgt",

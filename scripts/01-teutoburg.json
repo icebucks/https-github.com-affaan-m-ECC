@@ -25,7 +25,8 @@
         "regen",
         "nebel"
       ],
-      "bild": "a long column of Roman legionaries marching on a narrow muddy path through a dense misty pine forest in rain, {figur} in the foreground"
+      "bild": "a long column of Roman legionaries marching on a narrow muddy path through a dense misty pine forest in rain, {figur} in the foreground",
+      "bewegung": "the legionaries march forward through the mud in the rain, the column moves past the camera"
     },
     {
       "ab_satz": 2,
@@ -34,7 +35,8 @@
       "effekte": [
         "regen"
       ],
-      "bild": "{figur} seen from behind, carrying a wooden pole over his shoulder with a leather pack, cooking pot and tools, a curved rectangular shield on his back, rain, muddy forest path"
+      "bild": "{figur} seen from behind, carrying a wooden pole over his shoulder with a leather pack, cooking pot and tools, a curved rectangular shield on his back, rain, muddy forest path",
+      "bewegung": "the legionary walks away along the muddy path, the pack sways on the pole, rain falling"
     },
     {
       "ab_satz": 4,
@@ -65,7 +67,8 @@
         "funken"
       ],
       "bild": "night, beside a Roman military tent and a burning torch, a Roman general in a bronze muscle cuirass and red cloak talks with a young Germanic nobleman with long hair and a dark wool cloak, rain",
-      "licht": "fackel"
+      "licht": "fackel",
+      "bewegung": "the two men talk, the general gestures calmly, the torch flame flickers in the rain"
     },
     {
       "ab_satz": 7,
@@ -86,7 +89,8 @@
         "nebel"
       ],
       "wendepunkt": true,
-      "bild": "Roman legionaries raising their rectangular shields in a dark rainy forest, spears flying out of the dense undergrowth toward them, motion blur, chaos, no blood"
+      "bild": "Roman legionaries raising their rectangular shields in a dark rainy forest, spears flying out of the dense undergrowth toward them, motion blur, chaos, no blood",
+      "bewegung": "spears fly through the air, the legionaries raise and brace their shields, rain, chaos"
     },
     {
       "ab_satz": 11,
@@ -98,7 +102,8 @@
       ],
       "wendepunkt": true,
       "bild": "low angle, on a hilltop in the rain at dusk, Germanic warriors with torches and spears stand around their young leader in a dark cloak, looking down into a forest valley",
-      "licht": "fackel"
+      "licht": "fackel",
+      "bewegung": "the warriors raise their torches and spears, the leader slowly turns his head, cloak moving in the wind"
     }
   ],
   "endkarte": "Teil 2 folgt",

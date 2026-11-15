@@ -70,6 +70,8 @@ export async function buildVideo(id, { render = true, quality = "delivery", stri
   for (const v of viral) console.log(`  ${v}`);
   // 2b) Realistische Szenenbilder + Tiefenkarten (Szenen mit "bild"); gecacht über Prompt-Hash
   const bilder = prepareImages(script, plan, assetDir);
+  // 2c) Echte Bewegung für Szenen mit "bewegung" (Bild-zu-Video; ohne Kontingent bleibt es bei 2.5D)
+  const clips = process.env.NO_MOTION === "1" ? [] : prepareMotion(script, plan, assetDir);
   // 3) Komposition schreiben
   const { events } = writeProject({ script, plan, projDir, audioFile: "mix.wav" });
   // 4) Audio: Atmo + Musik + Effekte + Stimme, -14 LUFS
@@ -90,6 +92,10 @@ export async function buildVideo(id, { render = true, quality = "delivery", stri
   console.log("  Audio mischen …");
   execFileSync("python3", [path.join(ROOT, "pipeline", "audio_mix.py"), path.join(assetDir, "audio_plan.json")], { stdio: ["ignore", "ignore", "inherit"] });
   fs.mkdirSync(path.join(projDir, "assets"), { recursive: true });
+  if (clips.length) {
+    fs.mkdirSync(path.join(projDir, "assets", "clips"), { recursive: true });
+    for (const k of clips) fs.copyFileSync(path.join(assetDir, "clips", `${k}.mp4`), path.join(projDir, "assets", "clips", `${k}.mp4`));
+  }
   if (bilder.length) {
     fs.mkdirSync(path.join(projDir, "assets", "bilder"), { recursive: true });
     for (const k of bilder) for (const f of [`${k}.jpg`, `${k}_depth.png`]) fs.copyFileSync(path.join(assetDir, "bilder", f), path.join(projDir, "assets", "bilder", f));
@@ -148,6 +154,29 @@ export function prepareImages(script, plan, assetDir) {
   execFileSync("python3", [path.join(ROOT, "pipeline", "scene_images.py"), req], { stdio: ["ignore", "ignore", "inherit"] });
   fs.rmSync(req);
   return [...items.keys()];
+}
+
+export function prepareMotion(script, plan, assetDir) {
+  const items = new Map();
+  for (const sc of plan.scenes) {
+    if (!sc.bewegung || !sc.bild_key) continue;
+    const prompt = `${sc.bewegung}, cinematic, realistic natural motion, consistent face and clothing`;
+    const key = "m-" + crypto.createHash("sha1").update(sc.bild_key + "|" + prompt).digest("hex").slice(0, 10);
+    sc._clip = key;
+    items.set(key, { key, image: path.join(assetDir, "bilder", `${sc.bild_key}.jpg`), prompt, seed: sc.seed ?? 7 });
+  }
+  if (!items.size) return [];
+  const req = path.join(assetDir, "clips_request.json");
+  fs.writeFileSync(req, JSON.stringify({ out_dir: path.join(assetDir, "clips"), items: [...items.values()] }, null, 1));
+  console.log(`  Bewegung: ${items.size} Szene(n) per Bild-zu-Video …`);
+  const r = spawnSync("python3", [path.join(ROOT, "pipeline", "motion_clips.py"), req], { encoding: "utf8", stdio: ["ignore", "pipe", "inherit"] });
+  fs.rmSync(req);
+  let res = { done: [], failed: [] };
+  try { res = JSON.parse(r.stdout.trim().split("\n").pop()); } catch { /* keine Clips */ }
+  const ok = new Set(res.done);
+  for (const sc of plan.scenes) if (sc._clip && ok.has(sc._clip)) sc.clip_key = sc._clip;
+  console.log(`  Bewegung: ${ok.size}/${items.size} Clips${res.failed.length ? ` (Rest als 2.5D: ${res.failed[0].grund.slice(0, 60)})` : ""}`);
+  return [...ok];
 }
 
 export function measureLufs(file) {

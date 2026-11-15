@@ -15,7 +15,8 @@
         "rauch"
       ],
       "bild": "night in an ancient Roman bakery in Pompeii, {figur} slides bread into a glowing brick dome oven with a long wooden peel, embers, lava-stone hourglass millstones in the background",
-      "licht": "feuer"
+      "licht": "feuer",
+      "bewegung": "the baker slides the bread into the glowing oven with the wooden peel, sparks rise"
     },
     {
       "ab_satz": 1,
@@ -35,7 +36,8 @@
         "staub"
       ],
       "beben": true,
-      "bild": "a sunny street in ancient Pompeii with large stepping stones, merchants with amphorae, plastered house facades, Mount Vesuvius in the distance at the end of the street"
+      "bild": "a sunny street in ancient Pompeii with large stepping stones, merchants with amphorae, plastered house facades, Mount Vesuvius in the distance at the end of the street",
+      "bewegung": "merchants walk through the street, the ground trembles slightly, dust falls from the walls"
     },
     {
       "ab_satz": 4,
@@ -44,7 +46,8 @@
       "effekte": [
         "rauch"
       ],
-      "bild": "wide view over the red-tiled rooftops of ancient Pompeii, an enormous dark eruption column rising from Mount Vesuvius and spreading at the top like an umbrella pine tree, darkening sky"
+      "bild": "wide view over the red-tiled rooftops of ancient Pompeii, an enormous dark eruption column rising from Mount Vesuvius and spreading at the top like an umbrella pine tree, darkening sky",
+      "bewegung": "the dark eruption column slowly grows and billows upward"
     },
     {
       "ab_satz": 6,
@@ -55,7 +58,8 @@
         "steine"
       ],
       "wendepunkt": true,
-      "bild": "an ancient Pompeii street darkened by falling grey volcanic ash and small pumice stones, people covering their heads with cloth, stone columns"
+      "bild": "an ancient Pompeii street darkened by falling grey volcanic ash and small pumice stones, people covering their heads with cloth, stone columns",
+      "bewegung": "ash and pumice stones fall, people hurry past covering their heads"
     },
     {
       "ab_satz": 9,
@@ -65,7 +69,8 @@
         "asche"
       ],
       "wendepunkt": true,
-      "bild": "crowds of Romans running through a dark ash-filled street of Pompeii toward the harbor, ships in the distance, panic, motion blur"
+      "bild": "crowds of Romans running through a dark ash-filled street of Pompeii toward the harbor, ships in the distance, panic, motion blur",
+      "bewegung": "the crowd runs toward the harbor, ash falling"
     },
     {
       "ab_satz": 10,
@@ -77,7 +82,8 @@
       ],
       "wendepunkt": true,
       "bild": "{figur} standing in the doorway of his bakery, the glowing oven behind him, grey volcanic ash falling in front of him, hesitant worried expression",
-      "licht": "feuer"
+      "licht": "feuer",
+      "bewegung": "the baker hesitates in the doorway, breathes heavily, ash drifts past him"
     }
   ],
   "endkarte": "Teil 2 folgt",

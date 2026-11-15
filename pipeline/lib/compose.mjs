@@ -122,6 +122,7 @@ function sceneHtml(script, plan, scene, index, pal) {
     const extra = m.march && m.march.name === l.name ? m.march.dx * slot : 0;
     js.push(`tl.fromTo("#${sid}-L-${l.name}", {x:${r3(-P)}}, {x:${r3(P + extra)},duration:${full},ease:"none"}, 0);`);
   }
+  if (m.video) js.push(`tl.fromTo("#${sid}-vwrap", {scale:${m.video.z0}}, {scale:${m.video.z1}, duration:${full}, ease:"sine.inOut"}, 0);`);
   if (index > 0) js.push(`tl.fromTo("#${sid}-fade", {opacity:0, scale:1.07}, {opacity:1, scale:1, duration:0.4, ease:"power2.out"}, ${offset});`);
   (m.spears || []).forEach((s, i) => {
     js.push(`tl.fromTo("#${sid}-sp${i}", {x:${r3(s.x0)},y:${r3(s.y0)},rotation:${r3(s.rot)},scale:${r3(s.s)}}, {x:${r3(s.x1)},y:${r3(s.y1)},duration:0.42,ease:"power2.in"}, ${r3(s.t0)});`);
@@ -189,7 +190,7 @@ ${m.webgl ? glSetup(sid, m.webgl, scene, offset, full, slot) : ""}
 #${sid}-dark { position: absolute; inset: 0; background: #000; opacity: 0; }
 </style>
 <div id="root" data-composition-id="${sid}" data-width="${FW}" data-height="${FH}" data-layout-allow-overflow data-layout-allow-overlap>
-  <div id="${sid}-fade"><div id="${sid}-shake">${m.webgl ? `<canvas id="${sid}-gl" width="${FW}" height="${FH}" style="position:absolute;left:0;top:0;width:${FW}px;height:${FH}px"></canvas>` : ""}<div id="${sid}-cam">${inner}</div></div>
+  <div id="${sid}-fade"><div id="${sid}-shake">${m.video ? videoHtml(sid, m.video, offset, full, slot) : ""}${m.webgl ? `<canvas id="${sid}-gl" width="${FW}" height="${FH}" style="position:absolute;left:0;top:0;width:${FW}px;height:${FH}px"></canvas>` : ""}<div id="${sid}-cam">${inner}</div></div>
   <canvas id="${sid}-front" width="${FW}" height="${FH}"></canvas>
   <div id="${sid}-grade"></div>
   <div id="${sid}-dark"></div></div>
@@ -244,7 +245,8 @@ function fotoMotif(ctx) {
   };
   return {
     layers: [],
-    webgl: { img: `assets/bilder/${scene.bild_key}.jpg`, depth: `assets/bilder/${scene.bild_key}_depth.png`, cam },
+    webgl: scene.clip_key ? null : { img: `assets/bilder/${scene.bild_key}.jpg`, depth: `assets/bilder/${scene.bild_key}_depth.png`, cam },
+    video: scene.clip_key ? { src: `assets/clips/${scene.clip_key}.mp4`, z0: Math.min(z0, z1), z1: Math.max(z0, z1) } : null,
     fxBack: [],
     fxFront: fx,
     lights: LIGHT[scene.licht] ? LIGHT[scene.licht](pal) : [],
@@ -252,6 +254,12 @@ function fotoMotif(ctx) {
     events: scene.events || [],
   };
 }
+// Echter Bewegungsclip (Bild-zu-Video, ~3,5 s): bei längeren Szenen leicht verlangsamt (filmisch)
+function videoHtml(sid, v, offset, full, slot) {
+  const rate = Math.max(0.5, Math.min(1, 3.4 / Math.max(full, 0.1)));
+  return `<div id="${sid}-vwrap" style="position:absolute;left:0;top:0;width:${FW}px;height:${FH}px;transform-origin:50% 50%"><video id="${sid}-vid" class="clip" src="${v.src}" muted playsinline data-start="0" data-duration="${slot}" data-media-start="${r3(offset * rate)}" data-playback-rate="${r3(rate)}" style="position:absolute;left:0;top:0;width:${FW}px;height:${FH}px;object-fit:cover"></video></div>`;
+}
+
 function glSetup(sid, gl, scene, offset, full, slot) {
   const v = scene.variant ? { z: 0.14 * scene.variant, x: 0.05 * (scene.variant % 2 ? 1 : -1), y: -0.03 } : { z: 0, x: 0, y: 0 };
   return `

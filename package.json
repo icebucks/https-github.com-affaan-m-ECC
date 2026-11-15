@@ -8,7 +8,8 @@
     "build": "node pipeline/build.mjs",
     "preview": "node pipeline/preview.mjs",
     "batch": "node pipeline/batch.mjs",
-    "aussprache": "python3 pipeline/aussprache_check.py"
+    "aussprache": "python3 pipeline/aussprache_check.py",
+    "film": "node pipeline/film.mjs"
   },
   "engines": {
     "node": ">=22"

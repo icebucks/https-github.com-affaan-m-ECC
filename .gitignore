@@ -13,3 +13,4 @@ output/*.render.mp4
 output/.*
 assets/*/tts_request.json
 assets/*/bilder_request.json
+assets/*/clips_request.json
