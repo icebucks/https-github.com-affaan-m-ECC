@@ -1,0 +1,10 @@
+node_modules/
+.hyperframes/
+compositions/*/.hyperframes/
+compositions/*/assets/
+.cache/
+*.pyc
+__pycache__/
+output/*.mp4
+assets/*/*.wav
+assets/*/*.mp3

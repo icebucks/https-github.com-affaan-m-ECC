@@ -1,0 +1,88 @@
+{
+ "seed": 1135,
+ "duration": 35.688,
+ "voice": "/home/user/https-github.com-affaan-m-ECC/assets/01-teutoburg/voice.wav",
+ "out": "/home/user/https-github.com-affaan-m-ECC/assets/01-teutoburg/mix.wav",
+ "atmo": [
+  "regen",
+  "wald"
+ ],
+ "musik": "drone_moll",
+ "scenes": [
+  {
+   "start": 0,
+   "end": 3.374,
+   "wendepunkt": false,
+   "ton": null
+  },
+  {
+   "start": 3.374,
+   "end": 6.302,
+   "wendepunkt": false,
+   "ton": null
+  },
+  {
+   "start": 6.302,
+   "end": 11.926,
+   "wendepunkt": false,
+   "ton": null
+  },
+  {
+   "start": 11.926,
+   "end": 13.766,
+   "wendepunkt": false,
+   "ton": null
+  },
+  {
+   "start": 13.766,
+   "end": 17.958,
+   "wendepunkt": false,
+   "ton": null
+  },
+  {
+   "start": 17.958,
+   "end": 23.334,
+   "wendepunkt": false,
+   "ton": null
+  },
+  {
+   "start": 23.334,
+   "end": 28.19,
+   "wendepunkt": false,
+   "ton": "stille"
+  },
+  {
+   "start": 28.19,
+   "end": 30.974,
+   "wendepunkt": true,
+   "ton": null
+  },
+  {
+   "start": 30.974,
+   "end": 35.688,
+   "wendepunkt": true,
+   "ton": null
+  }
+ ],
+ "hook_hit": 0,
+ "wende_start": 28.19,
+ "endcard_start": 33.644,
+ "events": [
+  {
+   "t": 28.62,
+   "typ": "speer"
+  },
+  {
+   "t": 29.301,
+   "typ": "speer"
+  },
+  {
+   "t": 29.982,
+   "typ": "speer"
+  },
+  {
+   "t": 30.663,
+   "typ": "speer"
+  }
+ ]
+}
