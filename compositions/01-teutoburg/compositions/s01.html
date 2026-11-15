@@ -227,10 +227,10 @@ function hfMakeFx(canvas, specs, seed) {
 
 (function () {
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#s01-cam", {scale:1,x:0,y:20}, {scale:1.09,x:-30,y:-10,duration:2.22,ease:"sine.inOut"}, 0);
-  tl.fromTo("#s01-L-far", {x:6.9}, {x:-6.9,duration:4.039,ease:"none"}, 0);
-  tl.fromTo("#s01-L-mid", {x:16.1}, {x:-16.1,duration:4.039,ease:"none"}, 0);
-  tl.fromTo("#s01-L-hero", {x:36.8}, {x:-36.8,duration:4.039,ease:"none"}, 0);
+  tl.fromTo("#s01-cam", {scale:1,x:0,y:20}, {scale:1.09,x:-30,y:-10,duration:3.301,ease:"sine.inOut"}, 0);
+  tl.fromTo("#s01-L-far", {x:6.9}, {x:-6.9,duration:3.301,ease:"none"}, 0);
+  tl.fromTo("#s01-L-mid", {x:16.1}, {x:-16.1,duration:3.301,ease:"none"}, 0);
+  tl.fromTo("#s01-L-hero", {x:36.8}, {x:-36.8,duration:3.301,ease:"none"}, 0);
   const fxB = hfMakeFx(document.getElementById("s01-back"), [{"type":"nebel","count":9,"size":280,"alpha":0.16,"rgb":"150,168,156","y0":550,"y1":850,"speed":11}], 60782);
   const fxF = hfMakeFx(document.getElementById("s01-front"), [{"type":"regen","count":420,"angle":14,"speed":2300,"len":80,"alpha":0.32,"color":"rgba(190,210,205,1)"},{"type":"funken","count":26,"region":[130,520,130,90],"speed":140,"drift":40,"size":3}], 60783);
   const lights = [{"i":0.75,"f":true,"fast":false},{"i":0.18,"f":false,"fast":false}].map((L, i) => ({ ...L, el: document.getElementById("s01-light" + i) }));
@@ -253,12 +253,8 @@ function hfMakeFx(canvas, specs, seed) {
     }
   }
   const P = { t: 0 };
-  tl.to(P, { t: 4.039, duration: 4.039, ease: "none", onUpdate: () => render(P.t) }, 0);
-  // Einstellung = Ausschnitt 0s..2.22s der ganzen Szene
-  const shot = gsap.timeline({ paused: true });
-  const Q = { t: 0 };
-  shot.to(Q, { t: 2.22, duration: 2.22, ease: "none", onUpdate: () => tl.seek(Q.t, false) }, 0);
-  tl.seek(0, false);
-  window.__timelines["s01"] = shot;
+  tl.to(P, { t: 3.301, duration: 3.301, ease: "none", onUpdate: () => render(P.t) }, 0);
+  render(0);
+  window.__timelines["s01"] = tl;
 })();</script>
 </template>
