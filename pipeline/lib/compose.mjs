@@ -43,10 +43,23 @@ export function makePlan(script, wordsData) {
     if (i === 0) start = 0;
     return { ...s, start: r3(Math.max(0, start)) };
   });
-  scenes.forEach((s, i) => {
-    s.end = i < scenes.length - 1 ? scenes[i + 1].start : duration;
-    s.id = `s${String(i + 1).padStart(2, "0")}`;
-  });
+  scenes.forEach((s, i) => { s.end = i < scenes.length - 1 ? scenes[i + 1].start : duration; });
+  // Lange Szenen in zwei Einstellungen teilen (Schnitt alle 3–5 s), bevorzugt an Satzgrenzen
+  const MAX_SHOT = 5.2;
+  for (let guard = 0; guard < 40; guard++) {
+    const i = scenes.findIndex((s) => s.end - s.start > MAX_SHOT && !(s.end === duration && hasEndcard && s.end - s.start < MAX_SHOT + (duration - endcardStart)));
+    if (i === -1) break;
+    const s = scenes[i];
+    const mid = (s.start + s.end) / 2;
+    const cands = sentStart.filter((t) => t != null && t - 0.15 > s.start + 2.0 && t - 0.15 < Math.min(s.end, endcardStart) - 2.0).map((t) => t - 0.15);
+    const cut = r3(cands.length ? cands.sort((a, b) => Math.abs(a - mid) - Math.abs(b - mid))[0] : mid);
+    const second = { ...s, start: cut, variant: (s.variant || 0) + 1, origStart: s.origStart ?? s.start, origEnd: s.origEnd ?? s.end };
+    s.origStart = s.origStart ?? s.start;
+    s.origEnd = s.origEnd ?? s.end;
+    s.end = cut;
+    scenes.splice(i + 1, 0, second);
+  }
+  scenes.forEach((s, i) => { s.id = `s${String(i + 1).padStart(2, "0")}`; });
   const wende = scenes.find((s) => s.wendepunkt);
   return {
     sentences, sentStart, sentEnd, scenes, duration, endcardStart, hasEndcard,
@@ -58,18 +71,33 @@ export function makePlan(script, wordsData) {
 // ------------------------------------------------------------------ Szenen
 function sceneHtml(script, plan, scene, index, pal) {
   const sid = scene.id;
-  const seed = hashSeed(script.id + sid);
+  const seed = hashSeed(script.id + (scene.origStart ?? scene.start));
   const r = mulberry(seed);
-  const slot = r3(scene.end - scene.start + (index < plan.scenes.length - 1 ? 0.4 : 0));
-  const ctx = { pal, r, sid, dur: slot, seed, scene, script };
+  // Eine Szene kann in mehrere Einstellungen geteilt sein: alles läuft auf der Zeitachse der
+  // ganzen Szene (base..fullEnd), jede Einstellung zeigt nur ihren Ausschnitt ab "offset".
+  const base = scene.origStart ?? scene.start;
+  const fullEnd = scene.origEnd ?? scene.end;
+  const tail = (end) => (end >= plan.duration - 0.001 ? 0 : 0.4);
+  const slot = r3(scene.end - scene.start + tail(scene.end));
+  const full = r3(fullEnd - base + tail(fullEnd));
+  const offset = r3(scene.start - base);
+  const satz = (i) => r3((plan.sentStart[i] ?? base) - base);
+  const ctx = { pal, r, sid, dur: full, seed, scene, script, satz };
   const m = motif(scene.motiv)(ctx);
-  const cam = m.camera || { from: { scale: 1, x: 0, y: 0 }, to: { scale: 1.08, x: 0, y: 0 } };
+  let cam = m.camera || { from: { scale: 1, x: 0, y: 0 }, to: { scale: 1.08, x: 0, y: 0 } };
+  if (scene.variant) {
+    // zweite Einstellung derselben Szene: näher dran, Bewegung in Gegenrichtung
+    const k = scene.variant % 2 ? 1 : -1;
+    cam = { ease: cam.ease, from: { scale: cam.to.scale + 0.16, x: -cam.to.x - 50 * k, y: cam.to.y - 70 }, to: { scale: cam.to.scale + 0.3, x: -cam.to.x + 30 * k, y: cam.to.y - 30 } };
+  }
   if (scene.wendepunkt && !m.shake) m.shake = 2.5;
 
   // Ebenen: hintere Ebenen, dann Nebel-Canvas + Lichter, dann vordere Ebenen
   const split = m.layers.findIndex((l) => l.depth >= 0.5);
   const at = split === -1 ? m.layers.length : split;
-  const layerHtml = (l) => `<div id="${sid}-L-${l.name}" class="${sid}-layer">${l.svg}</div>`;
+  const objHtml = (o) => `<div id="${sid}-${o.name}" class="${sid}-obj" style="width:${o.w}px;height:${o.h}px"><svg viewBox="${o.vb || `0 0 ${o.w} ${o.h}`}" width="${o.w}" height="${o.h}">${o.svg}</svg></div>`;
+  // Objekte mit "before": "<ebene>" liegen hinter dieser Ebene (z. B. Tür hinter dem Türrahmen)
+  const layerHtml = (l) => (m.objects || []).filter((o) => o.before === l.name).map(objHtml).join("") + `<div id="${sid}-L-${l.name}" class="${sid}-layer">${l.svg}</div>`;
   const lights = (m.lights || []).map((L, i) =>
     `<div id="${sid}-light${i}" class="${sid}-light" style="left:${L.x - L.r}px;top:${L.y - L.r}px;width:${2 * L.r}px;height:${2 * L.r}px;background:radial-gradient(circle, ${L.color} 0%, ${L.color}55 30%, transparent 70%);opacity:${L.intensity}"></div>`).join("");
   const spears = (m.spears || []).map((s, i) =>
@@ -82,24 +110,25 @@ function sceneHtml(script, plan, scene, index, pal) {
     `<canvas id="${sid}-back" class="${sid}-back" width="${CW / 2}" height="${CH / 2}"></canvas>` +
     lights +
     m.layers.slice(at).map(layerHtml).join("") +
-    spears + labels;
+    spears + (m.objects || []).filter((o) => !o.before).map(objHtml).join("") + labels;
 
   const dir = cam.to.x - cam.from.x >= 0 ? 1 : -1;
   const js = [];
-  js.push(`tl.fromTo("#${sid}-cam", {scale:${cam.from.scale},x:${cam.from.x},y:${cam.from.y}}, {scale:${cam.to.scale},x:${cam.to.x},y:${cam.to.y},duration:${slot},ease:"${cam.ease || "sine.inOut"}"}, 0);`);
+  js.push(`tl.fromTo("#${sid}-cam", {scale:${cam.from.scale},x:${cam.from.x},y:${cam.from.y}}, {scale:${cam.to.scale},x:${cam.to.x},y:${cam.to.y},duration:${slot},ease:"${cam.ease || "sine.inOut"}"}, ${offset});`);
   for (const l of m.layers) {
     if (!l.depth) continue;
     const P = 46 * l.depth * dir;
     const extra = m.march && m.march.name === l.name ? m.march.dx * slot : 0;
-    js.push(`tl.fromTo("#${sid}-L-${l.name}", {x:${r3(-P)}}, {x:${r3(P + extra)},duration:${slot},ease:"none"}, 0);`);
+    js.push(`tl.fromTo("#${sid}-L-${l.name}", {x:${r3(-P)}}, {x:${r3(P + extra)},duration:${full},ease:"none"}, 0);`);
   }
-  if (index > 0) js.push(`tl.fromTo("#${sid}-fade", {opacity:0}, {opacity:1,duration:0.4,ease:"power1.out"}, 0);`);
+  if (index > 0) js.push(`tl.fromTo("#${sid}-fade", {opacity:0}, {opacity:1,duration:0.4,ease:"power1.out"}, ${offset});`);
   (m.spears || []).forEach((s, i) => {
     js.push(`tl.fromTo("#${sid}-sp${i}", {x:${r3(s.x0)},y:${r3(s.y0)},rotation:${r3(s.rot)},scale:${r3(s.s)}}, {x:${r3(s.x1)},y:${r3(s.y1)},duration:0.42,ease:"power2.in"}, ${r3(s.t0)});`);
   });
   (m.labels || []).forEach((_, i) => {
     js.push(`tl.fromTo("#${sid}-lab${i}", {opacity:0,y:20}, {opacity:1,y:0,duration:0.5,ease:"power2.out"}, ${0.35 + i * 0.35});`);
   });
+  for (const a of m.anims || []) js.push(a);
   if (m.darken) js.push(`tl.fromTo("#${sid}-dark", {opacity:0}, {opacity:${m.darken},duration:${slot},ease:"none"}, 0);`);
 
   const lightSpec = JSON.stringify((m.lights || []).map((L) => ({ i: L.intensity, f: !!L.flicker, fast: !!L.fast })));
@@ -111,20 +140,25 @@ ${RUNTIME}
   const fxB = hfMakeFx(document.getElementById("${sid}-back"), ${JSON.stringify((m.fxBack || []).map((s) => scaleSpec(s, 0.5)))}, ${seed % 100000});
   const fxF = hfMakeFx(document.getElementById("${sid}-front"), ${JSON.stringify(m.fxFront || [])}, ${(seed % 100000) + 1});
   const lights = ${lightSpec}.map((L, i) => ({ ...L, el: document.getElementById("${sid}-light" + i) }));
-  const shake = ${m.shake || 0};
+  const shake = ${m.shake || 0}, shakeFrom = ${m.shakeFrom || 0};
   function render(t) {
     fxB(t);
     fxF(t);
     lights.forEach((L, i) => { if (L.f) L.el.style.opacity = (L.i * hfFlicker(t * (L.fast ? 2.2 : 1), i + 1)).toFixed(3); });
-    if (shake) {
+    if (shake && t >= shakeFrom) {
       const k = shake * (0.6 + 0.4 * Math.abs(Math.sin(t * 2.1)));
       gsap.set("#${sid}-shake", { x: k * hfNoise(t * 9, 1), y: k * hfNoise(t * 8, 4), rotation: k * 0.04 * hfNoise(t * 6, 2) });
     }
   }
   const P = { t: 0 };
-  tl.to(P, { t: ${slot}, duration: ${slot}, ease: "none", onUpdate: () => render(P.t) }, 0);
-  render(0);
-  window.__timelines["${sid}"] = tl;
+  tl.to(P, { t: ${full}, duration: ${full}, ease: "none", onUpdate: () => render(P.t) }, 0);
+  ${offset > 0 || slot < full ? `// Einstellung = Ausschnitt ${offset}s..${r3(offset + slot)}s der ganzen Szene
+  const shot = gsap.timeline({ paused: true });
+  const Q = { t: ${offset} };
+  shot.to(Q, { t: ${r3(offset + slot)}, duration: ${slot}, ease: "none", onUpdate: () => tl.seek(Q.t, false) }, 0);
+  tl.seek(${offset}, false);
+  window.__timelines["${sid}"] = shot;` : `render(0);
+  window.__timelines["${sid}"] = tl;`}
 })();`;
 
   const html = `<template>
@@ -136,6 +170,7 @@ ${RUNTIME}
 .${sid}-layer svg { display: block; }
 .${sid}-back { position: absolute; left: 0; top: 0; width: ${CW}px; height: ${CH}px; }
 .${sid}-light { position: absolute; border-radius: 50%; mix-blend-mode: screen; pointer-events: none; }
+.${sid}-obj { position: absolute; left: 0; top: 0; will-change: transform; }
 .${sid}-spear { position: absolute; left: 0; top: 0; width: 540px; height: 40px; transform-origin: 50% 50%; }
 .${sid}-label { position: absolute; width: 600px; text-align: center; font-family: "EB Garamond", serif; font-weight: 700; font-style: italic; font-size: 58px; color: ${pal.accent2}; text-shadow: 0 0 18px rgba(0,0,0,0.9), 0 2px 4px #000; letter-spacing: 0.04em; }
 #${sid}-front { position: absolute; left: 0; top: 0; width: ${FW}px; height: ${FH}px; }
@@ -151,7 +186,8 @@ ${RUNTIME}
 <script>${script_}</script>
 </template>
 `;
-  return { html, slot, events: (m.events || []).map((e) => ({ t: r3(scene.start + e.dt), typ: e.typ, gain: e.gain })) };
+  const events = (m.events || []).map((e) => ({ t: r3(base + e.dt), typ: e.typ, gain: e.gain })).filter((e) => e.t >= scene.start - 0.01 && e.t < scene.end);
+  return { html, slot, events };
 }
 
 function scaleSpec(s, k) {
@@ -200,13 +236,16 @@ function hookHtml(script, pal) {
 
 // ------------------------------------------------------------------ Endkarte
 function endcardHtml(script, pal, dur) {
-  const m = /^(.*?\d+)\s+(.*)$/.exec(script.endkarte) || [null, script.endkarte, ""];
+  // "Teil 2 folgt" -> groß "Teil 2", klein "folgt"; sonst letztes Wort klein ("Neue Geschichte" / "morgen")
+  const words = script.endkarte.trim().split(/\s+/);
+  const m = /^(.*?\d+)\s+(.*)$/.exec(script.endkarte) || [null, words.length > 1 ? words.slice(0, -1).join(" ") : words[0], words.length > 1 ? words[words.length - 1] : ""];
+  const bigSize = Math.min(210, Math.floor(920 / (Math.max(...m[1].split(" ").map((w) => w.length)) * 0.56)));
   return `<template>
 <style>
 #root { position: absolute; inset: 0; }
 #end-dim { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 40%, rgba(0,0,0,0.55), rgba(0,0,0,0.92)); }
 #end-box { position: absolute; left: 60px; top: 560px; width: 860px; text-align: center; transform-origin: 50% 50%; }
-#end-big { font-family: "Playfair Display", serif; font-weight: 900; font-size: 210px; line-height: 1; color: #fff; text-shadow: 0 0 50px ${pal.accent}99, 0 6px 20px #000; }
+#end-big { font-family: "Playfair Display", serif; font-weight: 900; font-size: ${bigSize}px; line-height: 1; color: #fff; text-shadow: 0 0 50px ${pal.accent}99, 0 6px 20px #000; }
 #end-small { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 82px; letter-spacing: 0.18em; text-transform: uppercase; color: ${pal.accent}; margin-top: 18px; }
 #end-cta { font-family: "Montserrat", sans-serif; font-weight: 600; font-size: 38px; color: #e8e2d8; margin-top: 56px; }
 </style>
@@ -348,7 +387,7 @@ export function writeProject({ script, plan, projDir, audioFile }) {
   let z = 1;
   plan.scenes.forEach((s, i) => {
     const { html, slot, events: ev } = sceneHtml(script, plan, s, i, pal);
-    events.push(...ev);
+    for (const e of ev) if (!events.some((x) => x.typ === e.typ && Math.abs(x.t - e.t) < 0.01)) events.push(e);
     fs.writeFileSync(path.join(projDir, "compositions", `${s.id}.html`), html);
     hosts.push(`<div id="${s.id}" data-composition-id="${s.id}" data-composition-src="compositions/${s.id}.html" data-start="${s.start}" data-duration="${slot}" data-track-index="1" data-track-kind="graphics" data-width="${FW}" data-height="${FH}" style="z-index:${z++}"></div>`);
   });

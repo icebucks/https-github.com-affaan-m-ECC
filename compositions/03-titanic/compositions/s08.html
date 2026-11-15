@@ -1,0 +1,258 @@
+<template>
+<style>
+#root { position: absolute; inset: 0; overflow: hidden; background: #04080d; }
+#s08-fade, #s08-shake { position: absolute; inset: 0; }
+#s08-cam { position: absolute; left: -90px; top: -160px; width: 1260px; height: 2240px; transform-origin: 50% 50%; }
+.s08-layer { position: absolute; left: 0; top: 0; width: 1260px; height: 2240px; will-change: transform; }
+.s08-layer svg { display: block; }
+.s08-back { position: absolute; left: 0; top: 0; width: 1260px; height: 2240px; }
+.s08-light { position: absolute; border-radius: 50%; mix-blend-mode: screen; pointer-events: none; }
+.s08-obj { position: absolute; left: 0; top: 0; will-change: transform; }
+.s08-spear { position: absolute; left: 0; top: 0; width: 540px; height: 40px; transform-origin: 50% 50%; }
+.s08-label { position: absolute; width: 600px; text-align: center; font-family: "EB Garamond", serif; font-weight: 700; font-style: italic; font-size: 58px; color: #ffd08a; text-shadow: 0 0 18px rgba(0,0,0,0.9), 0 2px 4px #000; letter-spacing: 0.04em; }
+#s08-front { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+#s08-grade { position: absolute; inset: 0; background: rgba(20,45,70,0.2); mix-blend-mode: multiply; }
+#s08-dark { position: absolute; inset: 0; background: #000; opacity: 0; }
+</style>
+<div id="root" data-composition-id="s08" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
+  <div id="s08-fade"><div id="s08-shake"><div id="s08-cam"><div id="s08-L-hull" class="s08-layer"><svg viewBox="0 0 1260 2240" width="1260" height="2240" xmlns="http://www.w3.org/2000/svg"><defs></defs><g><rect x="-40" y="-40" width="334" height="334" fill="#0d1824"/><circle cx="-22" cy="-24" r="6" fill="#2a4256"/><circle cx="-24" cy="-22" r="6" fill="#2a4256"/><circle cx="21.42857142857143" cy="-24" r="6" fill="#2a4256"/><circle cx="-24" cy="21.42857142857143" r="6" fill="#2a4256"/><circle cx="64.85714285714286" cy="-24" r="6" fill="#2a4256"/><circle cx="-24" cy="64.85714285714286" r="6" fill="#2a4256"/><circle cx="108.28571428571428" cy="-24" r="6" fill="#2a4256"/><circle cx="-24" cy="108.28571428571428" r="6" fill="#2a4256"/><circle cx="151.71428571428572" cy="-24" r="6" fill="#2a4256"/><circle cx="-24" cy="151.71428571428572" r="6" fill="#2a4256"/><circle cx="195.14285714285717" cy="-24" r="6" fill="#2a4256"/><circle cx="-24" cy="195.14285714285717" r="6" fill="#2a4256"/><circle cx="238.57142857142856" cy="-24" r="6" fill="#2a4256"/><circle cx="-24" cy="238.57142857142856" r="6" fill="#2a4256"/><circle cx="282" cy="-24" r="6" fill="#2a4256"/><circle cx="-24" cy="282" r="6" fill="#2a4256"/><rect x="-40" y="300" width="334" height="334" fill="#0d1824"/><circle cx="-22" cy="316" r="6" fill="#2a4256"/><circle cx="-24" cy="318" r="6" fill="#2a4256"/><circle cx="21.42857142857143" cy="316" r="6" fill="#2a4256"/><circle cx="-24" cy="361.42857142857144" r="6" fill="#2a4256"/><circle cx="64.85714285714286" cy="316" r="6" fill="#2a4256"/><circle cx="-24" cy="404.8571428571429" r="6" fill="#2a4256"/><circle cx="108.28571428571428" cy="316" r="6" fill="#2a4256"/><circle cx="-24" cy="448.2857142857143" r="6" fill="#2a4256"/><circle cx="151.71428571428572" cy="316" r="6" fill="#2a4256"/><circle cx="-24" cy="491.7142857142857" r="6" fill="#2a4256"/><circle cx="195.14285714285717" cy="316" r="6" fill="#2a4256"/><circle cx="-24" cy="535.1428571428571" r="6" fill="#2a4256"/><circle cx="238.57142857142856" cy="316" r="6" fill="#2a4256"/><circle cx="-24" cy="578.5714285714286" r="6" fill="#2a4256"/><circle cx="282" cy="316" r="6" fill="#2a4256"/><circle cx="-24" cy="622" r="6" fill="#2a4256"/><rect x="-40" y="640" width="334" height="334" fill="#0d1824"/><circle cx="-22" cy="656" r="6" fill="#2a4256"/><circle cx="-24" cy="658" r="6" fill="#2a4256"/><circle cx="21.42857142857143" cy="656" r="6" fill="#2a4256"/><circle cx="-24" cy="701.4285714285714" r="6" fill="#2a4256"/><circle cx="64.85714285714286" cy="656" r="6" fill="#2a4256"/><circle cx="-24" cy="744.8571428571429" r="6" fill="#2a4256"/><circle cx="108.28571428571428" cy="656" r="6" fill="#2a4256"/><circle cx="-24" cy="788.2857142857142" r="6" fill="#2a4256"/><circle cx="151.71428571428572" cy="656" r="6" fill="#2a4256"/><circle cx="-24" cy="831.7142857142858" r="6" fill="#2a4256"/><circle cx="195.14285714285717" cy="656" r="6" fill="#2a4256"/><circle cx="-24" cy="875.1428571428571" r="6" fill="#2a4256"/><circle cx="238.57142857142856" cy="656" r="6" fill="#2a4256"/><circle cx="-24" cy="918.5714285714286" r="6" fill="#2a4256"/><circle cx="282" cy="656" r="6" fill="#2a4256"/><circle cx="-24" cy="962" r="6" fill="#2a4256"/><rect x="-40" y="980" width="334" height="334" fill="#0d1824"/><circle cx="-22" cy="996" r="6" fill="#2a4256"/><circle cx="-24" cy="998" r="6" fill="#2a4256"/><circle cx="21.42857142857143" cy="996" r="6" fill="#2a4256"/><circle cx="-24" cy="1041.4285714285713" r="6" fill="#2a4256"/><circle cx="64.85714285714286" cy="996" r="6" fill="#2a4256"/><circle cx="-24" cy="1084.857142857143" r="6" fill="#2a4256"/><circle cx="108.28571428571428" cy="996" r="6" fill="#2a4256"/><circle cx="-24" cy="1128.2857142857142" r="6" fill="#2a4256"/><circle cx="151.71428571428572" cy="996" r="6" fill="#2a4256"/><circle cx="-24" cy="1171.7142857142858" r="6" fill="#2a4256"/><circle cx="195.14285714285717" cy="996" r="6" fill="#2a4256"/><circle cx="-24" cy="1215.142857142857" r="6" fill="#2a4256"/><circle cx="238.57142857142856" cy="996" r="6" fill="#2a4256"/><circle cx="-24" cy="1258.5714285714284" r="6" fill="#2a4256"/><circle cx="282" cy="996" r="6" fill="#2a4256"/><circle cx="-24" cy="1302" r="6" fill="#2a4256"/><rect x="-40" y="1320" width="334" height="334" fill="#0d1824"/><circle cx="-22" cy="1336" r="6" fill="#2a4256"/><circle cx="-24" cy="1338" r="6" fill="#2a4256"/><circle cx="21.42857142857143" cy="1336" r="6" fill="#2a4256"/><circle cx="-24" cy="1381.4285714285713" r="6" fill="#2a4256"/><circle cx="64.85714285714286" cy="1336" r="6" fill="#2a4256"/><circle cx="-24" cy="1424.857142857143" r="6" fill="#2a4256"/><circle cx="108.28571428571428" cy="1336" r="6" fill="#2a4256"/><circle cx="-24" cy="1468.2857142857142" r="6" fill="#2a4256"/><circle cx="151.71428571428572" cy="1336" r="6" fill="#2a4256"/><circle cx="-24" cy="1511.7142857142858" r="6" fill="#2a4256"/><circle cx="195.14285714285717" cy="1336" r="6" fill="#2a4256"/><circle cx="-24" cy="1555.142857142857" r="6" fill="#2a4256"/><circle cx="238.57142857142856" cy="1336" r="6" fill="#2a4256"/><circle cx="-24" cy="1598.5714285714284" r="6" fill="#2a4256"/><circle cx="282" cy="1336" r="6" fill="#2a4256"/><circle cx="-24" cy="1642" r="6" fill="#2a4256"/><rect x="-40" y="1660" width="334" height="334" fill="#0d1824"/><circle cx="-22" cy="1676" r="6" fill="#2a4256"/><circle cx="-24" cy="1678" r="6" fill="#2a4256"/><circle cx="21.42857142857143" cy="1676" r="6" fill="#2a4256"/><circle cx="-24" cy="1721.4285714285713" r="6" fill="#2a4256"/><circle cx="64.85714285714286" cy="1676" r="6" fill="#2a4256"/><circle cx="-24" cy="1764.857142857143" r="6" fill="#2a4256"/><circle cx="108.28571428571428" cy="1676" r="6" fill="#2a4256"/><circle cx="-24" cy="1808.2857142857142" r="6" fill="#2a4256"/><circle cx="151.71428571428572" cy="1676" r="6" fill="#2a4256"/><circle cx="-24" cy="1851.7142857142858" r="6" fill="#2a4256"/><circle cx="195.14285714285717" cy="1676" r="6" fill="#2a4256"/><circle cx="-24" cy="1895.142857142857" r="6" fill="#2a4256"/><circle cx="238.57142857142856" cy="1676" r="6" fill="#2a4256"/><circle cx="-24" cy="1938.5714285714284" r="6" fill="#2a4256"/><circle cx="282" cy="1676" r="6" fill="#2a4256"/><circle cx="-24" cy="1982" r="6" fill="#2a4256"/><rect x="-40" y="2000" width="334" height="334" fill="#0d1824"/><circle cx="-22" cy="2016" r="6" fill="#2a4256"/><circle cx="-24" cy="2018" r="6" fill="#2a4256"/><circle cx="21.42857142857143" cy="2016" r="6" fill="#2a4256"/><circle cx="-24" cy="2061.4285714285716" r="6" fill="#2a4256"/><circle cx="64.85714285714286" cy="2016" r="6" fill="#2a4256"/><circle cx="-24" cy="2104.8571428571427" r="6" fill="#2a4256"/><circle cx="108.28571428571428" cy="2016" r="6" fill="#2a4256"/><circle cx="-24" cy="2148.285714285714" r="6" fill="#2a4256"/><circle cx="151.71428571428572" cy="2016" r="6" fill="#2a4256"/><circle cx="-24" cy="2191.714285714286" r="6" fill="#2a4256"/><circle cx="195.14285714285717" cy="2016" r="6" fill="#2a4256"/><circle cx="-24" cy="2235.1428571428573" r="6" fill="#2a4256"/><circle cx="238.57142857142856" cy="2016" r="6" fill="#2a4256"/><circle cx="-24" cy="2278.5714285714284" r="6" fill="#2a4256"/><circle cx="282" cy="2016" r="6" fill="#2a4256"/><circle cx="-24" cy="2322" r="6" fill="#2a4256"/><rect x="300" y="-40" width="334" height="334" fill="#0d1824"/><circle cx="318" cy="-24" r="6" fill="#2a4256"/><circle cx="316" cy="-22" r="6" fill="#2a4256"/><circle cx="361.42857142857144" cy="-24" r="6" fill="#2a4256"/><circle cx="316" cy="21.42857142857143" r="6" fill="#2a4256"/><circle cx="404.8571428571429" cy="-24" r="6" fill="#2a4256"/><circle cx="316" cy="64.85714285714286" r="6" fill="#2a4256"/><circle cx="448.2857142857143" cy="-24" r="6" fill="#2a4256"/><circle cx="316" cy="108.28571428571428" r="6" fill="#2a4256"/><circle cx="491.7142857142857" cy="-24" r="6" fill="#2a4256"/><circle cx="316" cy="151.71428571428572" r="6" fill="#2a4256"/><circle cx="535.1428571428571" cy="-24" r="6" fill="#2a4256"/><circle cx="316" cy="195.14285714285717" r="6" fill="#2a4256"/><circle cx="578.5714285714286" cy="-24" r="6" fill="#2a4256"/><circle cx="316" cy="238.57142857142856" r="6" fill="#2a4256"/><circle cx="622" cy="-24" r="6" fill="#2a4256"/><circle cx="316" cy="282" r="6" fill="#2a4256"/><rect x="300" y="300" width="334" height="334" fill="#0d1824"/><circle cx="318" cy="316" r="6" fill="#2a4256"/><circle cx="316" cy="318" r="6" fill="#2a4256"/><circle cx="361.42857142857144" cy="316" r="6" fill="#2a4256"/><circle cx="316" cy="361.42857142857144" r="6" fill="#2a4256"/><circle cx="404.8571428571429" cy="316" r="6" fill="#2a4256"/><circle cx="316" cy="404.8571428571429" r="6" fill="#2a4256"/><circle cx="448.2857142857143" cy="316" r="6" fill="#2a4256"/><circle cx="316" cy="448.2857142857143" r="6" fill="#2a4256"/><circle cx="491.7142857142857" cy="316" r="6" fill="#2a4256"/><circle cx="316" cy="491.7142857142857" r="6" fill="#2a4256"/><circle cx="535.1428571428571" cy="316" r="6" fill="#2a4256"/><circle cx="316" cy="535.1428571428571" r="6" fill="#2a4256"/><circle cx="578.5714285714286" cy="316" r="6" fill="#2a4256"/><circle cx="316" cy="578.5714285714286" r="6" fill="#2a4256"/><circle cx="622" cy="316" r="6" fill="#2a4256"/><circle cx="316" cy="622" r="6" fill="#2a4256"/><rect x="300" y="640" width="334" height="334" fill="#0d1824"/><circle cx="318" cy="656" r="6" fill="#2a4256"/><circle cx="316" cy="658" r="6" fill="#2a4256"/><circle cx="361.42857142857144" cy="656" r="6" fill="#2a4256"/><circle cx="316" cy="701.4285714285714" r="6" fill="#2a4256"/><circle cx="404.8571428571429" cy="656" r="6" fill="#2a4256"/><circle cx="316" cy="744.8571428571429" r="6" fill="#2a4256"/><circle cx="448.2857142857143" cy="656" r="6" fill="#2a4256"/><circle cx="316" cy="788.2857142857142" r="6" fill="#2a4256"/><circle cx="491.7142857142857" cy="656" r="6" fill="#2a4256"/><circle cx="316" cy="831.7142857142858" r="6" fill="#2a4256"/><circle cx="535.1428571428571" cy="656" r="6" fill="#2a4256"/><circle cx="316" cy="875.1428571428571" r="6" fill="#2a4256"/><circle cx="578.5714285714286" cy="656" r="6" fill="#2a4256"/><circle cx="316" cy="918.5714285714286" r="6" fill="#2a4256"/><circle cx="622" cy="656" r="6" fill="#2a4256"/><circle cx="316" cy="962" r="6" fill="#2a4256"/><rect x="300" y="980" width="334" height="334" fill="#0d1824"/><circle cx="318" cy="996" r="6" fill="#2a4256"/><circle cx="316" cy="998" r="6" fill="#2a4256"/><circle cx="361.42857142857144" cy="996" r="6" fill="#2a4256"/><circle cx="316" cy="1041.4285714285713" r="6" fill="#2a4256"/><circle cx="404.8571428571429" cy="996" r="6" fill="#2a4256"/><circle cx="316" cy="1084.857142857143" r="6" fill="#2a4256"/><circle cx="448.2857142857143" cy="996" r="6" fill="#2a4256"/><circle cx="316" cy="1128.2857142857142" r="6" fill="#2a4256"/><circle cx="491.7142857142857" cy="996" r="6" fill="#2a4256"/><circle cx="316" cy="1171.7142857142858" r="6" fill="#2a4256"/><circle cx="535.1428571428571" cy="996" r="6" fill="#2a4256"/><circle cx="316" cy="1215.142857142857" r="6" fill="#2a4256"/><circle cx="578.5714285714286" cy="996" r="6" fill="#2a4256"/><circle cx="316" cy="1258.5714285714284" r="6" fill="#2a4256"/><circle cx="622" cy="996" r="6" fill="#2a4256"/><circle cx="316" cy="1302" r="6" fill="#2a4256"/><rect x="300" y="1320" width="334" height="334" fill="#0d1824"/><circle cx="318" cy="1336" r="6" fill="#2a4256"/><circle cx="316" cy="1338" r="6" fill="#2a4256"/><circle cx="361.42857142857144" cy="1336" r="6" fill="#2a4256"/><circle cx="316" cy="1381.4285714285713" r="6" fill="#2a4256"/><circle cx="404.8571428571429" cy="1336" r="6" fill="#2a4256"/><circle cx="316" cy="1424.857142857143" r="6" fill="#2a4256"/><circle cx="448.2857142857143" cy="1336" r="6" fill="#2a4256"/><circle cx="316" cy="1468.2857142857142" r="6" fill="#2a4256"/><circle cx="491.7142857142857" cy="1336" r="6" fill="#2a4256"/><circle cx="316" cy="1511.7142857142858" r="6" fill="#2a4256"/><circle cx="535.1428571428571" cy="1336" r="6" fill="#2a4256"/><circle cx="316" cy="1555.142857142857" r="6" fill="#2a4256"/><circle cx="578.5714285714286" cy="1336" r="6" fill="#2a4256"/><circle cx="316" cy="1598.5714285714284" r="6" fill="#2a4256"/><circle cx="622" cy="1336" r="6" fill="#2a4256"/><circle cx="316" cy="1642" r="6" fill="#2a4256"/><rect x="300" y="1660" width="334" height="334" fill="#0d1824"/><circle cx="318" cy="1676" r="6" fill="#2a4256"/><circle cx="316" cy="1678" r="6" fill="#2a4256"/><circle cx="361.42857142857144" cy="1676" r="6" fill="#2a4256"/><circle cx="316" cy="1721.4285714285713" r="6" fill="#2a4256"/><circle cx="404.8571428571429" cy="1676" r="6" fill="#2a4256"/><circle cx="316" cy="1764.857142857143" r="6" fill="#2a4256"/><circle cx="448.2857142857143" cy="1676" r="6" fill="#2a4256"/><circle cx="316" cy="1808.2857142857142" r="6" fill="#2a4256"/><circle cx="491.7142857142857" cy="1676" r="6" fill="#2a4256"/><circle cx="316" cy="1851.7142857142858" r="6" fill="#2a4256"/><circle cx="535.1428571428571" cy="1676" r="6" fill="#2a4256"/><circle cx="316" cy="1895.142857142857" r="6" fill="#2a4256"/><circle cx="578.5714285714286" cy="1676" r="6" fill="#2a4256"/><circle cx="316" cy="1938.5714285714284" r="6" fill="#2a4256"/><circle cx="622" cy="1676" r="6" fill="#2a4256"/><circle cx="316" cy="1982" r="6" fill="#2a4256"/><rect x="300" y="2000" width="334" height="334" fill="#0d1824"/><circle cx="318" cy="2016" r="6" fill="#2a4256"/><circle cx="316" cy="2018" r="6" fill="#2a4256"/><circle cx="361.42857142857144" cy="2016" r="6" fill="#2a4256"/><circle cx="316" cy="2061.4285714285716" r="6" fill="#2a4256"/><circle cx="404.8571428571429" cy="2016" r="6" fill="#2a4256"/><circle cx="316" cy="2104.8571428571427" r="6" fill="#2a4256"/><circle cx="448.2857142857143" cy="2016" r="6" fill="#2a4256"/><circle cx="316" cy="2148.285714285714" r="6" fill="#2a4256"/><circle cx="491.7142857142857" cy="2016" r="6" fill="#2a4256"/><circle cx="316" cy="2191.714285714286" r="6" fill="#2a4256"/><circle cx="535.1428571428571" cy="2016" r="6" fill="#2a4256"/><circle cx="316" cy="2235.1428571428573" r="6" fill="#2a4256"/><circle cx="578.5714285714286" cy="2016" r="6" fill="#2a4256"/><circle cx="316" cy="2278.5714285714284" r="6" fill="#2a4256"/><circle cx="622" cy="2016" r="6" fill="#2a4256"/><circle cx="316" cy="2322" r="6" fill="#2a4256"/><rect x="640" y="-40" width="334" height="334" fill="#0d1824"/><circle cx="658" cy="-24" r="6" fill="#2a4256"/><circle cx="656" cy="-22" r="6" fill="#2a4256"/><circle cx="701.4285714285714" cy="-24" r="6" fill="#2a4256"/><circle cx="656" cy="21.42857142857143" r="6" fill="#2a4256"/><circle cx="744.8571428571429" cy="-24" r="6" fill="#2a4256"/><circle cx="656" cy="64.85714285714286" r="6" fill="#2a4256"/><circle cx="788.2857142857142" cy="-24" r="6" fill="#2a4256"/><circle cx="656" cy="108.28571428571428" r="6" fill="#2a4256"/><circle cx="831.7142857142858" cy="-24" r="6" fill="#2a4256"/><circle cx="656" cy="151.71428571428572" r="6" fill="#2a4256"/><circle cx="875.1428571428571" cy="-24" r="6" fill="#2a4256"/><circle cx="656" cy="195.14285714285717" r="6" fill="#2a4256"/><circle cx="918.5714285714286" cy="-24" r="6" fill="#2a4256"/><circle cx="656" cy="238.57142857142856" r="6" fill="#2a4256"/><circle cx="962" cy="-24" r="6" fill="#2a4256"/><circle cx="656" cy="282" r="6" fill="#2a4256"/><rect x="640" y="300" width="334" height="334" fill="#0d1824"/><circle cx="658" cy="316" r="6" fill="#2a4256"/><circle cx="656" cy="318" r="6" fill="#2a4256"/><circle cx="701.4285714285714" cy="316" r="6" fill="#2a4256"/><circle cx="656" cy="361.42857142857144" r="6" fill="#2a4256"/><circle cx="744.8571428571429" cy="316" r="6" fill="#2a4256"/><circle cx="656" cy="404.8571428571429" r="6" fill="#2a4256"/><circle cx="788.2857142857142" cy="316" r="6" fill="#2a4256"/><circle cx="656" cy="448.2857142857143" r="6" fill="#2a4256"/><circle cx="831.7142857142858" cy="316" r="6" fill="#2a4256"/><circle cx="656" cy="491.7142857142857" r="6" fill="#2a4256"/><circle cx="875.1428571428571" cy="316" r="6" fill="#2a4256"/><circle cx="656" cy="535.1428571428571" r="6" fill="#2a4256"/><circle cx="918.5714285714286" cy="316" r="6" fill="#2a4256"/><circle cx="656" cy="578.5714285714286" r="6" fill="#2a4256"/><circle cx="962" cy="316" r="6" fill="#2a4256"/><circle cx="656" cy="622" r="6" fill="#2a4256"/><rect x="640" y="640" width="334" height="334" fill="#0d1824"/><circle cx="658" cy="656" r="6" fill="#2a4256"/><circle cx="656" cy="658" r="6" fill="#2a4256"/><circle cx="701.4285714285714" cy="656" r="6" fill="#2a4256"/><circle cx="656" cy="701.4285714285714" r="6" fill="#2a4256"/><circle cx="744.8571428571429" cy="656" r="6" fill="#2a4256"/><circle cx="656" cy="744.8571428571429" r="6" fill="#2a4256"/><circle cx="788.2857142857142" cy="656" r="6" fill="#2a4256"/><circle cx="656" cy="788.2857142857142" r="6" fill="#2a4256"/><circle cx="831.7142857142858" cy="656" r="6" fill="#2a4256"/><circle cx="656" cy="831.7142857142858" r="6" fill="#2a4256"/><circle cx="875.1428571428571" cy="656" r="6" fill="#2a4256"/><circle cx="656" cy="875.1428571428571" r="6" fill="#2a4256"/><circle cx="918.5714285714286" cy="656" r="6" fill="#2a4256"/><circle cx="656" cy="918.5714285714286" r="6" fill="#2a4256"/><circle cx="962" cy="656" r="6" fill="#2a4256"/><circle cx="656" cy="962" r="6" fill="#2a4256"/><rect x="640" y="980" width="334" height="334" fill="#0d1824"/><circle cx="658" cy="996" r="6" fill="#2a4256"/><circle cx="656" cy="998" r="6" fill="#2a4256"/><circle cx="701.4285714285714" cy="996" r="6" fill="#2a4256"/><circle cx="656" cy="1041.4285714285713" r="6" fill="#2a4256"/><circle cx="744.8571428571429" cy="996" r="6" fill="#2a4256"/><circle cx="656" cy="1084.857142857143" r="6" fill="#2a4256"/><circle cx="788.2857142857142" cy="996" r="6" fill="#2a4256"/><circle cx="656" cy="1128.2857142857142" r="6" fill="#2a4256"/><circle cx="831.7142857142858" cy="996" r="6" fill="#2a4256"/><circle cx="656" cy="1171.7142857142858" r="6" fill="#2a4256"/><circle cx="875.1428571428571" cy="996" r="6" fill="#2a4256"/><circle cx="656" cy="1215.142857142857" r="6" fill="#2a4256"/><circle cx="918.5714285714286" cy="996" r="6" fill="#2a4256"/><circle cx="656" cy="1258.5714285714284" r="6" fill="#2a4256"/><circle cx="962" cy="996" r="6" fill="#2a4256"/><circle cx="656" cy="1302" r="6" fill="#2a4256"/><rect x="640" y="1320" width="334" height="334" fill="#0d1824"/><circle cx="658" cy="1336" r="6" fill="#2a4256"/><circle cx="656" cy="1338" r="6" fill="#2a4256"/><circle cx="701.4285714285714" cy="1336" r="6" fill="#2a4256"/><circle cx="656" cy="1381.4285714285713" r="6" fill="#2a4256"/><circle cx="744.8571428571429" cy="1336" r="6" fill="#2a4256"/><circle cx="656" cy="1424.857142857143" r="6" fill="#2a4256"/><circle cx="788.2857142857142" cy="1336" r="6" fill="#2a4256"/><circle cx="656" cy="1468.2857142857142" r="6" fill="#2a4256"/><circle cx="831.7142857142858" cy="1336" r="6" fill="#2a4256"/><circle cx="656" cy="1511.7142857142858" r="6" fill="#2a4256"/><circle cx="875.1428571428571" cy="1336" r="6" fill="#2a4256"/><circle cx="656" cy="1555.142857142857" r="6" fill="#2a4256"/><circle cx="918.5714285714286" cy="1336" r="6" fill="#2a4256"/><circle cx="656" cy="1598.5714285714284" r="6" fill="#2a4256"/><circle cx="962" cy="1336" r="6" fill="#2a4256"/><circle cx="656" cy="1642" r="6" fill="#2a4256"/><rect x="640" y="1660" width="334" height="334" fill="#0d1824"/><circle cx="658" cy="1676" r="6" fill="#2a4256"/><circle cx="656" cy="1678" r="6" fill="#2a4256"/><circle cx="701.4285714285714" cy="1676" r="6" fill="#2a4256"/><circle cx="656" cy="1721.4285714285713" r="6" fill="#2a4256"/><circle cx="744.8571428571429" cy="1676" r="6" fill="#2a4256"/><circle cx="656" cy="1764.857142857143" r="6" fill="#2a4256"/><circle cx="788.2857142857142" cy="1676" r="6" fill="#2a4256"/><circle cx="656" cy="1808.2857142857142" r="6" fill="#2a4256"/><circle cx="831.7142857142858" cy="1676" r="6" fill="#2a4256"/><circle cx="656" cy="1851.7142857142858" r="6" fill="#2a4256"/><circle cx="875.1428571428571" cy="1676" r="6" fill="#2a4256"/><circle cx="656" cy="1895.142857142857" r="6" fill="#2a4256"/><circle cx="918.5714285714286" cy="1676" r="6" fill="#2a4256"/><circle cx="656" cy="1938.5714285714284" r="6" fill="#2a4256"/><circle cx="962" cy="1676" r="6" fill="#2a4256"/><circle cx="656" cy="1982" r="6" fill="#2a4256"/><rect x="640" y="2000" width="334" height="334" fill="#0d1824"/><circle cx="658" cy="2016" r="6" fill="#2a4256"/><circle cx="656" cy="2018" r="6" fill="#2a4256"/><circle cx="701.4285714285714" cy="2016" r="6" fill="#2a4256"/><circle cx="656" cy="2061.4285714285716" r="6" fill="#2a4256"/><circle cx="744.8571428571429" cy="2016" r="6" fill="#2a4256"/><circle cx="656" cy="2104.8571428571427" r="6" fill="#2a4256"/><circle cx="788.2857142857142" cy="2016" r="6" fill="#2a4256"/><circle cx="656" cy="2148.285714285714" r="6" fill="#2a4256"/><circle cx="831.7142857142858" cy="2016" r="6" fill="#2a4256"/><circle cx="656" cy="2191.714285714286" r="6" fill="#2a4256"/><circle cx="875.1428571428571" cy="2016" r="6" fill="#2a4256"/><circle cx="656" cy="2235.1428571428573" r="6" fill="#2a4256"/><circle cx="918.5714285714286" cy="2016" r="6" fill="#2a4256"/><circle cx="656" cy="2278.5714285714284" r="6" fill="#2a4256"/><circle cx="962" cy="2016" r="6" fill="#2a4256"/><circle cx="656" cy="2322" r="6" fill="#2a4256"/><rect x="980" y="-40" width="334" height="334" fill="#0d1824"/><circle cx="998" cy="-24" r="6" fill="#2a4256"/><circle cx="996" cy="-22" r="6" fill="#2a4256"/><circle cx="1041.4285714285713" cy="-24" r="6" fill="#2a4256"/><circle cx="996" cy="21.42857142857143" r="6" fill="#2a4256"/><circle cx="1084.857142857143" cy="-24" r="6" fill="#2a4256"/><circle cx="996" cy="64.85714285714286" r="6" fill="#2a4256"/><circle cx="1128.2857142857142" cy="-24" r="6" fill="#2a4256"/><circle cx="996" cy="108.28571428571428" r="6" fill="#2a4256"/><circle cx="1171.7142857142858" cy="-24" r="6" fill="#2a4256"/><circle cx="996" cy="151.71428571428572" r="6" fill="#2a4256"/><circle cx="1215.142857142857" cy="-24" r="6" fill="#2a4256"/><circle cx="996" cy="195.14285714285717" r="6" fill="#2a4256"/><circle cx="1258.5714285714284" cy="-24" r="6" fill="#2a4256"/><circle cx="996" cy="238.57142857142856" r="6" fill="#2a4256"/><circle cx="1302" cy="-24" r="6" fill="#2a4256"/><circle cx="996" cy="282" r="6" fill="#2a4256"/><rect x="980" y="300" width="334" height="334" fill="#0d1824"/><circle cx="998" cy="316" r="6" fill="#2a4256"/><circle cx="996" cy="318" r="6" fill="#2a4256"/><circle cx="1041.4285714285713" cy="316" r="6" fill="#2a4256"/><circle cx="996" cy="361.42857142857144" r="6" fill="#2a4256"/><circle cx="1084.857142857143" cy="316" r="6" fill="#2a4256"/><circle cx="996" cy="404.8571428571429" r="6" fill="#2a4256"/><circle cx="1128.2857142857142" cy="316" r="6" fill="#2a4256"/><circle cx="996" cy="448.2857142857143" r="6" fill="#2a4256"/><circle cx="1171.7142857142858" cy="316" r="6" fill="#2a4256"/><circle cx="996" cy="491.7142857142857" r="6" fill="#2a4256"/><circle cx="1215.142857142857" cy="316" r="6" fill="#2a4256"/><circle cx="996" cy="535.1428571428571" r="6" fill="#2a4256"/><circle cx="1258.5714285714284" cy="316" r="6" fill="#2a4256"/><circle cx="996" cy="578.5714285714286" r="6" fill="#2a4256"/><circle cx="1302" cy="316" r="6" fill="#2a4256"/><circle cx="996" cy="622" r="6" fill="#2a4256"/><rect x="980" y="640" width="334" height="334" fill="#0d1824"/><circle cx="998" cy="656" r="6" fill="#2a4256"/><circle cx="996" cy="658" r="6" fill="#2a4256"/><circle cx="1041.4285714285713" cy="656" r="6" fill="#2a4256"/><circle cx="996" cy="701.4285714285714" r="6" fill="#2a4256"/><circle cx="1084.857142857143" cy="656" r="6" fill="#2a4256"/><circle cx="996" cy="744.8571428571429" r="6" fill="#2a4256"/><circle cx="1128.2857142857142" cy="656" r="6" fill="#2a4256"/><circle cx="996" cy="788.2857142857142" r="6" fill="#2a4256"/><circle cx="1171.7142857142858" cy="656" r="6" fill="#2a4256"/><circle cx="996" cy="831.7142857142858" r="6" fill="#2a4256"/><circle cx="1215.142857142857" cy="656" r="6" fill="#2a4256"/><circle cx="996" cy="875.1428571428571" r="6" fill="#2a4256"/><circle cx="1258.5714285714284" cy="656" r="6" fill="#2a4256"/><circle cx="996" cy="918.5714285714286" r="6" fill="#2a4256"/><circle cx="1302" cy="656" r="6" fill="#2a4256"/><circle cx="996" cy="962" r="6" fill="#2a4256"/><rect x="980" y="980" width="334" height="334" fill="#0d1824"/><circle cx="998" cy="996" r="6" fill="#2a4256"/><circle cx="996" cy="998" r="6" fill="#2a4256"/><circle cx="1041.4285714285713" cy="996" r="6" fill="#2a4256"/><circle cx="996" cy="1041.4285714285713" r="6" fill="#2a4256"/><circle cx="1084.857142857143" cy="996" r="6" fill="#2a4256"/><circle cx="996" cy="1084.857142857143" r="6" fill="#2a4256"/><circle cx="1128.2857142857142" cy="996" r="6" fill="#2a4256"/><circle cx="996" cy="1128.2857142857142" r="6" fill="#2a4256"/><circle cx="1171.7142857142858" cy="996" r="6" fill="#2a4256"/><circle cx="996" cy="1171.7142857142858" r="6" fill="#2a4256"/><circle cx="1215.142857142857" cy="996" r="6" fill="#2a4256"/><circle cx="996" cy="1215.142857142857" r="6" fill="#2a4256"/><circle cx="1258.5714285714284" cy="996" r="6" fill="#2a4256"/><circle cx="996" cy="1258.5714285714284" r="6" fill="#2a4256"/><circle cx="1302" cy="996" r="6" fill="#2a4256"/><circle cx="996" cy="1302" r="6" fill="#2a4256"/><rect x="980" y="1320" width="334" height="334" fill="#0d1824"/><circle cx="998" cy="1336" r="6" fill="#2a4256"/><circle cx="996" cy="1338" r="6" fill="#2a4256"/><circle cx="1041.4285714285713" cy="1336" r="6" fill="#2a4256"/><circle cx="996" cy="1381.4285714285713" r="6" fill="#2a4256"/><circle cx="1084.857142857143" cy="1336" r="6" fill="#2a4256"/><circle cx="996" cy="1424.857142857143" r="6" fill="#2a4256"/><circle cx="1128.2857142857142" cy="1336" r="6" fill="#2a4256"/><circle cx="996" cy="1468.2857142857142" r="6" fill="#2a4256"/><circle cx="1171.7142857142858" cy="1336" r="6" fill="#2a4256"/><circle cx="996" cy="1511.7142857142858" r="6" fill="#2a4256"/><circle cx="1215.142857142857" cy="1336" r="6" fill="#2a4256"/><circle cx="996" cy="1555.142857142857" r="6" fill="#2a4256"/><circle cx="1258.5714285714284" cy="1336" r="6" fill="#2a4256"/><circle cx="996" cy="1598.5714285714284" r="6" fill="#2a4256"/><circle cx="1302" cy="1336" r="6" fill="#2a4256"/><circle cx="996" cy="1642" r="6" fill="#2a4256"/><rect x="980" y="1660" width="334" height="334" fill="#0d1824"/><circle cx="998" cy="1676" r="6" fill="#2a4256"/><circle cx="996" cy="1678" r="6" fill="#2a4256"/><circle cx="1041.4285714285713" cy="1676" r="6" fill="#2a4256"/><circle cx="996" cy="1721.4285714285713" r="6" fill="#2a4256"/><circle cx="1084.857142857143" cy="1676" r="6" fill="#2a4256"/><circle cx="996" cy="1764.857142857143" r="6" fill="#2a4256"/><circle cx="1128.2857142857142" cy="1676" r="6" fill="#2a4256"/><circle cx="996" cy="1808.2857142857142" r="6" fill="#2a4256"/><circle cx="1171.7142857142858" cy="1676" r="6" fill="#2a4256"/><circle cx="996" cy="1851.7142857142858" r="6" fill="#2a4256"/><circle cx="1215.142857142857" cy="1676" r="6" fill="#2a4256"/><circle cx="996" cy="1895.142857142857" r="6" fill="#2a4256"/><circle cx="1258.5714285714284" cy="1676" r="6" fill="#2a4256"/><circle cx="996" cy="1938.5714285714284" r="6" fill="#2a4256"/><circle cx="1302" cy="1676" r="6" fill="#2a4256"/><circle cx="996" cy="1982" r="6" fill="#2a4256"/><rect x="980" y="2000" width="334" height="334" fill="#0d1824"/><circle cx="998" cy="2016" r="6" fill="#2a4256"/><circle cx="996" cy="2018" r="6" fill="#2a4256"/><circle cx="1041.4285714285713" cy="2016" r="6" fill="#2a4256"/><circle cx="996" cy="2061.4285714285716" r="6" fill="#2a4256"/><circle cx="1084.857142857143" cy="2016" r="6" fill="#2a4256"/><circle cx="996" cy="2104.8571428571427" r="6" fill="#2a4256"/><circle cx="1128.2857142857142" cy="2016" r="6" fill="#2a4256"/><circle cx="996" cy="2148.285714285714" r="6" fill="#2a4256"/><circle cx="1171.7142857142858" cy="2016" r="6" fill="#2a4256"/><circle cx="996" cy="2191.714285714286" r="6" fill="#2a4256"/><circle cx="1215.142857142857" cy="2016" r="6" fill="#2a4256"/><circle cx="996" cy="2235.1428571428573" r="6" fill="#2a4256"/><circle cx="1258.5714285714284" cy="2016" r="6" fill="#2a4256"/><circle cx="996" cy="2278.5714285714284" r="6" fill="#2a4256"/><circle cx="1302" cy="2016" r="6" fill="#2a4256"/><circle cx="996" cy="2322" r="6" fill="#2a4256"/></g></svg></div><canvas id="s08-back" class="s08-back" width="630" height="1120"></canvas><div id="s08-light0" class="s08-light" style="left:40px;top:-300px;width:1200px;height:1200px;background:radial-gradient(circle, #ffe2a8 0%, #ffe2a855 30%, transparent 70%);opacity:0.35"></div><div id="s08-light1" class="s08-light" style="left:-600px;top:600px;width:1600px;height:1600px;background:radial-gradient(circle, #ff7a1f 0%, #ff7a1f55 30%, transparent 70%);opacity:0.4"></div><div id="s08-L-frames" class="s08-layer"><svg viewBox="0 0 1260 2240" width="1260" height="2240" xmlns="http://www.w3.org/2000/svg"><defs></defs><g><rect x="120" y="-60" width="70" height="2360" fill="#04080d"/><rect x="600" y="-60" width="70" height="2360" fill="#04080d"/><rect x="1080" y="-60" width="70" height="2360" fill="#04080d"/></g></svg></div></div></div>
+  <canvas id="s08-front" width="1080" height="1920"></canvas>
+  <div id="s08-grade"></div>
+  <div id="s08-dark"></div></div>
+</div>
+<script>
+/* Browser-Laufzeit für jede Szene: deterministische Partikel, Licht-Flackern,
+ * Kamera-Wackeln. Alles ist eine reine Funktion der Szenenzeit t (seekable). */
+function hfMulberry(seed) {
+  let a = seed >>> 0;
+  return function () {
+    a |= 0; a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function hfFlicker(t, s) {
+  return 0.78 + 0.1 * Math.sin(t * 13.1 + s) + 0.07 * Math.sin(t * 29.7 + 2.3 * s) + 0.05 * Math.sin(t * 53.3 + 1.7 * s);
+}
+function hfNoise(t, s) {
+  return Math.sin(t * 1.7 + s) * 0.5 + Math.sin(t * 3.1 + 2 * s) * 0.3 + Math.sin(t * 7.3 + 3 * s) * 0.2;
+}
+function hfRamp(t, r) {
+  /* r = [t0, t1, from, to] */
+  if (!r) return 1;
+  const k = Math.min(1, Math.max(0, (t - r[0]) / Math.max(0.001, r[1] - r[0])));
+  return r[2] + (r[3] - r[2]) * k;
+}
+
+function hfMakeFx(canvas, specs, seed) {
+  const ctx = canvas.getContext("2d");
+  const W = canvas.width, H = canvas.height;
+  const systems = specs.map((sp, si) => {
+    const rnd = hfMulberry(seed * 977 + si * 131 + 7);
+    const n = sp.count || 100;
+    const ps = [];
+    for (let i = 0; i < n; i++) ps.push({ a: rnd(), b: rnd(), c: rnd(), d: rnd(), e: rnd() });
+    return { sp, ps };
+  });
+
+  function rain(sp, ps, t, k) {
+    const ang = ((sp.angle || 12) * Math.PI) / 180;
+    const len = sp.len || 70, sp0 = sp.speed || 2200;
+    ctx.strokeStyle = sp.color || "rgba(200,215,225,1)";
+    ctx.lineCap = "round";
+    for (let i = 0; i < ps.length * k; i++) {
+      const p = ps[i];
+      const v = sp0 * (0.7 + p.c * 0.6);
+      const span = H + len * 2;
+      const y = ((p.b * span + v * t) % span) - len;
+      const x = p.a * (W + 400) - 200 + Math.tan(ang) * y;
+      const near = 0.4 + p.d * 0.6;
+      ctx.globalAlpha = (sp.alpha || 0.35) * near;
+      ctx.lineWidth = (sp.width || 2.2) * near;
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x - Math.sin(ang) * len * near, y - Math.cos(ang) * len * near);
+      ctx.stroke();
+    }
+  }
+  function fog(sp, ps, t, k) {
+    const y0 = sp.y0 ?? H * 0.4, y1 = sp.y1 ?? H * 0.9;
+    for (let i = 0; i < ps.length; i++) {
+      const p = ps[i];
+      const r = (sp.size || 520) * (0.6 + p.c * 0.8);
+      const x = ((p.a * (W + 2 * r) + (sp.speed || 18) * (0.5 + p.d) * t) % (W + 2 * r)) - r;
+      const y = y0 + p.b * (y1 - y0) + Math.sin(t * 0.3 + p.e * 6) * 20;
+      const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+      const a = (sp.alpha || 0.18) * k * (0.5 + p.e * 0.5);
+      g.addColorStop(0, `rgba(${sp.rgb || "170,185,175"},${a})`);
+      g.addColorStop(1, `rgba(${sp.rgb || "170,185,175"},0)`);
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = g;
+      ctx.fillRect(x - r, y - r, 2 * r, 2 * r);
+    }
+  }
+  function fall(sp, ps, t, k) {
+    /* Asche, Schnee, Steine */
+    const sp0 = sp.speed || 120;
+    const visible = Math.floor(ps.length * k);
+    ctx.fillStyle = sp.color || "rgba(180,175,170,1)";
+    for (let i = 0; i < visible; i++) {
+      const p = ps[i];
+      const v = sp0 * (0.6 + p.c * 0.8);
+      const s = (sp.size || 4) * (0.5 + p.d);
+      const y = ((p.b * (H + 40) + v * t) % (H + 40)) - 20;
+      const x = p.a * W + Math.sin(t * (0.6 + p.e) + p.a * 20) * (sp.sway || 30);
+      ctx.globalAlpha = (sp.alpha || 0.7) * (0.4 + p.d * 0.6);
+      if (sp.rock) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(t * (p.e - 0.5) * 6);
+        ctx.fillRect(-s, -s * 0.7, s * 2, s * 1.4);
+        ctx.restore();
+      } else {
+        ctx.beginPath();
+        ctx.ellipse(x, y, s, s * 0.7, p.e * 3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+  function embers(sp, ps, t, k) {
+    /* Funken steigen aus einer Region auf */
+    const [ox, oy, ow, oh] = sp.region || [0, H * 0.7, W, H * 0.3];
+    ctx.globalCompositeOperation = "lighter";
+    for (let i = 0; i < ps.length * k; i++) {
+      const p = ps[i];
+      const life = 1.6 + p.c * 2.4;
+      const age = (t + p.b * life) % life;
+      const q = age / life;
+      const x = ox + p.a * ow + Math.sin(age * 3 + p.e * 9) * 22 + (sp.drift || 30) * age;
+      const y = oy + p.d * oh - (sp.speed || 160) * (0.6 + p.e) * age;
+      const s = (sp.size || 3) * (1 - q * 0.6);
+      const a = Math.sin(q * Math.PI) * (sp.alpha || 0.9);
+      const g = ctx.createRadialGradient(x, y, 0, x, y, s * 4);
+      g.addColorStop(0, `rgba(${sp.rgb || "255,190,90"},${a})`);
+      g.addColorStop(0.3, `rgba(${sp.rgb || "255,140,40"},${a * 0.5})`);
+      g.addColorStop(1, `rgba(${sp.rgb || "255,120,30"},0)`);
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = g;
+      ctx.fillRect(x - s * 4, y - s * 4, s * 8, s * 8);
+    }
+    ctx.globalCompositeOperation = "source-over";
+  }
+  function dust(sp, ps, t, k) {
+    ctx.fillStyle = sp.color || "rgba(255,230,190,1)";
+    for (let i = 0; i < ps.length * k; i++) {
+      const p = ps[i];
+      const x = p.a * W + Math.sin(t * 0.4 + p.c * 10) * 40 + t * 6;
+      const y = p.b * H + Math.cos(t * 0.33 + p.d * 10) * 30 - t * 4;
+      ctx.globalAlpha = (sp.alpha || 0.5) * (0.5 + 0.5 * Math.sin(t * 1.3 + p.e * 9));
+      ctx.beginPath();
+      ctx.arc(x, y, (sp.size || 2.4) * (0.4 + p.d), 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  function smoke(sp, ps, t, k) {
+    const [ox, oy, ow] = sp.region || [0, H, W];
+    for (let i = 0; i < ps.length; i++) {
+      const p = ps[i];
+      const life = 5 + p.c * 4;
+      const age = (t + p.b * life) % life;
+      const q = age / life;
+      const r = (sp.size || 180) * (0.4 + q * 1.4);
+      const x = ox + p.a * ow + (sp.drift || 20) * age;
+      const y = oy - (sp.speed || 90) * age;
+      const a = Math.sin(q * Math.PI) * (sp.alpha || 0.25) * k;
+      const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+      g.addColorStop(0, `rgba(${sp.rgb || "60,55,50"},${a})`);
+      g.addColorStop(1, `rgba(${sp.rgb || "60,55,50"},0)`);
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = g;
+      ctx.fillRect(x - r, y - r, 2 * r, 2 * r);
+    }
+  }
+  function drips(sp, ps, t, k) {
+    /* Tropfen, die über eine Fläche nach unten laufen */
+    const [rx, ry, rw, rh] = sp.region;
+    for (let i = 0; i < ps.length * k; i++) {
+      const p = ps[i];
+      const life = 1.4 + p.c * 2.2;
+      const age = (t + p.b * life) % life;
+      const q = age / life;
+      const x = rx + p.a * rw + Math.sin(q * 4 + p.e) * 4;
+      const y = ry + p.d * rh * 0.3 + rh * 0.8 * q * q;
+      const s = (sp.size || 5) * (0.6 + p.e * 0.6);
+      ctx.globalAlpha = (sp.alpha || 0.85) * Math.sin(q * Math.PI);
+      ctx.fillStyle = sp.color || "rgba(220,235,240,1)";
+      ctx.beginPath();
+      ctx.ellipse(x, y, s * 0.7, s, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalAlpha *= 0.35;
+      ctx.fillRect(x - 1, y - 40 * q, 2, 40 * q);
+    }
+  }
+  function spray(sp, ps, t, k) {
+    /* Gischt aus einem Punkt (Wassereinbruch) */
+    const [ox, oy] = sp.origin;
+    const dir = ((sp.dir || 0) * Math.PI) / 180;
+    ctx.fillStyle = sp.color || "rgba(200,225,240,1)";
+    for (let i = 0; i < ps.length * k; i++) {
+      const p = ps[i];
+      const life = 0.6 + p.c * 0.9;
+      const age = (t + p.b * life) % life;
+      const sp1 = (sp.speed || 1400) * (0.5 + p.d);
+      const a = dir + (p.a - 0.5) * (sp.spread || 0.6);
+      const x = ox + Math.cos(a) * sp1 * age;
+      const y = oy + Math.sin(a) * sp1 * age + 900 * age * age;
+      ctx.globalAlpha = (sp.alpha || 0.7) * (1 - age / life);
+      const s = (sp.size || 5) * (0.5 + p.e);
+      ctx.beginPath();
+      ctx.arc(x, y, s, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  const DRAW = { regen: rain, nebel: fog, asche: fall, steine: fall, schnee: fall, funken: embers, staub: dust, rauch: smoke, tropfen: drips, gischt: spray };
+
+  return function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+    for (const { sp, ps } of systems) {
+      const k = hfRamp(t, sp.ramp);
+      if (k <= 0.001) continue;
+      const fn = DRAW[sp.type];
+      if (fn) fn(sp, ps, t, k);
+    }
+    ctx.globalAlpha = 1;
+  };
+}
+
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  tl.fromTo("#s08-cam", {scale:1.18,x:-50,y:-70}, {scale:1.32,x:30,y:-30,duration:3.111,ease:"power3.out"}, 2.711);
+  tl.fromTo("#s08-L-hull", {x:-13.8}, {x:13.8,duration:5.822,ease:"none"}, 0);
+  tl.fromTo("#s08-L-frames", {x:-27.6}, {x:27.6,duration:5.822,ease:"none"}, 0);
+  tl.fromTo("#s08-fade", {opacity:0}, {opacity:1,duration:0.4,ease:"power1.out"}, 2.711);
+  tl.fromTo("#s08-L-hull", {scaleX:1, scaleY:1, transformOrigin:"20% 50%"}, {scaleX:1.04, scaleY:1.02, duration:3.70, ease:"power2.in"}, 2.12);
+  tl.fromTo("#s08-dark", {opacity:0}, {opacity:0.55, duration:0.08, yoyo:true, repeat:5, ease:"none"}, 0.05);
+  const fxB = hfMakeFx(document.getElementById("s08-back"), [], 83126);
+  const fxF = hfMakeFx(document.getElementById("s08-front"), [{"type":"funken","count":80,"region":[100,900,900,700],"speed":60,"drift":140,"size":3.4,"ramp":[2.12,2.52,0,1]},{"type":"staub","count":120,"alpha":0.4,"color":"rgba(150,160,170,1)"}], 83127);
+  const lights = [{"i":0.35,"f":true,"fast":true},{"i":0.4,"f":true,"fast":false}].map((L, i) => ({ ...L, el: document.getElementById("s08-light" + i) }));
+  const shake = 10, shakeFrom = 0;
+  function render(t) {
+    fxB(t);
+    fxF(t);
+    lights.forEach((L, i) => { if (L.f) L.el.style.opacity = (L.i * hfFlicker(t * (L.fast ? 2.2 : 1), i + 1)).toFixed(3); });
+    if (shake && t >= shakeFrom) {
+      const k = shake * (0.6 + 0.4 * Math.abs(Math.sin(t * 2.1)));
+      gsap.set("#s08-shake", { x: k * hfNoise(t * 9, 1), y: k * hfNoise(t * 8, 4), rotation: k * 0.04 * hfNoise(t * 6, 2) });
+    }
+  }
+  const P = { t: 0 };
+  tl.to(P, { t: 5.822, duration: 5.822, ease: "none", onUpdate: () => render(P.t) }, 0);
+  // Einstellung = Ausschnitt 2.711s..5.822s der ganzen Szene
+  const shot = gsap.timeline({ paused: true });
+  const Q = { t: 2.711 };
+  shot.to(Q, { t: 5.822, duration: 3.111, ease: "none", onUpdate: () => tl.seek(Q.t, false) }, 0);
+  tl.seek(2.711, false);
+  window.__timelines["s08"] = shot;
+})();</script>
+</template>

@@ -1,0 +1,501 @@
+{
+ "duration": 36.914,
+ "words": [
+  {
+   "text": "Ich",
+   "start": 0.79,
+   "end": 0.93,
+   "satz": 0
+  },
+  {
+   "text": "bin",
+   "start": 0.999,
+   "end": 1.08,
+   "satz": 0
+  },
+  {
+   "text": "Bäcker",
+   "start": 1.162,
+   "end": 1.417,
+   "satz": 0
+  },
+  {
+   "text": "in",
+   "start": 1.51,
+   "end": 1.615,
+   "satz": 0
+  },
+  {
+   "text": "Pompeji",
+   "start": 1.673,
+   "end": 2.125,
+   "satz": 0
+  },
+  {
+   "text": "Jeden",
+   "start": 2.941,
+   "end": 3.22,
+   "satz": 1
+  },
+  {
+   "text": "Morgen",
+   "start": 3.313,
+   "end": 3.626,
+   "satz": 1
+  },
+  {
+   "text": "um",
+   "start": 3.742,
+   "end": 3.812,
+   "satz": 1
+  },
+  {
+   "text": "vier",
+   "start": 3.893,
+   "end": 4.068,
+   "satz": 1
+  },
+  {
+   "text": "heize",
+   "start": 4.137,
+   "end": 4.393,
+   "satz": 1
+  },
+  {
+   "text": "ich",
+   "start": 4.474,
+   "end": 4.52,
+   "satz": 1
+  },
+  {
+   "text": "den",
+   "start": 4.567,
+   "end": 4.683,
+   "satz": 1
+  },
+  {
+   "text": "Ofen",
+   "start": 4.776,
+   "end": 5.031,
+   "satz": 1
+  },
+  {
+   "text": "an",
+   "start": 5.112,
+   "end": 5.345,
+   "satz": 1
+  },
+  {
+   "text": "die",
+   "start": 5.53,
+   "end": 5.612,
+   "satz": 1
+  },
+  {
+   "text": "Brote",
+   "start": 5.67,
+   "end": 5.948,
+   "satz": 1
+  },
+  {
+   "text": "liegen",
+   "start": 5.983,
+   "end": 6.181,
+   "satz": 1
+  },
+  {
+   "text": "schon",
+   "start": 6.239,
+   "end": 6.413,
+   "satz": 1
+  },
+  {
+   "text": "bereit",
+   "start": 6.459,
+   "end": 6.819,
+   "satz": 1
+  },
+  {
+   "text": "Seit",
+   "start": 7.496,
+   "end": 7.809,
+   "satz": 2
+  },
+  {
+   "text": "Tagen",
+   "start": 7.914,
+   "end": 8.343,
+   "satz": 2
+  },
+  {
+   "text": "bebt",
+   "start": 8.494,
+   "end": 8.68,
+   "satz": 2
+  },
+  {
+   "text": "die",
+   "start": 8.75,
+   "end": 8.877,
+   "satz": 2
+  },
+  {
+   "text": "Erde",
+   "start": 8.924,
+   "end": 9.121,
+   "satz": 2
+  },
+  {
+   "text": "leicht",
+   "start": 9.202,
+   "end": 9.551,
+   "satz": 2
+  },
+  {
+   "text": "Niemand",
+   "start": 10.193,
+   "end": 10.657,
+   "satz": 3
+  },
+  {
+   "text": "macht",
+   "start": 10.773,
+   "end": 10.994,
+   "satz": 3
+  },
+  {
+   "text": "sich",
+   "start": 11.052,
+   "end": 11.168,
+   "satz": 3
+  },
+  {
+   "text": "Sorgen",
+   "start": 11.261,
+   "end": 11.597,
+   "satz": 3
+  },
+  {
+   "text": "das",
+   "start": 12.004,
+   "end": 12.12,
+   "satz": 3
+  },
+  {
+   "text": "kennen",
+   "start": 12.236,
+   "end": 12.422,
+   "satz": 3
+  },
+  {
+   "text": "wir",
+   "start": 12.468,
+   "end": 12.573,
+   "satz": 3
+  },
+  {
+   "text": "hier",
+   "start": 12.631,
+   "end": 12.851,
+   "satz": 3
+  },
+  {
+   "text": "Heute",
+   "start": 13.725,
+   "end": 14.109,
+   "satz": 4
+  },
+  {
+   "text": "Mittag",
+   "start": 14.178,
+   "end": 14.619,
+   "satz": 4
+  },
+  {
+   "text": "hat",
+   "start": 14.654,
+   "end": 14.77,
+   "satz": 4
+  },
+  {
+   "text": "sich",
+   "start": 14.852,
+   "end": 14.956,
+   "satz": 4
+  },
+  {
+   "text": "der",
+   "start": 15.026,
+   "end": 15.095,
+   "satz": 4
+  },
+  {
+   "text": "Himmel",
+   "start": 15.211,
+   "end": 15.432,
+   "satz": 4
+  },
+  {
+   "text": "über",
+   "start": 15.525,
+   "end": 15.641,
+   "satz": 4
+  },
+  {
+   "text": "dem",
+   "start": 15.687,
+   "end": 15.827,
+   "satz": 4
+  },
+  {
+   "text": "Vesuv",
+   "start": 15.885,
+   "end": 16.326,
+   "satz": 4
+  },
+  {
+   "text": "verdunkelt",
+   "start": 16.419,
+   "end": 16.953,
+   "satz": 4
+  },
+  {
+   "text": "Eine",
+   "start": 17.537,
+   "end": 17.932,
+   "satz": 5
+  },
+  {
+   "text": "Wolke",
+   "start": 18.024,
+   "end": 18.361,
+   "satz": 5
+  },
+  {
+   "text": "hoch",
+   "start": 18.605,
+   "end": 18.872,
+   "satz": 5
+  },
+  {
+   "text": "wie",
+   "start": 18.965,
+   "end": 19.058,
+   "satz": 5
+  },
+  {
+   "text": "ein",
+   "start": 19.116,
+   "end": 19.232,
+   "satz": 5
+  },
+  {
+   "text": "Baum",
+   "start": 19.301,
+   "end": 19.58,
+   "satz": 5
+  },
+  {
+   "text": "der",
+   "start": 19.778,
+   "end": 19.894,
+   "satz": 5
+  },
+  {
+   "text": "in",
+   "start": 19.928,
+   "end": 20.033,
+   "satz": 5
+  },
+  {
+   "text": "den",
+   "start": 20.079,
+   "end": 20.161,
+   "satz": 5
+  },
+  {
+   "text": "Himmel",
+   "start": 20.265,
+   "end": 20.462,
+   "satz": 5
+  },
+  {
+   "text": "wächst",
+   "start": 20.509,
+   "end": 20.834,
+   "satz": 5
+  },
+  {
+   "text": "Jetzt",
+   "start": 21.464,
+   "end": 21.859,
+   "satz": 6
+  },
+  {
+   "text": "fällt",
+   "start": 21.952,
+   "end": 22.126,
+   "satz": 6
+  },
+  {
+   "text": "Asche",
+   "start": 22.219,
+   "end": 22.521,
+   "satz": 6
+  },
+  {
+   "text": "Erst",
+   "start": 23.655,
+   "end": 23.992,
+   "satz": 7
+  },
+  {
+   "text": "wie",
+   "start": 24.061,
+   "end": 24.247,
+   "satz": 7
+  },
+  {
+   "text": "Schnee",
+   "start": 24.328,
+   "end": 24.584,
+   "satz": 7
+  },
+  {
+   "text": "Dann",
+   "start": 25.625,
+   "end": 25.88,
+   "satz": 8
+  },
+  {
+   "text": "wie",
+   "start": 25.973,
+   "end": 26.101,
+   "satz": 8
+  },
+  {
+   "text": "Steine",
+   "start": 26.194,
+   "end": 26.577,
+   "satz": 8
+  },
+  {
+   "text": "Die",
+   "start": 27.537,
+   "end": 27.757,
+   "satz": 9
+  },
+  {
+   "text": "Leute",
+   "start": 27.815,
+   "end": 28.106,
+   "satz": 9
+  },
+  {
+   "text": "rennen",
+   "start": 28.245,
+   "end": 28.396,
+   "satz": 9
+  },
+  {
+   "text": "zum",
+   "start": 28.454,
+   "end": 28.605,
+   "satz": 9
+  },
+  {
+   "text": "Hafen",
+   "start": 28.698,
+   "end": 29.034,
+   "satz": 9
+  },
+  {
+   "text": "Ich",
+   "start": 29.827,
+   "end": 29.943,
+   "satz": 10
+  },
+  {
+   "text": "zögere",
+   "start": 30.048,
+   "end": 30.617,
+   "satz": 10
+  },
+  {
+   "text": "Mein",
+   "start": 31.519,
+   "end": 31.902,
+   "satz": 11
+  },
+  {
+   "text": "ganzes",
+   "start": 31.971,
+   "end": 32.273,
+   "satz": 11
+  },
+  {
+   "text": "Leben",
+   "start": 32.378,
+   "end": 32.68,
+   "satz": 11
+  },
+  {
+   "text": "steckt",
+   "start": 32.749,
+   "end": 33.005,
+   "satz": 11
+  },
+  {
+   "text": "in",
+   "start": 33.098,
+   "end": 33.19,
+   "satz": 11
+  },
+  {
+   "text": "dieser",
+   "start": 33.225,
+   "end": 33.446,
+   "satz": 11
+  },
+  {
+   "text": "Bäckerei",
+   "start": 33.527,
+   "end": 33.957,
+   "satz": 11
+  },
+  {
+   "text": "Teil",
+   "start": 35.279,
+   "end": 35.616,
+   "satz": 12
+  },
+  {
+   "text": "zwei",
+   "start": 35.662,
+   "end": 35.999,
+   "satz": 12
+  },
+  {
+   "text": "folgt",
+   "start": 36.127,
+   "end": 36.533,
+   "satz": 12
+  }
+ ],
+ "warnings": [],
+ "phoneme": [
+  "ɪç bɪn bɛkɐ ʔɪn pɔmpeːjiː.",
+  "jeːdn mɔʁɡən ʊm fiːɐ haeːtsə ɪç deːn oːfən ʔan, diː bʁoːtə liːɡən ʃoːn bəʁaeːt.",
+  "zaɪt taːɡən bɛpt diː eːɐdə laɪçt.",
+  "niːmant maxt zɪç zɔɐɡən, das kɛnən viːɐ hiːɐ.",
+  "hɔʏtə mɪtaːk hat zɪç dɛɐ hɪməl yːbɐ deːm veːzuːf fɛːɐdʊŋkɛlt.",
+  "ʔaɪnə vɔlkə, hoːx viː aeːn baoːm, dɛɐ ʔɪn deːn hɪməl vɛçst.",
+  "jɛtst fɛlt aʃə.",
+  "ʔɛʁst viː ʃneː.",
+  "dan viː ʃtaeːnə.",
+  "diː lɔʏtə ʁɛnnən tsʊm haːfən.",
+  "ɪç tsøːɡɐə.",
+  "maɪn ɡantsəs leːbən ʃtɛkt ʔɪn diːzəʁ bɛkəʁaeː.",
+  "taeːl tsvaɪ fɔlkt."
+ ]
+}

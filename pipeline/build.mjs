@@ -24,7 +24,7 @@ export function validateScript(s, file) {
   if (!s.szenen.length) throw new Error(`${file}: keine Szenen`);
 }
 
-export async function buildVideo(id, { render = true, quality = "delivery" } = {}) {
+export async function buildVideo(id, { render = true, quality = "delivery", strict = false } = {}) {
   const file = path.join(ROOT, "scripts", `${id}.json`);
   const script = JSON.parse(fs.readFileSync(file, "utf8"));
   validateScript(script, file);
@@ -34,6 +34,12 @@ export async function buildVideo(id, { render = true, quality = "delivery" } = {
   const projDir = path.join(ROOT, "compositions", id);
   fs.mkdirSync(assetDir, { recursive: true });
 
+  // 0) Aussprache prüfen (bei --strict Abbruch, wenn ungeprüfte Wörter übrig sind)
+  const chk = spawnSync("python3", [path.join(ROOT, "pipeline", "aussprache_check.py"), file, ...(strict ? ["--strict"] : [])], { encoding: "utf8" });
+  fs.writeFileSync(path.join(assetDir, "aussprache.txt"), chk.stdout);
+  const offen = /(\d+) Wort\/Wörter prüfen: (.*)/.exec(chk.stdout);
+  if (offen) console.log(`  ⚠ Aussprache prüfen: ${offen[2]} (Details: assets/${id}/aussprache.txt)`);
+  if (chk.status === 2) throw new Error("Ungeprüfte Aussprache – erst pipeline/aussprache.json ergänzen (npm run aussprache -- " + id + ")");
   // 1) Stimme + Wort-Zeitstempel
   const words = await makeVoice(script, assetDir);
   // 2) Zeitplan (Szenen nach Sätzen)
@@ -118,5 +124,6 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   buildVideo(id.replace(/\.json$/, "").replace(/^scripts\//, ""), {
     render: !args.includes("--no-render"),
     quality: args.includes("--draft") ? "draft" : "delivery",
+    strict: args.includes("--strict"),
   }).catch((e) => { console.error("FEHLER:", e.message); process.exit(1); });
 }

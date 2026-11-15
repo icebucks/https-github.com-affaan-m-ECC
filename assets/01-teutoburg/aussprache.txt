@@ -1,0 +1,65 @@
+       GRUUT    Ich                      /ɪç/
+       GRUUT    bin                      /bɪn/
+       EIGEN    Legionär                 /leːɡioːnɛːɐ/
+       ESPEAK   der                      /dɛɐ/   (gruut: /deːɐ/)
+       GRUUT    neunzehnten              /nɔɔʏntseːntən/
+       EIGEN    Legion                   /leːɡioːn/
+       GRUUT    Seit                     /zaɪt/
+       GRUUT    Tagen                    /taːɡən/
+       GRUUT    marschieren              /maʁʃiːʁeːn/
+       GRUUT    wir                      /viːɐ/
+       GRUUT    durch                    /dʊʁç/
+       ESPEAK   diesen                   /diːzən/   (gruut: /diːəsən/)
+       GRUUT    Wald                     /valt/
+       GRUUT    Auf                      /aʊf/
+       GRUUT    meinem                   /maɪnəm/
+       GRUUT    Rücken                   /ʁʏkən/
+       GRUUT    Rüstung                  /ʁʏstʊŋ/
+       EIGEN    Schanzwerkzeug           /ʃantsvɛʁktsɔɔʏk/
+       EIGEN    Proviant                 /pʁoːviant/
+       GRUUT    Über                     /yːbɐ/
+       GEPRÜFT  dreißig                  /dʁaeːsɪç/
+       GRUUT    Kilo                     /kiːloː/
+       ESPEAK   Es                       /ɛs/   (gruut: /ʔeːs/)
+       GRUUT    regnet                   /ʁɛɡnət/
+       GRUUT    ohne                     /oːnə/
+       GRUUT    Pause                    /paoːzə/
+       GRUUT    Weg                      /veːk/
+       GRUUT    ist                      /ɪst/
+       GRUUT    so                       /zoː/
+       GRUUT    schmal                   /ʃmal/
+       GRUUT    dass                     /das/
+       GRUUT    sich                     /zɪç/
+       GRUUT    unser                    /ʔʊnzɐ/
+       GRUUT    Zug                      /tsuːk/
+       EIGEN    kilometerweit            /kiːloːmeːtɐvaeːt/
+       GRUUT    zieht                    /tsiːt/
+       EIGEN    Feldherr                 /fɛlthɛʁ/
+       EIGEN    Varus                    /vaːʁʊs/
+       GRUUT    vertraut                 /fɛːɐtʁaoːt/
+       EIGEN    Arminius                 /ʔaʁmiːniʊs/
+       GRUUT    einem                    /ʔaeːnəm/
+       EIGEN    Germanen                 /ɡɛʁmaːnən/
+       GRUUT    in                       /ʔɪn/
+       GRUUT    römischen                /ʁøːmɪʃən/
+       GRUUT    Diensten                 /diːnstən/
+       GRUUT    Dann                     /dan/
+       GRUUT    Stille                   /ʃtɪllə/
+       GRUUT    Kein                     /kaɪn/
+       GRUUT    Vogel                    /foːɡəl/
+       GRUUT    Wind                     /vɪnt/
+       GRUUT    Und                      /ʊnt/
+       GRUUT    plötzlich                /plœtslɪç/
+       ESPEAK   fliegen                  /fliːɡən/   (gruut: /fliːɡŋ/)
+       GRUUT    Speere                   /ʃpəɐə/
+       GRUUT    aus                      /aʊs/
+       GRUUT    den                      /deːn/
+       GRUUT    Bäumen                   /bɔɔʏmən/
+       GRUUT    hat                      /hat/
+       GRUUT    uns                      /ʔʊns/
+       GRUUT    verraten                 /fɛːɐʁaːtən/
+       GRUUT    Teil                     /taeːl/
+       GRUUT    zwei                     /tsvaɪ/
+       GRUUT    folgt                    /fɔlkt/
+
+Aussprache: alles geprüft.

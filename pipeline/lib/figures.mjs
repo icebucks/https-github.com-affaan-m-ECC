@@ -137,3 +137,84 @@ export function rimmed(drawFn, dark, rimColor, filterId, dx = -8, dy = -4) {
 export function rimFilter(id, std = 5) {
   return `<filter id="${id}" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="${std}"/></filter>`;
 }
+
+// ---------------------------------------------------------------- Zivilisten (alle Epochen)
+function runLegs(c, phase = 0) {
+  const a = Math.sin(phase);
+  return (
+    line([[8, -172], [40 + a * 20, -110], [30 + a * 50, -20]], 26, c) +
+    line([[-6, -172], [-30 - a * 20, -120], [-70 - a * 30, -70]], 26, c)
+  );
+}
+
+// Allgemeine Person: dress = "tunika" | "stola" | "hose"; hat = null | "kappe" | "tuch"; tool = null | "schaufel" | "brotschieber"
+export function person(c, { pose = "stand", phase = 0, dress = "tunika", hat = null, tool = null, lean = 0, arms = "down" } = {}) {
+  let s = "";
+  if (pose === "run") s += runLegs(c, phase);
+  else if (pose === "walk") s += legs(c, "walk", phase);
+  else s += legs(c, "stand");
+  if (dress === "stola") s += poly([[-34, -300], [36, -300], [62, -40], [-60, -40]], c);
+  else if (dress === "hose") s += poly([[-30, -236], [30, -236], [34, -170], [-34, -170]], c);
+  s += torso(c);
+  s += `<circle cx="6" cy="-354" r="24" fill="${c}"/>` + poly([[24, -362], [36, -350], [26, -342]], c);
+  if (hat === "kappe") s += `<path d="M-22,-362 C-22,-392 30,-392 30,-366 L52,-360 L50,-354 L-22,-356Z" fill="${c}"/>`;
+  if (hat === "tuch") s += `<path d="M-26,-350 C-30,-396 36,-400 34,-360 L28,-330 L-30,-300 L-40,-320Z" fill="${c}"/>`;
+  if (!hat) s += `<path d="M-20,-362 C-22,-386 26,-388 30,-368 C20,-376 0,-376 -10,-368Z" fill="${c}"/>`;
+  if (arms === "up") s += line([[22, -302], [30, -360], [10, -392]], 20, c) + line([[-20, -300], [-30, -360], [-6, -394]], 20, c);
+  else if (arms === "swing") s += line([[22, -302], [56, -262], [74, -290]], 20, c) + line([[-20, -300], [-50, -250], [-64, -214]], 20, c);
+  else s += line([[22, -302], [32, -250], [36, -200]], 20, c);
+  if (tool === "schaufel") s += line([[36, -205], [150, -60]], 9, c) + poly([[138, -76], [196, -20], [168, 4], [122, -50]], c);
+  if (tool === "brotschieber") s += line([[36, -205], [190, -330]], 8, c) + `<ellipse cx="214" cy="-350" rx="44" ry="20" transform="rotate(-38 214 -350)" fill="${c}"/>`;
+  return lean ? `<g transform="rotate(${lean})">${s}</g>` : s;
+}
+
+// Profil-Büste ohne Helm (Kopf mit kurzem Haar oder Kappe) – nutzt dieselbe Kopfform wie der Legionär
+export function bustCivil(c, { cap = null } = {}) {
+  let s = bustProfile(c, { helmet: null });
+  if (cap === "stoker") s += `<path d="M176,190 L250,176 C252,120 300,96 352,100 C414,108 446,156 444,226 L420,232 C400,200 340,190 250,198 L174,200Z" fill="${c}"/>`;
+  else s += `<path d="M186,182 C192,130 250,100 316,102 C392,106 440,160 436,236 L428,262 C420,230 404,214 380,206 C330,186 260,178 186,182Z" fill="${c}"/>`;
+  return s;
+}
+
+// Pompeji: Lavastein-Mühle (Sanduhrform) – typisches Fundstück aus pompejanischen Bäckereien
+export function millstone(c) {
+  return `<path d="M-90,0 L90,0 L70,-160 L0,-210 L-70,-160Z" fill="${c}"/><path d="M-80,-230 L80,-230 L20,-300 L80,-370 L-80,-370 L-20,-300Z" fill="${c}"/><rect x="-130" y="-312" width="260" height="22" rx="8" fill="${c}"/>`;
+}
+
+// Runder Laib mit Segment-Kerben (wie die in Pompeji gefundenen Brote)
+export function loaf(c, line_) {
+  let s = `<ellipse cx="0" cy="0" rx="90" ry="44" fill="${c}"/><ellipse cx="0" cy="-10" rx="80" ry="34" fill="${c}"/>`;
+  for (let i = 0; i < 8; i++) {
+    const a = (i / 8) * Math.PI * 2;
+    s += `<line x1="0" y1="-12" x2="${(Math.cos(a) * 74).toFixed(1)}" y2="${(-12 + Math.sin(a) * 30).toFixed(1)}" stroke="${line_}" stroke-width="3" opacity="0.6"/>`;
+  }
+  return s;
+}
+
+export function amphora(c) {
+  return `<path d="M-14,-200 L14,-200 L16,-170 C60,-150 62,-60 20,-10 L0,20 L-20,-10 C-62,-60 -60,-150 -16,-170Z" fill="${c}"/>` +
+    line([[-14, -184], [-36, -186], [-30, -150]], 6, c) + line([[14, -184], [36, -186], [30, -150]], 6, c);
+}
+
+// Titanic: Kesselfront (Schottischer Kessel) mit drei Feuertüren
+export function boilerFront(c, glow, rivet) {
+  let s = `<circle cx="0" cy="0" r="300" fill="${c}"/><circle cx="0" cy="0" r="300" fill="none" stroke="${rivet}" stroke-width="6" opacity="0.5"/>`;
+  for (let i = 0; i < 40; i++) {
+    const a = (i / 40) * Math.PI * 2;
+    s += `<circle cx="${(Math.cos(a) * 280).toFixed(1)}" cy="${(Math.sin(a) * 280).toFixed(1)}" r="5" fill="${rivet}" opacity="0.5"/>`;
+  }
+  for (const x of [-170, 0, 170]) {
+    s += `<rect x="${x - 62}" y="80" width="124" height="120" rx="14" fill="${rivet}" opacity="0.35"/><rect x="${x - 50}" y="94" width="100" height="92" rx="10" fill="${glow}"/>`;
+  }
+  return s;
+}
+
+export function chandelier(c, glow) {
+  let s = line([[0, -400], [0, -60]], 6, c);
+  for (let k = 0; k < 3; k++) {
+    const y = -40 + k * 70, w = 220 - k * 50;
+    s += `<path d="M${-w},${y} Q0,${y + 70} ${w},${y}" fill="none" stroke="${c}" stroke-width="7"/>`;
+    for (let i = -3; i <= 3; i++) s += `<circle cx="${(i / 3) * w * 0.95}" cy="${y + 26 - Math.abs(i) * 8}" r="12" fill="${glow}"/>`;
+  }
+  return s;
+}

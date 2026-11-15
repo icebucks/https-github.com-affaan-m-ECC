@@ -1,0 +1,94 @@
+{
+ "seed": 899,
+ "duration": 37.433,
+ "voice": "/home/user/https-github.com-affaan-m-ECC/assets/02-pompeji/voice.wav",
+ "out": "/home/user/https-github.com-affaan-m-ECC/assets/02-pompeji/mix.wav",
+ "atmo": [
+  "feuer",
+  "stadt"
+ ],
+ "musik": "drone_dunkel",
+ "scenes": [
+  {
+   "start": 0,
+   "end": 2.791,
+   "wendepunkt": false,
+   "ton": null
+  },
+  {
+   "start": 2.791,
+   "end": 7.346,
+   "wendepunkt": false,
+   "ton": null
+  },
+  {
+   "start": 7.346,
+   "end": 10.043,
+   "wendepunkt": false,
+   "ton": null
+  },
+  {
+   "start": 10.043,
+   "end": 13.575,
+   "wendepunkt": false,
+   "ton": null
+  },
+  {
+   "start": 13.575,
+   "end": 17.387,
+   "wendepunkt": false,
+   "ton": null
+  },
+  {
+   "start": 17.387,
+   "end": 21.314,
+   "wendepunkt": false,
+   "ton": null
+  },
+  {
+   "start": 21.314,
+   "end": 23.505,
+   "wendepunkt": true,
+   "ton": null
+  },
+  {
+   "start": 23.505,
+   "end": 27.387,
+   "wendepunkt": true,
+   "ton": null
+  },
+  {
+   "start": 27.387,
+   "end": 29.677,
+   "wendepunkt": true,
+   "ton": null
+  },
+  {
+   "start": 29.677,
+   "end": 33.555,
+   "wendepunkt": true,
+   "ton": null
+  },
+  {
+   "start": 33.555,
+   "end": 37.433,
+   "wendepunkt": true,
+   "ton": null
+  }
+ ],
+ "hook_hit": 0,
+ "wende_start": 21.314,
+ "endcard_start": 35.159,
+ "events": [
+  {
+   "t": 7.496,
+   "typ": "beben",
+   "gain": 0.7
+  },
+  {
+   "t": 25.675,
+   "typ": "steine",
+   "gain": 0.8
+  }
+ ]
+}

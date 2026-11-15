@@ -8,13 +8,18 @@ import { execFileSync } from "node:child_process";
 import { splitSentences } from "./compose.mjs";
 
 export const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "../..");
-export const VOICE_DIR = path.join(ROOT, ".cache", "voices");
+// Stimmen liegen außerhalb des Repos (vom Setup bzw. Umgebungs-Setup-Skript befüllt)
+export const VOICE_DIR = process.env.VOICE_DIR || path.join(process.env.HOME || ROOT, ".cache", "ich-war-dabei", "voices");
 const PIPER_VOICE = process.env.PIPER_VOICE || "de-karlsson-low";
+const COQUI_DIR = path.join(VOICE_DIR, "tts_models--de--thorsten--vits");
+// Standard: Coqui „Thorsten“ (22 kHz, deutlich sauberer). TTS_ENGINE=piper erzwingt die alte Stimme.
+const LOCAL = process.env.TTS_ENGINE || (fs.existsSync(COQUI_DIR) ? "coqui" : "piper");
 
 export async function makeVoice(script, outDir) {
   const sentences = splitSentences(script.erzaehltext);
   const useEleven = Boolean(process.env.ELEVENLABS_API_KEY);
-  const engine = useEleven ? `elevenlabs:${process.env.ELEVENLABS_VOICE_ID || "default"}` : `piper:${PIPER_VOICE}`;
+  const lexHash = crypto.createHash("sha1").update(fs.readFileSync(path.join(ROOT, "pipeline", "aussprache.json"))).digest("hex").slice(0, 8);
+  const engine = useEleven ? `elevenlabs:${process.env.ELEVENLABS_VOICE_ID || "default"}` : LOCAL === "coqui" ? `coqui:thorsten-vits:lex${lexHash}` : `piper:${PIPER_VOICE}`;
   const hash = crypto.createHash("sha1").update(engine + "\n" + sentences.join("\n")).digest("hex").slice(0, 12);
   const wav = path.join(outDir, "voice.wav");
   const wordsFile = path.join(outDir, "words.json");
@@ -25,12 +30,20 @@ export async function makeVoice(script, outDir) {
   }
   console.log(`  Stimme erzeugen mit ${engine} …`);
   if (useEleven) await elevenLabs(sentences, wav, wordsFile);
+  else if (LOCAL === "coqui") coqui(sentences, wav, wordsFile);
   else piper(sentences, wav, wordsFile);
   fs.writeFileSync(stamp, hash);
   const data = JSON.parse(fs.readFileSync(wordsFile, "utf8"));
   fs.writeFileSync(path.join(outDir, "transcript.txt"),
     data.words.map((w) => `${w.start.toFixed(2)}\t${w.end.toFixed(2)}\t${w.text}`).join("\n") + "\n");
   return data;
+}
+
+function coqui(sentences, wav, wordsFile) {
+  const req = path.join(path.dirname(wav), "tts_request.json");
+  fs.writeFileSync(req, JSON.stringify({ sentences, model_dir: COQUI_DIR, out_wav: wav, out_words: wordsFile, length_scale: 1.04, pitch: 0.91 }, null, 1));
+  execFileSync("python3", [path.join(ROOT, "pipeline", "tts_coqui.py"), req], { stdio: ["ignore", "ignore", "inherit"] });
+  fs.rmSync(req);
 }
 
 function piper(sentences, wav, wordsFile) {

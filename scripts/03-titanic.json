@@ -4,20 +4,88 @@
   "jahr_ort": "14. April 1912 – Atlantik",
   "epoche": "titanic",
   "figur": "heizer",
-  "erzaehltext": "Ich bin Heizer auf der Titanic. Tief unten, wo kein Passagier je hinkommt. Hier gibt es keinen Luxus. Nur Hitze, Kohlenstaub und das Brüllen der Kessel. Oben tanzen sie. Wir schaufeln, damit das Schiff schneller wird. Dann: ein Ruck. Ein langes, kratzendes Geräusch an der Bordwand. Und Sekunden später schießt eiskaltes Wasser durch die Wand neben mir. Die Glocke schrillt. Die wasserdichten Tore schließen sich. Und ich stehe auf der falschen Seite. Teil zwei folgt.",
+  "erzaehltext": "Ich bin Heizer auf der Titanic. Tief unten, wo kein Passagier je hinkommt. Hier gibt es keinen Luxus. Nur Hitze, Kohlenstaub und das Brüllen der Kessel. Oben schlafen die Passagiere in weichen Betten. Wir schaufeln, damit das Schiff schneller wird. Dann: ein Ruck. Ein langes, kratzendes Geräusch an der Bordwand. Und Sekunden später schießt eiskaltes Wasser durch die Wand neben mir. Die Glocke schrillt. Die wasserdichten Türen schließen sich. Und ich stehe auf der falschen Seite. Teil zwei folgt.",
   "szenen": [
-    { "ab_satz": 0, "motiv": "kessel", "beschreibung": "Glühende Kessel, Heizer schaufelt", "effekte": ["funken", "rauch"] },
-    { "ab_satz": 2, "motiv": "russgesicht", "beschreibung": "Verrußtes Profil im Feuerschein", "effekte": ["staub", "funken"] },
-    { "ab_satz": 4, "motiv": "ballsaal", "beschreibung": "Kontrast: warmes Licht und Kronleuchter oben", "effekte": ["staub"] },
-    { "ab_satz": 5, "motiv": "kessel_schaufeln", "beschreibung": "Schaufeln im Takt, Feuer lodert", "effekte": ["funken"] },
-    { "ab_satz": 6, "motiv": "bordwand", "beschreibung": "Bordwand verformt sich, Nieten platzen", "effekte": ["funken", "staub"], "wendepunkt": true },
-    { "ab_satz": 8, "motiv": "wassereinbruch", "beschreibung": "Wasser schießt durch die Wand", "effekte": ["wasser", "gischt"], "wendepunkt": true },
-    { "ab_satz": 9, "motiv": "stahltuer", "beschreibung": "Wasserdichte Tür senkt sich, Alarmlicht", "effekte": ["wasser", "gischt"], "wendepunkt": true }
+    {
+      "ab_satz": 0,
+      "motiv": "kessel",
+      "beschreibung": "Glühende Kessel, Heizer schaufelt",
+      "effekte": [
+        "funken",
+        "rauch"
+      ]
+    },
+    {
+      "ab_satz": 2,
+      "motiv": "russgesicht",
+      "beschreibung": "Verrußtes Profil im Feuerschein",
+      "effekte": [
+        "staub",
+        "funken"
+      ]
+    },
+    {
+      "ab_satz": 4,
+      "motiv": "oben_luxus",
+      "beschreibung": "Kontrast: warmes Licht, Kronleuchter, leere Prunktreppe oben",
+      "effekte": [
+        "staub"
+      ]
+    },
+    {
+      "ab_satz": 5,
+      "motiv": "kessel_schaufeln",
+      "beschreibung": "Schaufeln im Takt, Feuer lodert",
+      "effekte": [
+        "funken"
+      ]
+    },
+    {
+      "ab_satz": 6,
+      "motiv": "bordwand",
+      "beschreibung": "Bordwand verformt sich, Nieten platzen",
+      "effekte": [
+        "funken",
+        "staub"
+      ],
+      "wendepunkt": true
+    },
+    {
+      "ab_satz": 8,
+      "motiv": "wassereinbruch",
+      "beschreibung": "Wasser schießt durch die Wand",
+      "effekte": [
+        "wasser",
+        "gischt"
+      ],
+      "wendepunkt": true
+    },
+    {
+      "ab_satz": 9,
+      "motiv": "stahltuer",
+      "beschreibung": "Wasserdichte Tür senkt sich, Alarmlicht",
+      "effekte": [
+        "wasser",
+        "gischt"
+      ],
+      "wendepunkt": true
+    }
   ],
   "endkarte": "Teil 2 folgt",
-  "atmo": ["maschine", "wasser"],
+  "atmo": [
+    "maschine",
+    "wasser"
+  ],
   "musik": "drone_stahl",
   "bildunterschrift": "Titanic, 14. April 1912. Ganz unten im Schiff merkt man den Eisberg zuerst.",
   "frage": "Was hättest du in diesem Moment getan?",
-  "hashtags": ["#titanic", "#geschichte", "#1912", "#history", "#geschichtetiktok", "#schiff"]
+  "hashtags": [
+    "#titanic",
+    "#geschichte",
+    "#1912",
+    "#history",
+    "#geschichtetiktok",
+    "#schiff"
+  ],
+  "hinweise": "Historisch geprüft: Die Titanic hatte keinen Ballsaal; Kollision am Sonntag, 14. April 1912, gegen 23:40 Uhr. Wasser drang u. a. in Kesselraum 6 ein, die wasserdichten Türen wurden von der Brücke geschlossen."
 }

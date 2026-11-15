@@ -1,0 +1,29 @@
+<template>
+<style>
+#root { position: absolute; inset: 0; }
+#hook-scrim { position: absolute; left: 0; top: 0; width: 1080px; height: 1100px; background: linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0) 100%); }
+#hook-box { position: absolute; left: 60px; top: 330px; width: 860px; text-align: center; transform-origin: 50% 50%; }
+#hook-year { font-family: "Playfair Display", serif; font-weight: 900; font-size: 167px; line-height: 1; color: #fff; text-shadow: 0 0 40px #ff4a1caa, 0 6px 20px rgba(0,0,0,0.8); }
+#hook-line { width: 520px; height: 6px; margin: 34px auto 30px; background: #ff4a1c; box-shadow: 0 0 24px #ff4a1c; transform-origin: 50% 50%; }
+#hook-place { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 68px; letter-spacing: 0.22em; color: #ffb347; text-transform: uppercase; text-shadow: 0 4px 16px rgba(0,0,0,0.9); }
+</style>
+<div id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+  <div id="hook-scrim"></div>
+  <div id="hook-box">
+    <div id="hook-year">79 n. Chr.</div>
+    <div id="hook-line"></div>
+    <div id="hook-place">Pompeji</div>
+  </div>
+</div>
+<script>
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  tl.fromTo("#hook-box", { scale: 1.14, y: 0, opacity: 1 }, { scale: 1, duration: 0.7, ease: "power3.out" }, 0);
+  tl.fromTo("#hook-line", { scaleX: 0.1 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 0.05);
+  tl.fromTo("#hook-place", { scale: 1.25, opacity: 0.6 }, { scale: 1, opacity: 1, duration: 0.9, ease: "power3.out" }, 0);
+  tl.to("#hook-box", { opacity: 0, y: -40, duration: 0.4, ease: "power2.in" }, 1.75);
+  tl.fromTo("#hook-scrim", { opacity: 1 }, { opacity: 0, duration: 0.45, ease: "power1.in" }, 1.7);
+  window.__timelines["hook"] = tl;
+})();
+</script>
+</template>

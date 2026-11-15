@@ -1,0 +1,30 @@
+{
+  "_hinweis": "Eigenes Aussprache-Lexikon für die Coqui-Stimme (Thorsten VITS, gruut-Notation). 'woerter': Wort (klein) -> Phoneme mit Leerzeichen getrennt. Diphthonge wie im Modell trainiert: ei = 'a eː', au = 'a oː', eu/äu = 'ɔ ɔʏ'. 'geprueft': Wörter, deren automatische Aussprache kontrolliert wurde und korrekt ist. Prüfen mit: npm run aussprache -- <id>",
+  "woerter": {
+    "feldherr": "f ɛ l t h ɛ ʁ",
+    "kilometerweit": "k iː l oː m eː t ɐ v a eː t",
+    "arminius": "ʔ a ʁ m iː n i ʊ s",
+    "varus": "v aː ʁ ʊ s",
+    "legionär": "l eː ɡ i oː n ɛː ɐ",
+    "legion": "l eː ɡ i oː n",
+    "schanzwerkzeug": "ʃ a n t s v ɛ ʁ k t s ɔ ɔʏ k",
+    "pompeji": "p ɔ m p eː j iː",
+    "vesuv": "v eː z uː f",
+    "titanic": "t iː t aː n ɪ k",
+    "germanien": "ɡ ɛ ʁ m aː n i ə n",
+    "germane": "ɡ ɛ ʁ m aː n ə",
+    "germanen": "ɡ ɛ ʁ m aː n ə n",
+    "proviant": "p ʁ oː v i a n t",
+    "bäckerei": "b ɛ k ə ʁ a eː"
+  },
+  "geprueft": [
+    "bordwand",
+    "dreißig",
+    "hafen",
+    "leben",
+    "mir",
+    "schießt",
+    "schließen",
+    "wo"
+  ]
+}

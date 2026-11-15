@@ -1,6 +1,6 @@
 {
  "seed": 1135,
- "duration": 35.688,
+ "duration": 38.072,
  "voice": "/home/user/https-github.com-affaan-m-ECC/assets/01-teutoburg/voice.wav",
  "out": "/home/user/https-github.com-affaan-m-ECC/assets/01-teutoburg/mix.wav",
  "atmo": [
@@ -11,77 +11,89 @@
  "scenes": [
   {
    "start": 0,
-   "end": 3.374,
+   "end": 3.639,
    "wendepunkt": false,
    "ton": null
   },
   {
-   "start": 3.374,
-   "end": 6.302,
+   "start": 3.639,
+   "end": 6.545,
    "wendepunkt": false,
    "ton": null
   },
   {
-   "start": 6.302,
-   "end": 11.926,
+   "start": 6.545,
+   "end": 10.495,
    "wendepunkt": false,
    "ton": null
   },
   {
-   "start": 11.926,
-   "end": 13.766,
+   "start": 10.495,
+   "end": 12.837,
    "wendepunkt": false,
    "ton": null
   },
   {
-   "start": 13.766,
-   "end": 17.958,
+   "start": 12.837,
+   "end": 14.976,
    "wendepunkt": false,
    "ton": null
   },
   {
-   "start": 17.958,
-   "end": 23.334,
+   "start": 14.976,
+   "end": 19.171,
    "wendepunkt": false,
    "ton": null
   },
   {
-   "start": 23.334,
-   "end": 28.19,
+   "start": 19.171,
+   "end": 24.19,
+   "wendepunkt": false,
+   "ton": null
+  },
+  {
+   "start": 24.19,
+   "end": 26.866,
    "wendepunkt": false,
    "ton": "stille"
   },
   {
-   "start": 28.19,
-   "end": 30.974,
+   "start": 26.866,
+   "end": 29.542,
+   "wendepunkt": false,
+   "ton": "stille"
+  },
+  {
+   "start": 29.542,
+   "end": 32.622,
    "wendepunkt": true,
    "ton": null
   },
   {
-   "start": 30.974,
-   "end": 35.688,
+   "start": 32.622,
+   "end": 38.072,
    "wendepunkt": true,
    "ton": null
   }
  ],
  "hook_hit": 0,
- "wende_start": 28.19,
- "endcard_start": 33.644,
+ "wende_start": 29.542,
+ "endcard_start": 35.716,
  "events": [
   {
-   "t": 28.62,
+   "t": 29.972,
    "typ": "speer"
   },
   {
-   "t": 29.301,
+   "t": 30.642,
    "typ": "speer"
   },
   {
-   "t": 29.982,
+   "t": 31.312,
    "typ": "speer"
   },
   {
-   "t": 30.663,
+   "t": 31.982,
    "typ": "speer"
   }
  ]

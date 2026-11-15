@@ -1,0 +1,257 @@
+<template>
+<style>
+#root { position: absolute; inset: 0; overflow: hidden; background: #0d0806; }
+#s08-fade, #s08-shake { position: absolute; inset: 0; }
+#s08-cam { position: absolute; left: -90px; top: -160px; width: 1260px; height: 2240px; transform-origin: 50% 50%; }
+.s08-layer { position: absolute; left: 0; top: 0; width: 1260px; height: 2240px; will-change: transform; }
+.s08-layer svg { display: block; }
+.s08-back { position: absolute; left: 0; top: 0; width: 1260px; height: 2240px; }
+.s08-light { position: absolute; border-radius: 50%; mix-blend-mode: screen; pointer-events: none; }
+.s08-obj { position: absolute; left: 0; top: 0; will-change: transform; }
+.s08-spear { position: absolute; left: 0; top: 0; width: 540px; height: 40px; transform-origin: 50% 50%; }
+.s08-label { position: absolute; width: 600px; text-align: center; font-family: "EB Garamond", serif; font-weight: 700; font-style: italic; font-size: 58px; color: #ffb347; text-shadow: 0 0 18px rgba(0,0,0,0.9), 0 2px 4px #000; letter-spacing: 0.04em; }
+#s08-front { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+#s08-grade { position: absolute; inset: 0; background: rgba(90,50,20,0.2); mix-blend-mode: multiply; }
+#s08-dark { position: absolute; inset: 0; background: #000; opacity: 0; }
+</style>
+<div id="root" data-composition-id="s08" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
+  <div id="s08-fade"><div id="s08-shake"><div id="s08-cam"><div id="s08-L-sky" class="s08-layer"><svg viewBox="0 0 1260 2240" width="1260" height="2240" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="s08-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a1512"/><stop offset="50%" stop-color="#3a322c"/><stop offset="100%" stop-color="#4d433a"/></linearGradient></defs><g><rect x="0" y="0" width="1260" height="2240" fill="url(#s08-sky)" /></g></svg></div><div id="s08-L-town" class="s08-layer"><svg viewBox="0 0 1260 2240" width="1260" height="2240" xmlns="http://www.w3.org/2000/svg"><defs><filter id="s08-town-b" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="3"/></filter></defs><g filter="url(#s08-town-b)"><rect x="-60" y="1160.6940013170242" width="216.7013105051592" height="739.3059986829758" fill="#3a281d"/><rect x="162.7013105051592" y="1191.0098944045603" width="122.56614551879466" height="708.9901055954397" fill="#3a281d"/><polygon points="156.7,1191 224,1155 291.3,1191" fill="#3a281d" /><rect x="291.26745602395386" y="1079.1945187561214" width="217.4051619693637" height="820.8054812438786" fill="#3a281d"/><polygon points="285.3,1079.2 400,1043.2 514.7,1079.2" fill="#3a281d" /><rect x="356.48900461476296" y="1009.1945187561214" width="18" height="70" fill="#3a281d"/><rect x="514.6726179933175" y="1117.9454085603356" width="161.60383663140237" height="782.0545914396644" fill="#3a281d"/><polygon points="508.7,1117.9 595.5,1081.9 682.3,1117.9" fill="#3a281d" /><rect x="563.1537689827383" y="1047.9454085603356" width="18" height="70" fill="#3a281d"/><rect x="682.2764546247199" y="1291.830321419984" width="109.34621100779623" height="608.1696785800159" fill="#3a281d"/><polygon points="676.3,1291.8 736.9,1255.8 797.6,1291.8" fill="#3a281d" /><rect x="797.6226656325161" y="1185.7621692866087" width="187.99142482224852" height="714.2378307133913" fill="#3a281d"/><polygon points="791.6,1185.8 891.6,1149.8 991.6,1185.8" fill="#3a281d" /><rect x="854.0200930791907" y="1115.7621692866087" width="18" height="70" fill="#3a281d"/><rect x="991.6140904547647" y="1129.3783014640212" width="93.12826821114868" height="770.6216985359788" fill="#3a281d"/><polygon points="985.6,1129.4 1038.2,1093.4 1090.7,1129.4" fill="#3a281d" /><rect x="1019.5525709181093" y="1059.3783014640212" width="18" height="70" fill="#3a281d"/><rect x="1090.7423586659133" y="1099.9335919879377" width="198.70642772875726" height="800.0664080120623" fill="#3a281d"/><rect x="1295.4487863946706" y="1072.4892067722976" width="153.983471756801" height="827.5107932277024" fill="#3a281d"/></g></svg></div><canvas id="s08-back" class="s08-back" width="630" height="1120"></canvas><div id="s08-light0" class="s08-light" style="left:200px;top:200px;width:1800px;height:1800px;background:radial-gradient(circle, #ff4a1c 0%, #ff4a1c55 30%, transparent 70%);opacity:0.35"></div><div id="s08-L-street" class="s08-layer"><svg viewBox="0 0 1260 2240" width="1260" height="2240" xmlns="http://www.w3.org/2000/svg"><defs></defs><g><rect x="30" y="1260" width="640" height="44" fill="#221710"/><rect x="60" y="1300" width="30" height="600" fill="#221710"/><rect x="52" y="1300" width="46" height="14" fill="#221710"/><rect x="210" y="1300" width="30" height="600" fill="#221710"/><rect x="202" y="1300" width="46" height="14" fill="#221710"/><rect x="360" y="1300" width="30" height="600" fill="#221710"/><rect x="352" y="1300" width="46" height="14" fill="#221710"/><rect x="510" y="1300" width="30" height="600" fill="#221710"/><rect x="502" y="1300" width="46" height="14" fill="#221710"/><rect x="-40" y="1890" width="1340" height="500" fill="#221710" /></g></svg></div><div id="s08-L-people" class="s08-layer"><svg viewBox="0 0 1260 2240" width="1260" height="2240" xmlns="http://www.w3.org/2000/svg"><defs></defs><g><g transform="translate(380,2060) rotate(0) scale(1.2)" ><polyline points="8,-172 30.6,-92 44.4,-12" fill="none" stroke="#0d0806" stroke-width="27" stroke-linecap="round" stroke-linejoin="round"/><polyline points="-6,-172 -16.6,-90 -32.4,-14" fill="none" stroke="#0d0806" stroke-width="27" stroke-linecap="round" stroke-linejoin="round"/><polyline points="44.4,-10 66.4,-6" fill="none" stroke="#0d0806" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><polyline points="-32.4,-12 -10.4,-8" fill="none" stroke="#0d0806" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><path d="M-36,-312 Q0,-328 38,-312 L34,-226 L-34,-226Z" fill="#0d0806"/><ellipse cx="-2" cy="-302" rx="46" ry="22" fill="#0d0806"/><polygon points="-38,-232 38,-232 50,-160 -50,-160" fill="#0d0806"/><rect x="-9" y="-340" width="20" height="34" fill="#0d0806"/><circle cx="6" cy="-354" r="24" fill="#0d0806"/><polygon points="24,-362 36,-350 26,-342" fill="#0d0806"/><path d="M-20,-362 C-22,-386 26,-388 30,-368 C20,-376 0,-376 -10,-368Z" fill="#0d0806"/><polyline points="22,-302 30,-360 10,-392" fill="none" stroke="#0d0806" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><polyline points="-20,-300 -30,-360 -6,-394" fill="none" stroke="#0d0806" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/></g><g transform="translate(860,2080) rotate(0) scale(-1.15,1.15)" ><polyline points="10,-172 14,-90 16,-10" fill="none" stroke="#0d0806" stroke-width="27" stroke-linecap="round" stroke-linejoin="round"/><polyline points="-10,-172 -12,-90 -14,-10" fill="none" stroke="#0d0806" stroke-width="27" stroke-linecap="round" stroke-linejoin="round"/><polyline points="16,-8 38,-5" fill="none" stroke="#0d0806" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><polyline points="-14,-8 8,-5" fill="none" stroke="#0d0806" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><polygon points="-34,-300 36,-300 62,-40 -60,-40" fill="#0d0806"/><path d="M-36,-312 Q0,-328 38,-312 L34,-226 L-34,-226Z" fill="#0d0806"/><ellipse cx="-2" cy="-302" rx="46" ry="22" fill="#0d0806"/><polygon points="-38,-232 38,-232 50,-160 -50,-160" fill="#0d0806"/><rect x="-9" y="-340" width="20" height="34" fill="#0d0806"/><circle cx="6" cy="-354" r="24" fill="#0d0806"/><polygon points="24,-362 36,-350 26,-342" fill="#0d0806"/><path d="M-26,-350 C-30,-396 36,-400 34,-360 L28,-330 L-30,-300 L-40,-320Z" fill="#0d0806"/><polyline points="22,-302 30,-360 10,-392" fill="none" stroke="#0d0806" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/><polyline points="-20,-300 -30,-360 -6,-394" fill="none" stroke="#0d0806" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/></g></g></svg></div></div></div>
+  <canvas id="s08-front" width="1080" height="1920"></canvas>
+  <div id="s08-grade"></div>
+  <div id="s08-dark"></div></div>
+</div>
+<script>
+/* Browser-Laufzeit für jede Szene: deterministische Partikel, Licht-Flackern,
+ * Kamera-Wackeln. Alles ist eine reine Funktion der Szenenzeit t (seekable). */
+function hfMulberry(seed) {
+  let a = seed >>> 0;
+  return function () {
+    a |= 0; a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function hfFlicker(t, s) {
+  return 0.78 + 0.1 * Math.sin(t * 13.1 + s) + 0.07 * Math.sin(t * 29.7 + 2.3 * s) + 0.05 * Math.sin(t * 53.3 + 1.7 * s);
+}
+function hfNoise(t, s) {
+  return Math.sin(t * 1.7 + s) * 0.5 + Math.sin(t * 3.1 + 2 * s) * 0.3 + Math.sin(t * 7.3 + 3 * s) * 0.2;
+}
+function hfRamp(t, r) {
+  /* r = [t0, t1, from, to] */
+  if (!r) return 1;
+  const k = Math.min(1, Math.max(0, (t - r[0]) / Math.max(0.001, r[1] - r[0])));
+  return r[2] + (r[3] - r[2]) * k;
+}
+
+function hfMakeFx(canvas, specs, seed) {
+  const ctx = canvas.getContext("2d");
+  const W = canvas.width, H = canvas.height;
+  const systems = specs.map((sp, si) => {
+    const rnd = hfMulberry(seed * 977 + si * 131 + 7);
+    const n = sp.count || 100;
+    const ps = [];
+    for (let i = 0; i < n; i++) ps.push({ a: rnd(), b: rnd(), c: rnd(), d: rnd(), e: rnd() });
+    return { sp, ps };
+  });
+
+  function rain(sp, ps, t, k) {
+    const ang = ((sp.angle || 12) * Math.PI) / 180;
+    const len = sp.len || 70, sp0 = sp.speed || 2200;
+    ctx.strokeStyle = sp.color || "rgba(200,215,225,1)";
+    ctx.lineCap = "round";
+    for (let i = 0; i < ps.length * k; i++) {
+      const p = ps[i];
+      const v = sp0 * (0.7 + p.c * 0.6);
+      const span = H + len * 2;
+      const y = ((p.b * span + v * t) % span) - len;
+      const x = p.a * (W + 400) - 200 + Math.tan(ang) * y;
+      const near = 0.4 + p.d * 0.6;
+      ctx.globalAlpha = (sp.alpha || 0.35) * near;
+      ctx.lineWidth = (sp.width || 2.2) * near;
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x - Math.sin(ang) * len * near, y - Math.cos(ang) * len * near);
+      ctx.stroke();
+    }
+  }
+  function fog(sp, ps, t, k) {
+    const y0 = sp.y0 ?? H * 0.4, y1 = sp.y1 ?? H * 0.9;
+    for (let i = 0; i < ps.length; i++) {
+      const p = ps[i];
+      const r = (sp.size || 520) * (0.6 + p.c * 0.8);
+      const x = ((p.a * (W + 2 * r) + (sp.speed || 18) * (0.5 + p.d) * t) % (W + 2 * r)) - r;
+      const y = y0 + p.b * (y1 - y0) + Math.sin(t * 0.3 + p.e * 6) * 20;
+      const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+      const a = (sp.alpha || 0.18) * k * (0.5 + p.e * 0.5);
+      g.addColorStop(0, `rgba(${sp.rgb || "170,185,175"},${a})`);
+      g.addColorStop(1, `rgba(${sp.rgb || "170,185,175"},0)`);
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = g;
+      ctx.fillRect(x - r, y - r, 2 * r, 2 * r);
+    }
+  }
+  function fall(sp, ps, t, k) {
+    /* Asche, Schnee, Steine */
+    const sp0 = sp.speed || 120;
+    const visible = Math.floor(ps.length * k);
+    ctx.fillStyle = sp.color || "rgba(180,175,170,1)";
+    for (let i = 0; i < visible; i++) {
+      const p = ps[i];
+      const v = sp0 * (0.6 + p.c * 0.8);
+      const s = (sp.size || 4) * (0.5 + p.d);
+      const y = ((p.b * (H + 40) + v * t) % (H + 40)) - 20;
+      const x = p.a * W + Math.sin(t * (0.6 + p.e) + p.a * 20) * (sp.sway || 30);
+      ctx.globalAlpha = (sp.alpha || 0.7) * (0.4 + p.d * 0.6);
+      if (sp.rock) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(t * (p.e - 0.5) * 6);
+        ctx.fillRect(-s, -s * 0.7, s * 2, s * 1.4);
+        ctx.restore();
+      } else {
+        ctx.beginPath();
+        ctx.ellipse(x, y, s, s * 0.7, p.e * 3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+  function embers(sp, ps, t, k) {
+    /* Funken steigen aus einer Region auf */
+    const [ox, oy, ow, oh] = sp.region || [0, H * 0.7, W, H * 0.3];
+    ctx.globalCompositeOperation = "lighter";
+    for (let i = 0; i < ps.length * k; i++) {
+      const p = ps[i];
+      const life = 1.6 + p.c * 2.4;
+      const age = (t + p.b * life) % life;
+      const q = age / life;
+      const x = ox + p.a * ow + Math.sin(age * 3 + p.e * 9) * 22 + (sp.drift || 30) * age;
+      const y = oy + p.d * oh - (sp.speed || 160) * (0.6 + p.e) * age;
+      const s = (sp.size || 3) * (1 - q * 0.6);
+      const a = Math.sin(q * Math.PI) * (sp.alpha || 0.9);
+      const g = ctx.createRadialGradient(x, y, 0, x, y, s * 4);
+      g.addColorStop(0, `rgba(${sp.rgb || "255,190,90"},${a})`);
+      g.addColorStop(0.3, `rgba(${sp.rgb || "255,140,40"},${a * 0.5})`);
+      g.addColorStop(1, `rgba(${sp.rgb || "255,120,30"},0)`);
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = g;
+      ctx.fillRect(x - s * 4, y - s * 4, s * 8, s * 8);
+    }
+    ctx.globalCompositeOperation = "source-over";
+  }
+  function dust(sp, ps, t, k) {
+    ctx.fillStyle = sp.color || "rgba(255,230,190,1)";
+    for (let i = 0; i < ps.length * k; i++) {
+      const p = ps[i];
+      const x = p.a * W + Math.sin(t * 0.4 + p.c * 10) * 40 + t * 6;
+      const y = p.b * H + Math.cos(t * 0.33 + p.d * 10) * 30 - t * 4;
+      ctx.globalAlpha = (sp.alpha || 0.5) * (0.5 + 0.5 * Math.sin(t * 1.3 + p.e * 9));
+      ctx.beginPath();
+      ctx.arc(x, y, (sp.size || 2.4) * (0.4 + p.d), 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  function smoke(sp, ps, t, k) {
+    const [ox, oy, ow] = sp.region || [0, H, W];
+    for (let i = 0; i < ps.length; i++) {
+      const p = ps[i];
+      const life = 5 + p.c * 4;
+      const age = (t + p.b * life) % life;
+      const q = age / life;
+      const r = (sp.size || 180) * (0.4 + q * 1.4);
+      const x = ox + p.a * ow + (sp.drift || 20) * age;
+      const y = oy - (sp.speed || 90) * age;
+      const a = Math.sin(q * Math.PI) * (sp.alpha || 0.25) * k;
+      const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+      g.addColorStop(0, `rgba(${sp.rgb || "60,55,50"},${a})`);
+      g.addColorStop(1, `rgba(${sp.rgb || "60,55,50"},0)`);
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = g;
+      ctx.fillRect(x - r, y - r, 2 * r, 2 * r);
+    }
+  }
+  function drips(sp, ps, t, k) {
+    /* Tropfen, die über eine Fläche nach unten laufen */
+    const [rx, ry, rw, rh] = sp.region;
+    for (let i = 0; i < ps.length * k; i++) {
+      const p = ps[i];
+      const life = 1.4 + p.c * 2.2;
+      const age = (t + p.b * life) % life;
+      const q = age / life;
+      const x = rx + p.a * rw + Math.sin(q * 4 + p.e) * 4;
+      const y = ry + p.d * rh * 0.3 + rh * 0.8 * q * q;
+      const s = (sp.size || 5) * (0.6 + p.e * 0.6);
+      ctx.globalAlpha = (sp.alpha || 0.85) * Math.sin(q * Math.PI);
+      ctx.fillStyle = sp.color || "rgba(220,235,240,1)";
+      ctx.beginPath();
+      ctx.ellipse(x, y, s * 0.7, s, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalAlpha *= 0.35;
+      ctx.fillRect(x - 1, y - 40 * q, 2, 40 * q);
+    }
+  }
+  function spray(sp, ps, t, k) {
+    /* Gischt aus einem Punkt (Wassereinbruch) */
+    const [ox, oy] = sp.origin;
+    const dir = ((sp.dir || 0) * Math.PI) / 180;
+    ctx.fillStyle = sp.color || "rgba(200,225,240,1)";
+    for (let i = 0; i < ps.length * k; i++) {
+      const p = ps[i];
+      const life = 0.6 + p.c * 0.9;
+      const age = (t + p.b * life) % life;
+      const sp1 = (sp.speed || 1400) * (0.5 + p.d);
+      const a = dir + (p.a - 0.5) * (sp.spread || 0.6);
+      const x = ox + Math.cos(a) * sp1 * age;
+      const y = oy + Math.sin(a) * sp1 * age + 900 * age * age;
+      ctx.globalAlpha = (sp.alpha || 0.7) * (1 - age / life);
+      const s = (sp.size || 5) * (0.5 + p.e);
+      ctx.beginPath();
+      ctx.arc(x, y, s, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  const DRAW = { regen: rain, nebel: fog, asche: fall, steine: fall, schnee: fall, funken: embers, staub: dust, rauch: smoke, tropfen: drips, gischt: spray };
+
+  return function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+    for (const { sp, ps } of systems) {
+      const k = hfRamp(t, sp.ramp);
+      if (k <= 0.001) continue;
+      const fn = DRAW[sp.type];
+      if (fn) fn(sp, ps, t, k);
+    }
+    ctx.globalAlpha = 1;
+  };
+}
+
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  tl.fromTo("#s08-cam", {scale:1.28,x:-30,y:-50}, {scale:1.4200000000000002,x:50,y:-10,duration:4.282,ease:"sine.inOut"}, 2.191);
+  tl.fromTo("#s08-L-town", {x:-13.8}, {x:13.8,duration:6.473,ease:"none"}, 0);
+  tl.fromTo("#s08-L-street", {x:-23}, {x:23,duration:6.473,ease:"none"}, 0);
+  tl.fromTo("#s08-L-people", {x:-34.5}, {x:34.5,duration:6.473,ease:"none"}, 0);
+  tl.fromTo("#s08-fade", {opacity:0}, {opacity:1,duration:0.4,ease:"power1.out"}, 2.191);
+  const fxB = hfMakeFx(document.getElementById("s08-back"), [{"type":"nebel","count":8,"size":260,"alpha":0.22,"rgb":"120,112,104","y0":450,"y1":950}], 41445);
+  const fxF = hfMakeFx(document.getElementById("s08-front"), [{"type":"asche","count":520,"speed":110,"size":3.2,"alpha":0.75,"sway":45,"color":"rgba(190,182,172,1)","ramp":[0,4.311,0.35,1]},{"type":"steine","rock":true,"count":70,"speed":900,"size":7,"alpha":0.95,"sway":6,"color":"rgba(60,52,46,1)","ramp":[4.261,4.911,0,1]}], 41446);
+  const lights = [{"i":0.35,"f":true,"fast":false}].map((L, i) => ({ ...L, el: document.getElementById("s08-light" + i) }));
+  const shake = 3, shakeFrom = 4.311;
+  function render(t) {
+    fxB(t);
+    fxF(t);
+    lights.forEach((L, i) => { if (L.f) L.el.style.opacity = (L.i * hfFlicker(t * (L.fast ? 2.2 : 1), i + 1)).toFixed(3); });
+    if (shake && t >= shakeFrom) {
+      const k = shake * (0.6 + 0.4 * Math.abs(Math.sin(t * 2.1)));
+      gsap.set("#s08-shake", { x: k * hfNoise(t * 9, 1), y: k * hfNoise(t * 8, 4), rotation: k * 0.04 * hfNoise(t * 6, 2) });
+    }
+  }
+  const P = { t: 0 };
+  tl.to(P, { t: 6.473, duration: 6.473, ease: "none", onUpdate: () => render(P.t) }, 0);
+  // Einstellung = Ausschnitt 2.191s..6.473s der ganzen Szene
+  const shot = gsap.timeline({ paused: true });
+  const Q = { t: 2.191 };
+  shot.to(Q, { t: 6.473, duration: 4.282, ease: "none", onUpdate: () => tl.seek(Q.t, false) }, 0);
+  tl.seek(2.191, false);
+  window.__timelines["s08"] = shot;
+})();</script>
+</template>

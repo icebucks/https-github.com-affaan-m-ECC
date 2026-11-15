@@ -7,9 +7,12 @@
     "setup": "node pipeline/setup.mjs",
     "build": "node pipeline/build.mjs",
     "preview": "node pipeline/preview.mjs",
-    "batch": "node pipeline/batch.mjs"
+    "batch": "node pipeline/batch.mjs",
+    "aussprache": "python3 pipeline/aussprache_check.py"
   },
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "devDependencies": {
     "hyperframes": "0.9.52"
   }

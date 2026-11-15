@@ -1,0 +1,69 @@
+       GRUUT    Ich                      /ɪç/
+       GRUUT    bin                      /bɪn/
+       GRUUT    Heizer                   /haeːtsɐ/
+       GRUUT    auf                      /aʊf/
+       ESPEAK   der                      /dɛɐ/   (gruut: /deːɐ/)
+       EIGEN    Titanic                  /tiːtaːnɪk/
+       GRUUT    Tief                     /tiːf/
+       GRUUT    unten                    /ʊntn/
+       GEPRÜFT  wo                       /voː/
+       GRUUT    kein                     /kaɪn/
+       ESPEAK   Passagier                /pasaʒiːɐ/   (gruut: /paszaɡiːɐ/)
+       GRUUT    je                       /jeː/
+       GRUUT    hinkommt                 /hɪnkɔmmt/
+       GRUUT    Hier                     /hiːɐ/
+       GRUUT    gibt                     /ɡiːpt/
+       ESPEAK   es                       /ɛs/   (gruut: /ʔeːs/)
+       GRUUT    keinen                   /kaɪnən/
+       ESPEAK   Luxus                    /lʊksʊs/   (gruut: /luːksuːs/)
+       GRUUT    Nur                      /nuːɐ/
+       GRUUT    Hitze                    /hɪtsə/
+       GRUUT    Kohlenstaub              /koːlɛnstaoːp/
+       GRUUT    und                      /ʊnt/
+       GRUUT    das                      /das/
+       GRUUT    Brüllen                  /bʁʏlən/
+       GRUUT    Kessel                   /kɛsl/
+       GRUUT    Oben                     /ʔoːbeːn/
+       GRUUT    schlafen                 /ʃlaːfən/
+       GRUUT    die                      /diː/
+       ESPEAK   Passagiere               /pasaʒiːʁə/   (gruut: /paszaɡiːʁeː/)
+       GRUUT    in                       /ʔɪn/
+       GRUUT    weichen                  /vaɪçn/
+       GRUUT    Betten                   /bətən/
+       GRUUT    Wir                      /viːɐ/
+       GRUUT    schaufeln                /ʃaʊfln/
+       GRUUT    damit                    /damɪt/
+       GRUUT    Schiff                   /ʃɪff/
+       GRUUT    schneller                /ʃnɛlɐ/
+       GRUUT    wird                     /vɪʁt/
+       GRUUT    Dann                     /dan/
+       GRUUT    ein                      /aeːn/
+       GRUUT    Ruck                     /ʁʊk/
+       GRUUT    langes                   /laŋəs/
+       GRUUT    kratzendes               /kʁatsɛndəs/
+       GRUUT    Geräusch                 /ɡəʁɔʏʃ/
+       GRUUT    an                       /ʔan/
+       GEPRÜFT  Bordwand                 /bɔʁtvant/
+       GRUUT    Sekunden                 /zeːkʊndn/
+       GRUUT    später                   /ʃpɛːtɐ/
+       GEPRÜFT  schießt                  /ʃiːst/
+       GRUUT    eiskaltes                /aeːskaltəs/
+       GRUUT    Wasser                   /vasɐ/
+       GRUUT    durch                    /dʊʁç/
+       GRUUT    Wand                     /vant/
+       ESPEAK   neben                    /neːbən/   (gruut: /neːbm/)
+       GEPRÜFT  mir                      /miːɐ/
+       GRUUT    Glocke                   /ɡlɔkə/
+       GRUUT    schrillt                 /ʃʁɪllt/
+       ESPEAK   wasserdichten            /vasɐdɪçtən/   (gruut: /vaszɐdɪçtən/)
+       GRUUT    Türen                    /tyːʁən/
+       GEPRÜFT  schließen                /ʃliːsən/
+       GRUUT    sich                     /zɪç/
+       GRUUT    stehe                    /ʃteːə/
+       GRUUT    falschen                 /falʃən/
+       ESPEAK   Seite                    /zaeːtə/   (gruut: /zəiːtə/)
+       GRUUT    Teil                     /taeːl/
+       GRUUT    zwei                     /tsvaɪ/
+       GRUUT    folgt                    /fɔlkt/
+
+Aussprache: alles geprüft.

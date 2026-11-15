@@ -1,0 +1,260 @@
+<template>
+<style>
+#root { position: absolute; inset: 0; overflow: hidden; background: #04080d; }
+#s11-fade, #s11-shake { position: absolute; inset: 0; }
+#s11-cam { position: absolute; left: -90px; top: -160px; width: 1260px; height: 2240px; transform-origin: 50% 50%; }
+.s11-layer { position: absolute; left: 0; top: 0; width: 1260px; height: 2240px; will-change: transform; }
+.s11-layer svg { display: block; }
+.s11-back { position: absolute; left: 0; top: 0; width: 1260px; height: 2240px; }
+.s11-light { position: absolute; border-radius: 50%; mix-blend-mode: screen; pointer-events: none; }
+.s11-obj { position: absolute; left: 0; top: 0; will-change: transform; }
+.s11-spear { position: absolute; left: 0; top: 0; width: 540px; height: 40px; transform-origin: 50% 50%; }
+.s11-label { position: absolute; width: 600px; text-align: center; font-family: "EB Garamond", serif; font-weight: 700; font-style: italic; font-size: 58px; color: #ffd08a; text-shadow: 0 0 18px rgba(0,0,0,0.9), 0 2px 4px #000; letter-spacing: 0.04em; }
+#s11-front { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+#s11-grade { position: absolute; inset: 0; background: rgba(20,45,70,0.2); mix-blend-mode: multiply; }
+#s11-dark { position: absolute; inset: 0; background: #000; opacity: 0; }
+</style>
+<div id="root" data-composition-id="s11" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
+  <div id="s11-fade"><div id="s11-shake"><div id="s11-cam"><div id="s11-L-beyond" class="s11-layer"><svg viewBox="0 0 1260 2240" width="1260" height="2240" xmlns="http://www.w3.org/2000/svg"><defs></defs><g><rect x="380" y="700" width="500" height="1100" fill="#2a1408" /><rect x="380" y="700" width="500" height="1100" fill="#ff7a1f" opacity="0.35"/></g></svg></div><div id="s11-door" class="s11-obj" style="width:520px;height:1120px"><svg viewBox="0 0 520 1120" width="520" height="1120"><rect x="0" y="0" width="520" height="1120" fill="#04080d"/><rect x="20" y="60" width="480" height="18" fill="#2a4256" opacity="0.6"/><rect x="20" y="320" width="480" height="18" fill="#2a4256" opacity="0.6"/><rect x="20" y="580" width="480" height="18" fill="#2a4256" opacity="0.6"/><rect x="20" y="840" width="480" height="18" fill="#2a4256" opacity="0.6"/></svg></div><div id="s11-L-frame" class="s11-layer"><svg viewBox="0 0 1260 2240" width="1260" height="2240" xmlns="http://www.w3.org/2000/svg"><defs></defs><g><path d="M-60,-60 L1320,-60 L1320,2400 L-60,2400Z M380,700 L880,700 L880,1800 L380,1800Z" fill="#0d1824" fill-rule="evenodd"/></g></svg></div><canvas id="s11-back" class="s11-back" width="630" height="1120"></canvas><div id="s11-light0" class="s11-light" style="left:-170px;top:-400px;width:1600px;height:1600px;background:radial-gradient(circle, #ff2a1a 0%, #ff2a1a55 30%, transparent 70%);opacity:0.55"></div><div id="s11-light1" class="s11-light" style="left:30px;top:700px;width:1200px;height:1200px;background:radial-gradient(circle, #ff7a1f 0%, #ff7a1f55 30%, transparent 70%);opacity:0.4"></div><div id="s11-L-hero" class="s11-layer"><svg viewBox="0 0 1260 2240" width="1260" height="2240" xmlns="http://www.w3.org/2000/svg"><defs><filter id="s11-rim" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="8"/></filter></defs><g><g transform="translate(630,2400) rotate(0) scale(-2.6,2.6)" ><g transform="translate(0,-6)" filter="url(#s11-rim)" opacity="0.95"><polyline points="10,-172 14,-90 16,-10" fill="none" stroke="#ff3b2f" stroke-width="27" stroke-linecap="round" stroke-linejoin="round"/><polyline points="-10,-172 -12,-90 -14,-10" fill="none" stroke="#ff3b2f" stroke-width="27" stroke-linecap="round" stroke-linejoin="round"/><polyline points="16,-8 38,-5" fill="none" stroke="#ff3b2f" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><polyline points="-14,-8 8,-5" fill="none" stroke="#ff3b2f" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><polygon points="-30,-236 30,-236 34,-170 -34,-170" fill="#ff3b2f"/><path d="M-36,-312 Q0,-328 38,-312 L34,-226 L-34,-226Z" fill="#ff3b2f"/><ellipse cx="-2" cy="-302" rx="46" ry="22" fill="#ff3b2f"/><polygon points="-38,-232 38,-232 50,-160 -50,-160" fill="#ff3b2f"/><rect x="-9" y="-340" width="20" height="34" fill="#ff3b2f"/><circle cx="6" cy="-354" r="24" fill="#ff3b2f"/><polygon points="24,-362 36,-350 26,-342" fill="#ff3b2f"/><path d="M-22,-362 C-22,-392 30,-392 30,-366 L52,-360 L50,-354 L-22,-356Z" fill="#ff3b2f"/><polyline points="22,-302 32,-250 36,-200" fill="none" stroke="#ff3b2f" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/></g><polyline points="10,-172 14,-90 16,-10" fill="none" stroke="#04080d" stroke-width="27" stroke-linecap="round" stroke-linejoin="round"/><polyline points="-10,-172 -12,-90 -14,-10" fill="none" stroke="#04080d" stroke-width="27" stroke-linecap="round" stroke-linejoin="round"/><polyline points="16,-8 38,-5" fill="none" stroke="#04080d" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><polyline points="-14,-8 8,-5" fill="none" stroke="#04080d" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><polygon points="-30,-236 30,-236 34,-170 -34,-170" fill="#04080d"/><path d="M-36,-312 Q0,-328 38,-312 L34,-226 L-34,-226Z" fill="#04080d"/><ellipse cx="-2" cy="-302" rx="46" ry="22" fill="#04080d"/><polygon points="-38,-232 38,-232 50,-160 -50,-160" fill="#04080d"/><rect x="-9" y="-340" width="20" height="34" fill="#04080d"/><circle cx="6" cy="-354" r="24" fill="#04080d"/><polygon points="24,-362 36,-350 26,-342" fill="#04080d"/><path d="M-22,-362 C-22,-392 30,-392 30,-366 L52,-360 L50,-354 L-22,-356Z" fill="#04080d"/><polyline points="22,-302 32,-250 36,-200" fill="none" stroke="#04080d" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/></g></g></svg></div></div></div>
+  <canvas id="s11-front" width="1080" height="1920"></canvas>
+  <div id="s11-grade"></div>
+  <div id="s11-dark"></div></div>
+</div>
+<script>
+/* Browser-Laufzeit für jede Szene: deterministische Partikel, Licht-Flackern,
+ * Kamera-Wackeln. Alles ist eine reine Funktion der Szenenzeit t (seekable). */
+function hfMulberry(seed) {
+  let a = seed >>> 0;
+  return function () {
+    a |= 0; a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function hfFlicker(t, s) {
+  return 0.78 + 0.1 * Math.sin(t * 13.1 + s) + 0.07 * Math.sin(t * 29.7 + 2.3 * s) + 0.05 * Math.sin(t * 53.3 + 1.7 * s);
+}
+function hfNoise(t, s) {
+  return Math.sin(t * 1.7 + s) * 0.5 + Math.sin(t * 3.1 + 2 * s) * 0.3 + Math.sin(t * 7.3 + 3 * s) * 0.2;
+}
+function hfRamp(t, r) {
+  /* r = [t0, t1, from, to] */
+  if (!r) return 1;
+  const k = Math.min(1, Math.max(0, (t - r[0]) / Math.max(0.001, r[1] - r[0])));
+  return r[2] + (r[3] - r[2]) * k;
+}
+
+function hfMakeFx(canvas, specs, seed) {
+  const ctx = canvas.getContext("2d");
+  const W = canvas.width, H = canvas.height;
+  const systems = specs.map((sp, si) => {
+    const rnd = hfMulberry(seed * 977 + si * 131 + 7);
+    const n = sp.count || 100;
+    const ps = [];
+    for (let i = 0; i < n; i++) ps.push({ a: rnd(), b: rnd(), c: rnd(), d: rnd(), e: rnd() });
+    return { sp, ps };
+  });
+
+  function rain(sp, ps, t, k) {
+    const ang = ((sp.angle || 12) * Math.PI) / 180;
+    const len = sp.len || 70, sp0 = sp.speed || 2200;
+    ctx.strokeStyle = sp.color || "rgba(200,215,225,1)";
+    ctx.lineCap = "round";
+    for (let i = 0; i < ps.length * k; i++) {
+      const p = ps[i];
+      const v = sp0 * (0.7 + p.c * 0.6);
+      const span = H + len * 2;
+      const y = ((p.b * span + v * t) % span) - len;
+      const x = p.a * (W + 400) - 200 + Math.tan(ang) * y;
+      const near = 0.4 + p.d * 0.6;
+      ctx.globalAlpha = (sp.alpha || 0.35) * near;
+      ctx.lineWidth = (sp.width || 2.2) * near;
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x - Math.sin(ang) * len * near, y - Math.cos(ang) * len * near);
+      ctx.stroke();
+    }
+  }
+  function fog(sp, ps, t, k) {
+    const y0 = sp.y0 ?? H * 0.4, y1 = sp.y1 ?? H * 0.9;
+    for (let i = 0; i < ps.length; i++) {
+      const p = ps[i];
+      const r = (sp.size || 520) * (0.6 + p.c * 0.8);
+      const x = ((p.a * (W + 2 * r) + (sp.speed || 18) * (0.5 + p.d) * t) % (W + 2 * r)) - r;
+      const y = y0 + p.b * (y1 - y0) + Math.sin(t * 0.3 + p.e * 6) * 20;
+      const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+      const a = (sp.alpha || 0.18) * k * (0.5 + p.e * 0.5);
+      g.addColorStop(0, `rgba(${sp.rgb || "170,185,175"},${a})`);
+      g.addColorStop(1, `rgba(${sp.rgb || "170,185,175"},0)`);
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = g;
+      ctx.fillRect(x - r, y - r, 2 * r, 2 * r);
+    }
+  }
+  function fall(sp, ps, t, k) {
+    /* Asche, Schnee, Steine */
+    const sp0 = sp.speed || 120;
+    const visible = Math.floor(ps.length * k);
+    ctx.fillStyle = sp.color || "rgba(180,175,170,1)";
+    for (let i = 0; i < visible; i++) {
+      const p = ps[i];
+      const v = sp0 * (0.6 + p.c * 0.8);
+      const s = (sp.size || 4) * (0.5 + p.d);
+      const y = ((p.b * (H + 40) + v * t) % (H + 40)) - 20;
+      const x = p.a * W + Math.sin(t * (0.6 + p.e) + p.a * 20) * (sp.sway || 30);
+      ctx.globalAlpha = (sp.alpha || 0.7) * (0.4 + p.d * 0.6);
+      if (sp.rock) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(t * (p.e - 0.5) * 6);
+        ctx.fillRect(-s, -s * 0.7, s * 2, s * 1.4);
+        ctx.restore();
+      } else {
+        ctx.beginPath();
+        ctx.ellipse(x, y, s, s * 0.7, p.e * 3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+  function embers(sp, ps, t, k) {
+    /* Funken steigen aus einer Region auf */
+    const [ox, oy, ow, oh] = sp.region || [0, H * 0.7, W, H * 0.3];
+    ctx.globalCompositeOperation = "lighter";
+    for (let i = 0; i < ps.length * k; i++) {
+      const p = ps[i];
+      const life = 1.6 + p.c * 2.4;
+      const age = (t + p.b * life) % life;
+      const q = age / life;
+      const x = ox + p.a * ow + Math.sin(age * 3 + p.e * 9) * 22 + (sp.drift || 30) * age;
+      const y = oy + p.d * oh - (sp.speed || 160) * (0.6 + p.e) * age;
+      const s = (sp.size || 3) * (1 - q * 0.6);
+      const a = Math.sin(q * Math.PI) * (sp.alpha || 0.9);
+      const g = ctx.createRadialGradient(x, y, 0, x, y, s * 4);
+      g.addColorStop(0, `rgba(${sp.rgb || "255,190,90"},${a})`);
+      g.addColorStop(0.3, `rgba(${sp.rgb || "255,140,40"},${a * 0.5})`);
+      g.addColorStop(1, `rgba(${sp.rgb || "255,120,30"},0)`);
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = g;
+      ctx.fillRect(x - s * 4, y - s * 4, s * 8, s * 8);
+    }
+    ctx.globalCompositeOperation = "source-over";
+  }
+  function dust(sp, ps, t, k) {
+    ctx.fillStyle = sp.color || "rgba(255,230,190,1)";
+    for (let i = 0; i < ps.length * k; i++) {
+      const p = ps[i];
+      const x = p.a * W + Math.sin(t * 0.4 + p.c * 10) * 40 + t * 6;
+      const y = p.b * H + Math.cos(t * 0.33 + p.d * 10) * 30 - t * 4;
+      ctx.globalAlpha = (sp.alpha || 0.5) * (0.5 + 0.5 * Math.sin(t * 1.3 + p.e * 9));
+      ctx.beginPath();
+      ctx.arc(x, y, (sp.size || 2.4) * (0.4 + p.d), 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  function smoke(sp, ps, t, k) {
+    const [ox, oy, ow] = sp.region || [0, H, W];
+    for (let i = 0; i < ps.length; i++) {
+      const p = ps[i];
+      const life = 5 + p.c * 4;
+      const age = (t + p.b * life) % life;
+      const q = age / life;
+      const r = (sp.size || 180) * (0.4 + q * 1.4);
+      const x = ox + p.a * ow + (sp.drift || 20) * age;
+      const y = oy - (sp.speed || 90) * age;
+      const a = Math.sin(q * Math.PI) * (sp.alpha || 0.25) * k;
+      const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+      g.addColorStop(0, `rgba(${sp.rgb || "60,55,50"},${a})`);
+      g.addColorStop(1, `rgba(${sp.rgb || "60,55,50"},0)`);
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = g;
+      ctx.fillRect(x - r, y - r, 2 * r, 2 * r);
+    }
+  }
+  function drips(sp, ps, t, k) {
+    /* Tropfen, die über eine Fläche nach unten laufen */
+    const [rx, ry, rw, rh] = sp.region;
+    for (let i = 0; i < ps.length * k; i++) {
+      const p = ps[i];
+      const life = 1.4 + p.c * 2.2;
+      const age = (t + p.b * life) % life;
+      const q = age / life;
+      const x = rx + p.a * rw + Math.sin(q * 4 + p.e) * 4;
+      const y = ry + p.d * rh * 0.3 + rh * 0.8 * q * q;
+      const s = (sp.size || 5) * (0.6 + p.e * 0.6);
+      ctx.globalAlpha = (sp.alpha || 0.85) * Math.sin(q * Math.PI);
+      ctx.fillStyle = sp.color || "rgba(220,235,240,1)";
+      ctx.beginPath();
+      ctx.ellipse(x, y, s * 0.7, s, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalAlpha *= 0.35;
+      ctx.fillRect(x - 1, y - 40 * q, 2, 40 * q);
+    }
+  }
+  function spray(sp, ps, t, k) {
+    /* Gischt aus einem Punkt (Wassereinbruch) */
+    const [ox, oy] = sp.origin;
+    const dir = ((sp.dir || 0) * Math.PI) / 180;
+    ctx.fillStyle = sp.color || "rgba(200,225,240,1)";
+    for (let i = 0; i < ps.length * k; i++) {
+      const p = ps[i];
+      const life = 0.6 + p.c * 0.9;
+      const age = (t + p.b * life) % life;
+      const sp1 = (sp.speed || 1400) * (0.5 + p.d);
+      const a = dir + (p.a - 0.5) * (sp.spread || 0.6);
+      const x = ox + Math.cos(a) * sp1 * age;
+      const y = oy + Math.sin(a) * sp1 * age + 900 * age * age;
+      ctx.globalAlpha = (sp.alpha || 0.7) * (1 - age / life);
+      const s = (sp.size || 5) * (0.5 + p.e);
+      ctx.beginPath();
+      ctx.arc(x, y, s, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  const DRAW = { regen: rain, nebel: fog, asche: fall, steine: fall, schnee: fall, funken: embers, staub: dust, rauch: smoke, tropfen: drips, gischt: spray };
+
+  return function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+    for (const { sp, ps } of systems) {
+      const k = hfRamp(t, sp.ramp);
+      if (k <= 0.001) continue;
+      const fn = DRAW[sp.type];
+      if (fn) fn(sp, ps, t, k);
+    }
+    ctx.globalAlpha = 1;
+  };
+}
+
+(function () {
+  const tl = gsap.timeline({ paused: true });
+  tl.fromTo("#s11-cam", {scale:1.3099999999999998,x:-50,y:-130}, {scale:1.45,x:30,y:-90,duration:5.391,ease:"power1.in"}, 4.992);
+  tl.fromTo("#s11-L-beyond", {x:-4.6}, {x:4.6,duration:10.383,ease:"none"}, 0);
+  tl.fromTo("#s11-L-frame", {x:-13.8}, {x:13.8,duration:10.383,ease:"none"}, 0);
+  tl.fromTo("#s11-L-hero", {x:-36.8}, {x:36.8,duration:10.383,ease:"none"}, 0);
+  tl.fromTo("#s11-fade", {opacity:0}, {opacity:1,duration:0.4,ease:"power1.out"}, 4.992);
+  tl.fromTo("#s11-door", {x:370, y:-480}, {y:-480, duration:2.18, ease:"none"}, 0);
+  tl.to("#s11-door", {y:690, duration:7.90, ease:"power1.inOut"}, 2.18);
+  tl.fromTo("#s11-light0", {scale:1}, {scale:1.15, duration:0.35, ease:"sine.inOut", yoyo:true, repeat:28}, 0);
+  const fxB = hfMakeFx(document.getElementById("s11-back"), [], 12493);
+  const fxF = hfMakeFx(document.getElementById("s11-front"), [{"type":"gischt","count":120,"origin":[1100,1700],"dir":200,"spread":0.6,"speed":700,"size":4,"alpha":0.5},{"type":"staub","count":60,"alpha":0.3,"color":"rgba(160,170,180,1)"}], 12494);
+  const lights = [{"i":0.55,"f":true,"fast":true},{"i":0.4,"f":true,"fast":false}].map((L, i) => ({ ...L, el: document.getElementById("s11-light" + i) }));
+  const shake = 2.5, shakeFrom = 0;
+  function render(t) {
+    fxB(t);
+    fxF(t);
+    lights.forEach((L, i) => { if (L.f) L.el.style.opacity = (L.i * hfFlicker(t * (L.fast ? 2.2 : 1), i + 1)).toFixed(3); });
+    if (shake && t >= shakeFrom) {
+      const k = shake * (0.6 + 0.4 * Math.abs(Math.sin(t * 2.1)));
+      gsap.set("#s11-shake", { x: k * hfNoise(t * 9, 1), y: k * hfNoise(t * 8, 4), rotation: k * 0.04 * hfNoise(t * 6, 2) });
+    }
+  }
+  const P = { t: 0 };
+  tl.to(P, { t: 10.383, duration: 10.383, ease: "none", onUpdate: () => render(P.t) }, 0);
+  // Einstellung = Ausschnitt 4.992s..10.383s der ganzen Szene
+  const shot = gsap.timeline({ paused: true });
+  const Q = { t: 4.992 };
+  shot.to(Q, { t: 10.383, duration: 5.391, ease: "none", onUpdate: () => tl.seek(Q.t, false) }, 0);
+  tl.seek(4.992, false);
+  window.__timelines["s11"] = shot;
+})();</script>
+</template>
