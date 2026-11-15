@@ -11,3 +11,4 @@ output/*.mp4
 output/work-*/
 output/*.render.mp4
 output/.*
+assets/*/tts_request.json

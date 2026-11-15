@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Erzeugt Atmo, Musik und Soundeffekte prozedural (100 % selbst erzeugt, keine
-Lizenzfragen) und mischt sie mit der Stimme. Ergebnis: Stereo-WAV, -14 LUFS.
+Lizenzfragen) und mischt sie mit der Stimme. Ergebnis: Stereo-WAV, -15 LUFS, Erzähler klar im Vordergrund.
 
 Aufruf: python3 audio_mix.py <plan.json>
 plan = {
@@ -334,31 +334,57 @@ def main():
     mpts.sort()
     mus *= env_points(n, mpts)
 
-    # Sidechain-Ducking: Bett leiser, wenn gesprochen wird
-    venv = lp(np.abs(v), 6)
-    venv = np.clip(venv / (np.max(venv) or 1) * 4, 0, 1)
-    duck = 1.0 - 0.45 * venv
+    # --- Klare Sprache: Hintergrund aus dem Sprachbereich nehmen (1,5–4 kHz) und Höhen zähmen
+    def clear_for_voice(x, top=6500):
+        y = np.stack([lp(hp(ch, 70), top) for ch in x])
+        presence = np.stack([bp(ch, 1500, 4000) for ch in y])
+        return y - 0.55 * presence          # ca. -7 dB im Sprachband
 
-    sfx = np.zeros((2, n))
-    place(sfx, boom(rng), plan.get("hook_hit", 0.0) + 0.02, 0.9)
+    bed = clear_for_voice(bed, 6000)
+    mus = clear_for_voice(mus, 5000)
+
+    # --- Sidechain-Ducking: weich (Attack ~60 ms, Release ~450 ms), ca. -12 dB unter der Stimme
+    lvl = np.abs(v)
+    fast = lp(lvl, 8)
+    slow = lp(lvl, 1.2)
+    venv = np.maximum(fast, slow)
+    venv = np.clip(venv / (np.percentile(venv[venv > 1e-4], 90) if (venv > 1e-4).any() else 1), 0, 1)
+    duck = 1.0 - 0.75 * venv                # 1.0 in Pausen, 0.25 (= -12 dB) beim Sprechen
+
+    # --- Effekte: wenige, gezielt; nur Schlüsselmomente bleiben voll, der Rest weicht der Stimme
+    sfx = np.zeros((2, n))       # wird geduckt
+    hits = np.zeros((2, n))      # Hook, Wendepunkt, Endkarte: nicht geduckt (liegen nicht auf Sprache)
+    place(hits, boom(rng), plan.get("hook_hit", 0.0) + 0.02, 0.7)
     whoosh_takes = [whoosh(rng, 0.7), whoosh(rng, 0.9), whoosh(rng, 1.1)]
+    last_w = -9.0
     for i, s in enumerate(plan["scenes"][1:]):
-        if s.get("ton") == "stille":
+        # Whoosh höchstens alle 6 s und nie in Stille-Szenen
+        if s.get("ton") == "stille" or s["start"] - last_w < 6.0:
             continue
-        place(sfx, whoosh_takes[i % 3], s["start"] - 0.35, 0.22)
+        place(sfx, whoosh_takes[i % 3], s["start"] - 0.35, 0.12)
+        last_w = s["start"]
     if plan.get("wende_start") is not None:
-        place(sfx, riser(rng, 1.8), plan["wende_start"] - 1.8, 0.35)
-        place(sfx, boom(rng, 2.0), plan["wende_start"] + 0.02, 0.8)
+        place(sfx, riser(rng, 1.8), plan["wende_start"] - 1.8, 0.22)
+        place(hits, boom(rng, 2.0), plan["wende_start"] + 0.02, 0.55)
     for ev in plan.get("events", []):
         fn = SFX.get(ev["typ"])
         if fn:
-            place(sfx, fn(rng), ev["t"], ev.get("gain", 0.6))
-    place(sfx, boom(rng, 3.0), plan["endcard_start"] + 0.02, 0.85)
+            place(sfx, fn(rng), ev["t"], ev.get("gain", 0.6) * 0.7)
+    place(hits, boom(rng, 3.0), plan["endcard_start"] + 0.02, 0.6)
+    sfx = clear_for_voice(sfx, 9000)
 
-    mix = (np.stack([v, v]) * 1.0
-           + bed * duck * 0.16
-           + mus * duck * 0.13
-           + sfx * 0.55)
+    voice2 = np.stack([v, v])
+    mix = (voice2 * 1.0
+           + bed * duck * 0.075
+           + mus * duck * 0.07
+           + sfx * (1.0 - 0.6 * venv) * 0.35
+           + hits * 0.35)
+    # Kontrolle: Abstand Stimme zu Hintergrund während des Sprechens (Ziel >= 15 dB)
+    speaking = venv > 0.5
+    if speaking.any():
+        back = (bed * duck * 0.075 + mus * duck * 0.07 + sfx * (1.0 - 0.6 * venv) * 0.35)[:, speaking]
+        snr = 20 * np.log10((np.sqrt((voice2[:, speaking] ** 2).mean()) + 1e-9) / (np.sqrt((back ** 2).mean()) + 1e-9))
+        print(f"Stimme/Hintergrund beim Sprechen: {snr:.1f} dB", file=sys.stderr)
     mix = np.clip(mix, -1, 1)
 
     with tempfile.TemporaryDirectory() as td:
@@ -372,14 +398,14 @@ def main():
     print(json.dumps({"out": plan["out"], "duration": plan["duration"]}))
 
 
-def loudnorm(src, dst, target=-14.0):
-    """Zwei-Pass-Lautheitsnormalisierung auf -14 LUFS, True Peak -1.5 dBTP."""
+def loudnorm(src, dst, target=-15.0):
+    """Zwei-Pass-Lautheitsnormalisierung auf -15 LUFS, True Peak -2 dBTP (TikTok-tauglich, nicht zu laut)."""
     first = subprocess.run(["ffmpeg", "-hide_banner", "-i", src, "-af",
-                            f"loudnorm=I={target}:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"],
+                            f"loudnorm=I={target}:TP=-2:LRA=11:print_format=json", "-f", "null", "-"],
                            capture_output=True, text=True)
     txt = first.stderr
     m = json.loads(txt[txt.rindex("{"): txt.rindex("}") + 1])
-    af = (f"loudnorm=I={target}:TP=-1.5:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:"
+    af = (f"loudnorm=I={target}:TP=-2:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:"
           f"measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true")
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", src, "-af", af, "-ar", str(SR), dst], check=True)
 

@@ -88,6 +88,14 @@ export async function buildVideo(id, { render = true, quality = "delivery", stri
   execFileSync("python3", [path.join(ROOT, "pipeline", "audio_mix.py"), path.join(assetDir, "audio_plan.json")], { stdio: ["ignore", "ignore", "inherit"] });
   fs.mkdirSync(path.join(projDir, "assets"), { recursive: true });
   fs.copyFileSync(path.join(assetDir, "mix.wav"), path.join(projDir, "assets", "mix.wav"));
+  // 4b) Ist der Erzähler im fertigen Mix klar verständlich? (Whisper prüft)
+  if (process.env.SKIP_MIX_CHECK !== "1") {
+    console.log("  Verständlichkeit prüfen …");
+    const mc = spawnSync("python3", [path.join(ROOT, "pipeline", "mix_check.py"), path.join(assetDir, "mix.wav"), file], { encoding: "utf8" });
+    fs.writeFileSync(path.join(assetDir, "mix_check.txt"), (mc.stdout || "") + (mc.stderr || "").slice(-2000));
+    console.log("  " + (mc.stdout || "").split("\n")[0]);
+    if (mc.status === 3) throw new Error(`Erzähler im Mix nicht sauber verständlich – siehe assets/${id}/mix_check.txt`);
+  }
 
   // 5) Lint (Pflicht vor dem Rendern)
   console.log("  Lint …");

@@ -13,13 +13,16 @@ export const VOICE_DIR = process.env.VOICE_DIR || path.join(process.env.HOME || 
 const PIPER_VOICE = process.env.PIPER_VOICE || "de-karlsson-low";
 const COQUI_DIR = path.join(VOICE_DIR, "tts_models--de--thorsten--vits");
 // Standard: Coqui „Thorsten“ (22 kHz, deutlich sauberer). TTS_ENGINE=piper erzwingt die alte Stimme.
-const LOCAL = process.env.TTS_ENGINE || (fs.existsSync(COQUI_DIR) ? "coqui" : "piper");
+const hasOmni = (() => { try { execFileSync("python3", ["-c", "import omnivoice, faster_whisper"], { stdio: "ignore" }); return true; } catch { return false; } })();
+// Standard: OmniVoice (VoiceStudio-Engine, beste Verständlichkeit im Test: 0 % Wortfehler).
+// Reserve: Coqui Thorsten, dann Piper. Erzwingen mit TTS_ENGINE=omni|coqui|piper.
+const LOCAL = process.env.TTS_ENGINE || (hasOmni ? "omni" : fs.existsSync(COQUI_DIR) ? "coqui" : "piper");
 
 export async function makeVoice(script, outDir) {
   const sentences = splitSentences(script.erzaehltext);
   const useEleven = Boolean(process.env.ELEVENLABS_API_KEY);
   const lexHash = crypto.createHash("sha1").update(fs.readFileSync(path.join(ROOT, "pipeline", "aussprache.json"))).digest("hex").slice(0, 8);
-  const engine = useEleven ? `elevenlabs:${process.env.ELEVENLABS_VOICE_ID || "default"}` : LOCAL === "coqui" ? `coqui:thorsten-vits:lex${lexHash}` : `piper:${PIPER_VOICE}`;
+  const engine = useEleven ? `elevenlabs:${process.env.ELEVENLABS_VOICE_ID || "default"}` : LOCAL === "omni" ? "omni:erzaehler-v1" : LOCAL === "coqui" ? `coqui:thorsten-vits:lex${lexHash}` : `piper:${PIPER_VOICE}`;
   const hash = crypto.createHash("sha1").update(engine + "\n" + sentences.join("\n")).digest("hex").slice(0, 12);
   const wav = path.join(outDir, "voice.wav");
   const wordsFile = path.join(outDir, "words.json");
@@ -30,6 +33,7 @@ export async function makeVoice(script, outDir) {
   }
   console.log(`  Stimme erzeugen mit ${engine} …`);
   if (useEleven) await elevenLabs(sentences, wav, wordsFile);
+  else if (LOCAL === "omni") omni(sentences, wav, wordsFile);
   else if (LOCAL === "coqui") coqui(sentences, wav, wordsFile);
   else piper(sentences, wav, wordsFile);
   fs.writeFileSync(stamp, hash);
@@ -37,6 +41,13 @@ export async function makeVoice(script, outDir) {
   fs.writeFileSync(path.join(outDir, "transcript.txt"),
     data.words.map((w) => `${w.start.toFixed(2)}\t${w.end.toFixed(2)}\t${w.text}`).join("\n") + "\n");
   return data;
+}
+
+function omni(sentences, wav, wordsFile) {
+  const req = path.join(path.dirname(wav), "tts_request.json");
+  fs.writeFileSync(req, JSON.stringify({ sentences, out_wav: wav, out_words: wordsFile, speed: 0.92, num_step: 32 }, null, 1));
+  execFileSync("python3", [path.join(ROOT, "pipeline", "tts_omni.py"), req], { stdio: ["ignore", "ignore", "inherit"] });
+  fs.rmSync(req);
 }
 
 function coqui(sentences, wav, wordsFile) {

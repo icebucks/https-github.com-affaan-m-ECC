@@ -31,6 +31,11 @@ if (!py("torch") || !py("torchaudio") || !py("torchcodec")) run(`${pip} torch==2
 if (!py("TTS") || !py("gruut_lang_de")) {
   run(`${pip} --use-pep517 coqui-tts==0.28.0 "gruut[de]==2.4.0"`);
 }
+// OmniVoice (Erzählerstimme, Engine aus VoiceStudio) + Whisper (Wortzeiten, Verständlichkeits-Check)
+if (!py("omnivoice") || !py("faster_whisper") || !py("jiwer")) {
+  run(`${pip} --no-deps omnivoice==0.2.1`);
+  run(`${pip} pydub tensorboardX webdataset audioop-lts soundfile librosa "transformers>=5.3.0" accelerate faster-whisper jiwer rapidfuzz`);
+}
 console.log("✓ Python-Pakete");
 
 // 4) Stimmen (kostenlos, von GitHub-Releases)
