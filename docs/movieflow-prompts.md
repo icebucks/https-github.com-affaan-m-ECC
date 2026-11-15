@@ -49,3 +49,32 @@ Style: photorealistic, natural skin, 35mm film look, film grain, steel-blue pale
 
 ## Bewertung
 Gesichter/Hände · gleiche Figur über alle Szenen · historische Kleidung · Wasserzeichen · Länge/Format.
+
+
+---
+
+# Aufteilung in 10-Sekunden-Clips (3 pro Video)
+
+Je Clip: 9:16 · Realistic/Cinematic · 10 s · ohne Sprecher/Musik/Text.
+Für Clip 2 und 3 möglichst das letzte Bild des vorherigen Clips als Startbild nutzen (gleiche Figur).
+Dateinamen zum Hochladen: teutoburg-1.mp4 … titanic-3.mp4.
+
+| Video | Clip | Inhalt | Sprechtext ab |
+| --- | --- | --- | --- |
+| Teutoburg | 1 | Profil im Regen · Kolonne · Gepäck | „Ich bin Legionär …“ |
+| Teutoburg | 2 | nasser Helm · endloser Zug · Varus & Arminius | „Es regnet ohne Pause …“ |
+| Teutoburg | 3 | Stille · Speere · Arminius auf dem Hügel | „Dann: Stille …“ |
+| Pompeji | 1 | Ofen bei Nacht · Brote | „Ich bin Bäcker …“ |
+| Pompeji | 2 | Beben in der Gasse · Wolke über dem Vesuv | „Seit Tagen bebt die Erde …“ |
+| Pompeji | 3 | Ascheregen & Flucht · Bäcker in der Tür | „Jetzt fällt Asche …“ |
+| Titanic | 1 | Kesselraum · rußiges Gesicht | „Ich bin Heizer …“ |
+| Titanic | 2 | leere Prunktreppe · Schaufeln · Ruck | „Oben schlafen die Passagiere …“ |
+| Titanic | 3 | Bordwand · Wassereinbruch · Stahltür | „Ein langes, kratzendes Geräusch …“ |
+
+Die vollständigen Clip-Prompts stehen im Chat-Verlauf; sie folgen dem Muster:
+```
+Realistic cinematic historical clip, vertical 9:16, 10 seconds, no narration, no text, no gore.
+<Ort, Jahr>. Main character: <identische Figurenbeschreibung in jedem Clip>.
+Shot 1 (0-4s): … Shot 2 (4-7s): … Shot 3 (7-10s): …
+Photorealistic, natural skin, 35mm film look, film grain, <Farbpalette der Epoche>.
+```
