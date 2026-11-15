@@ -32,7 +32,10 @@ export function viralCheck(s, plan, words) {
   ok(avg <= 3.8, `Bildwechsel alle ${avg.toFixed(1)} s`, `Bildwechsel nur alle ${avg.toFixed(1)} s – mehr Szenen`);
   ok(!!plan.wendeStart && plan.wendeStart / plan.duration <= 0.8, "Wendepunkt vor dem letzten Fünftel", "Wendepunkt fehlt oder kommt zu spät");
   ok(!!s.frage, "Frage an die Zuschauer (Kommentare)", 'Feld "frage" fehlt');
-  ok(s.hashtags.length >= 3 && s.hashtags.length <= 8, `${s.hashtags.length} Hashtags`, "3–8 Hashtags verwenden");
+  ok(s.hashtags.length >= 3 && s.hashtags.length <= 6, `${s.hashtags.length} Hashtags`, "3–6 Hashtags (Nische + Thema + 1–2 breit, kein #fyp)");
+  const cap = `${s.bildunterschrift || ""} ${s.frage || ""}`.trim();
+  ok(cap.length <= 150, `Caption ${cap.length} Zeichen`, `Caption ${cap.length} Zeichen – auf ≤ 150 kürzen (Suchwort vorne)`);
+  ok(!!s.suchwort && cap.toLowerCase().includes(String(s.suchwort).toLowerCase()), "Suchwort in der Caption", 'Feld "suchwort" fehlt oder steht nicht in der Caption (TikTok-Suche)');
   ok((s.betonung || []).length >= 2, "Schlüsselwörter betont", 'Feld "betonung" (2–5 Schlüsselwörter) fehlt');
   return out;
 }
@@ -130,6 +133,8 @@ export async function buildVideo(id, { render = true, quality = "delivery", stri
   const dur = parseFloat(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", out]).toString());
   console.log(`  Fertig: ${path.relative(ROOT, out)} (${dur.toFixed(1)} s, ${lufs} LUFS)`);
   writeUploadTxt(script, path.join(outDir, `${id}_upload.txt`));
+  // Titelbild fürs Profil-Raster: erstes Bild mit Jahr, Ort und Hook-Zeile
+  execFileSync("ffmpeg", ["-y", "-loglevel", "error", "-ss", "0.6", "-i", out, "-frames:v", "1", "-q:v", "2", path.join(outDir, `${id}_titelbild.jpg`)]);
   return { out, plan, lufs, dur };
 }
 

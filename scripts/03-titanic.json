@@ -93,16 +93,14 @@
     "wasser"
   ],
   "musik": "drone_stahl",
-  "bildunterschrift": "14. April 1912: Ganz unten im Schiff spüren wir den Eisberg zuerst – und das Wasser. 🚢❄️",
-  "frage": "Was hättest du in diesem Moment getan? Teil 2 folgt – folg mir, um ihn nicht zu verpassen.",
+  "bildunterschrift": "Titanic, 1912: Ganz unten im Schiff spüren wir den Eisberg zuerst. 🚢❄️",
+  "frage": "Was hättest du getan? Teil 2 folgt.",
   "hashtags": [
     "#titanic",
-    "#geschichte",
     "#1912",
-    "#history",
+    "#geschichte",
     "#geschichtetiktok",
-    "#schiff",
-    "#heizer"
+    "#history"
   ],
   "hinweise": "Historisch geprüft: Die Titanic hatte keinen Ballsaal; Kollision am Sonntag, 14. April 1912, gegen 23:40 Uhr. Wasser drang u. a. in Kesselraum 6 ein, die wasserdichten Türen wurden von der Brücke geschlossen.",
   "hook_text": "Ganz unten merkt man es zuerst.",
@@ -112,5 +110,6 @@
     "eiskaltes",
     "falschen"
   ],
-  "figur_bild": "a young ship stoker in 1912, soot-covered face with sweat streaks, short hair under a dark flat cap, sleeveless grey undershirt, work trousers with braces"
+  "figur_bild": "a young ship stoker in 1912, soot-covered face with sweat streaks, short hair under a dark flat cap, sleeveless grey undershirt, work trousers with braces",
+  "suchwort": "Titanic"
 }

@@ -42,6 +42,36 @@ def main():
             img.save(os.path.join(out, it["key"] + ".jpg"), quality=93)
             print(f"  Bild {i + 1}/{len(todo)} {it['key']} ({time.time() - t:.0f} s)", file=sys.stderr, flush=True)
         del pipe
+    # Schärfen: Real-ESRGAN x2 (BSD-3), dann auf 1152 px Breite (genug Reserve für Kamerazoom bei 1080 px)
+    esr = os.path.join(os.environ.get("HOME", "/root"), ".cache", "ich-war-dabei", "models", "RealESRGAN_x2plus.pth")
+    small = [it for it in req["items"] if Image.open(os.path.join(out, it["key"] + ".jpg")).width < 1000]
+    if small and os.path.exists(esr):
+        from spandrel import ModelLoader
+        up = ModelLoader().load_from_file(esr).eval()
+        for it in small:
+            t = time.time()
+            f = os.path.join(out, it["key"] + ".jpg")
+            img = Image.open(f).convert("RGB")
+            x = torch.from_numpy(np.array(img)).permute(2, 0, 1).float().unsqueeze(0) / 255
+            _, _, H, W = x.shape
+            res = torch.zeros(1, 3, H * 2, W * 2)
+            T, P = 384, 16  # Kacheln mit Überlappung (keine Nähte)
+            with torch.no_grad():
+                for y in range(0, H, T):
+                    for x0 in range(0, W, T):
+                        y0, y1 = max(0, y - P), min(H, y + T + P)
+                        a0, a1 = max(0, x0 - P), min(W, x0 + T + P)
+                        o = up(x[:, :, y0:y1, a0:a1])
+                        oy, ox = (y - y0) * 2, (x0 - a0) * 2
+                        hh, ww = min(T, H - y) * 2, min(T, W - x0) * 2
+                        res[:, :, y * 2:y * 2 + hh, x0 * 2:x0 * 2 + ww] = o[:, :, oy:oy + hh, ox:ox + ww]
+            arr = (res.clamp(0, 1)[0].permute(1, 2, 0).numpy() * 255).astype(np.uint8)
+            big = Image.fromarray(arr).resize((1152, int(1152 * H / W)), Image.LANCZOS)
+            big.save(f, quality=93)
+            print(f"  Schärfen {it['key']} ({time.time() - t:.0f} s)", file=sys.stderr, flush=True)
+        del up
+    elif small:
+        print("  Hinweis: Real-ESRGAN-Modell fehlt (npm run setup) – Bilder bleiben ungeschärft", file=sys.stderr)
     # Tiefenkarten
     need = [it for it in req["items"] if not os.path.exists(os.path.join(out, it["key"] + "_depth.png"))]
     if need:

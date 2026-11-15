@@ -31,6 +31,14 @@ Alle Vorgaben des Nutzers (Stimme B, kostenlos, realistisch, Kurzfilm-Format …
 - `superpowers-writing-plans` / `superpowers-brainstorming`: vor größeren Umbauten (neue Epoche, neues Werkzeug) planen.
 - `short-film`: Film-Methodik übernehmen – **Ton vor Bild** (Stimme + Atmo stehen, bevor Bilder getimt werden), Schnitte auf Wort- oder
   Musik-Akzente legen, mehrere Optionen zur Wahl bauen, wenn der Nutzer Geschmack entscheiden soll, Versionen nie überschreiben, die er gesehen hat.
+- `tiktok-viral-creator`: TikTok-Methodik – pro Video **5 Hook-Varianten** schreiben (Behauptung, Warnung, Neugier-Lücke,
+  direkte Ansprache, mitten im Geschehen) und die stärkste nehmen; Caption ≤ 150 Zeichen mit **Suchwort** vorne (Feld `"suchwort"`,
+  z. B. „Varusschlacht“), 3–6 Hashtags ohne #fyp, Ende so bauen, dass es in den Anfang zurückführt (Rewatch),
+  Titelbild `output/<id>_titelbild.jpg` fürs Profil-Raster. Liefert der Nutzer Statistiken (Wiedergabedauer, % komplett angesehen,
+  Abbruchstellen, Shares, Follows): früher Abbruch = schwacher Hook, Abbruch in der Mitte = zu langsam, viele Views aber wenig
+  Follows = Nische/Profil unklar → 3 konkrete Experimente für die nächste Woche ableiten und in DECISIONS.md festhalten.
+- Bildqualität: Szenenbilder werden automatisch mit **Real-ESRGAN** (x2) geschärft. Nächste Ausbaustufen (nach Test):
+  **IP-Adapter** (Apache 2.0) für exakt gleiche Gesichter der Ich-Figur, **RIFE** (MIT) für flüssigere Bewegungsclips.
 - `fframes-video`: schneller Rust-Renderer (laut Projekt ~30× schneller als Remotion) – Option, falls das HyperFrames-Rendern
   (~10 min/Video auf CPU) zum Engpass wird; Umstieg nur nach Plan und Test, nicht nebenbei.
 

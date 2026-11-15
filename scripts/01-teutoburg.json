@@ -112,16 +112,14 @@
     "wald"
   ],
   "musik": "drone_moll",
-  "bildunterschrift": "9 n. Chr.: Drei römische Legionen marschieren in die Wälder Germaniens – und kommen nie wieder heraus. Ich war dabei. 🌲⚔️",
-  "frage": "Hättest du Arminius vertraut? Teil 2 folgt – folg mir, um ihn nicht zu verpassen.",
+  "bildunterschrift": "Varusschlacht, 9 n. Chr.: Drei Legionen marschieren in den Wald – und kommen nie zurück. 🌲⚔️",
+  "frage": "Hättest du Arminius vertraut? Teil 2 folgt.",
   "hashtags": [
-    "#geschichte",
-    "#römer",
     "#varusschlacht",
-    "#teutoburgerwald",
-    "#history",
+    "#römer",
+    "#geschichte",
     "#geschichtetiktok",
-    "#legionär"
+    "#history"
   ],
   "hook_text": "Drei Legionen. Ein Hinterhalt.",
   "betonung": [
@@ -130,5 +128,6 @@
     "speere",
     "verraten"
   ],
-  "figur_bild": "a weary young Roman legionary, short dark hair, stubble, brown eyes, plain iron Imperial Gallic helmet without crest, with hinged cheek guards, segmented lorica armor of horizontal iron bands over a faded red wool tunic"
+  "figur_bild": "a weary young Roman legionary, short dark hair, stubble, brown eyes, plain iron Imperial Gallic helmet without crest, with hinged cheek guards, segmented lorica armor of horizontal iron bands over a faded red wool tunic",
+  "suchwort": "Varusschlacht"
 }

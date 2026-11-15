@@ -92,16 +92,14 @@
     "stadt"
   ],
   "musik": "drone_dunkel",
-  "bildunterschrift": "Pompeji, 79 n. Chr.: Der Himmel über dem Vesuv wird dunkel – und ich muss entscheiden: bleiben oder fliehen. 🌋",
-  "frage": "Was hättest du mitgenommen? Teil 2 folgt – folg mir, um ihn nicht zu verpassen.",
+  "bildunterschrift": "Pompeji, 79 n. Chr.: Der Himmel über dem Vesuv wird schwarz. Bleiben oder fliehen? 🌋",
+  "frage": "Was hättest du mitgenommen? Teil 2 folgt.",
   "hashtags": [
     "#pompeji",
     "#vesuv",
     "#geschichte",
-    "#römer",
-    "#history",
     "#geschichtetiktok",
-    "#antike"
+    "#history"
   ],
   "hook_text": "Der letzte Morgen von Pompeji.",
   "betonung": [
@@ -110,5 +108,6 @@
     "steine",
     "zögere"
   ],
-  "figur_bild": "a stocky Roman baker in his forties, short dark hair grey at the temples, beard stubble, flour on his face, simple beige wool tunic and flour-dusted leather apron"
+  "figur_bild": "a stocky Roman baker in his forties, short dark hair grey at the temples, beard stubble, flour on his face, simple beige wool tunic and flour-dusted leather apron",
+  "suchwort": "Pompeji"
 }

@@ -48,6 +48,14 @@ if (!fs.existsSync(path.join(VOICES, "de-karlsson-low.onnx"))) {
   run(`curl -sSL https://github.com/rhasspy/piper/releases/download/v0.0.2/voice-de-karlsson-low.tar.gz | tar xz`, { cwd: VOICES });
 }
 console.log("✓ Stimmen: Coqui Thorsten (Standard), Piper Karlsson (Reserve)");
+// Bild-Schärfung (Real-ESRGAN x2, BSD-3) – kostenlos von GitHub
+const MODELS = path.join(path.dirname(VOICES), "models");
+fs.mkdirSync(MODELS, { recursive: true });
+if (!fs.existsSync(path.join(MODELS, "RealESRGAN_x2plus.pth"))) {
+  run(`curl -sSL -o RealESRGAN_x2plus.pth https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.1/RealESRGAN_x2plus.pth`, { cwd: MODELS });
+}
+if (!py("spandrel")) run(`${pip} spandrel`);
+console.log("✓ Bild-Schärfung (Real-ESRGAN)");
 
 // 5) Chrome für HyperFrames
 try { run(`${path.join(ROOT, "node_modules", ".bin", "hyperframes")} browser ensure`); } catch { console.warn("⚠ hyperframes browser ensure fehlgeschlagen – Rendern prüft das erneut."); }
