@@ -22,6 +22,18 @@ npm run setup        # Node-Pakete, Python (Coqui, gruut, piper, torch), Stimmen
 4. Danach `status` aktualisieren (`teil1` → `fertig` mit `teil2: "<id>"`; `offen` → `teil1` mit `teil1: "<id>"`).
 5. IDs fortlaufend: `NN-slug` bzw. `NN-slug-teil2` (NN = nächste freie Nummer in `scripts/`).
 
+## 0a. Zuerst lesen: `DECISIONS.md`
+Alle Vorgaben des Nutzers (Stimme B, kostenlos, realistisch, Kurzfilm-Format …). Neue Entscheidungen dort eintragen.
+
+## 0c. Arbeitsmethoden (Skills im Repo, für Verbesserungen)
+- `superpowers-systematic-debugging`: bei jedem Fehler (Build, Render, Stimme, Bild) – erst Ursache finden, dann beheben.
+- `superpowers-verification-before-completion`: nichts als fertig melden ohne Beleg (Lint, Viral-Check, Mix-Check, LUFS, Snapshots/Frames angesehen).
+- `superpowers-writing-plans` / `superpowers-brainstorming`: vor größeren Umbauten (neue Epoche, neues Werkzeug) planen.
+- `short-film`: Film-Methodik übernehmen – **Ton vor Bild** (Stimme + Atmo stehen, bevor Bilder getimt werden), Schnitte auf Wort- oder
+  Musik-Akzente legen, mehrere Optionen zur Wahl bauen, wenn der Nutzer Geschmack entscheiden soll, Versionen nie überschreiben, die er gesehen hat.
+- `fframes-video`: schneller Rust-Renderer (laut Projekt ~30× schneller als Remotion) – Option, falls das HyperFrames-Rendern
+  (~10 min/Video auf CPU) zum Engpass wird; Umstieg nur nach Plan und Test, nicht nebenbei.
+
 ## 0b. Kosten-Regel (Nutzerwunsch): alles kostenlos
 Nur kostenlose, lokale Werkzeuge verwenden: RealVisXL (Bilder), Depth Anything (2.5D), OmniVoice (Stimme), Whisper,
 prozeduraler Ton, HyperFrames. Bewegungsclips nur über das kostenlose HuggingFace-Kontingent (Wan 2.2) – ist es leer,
