@@ -73,17 +73,38 @@ def place(buf, clip, t, gain=1.0):
 
 
 # ---------------------------------------------------------------- Atmo
+def pink(r, n):
+    """rosa Rauschen (1/f) – weicher und natürlicher als weißes Rauschen"""
+    w = r.standard_normal(n)
+    b = [0.049922035, -0.095993537, 0.050612699, -0.004408786]
+    a = [1, -2.494956002, 2.017265875, -0.522189400]
+    return signal.lfilter(b, a, w)
+
+
 def atmo_regen(rng, n):
+    """Regen aus vielen einzelnen Tropfen-Einschlägen + weichem Prasseln (kein Zischen)."""
     def one(r):
-        w = r.standard_normal(n)
-        hiss = bp(w, 900, 9000) * 0.5
-        # einzelne Tropfen
+        # weiches Prasseln: rosa Rauschen, nur tiefe/mittlere Lagen
+        wash = bp(pink(r, n), 250, 2600, 2)
+        wash = norm(wash, 0.35) * (0.8 + 0.2 * smooth_noise(r, n, 0.25))
+        # Tropfen: kurze, gedämpfte Resonanzen in vier Tonlagen
         drops = np.zeros(n)
-        idx = r.integers(0, n, size=int(n / SR * 90))
-        drops[idx] = r.random(len(idx)) * 2 - 1
-        drops = bp(drops, 2000, 7000) * 4
-        mod = 0.75 + 0.25 * smooth_noise(r, n, 0.3)
-        return (hiss + drops) * mod
+        for lo, hi, rate, gain in [(700, 1400, 70, 1.0), (1300, 2400, 110, 0.8), (2200, 3600, 120, 0.55), (3400, 5200, 60, 0.3)]:
+            imp = np.zeros(n)
+            k = int(n / SR * rate)
+            idx = r.integers(0, n, size=k)
+            imp[idx] = (r.random(k) ** 2.5) * np.sign(r.random(k) - 0.5)
+            res = signal.sosfilt(signal.butter(2, [lo, hi], btype="band", fs=SR, output="sos"), imp)
+            drops += res * gain
+        drops = norm(drops, 0.6)
+        # gelegentliche schwere Tropfen (Blätter, Dach)
+        heavy = np.zeros(n)
+        k = int(n / SR * 3)
+        idx = r.integers(0, n, size=k)
+        heavy[idx] = r.random(k) * 0.8
+        heavy = bp(heavy, 300, 1200, 2) * 6
+        mix_ = wash + drops + norm(heavy, 0.25)
+        return lp(mix_, 6500, 4)
     return norm(stereo(rng, one), 0.5)
 
 
