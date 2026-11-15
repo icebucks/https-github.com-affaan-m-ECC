@@ -6,20 +6,104 @@
   "figur": "legionaer",
   "erzaehltext": "Ich bin Legionär der neunzehnten Legion. Seit Tagen marschieren wir durch diesen Wald. Auf meinem Rücken: Rüstung, Schanzwerkzeug, Proviant. Über dreißig Kilo. Es regnet ohne Pause. Der Weg ist so schmal, dass sich unser Zug kilometerweit zieht. Unser Feldherr Varus vertraut Arminius, einem Germanen in römischen Diensten. Dann: Stille. Kein Vogel. Kein Wind. Und plötzlich fliegen Speere aus den Bäumen. Arminius hat uns verraten. Teil zwei folgt.",
   "szenen": [
-    { "ab_satz": 0, "motiv": "legionaer_portrait", "beschreibung": "Ich-Figur im Regen vor dunklem Wald, Fackellicht von der Seite", "effekte": ["regen", "nebel"] },
-    { "ab_satz": 1, "motiv": "kolonne_wald", "beschreibung": "Kolonne marschiert durch nebligen Wald", "effekte": ["regen", "nebel"] },
-    { "ab_satz": 2, "motiv": "gepaeck", "beschreibung": "Rücken der Ich-Figur mit Gepäckstange, Schild, Werkzeug", "effekte": ["regen"] },
-    { "ab_satz": 4, "motiv": "nasser_helm", "beschreibung": "Nahaufnahme nasser Helm, Tropfen laufen ab", "effekte": ["regen", "tropfen"] },
-    { "ab_satz": 5, "motiv": "langer_zug", "beschreibung": "Endloser Zug auf schmalem Pfad zwischen Hängen", "effekte": ["regen", "nebel"] },
-    { "ab_satz": 6, "motiv": "varus_arminius", "beschreibung": "Varus mit Helmbusch und Arminius im Umhang vor dem Zelt, Fackel", "effekte": ["regen", "funken"] },
-    { "ab_satz": 7, "motiv": "stiller_wald", "beschreibung": "Wald erstarrt, Regen wird leiser, Nebel hängt", "effekte": ["nebel"], "ton": "stille" },
-    { "ab_satz": 10, "motiv": "speere", "beschreibung": "Speere fliegen aus dem Dickicht", "effekte": ["regen", "nebel"], "wendepunkt": true },
-    { "ab_satz": 11, "motiv": "verrat", "beschreibung": "Silhouette Arminius auf dem Hügel, Fackeln der Germanen", "effekte": ["regen", "funken"], "wendepunkt": true }
+    {
+      "ab_satz": 0,
+      "motiv": "legionaer_portrait",
+      "beschreibung": "Ich-Figur im Regen vor dunklem Wald, Fackellicht von der Seite",
+      "effekte": [
+        "regen",
+        "nebel"
+      ]
+    },
+    {
+      "ab_satz": 1,
+      "motiv": "kolonne_wald",
+      "beschreibung": "Kolonne marschiert durch nebligen Wald",
+      "effekte": [
+        "regen",
+        "nebel"
+      ]
+    },
+    {
+      "ab_satz": 2,
+      "motiv": "gepaeck",
+      "beschreibung": "Rücken der Ich-Figur mit Gepäckstange, Schild, Werkzeug",
+      "effekte": [
+        "regen"
+      ]
+    },
+    {
+      "ab_satz": 4,
+      "motiv": "nasser_helm",
+      "beschreibung": "Nahaufnahme nasser Helm, Tropfen laufen ab",
+      "effekte": [
+        "regen",
+        "tropfen"
+      ]
+    },
+    {
+      "ab_satz": 5,
+      "motiv": "langer_zug",
+      "beschreibung": "Endloser Zug auf schmalem Pfad zwischen Hängen",
+      "effekte": [
+        "regen",
+        "nebel"
+      ]
+    },
+    {
+      "ab_satz": 6,
+      "motiv": "varus_arminius",
+      "beschreibung": "Varus mit Helmbusch und Arminius im Umhang vor dem Zelt, Fackel",
+      "effekte": [
+        "regen",
+        "funken"
+      ]
+    },
+    {
+      "ab_satz": 7,
+      "motiv": "stiller_wald",
+      "beschreibung": "Wald erstarrt, Regen wird leiser, Nebel hängt",
+      "effekte": [
+        "nebel"
+      ],
+      "ton": "stille"
+    },
+    {
+      "ab_satz": 10,
+      "motiv": "speere",
+      "beschreibung": "Speere fliegen aus dem Dickicht",
+      "effekte": [
+        "regen",
+        "nebel"
+      ],
+      "wendepunkt": true
+    },
+    {
+      "ab_satz": 11,
+      "motiv": "verrat",
+      "beschreibung": "Silhouette Arminius auf dem Hügel, Fackeln der Germanen",
+      "effekte": [
+        "regen",
+        "funken"
+      ],
+      "wendepunkt": true
+    }
   ],
   "endkarte": "Teil 2 folgt",
-  "atmo": ["regen", "wald"],
+  "atmo": [
+    "regen",
+    "wald"
+  ],
   "musik": "drone_moll",
-  "bildunterschrift": "Im Jahr 9 nach Christus verschwinden drei römische Legionen in den Wäldern Germaniens. Ich war dabei.",
-  "frage": "Hättest du Arminius vertraut?",
-  "hashtags": ["#geschichte", "#römer", "#varusschlacht", "#teutoburgerwald", "#history", "#geschichtetiktok", "#legionär"]
+  "bildunterschrift": "9 n. Chr.: Drei römische Legionen marschieren in die Wälder Germaniens – und kommen nie wieder heraus. Ich war dabei. 🌲⚔️",
+  "frage": "Hättest du Arminius vertraut? Teil 2 folgt – folg mir, um ihn nicht zu verpassen.",
+  "hashtags": [
+    "#geschichte",
+    "#römer",
+    "#varusschlacht",
+    "#teutoburgerwald",
+    "#history",
+    "#geschichtetiktok",
+    "#legionär"
+  ]
 }

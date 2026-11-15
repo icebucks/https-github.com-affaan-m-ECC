@@ -6,18 +6,85 @@
   "figur": "baecker",
   "erzaehltext": "Ich bin Bäcker in Pompeji. Jeden Morgen um vier heize ich den Ofen an, die Brote liegen schon bereit. Seit Tagen bebt die Erde leicht. Niemand macht sich Sorgen – das kennen wir hier. Heute Mittag hat sich der Himmel über dem Vesuv verdunkelt. Eine Wolke, hoch wie ein Baum, der in den Himmel wächst. Jetzt fällt Asche. Erst wie Schnee. Dann wie Steine. Die Leute rennen zum Hafen. Ich zögere. Mein ganzes Leben steckt in dieser Bäckerei. Teil zwei folgt.",
   "szenen": [
-    { "ab_satz": 0, "motiv": "ofenglut", "beschreibung": "Ofenglut bei Nacht, Bäcker vor dem Ofen", "effekte": ["funken", "rauch"] },
-    { "ab_satz": 1, "motiv": "brote", "beschreibung": "Runde Brote auf dem Tresen im Ofenlicht", "effekte": ["staub"] },
-    { "ab_satz": 2, "motiv": "gasse", "beschreibung": "Gasse mit Händlern und Amphoren, leichtes Beben", "effekte": ["staub"], "beben": true },
-    { "ab_satz": 4, "motiv": "vesuv_wolke", "beschreibung": "Wolke wächst über dem Vesuv wie ein Baum", "effekte": ["rauch"] },
-    { "ab_satz": 6, "motiv": "ascheregen", "beschreibung": "Asche fällt, erst fein, dann Steine", "effekte": ["asche", "steine"], "wendepunkt": true },
-    { "ab_satz": 9, "motiv": "flucht_hafen", "beschreibung": "Menschen rennen Richtung Hafen", "effekte": ["asche"], "wendepunkt": true },
-    { "ab_satz": 10, "motiv": "baecker_tuer", "beschreibung": "Bäcker in der Tür seiner Bäckerei, Glut hinter ihm", "effekte": ["asche", "funken"], "wendepunkt": true }
+    {
+      "ab_satz": 0,
+      "motiv": "ofenglut",
+      "beschreibung": "Ofenglut bei Nacht, Bäcker vor dem Ofen",
+      "effekte": [
+        "funken",
+        "rauch"
+      ]
+    },
+    {
+      "ab_satz": 1,
+      "motiv": "brote",
+      "beschreibung": "Runde Brote auf dem Tresen im Ofenlicht",
+      "effekte": [
+        "staub"
+      ]
+    },
+    {
+      "ab_satz": 2,
+      "motiv": "gasse",
+      "beschreibung": "Gasse mit Händlern und Amphoren, leichtes Beben",
+      "effekte": [
+        "staub"
+      ],
+      "beben": true
+    },
+    {
+      "ab_satz": 4,
+      "motiv": "vesuv_wolke",
+      "beschreibung": "Wolke wächst über dem Vesuv wie ein Baum",
+      "effekte": [
+        "rauch"
+      ]
+    },
+    {
+      "ab_satz": 6,
+      "motiv": "ascheregen",
+      "beschreibung": "Asche fällt, erst fein, dann Steine",
+      "effekte": [
+        "asche",
+        "steine"
+      ],
+      "wendepunkt": true
+    },
+    {
+      "ab_satz": 9,
+      "motiv": "flucht_hafen",
+      "beschreibung": "Menschen rennen Richtung Hafen",
+      "effekte": [
+        "asche"
+      ],
+      "wendepunkt": true
+    },
+    {
+      "ab_satz": 10,
+      "motiv": "baecker_tuer",
+      "beschreibung": "Bäcker in der Tür seiner Bäckerei, Glut hinter ihm",
+      "effekte": [
+        "asche",
+        "funken"
+      ],
+      "wendepunkt": true
+    }
   ],
   "endkarte": "Teil 2 folgt",
-  "atmo": ["feuer", "stadt"],
+  "atmo": [
+    "feuer",
+    "stadt"
+  ],
   "musik": "drone_dunkel",
-  "bildunterschrift": "Pompeji, 79 nach Christus. Ein Bäcker muss sich entscheiden: Bleiben oder fliehen.",
-  "frage": "Was hättest du mitgenommen?",
-  "hashtags": ["#pompeji", "#vesuv", "#geschichte", "#römer", "#history", "#geschichtetiktok"]
+  "bildunterschrift": "Pompeji, 79 n. Chr.: Der Himmel über dem Vesuv wird dunkel – und ich muss entscheiden: bleiben oder fliehen. 🌋",
+  "frage": "Was hättest du mitgenommen? Teil 2 folgt – folg mir, um ihn nicht zu verpassen.",
+  "hashtags": [
+    "#pompeji",
+    "#vesuv",
+    "#geschichte",
+    "#römer",
+    "#history",
+    "#geschichtetiktok",
+    "#antike"
+  ]
 }
