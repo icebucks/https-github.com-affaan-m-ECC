@@ -10,8 +10,18 @@ import numpy as np
 import jiwer
 from faster_whisper import WhisperModel
 
+from num2words import num2words
+
+def digits_to_words(s):
+    """Whisper schreibt Zahlen als Ziffern ("19." / "30") – für den Vergleich in Worte umwandeln."""
+    def ordi(m):
+        w = num2words(int(m.group(1)), lang="de", to="ordinal")
+        return w + "n"          # "neunzehnte" -> "neunzehnten" (häufigste Form im Satz)
+    s = re.sub(r"\b(\d+)\.(?=\s+[a-zäöüß])", ordi, s)
+    return re.sub(r"\d+", lambda m: num2words(int(m.group(0)), lang="de"), s)
+
 def norm(s):
-    s = s.lower().replace("ß", "ss")
+    s = digits_to_words(s).lower().replace("ß", "ss")
     s = re.sub(r"[^\wäöü ]", " ", s)
     return re.sub(r"\s+", " ", s).strip()
 

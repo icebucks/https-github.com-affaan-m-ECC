@@ -375,14 +375,14 @@ def main():
 
     voice2 = np.stack([v, v])
     mix = (voice2 * 1.0
-           + bed * duck * 0.075
-           + mus * duck * 0.07
+           + bed * duck * 0.055
+           + mus * duck * 0.05
            + sfx * (1.0 - 0.6 * venv) * 0.35
            + hits * 0.35)
     # Kontrolle: Abstand Stimme zu Hintergrund während des Sprechens (Ziel >= 15 dB)
     speaking = venv > 0.5
     if speaking.any():
-        back = (bed * duck * 0.075 + mus * duck * 0.07 + sfx * (1.0 - 0.6 * venv) * 0.35)[:, speaking]
+        back = (bed * duck * 0.055 + mus * duck * 0.05 + sfx * (1.0 - 0.6 * venv) * 0.35)[:, speaking]
         snr = 20 * np.log10((np.sqrt((voice2[:, speaking] ** 2).mean()) + 1e-9) / (np.sqrt((back ** 2).mean()) + 1e-9))
         print(f"Stimme/Hintergrund beim Sprechen: {snr:.1f} dB", file=sys.stderr)
     mix = np.clip(mix, -1, 1)
