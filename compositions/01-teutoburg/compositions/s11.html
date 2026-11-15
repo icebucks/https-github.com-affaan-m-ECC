@@ -227,10 +227,10 @@ function hfMakeFx(canvas, specs, seed) {
 
 (function () {
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#s11-cam", {scale:1.24,x:-50,y:-70}, {scale:1.3800000000000001,x:30,y:-30,duration:2.904,ease:"sine.inOut"}, 2.505);
-  tl.fromTo("#s11-fade", {opacity:0, scale:1.07}, {opacity:1, scale:1, duration:0.4, ease:"power2.out"}, 2.505);
+  tl.fromTo("#s11-cam", {scale:1,x:0,y:0}, {scale:1.08,x:0,y:0,duration:2.118,ease:"sine.inOut"}, 0);
+  tl.fromTo("#s11-fade", {opacity:0, scale:1.07}, {opacity:1, scale:1, duration:0.4, ease:"power2.out"}, 0);
 
-  const GLC = {"z0":1.04,"z1":1.15,"px0":0.012,"px1":-0.012,"py0":0.0014933716468513013,"py1":-0.0012281689308583739,"ox0":0.028,"ox1":-0.028,"oy0":0.006,"oy1":-0.006}, GLV = {"z":0.14,"x":0.05,"y":-0.03}, GLD = 5.409;
+  const GLC = {"z0":1.04,"z1":1.15,"px0":0.012,"px1":-0.012,"py0":0.00059195576608181,"py1":0.0019907385339029133,"ox0":0.028,"ox1":-0.028,"oy0":0.006,"oy1":-0.006}, GLV = {"z":0,"x":0,"y":0}, GLD = 5.846;
   const glCanvas = document.getElementById("s11-gl");
   const g = glCanvas.getContext("webgl", { preserveDrawingBuffer: true, antialias: false });
   let glReady = false, glU = null;
@@ -266,11 +266,11 @@ function hfMakeFx(canvas, specs, seed) {
     g.uniform1f(g.getUniformLocation(pr, "ax"), (1080 / 1920) / (im.width / im.height));
     glU = { zoom: g.getUniformLocation(pr, "zoom"), pan: g.getUniformLocation(pr, "pan"), off: g.getUniformLocation(pr, "off") };
     g.viewport(0, 0, 1080, 1920);
-    glReady = true; glDraw(2.505);
+    glReady = true; glDraw(0);
     const px = new Uint8Array(4); g.readPixels(0, 0, 1, 1, g.RGBA, g.UNSIGNED_BYTE, px);
   });
-  const fxB = hfMakeFx(document.getElementById("s11-back"), [], 31470);
-  const fxF = hfMakeFx(document.getElementById("s11-front"), [{"type":"nebel","count":7,"size":560,"alpha":0.12,"rgb":"150,168,156","y0":900,"y1":1900,"speed":18}], 31471);
+  const fxB = hfMakeFx(document.getElementById("s11-back"), [], 48321);
+  const fxF = hfMakeFx(document.getElementById("s11-front"), [{"type":"nebel","count":7,"size":560,"alpha":0.12,"rgb":"150,168,156","y0":900,"y1":1900,"speed":18}], 48322);
   const lights = [].map((L, i) => ({ ...L, el: document.getElementById("s11-light" + i) }));
   const shake = 0, shakeFrom = 0;
   // Daumenkino-Figuren (Geh-/Lauf-/Arbeitszyklen): pro Bild genau ein Einzelbild sichtbar
@@ -292,12 +292,12 @@ function hfMakeFx(canvas, specs, seed) {
     }
   }
   const P = { t: 0 };
-  tl.to(P, { t: 5.409, duration: 5.409, ease: "none", onUpdate: () => render(P.t) }, 0);
-  // Einstellung = Ausschnitt 2.505s..5.409s der ganzen Szene
+  tl.to(P, { t: 5.846, duration: 5.846, ease: "none", onUpdate: () => render(P.t) }, 0);
+  // Einstellung = Ausschnitt 0s..2.118s der ganzen Szene
   const shot = gsap.timeline({ paused: true });
-  const Q = { t: 2.505 };
-  shot.to(Q, { t: 5.409, duration: 2.904, ease: "none", onUpdate: () => tl.seek(Q.t, false) }, 0);
-  tl.seek(2.505, false);
+  const Q = { t: 0 };
+  shot.to(Q, { t: 2.118, duration: 2.118, ease: "none", onUpdate: () => tl.seek(Q.t, false) }, 0);
+  tl.seek(0, false);
   window.__timelines["s11"] = shot;
 })();</script>
 </template>

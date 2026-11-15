@@ -227,10 +227,10 @@ function hfMakeFx(canvas, specs, seed) {
 
 (function () {
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#s02-cam", {scale:1,x:0,y:0}, {scale:1.08,x:0,y:0,duration:3.102,ease:"sine.inOut"}, 0);
+  tl.fromTo("#s02-cam", {scale:1,x:0,y:0}, {scale:1.08,x:0,y:0,duration:3.16,ease:"sine.inOut"}, 0);
   tl.fromTo("#s02-fade", {opacity:0, scale:1.07}, {opacity:1, scale:1, duration:0.4, ease:"power2.out"}, 0);
 
-  const GLC = {"z0":1.16,"z1":1.05,"px0":-0.012,"px1":0.012,"py0":0.003836260713636875,"py1":0.0020688662114553154,"ox0":-0.028,"ox1":0.028,"oy0":0.006,"oy1":-0.006}, GLV = {"z":0,"x":0,"y":0}, GLD = 3.102;
+  const GLC = {"z0":1.04,"z1":1.15,"px0":0.012,"px1":-0.012,"py0":-0.00002808443643152714,"py1":-0.0005751970275305213,"ox0":0.028,"ox1":-0.028,"oy0":0.006,"oy1":-0.006}, GLV = {"z":0,"x":0,"y":0}, GLD = 3.16;
   const glCanvas = document.getElementById("s02-gl");
   const g = glCanvas.getContext("webgl", { preserveDrawingBuffer: true, antialias: false });
   let glReady = false, glU = null;
@@ -256,7 +256,7 @@ function hfMakeFx(canvas, specs, seed) {
     g.drawArrays(g.TRIANGLE_STRIP, 0, 4);
   }
   window.__hf = window.__hf || {}; window.__hf.buildReady = window.__hf.buildReady || {};
-  window.__hf.buildReady["s02-gl"] = Promise.all([glLoad("assets/bilder/b-d683fd80d5.jpg"), glLoad("assets/bilder/b-d683fd80d5_depth.png")]).then(([im, dp]) => {
+  window.__hf.buildReady["s02-gl"] = Promise.all([glLoad("assets/bilder/b-d2cb97714b.jpg"), glLoad("assets/bilder/b-d2cb97714b_depth.png")]).then(([im, dp]) => {
     const sh = (type, src) => { const o = g.createShader(type); g.shaderSource(o, src); g.compileShader(o); return o; };
     const pr = g.createProgram(); g.attachShader(pr, sh(g.VERTEX_SHADER, glVS)); g.attachShader(pr, sh(g.FRAGMENT_SHADER, glFS)); g.linkProgram(pr); g.useProgram(pr);
     const b = g.createBuffer(); g.bindBuffer(g.ARRAY_BUFFER, b); g.bufferData(g.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), g.STATIC_DRAW);
@@ -269,8 +269,8 @@ function hfMakeFx(canvas, specs, seed) {
     glReady = true; glDraw(0);
     const px = new Uint8Array(4); g.readPixels(0, 0, 1, 1, g.RGBA, g.UNSIGNED_BYTE, px);
   });
-  const fxB = hfMakeFx(document.getElementById("s02-back"), [], 73724);
-  const fxF = hfMakeFx(document.getElementById("s02-front"), [{"type":"regen","count":380,"angle":14,"speed":2300,"len":80,"alpha":0.28,"color":"rgba(190,210,205,1)"},{"type":"nebel","count":7,"size":560,"alpha":0.12,"rgb":"150,168,156","y0":900,"y1":1900,"speed":18}], 73725);
+  const fxB = hfMakeFx(document.getElementById("s02-back"), [], 88755);
+  const fxF = hfMakeFx(document.getElementById("s02-front"), [{"type":"regen","count":380,"angle":14,"speed":2300,"len":80,"alpha":0.28,"color":"rgba(190,210,205,1)"},{"type":"nebel","count":7,"size":560,"alpha":0.12,"rgb":"150,168,156","y0":900,"y1":1900,"speed":18}], 88756);
   const lights = [].map((L, i) => ({ ...L, el: document.getElementById("s02-light" + i) }));
   const shake = 0, shakeFrom = 0;
   // Daumenkino-Figuren (Geh-/Lauf-/Arbeitszyklen): pro Bild genau ein Einzelbild sichtbar
@@ -292,7 +292,7 @@ function hfMakeFx(canvas, specs, seed) {
     }
   }
   const P = { t: 0 };
-  tl.to(P, { t: 3.102, duration: 3.102, ease: "none", onUpdate: () => render(P.t) }, 0);
+  tl.to(P, { t: 3.16, duration: 3.16, ease: "none", onUpdate: () => render(P.t) }, 0);
   render(0);
   window.__timelines["s02"] = tl;
 })();</script>
