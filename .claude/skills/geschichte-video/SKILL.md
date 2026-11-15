@@ -22,6 +22,14 @@ npm run setup        # Node-Pakete, Python (Coqui, gruut, piper, torch), Stimmen
 4. Danach `status` aktualisieren (`teil1` → `fertig` mit `teil2: "<id>"`; `offen` → `teil1` mit `teil1: "<id>"`).
 5. IDs fortlaufend: `NN-slug` bzw. `NN-slug-teil2` (NN = nächste freie Nummer in `scripts/`).
 
+## 0b. Kosten-Regel (Nutzerwunsch): alles kostenlos
+Nur kostenlose, lokale Werkzeuge verwenden: RealVisXL (Bilder), Depth Anything (2.5D), OmniVoice (Stimme), Whisper,
+prozeduraler Ton, HyperFrames. Bewegungsclips nur über das kostenlose HuggingFace-Kontingent (Wan 2.2) – ist es leer,
+bleibt die Szene 2.5D. KEINE bezahlten Dienste aufrufen (ElevenLabs-Credits, fal.ai, Kling, Seedance, HF PRO …),
+auch nicht „nur zum Testen“, solange der Nutzer kein Budget freigibt.
+Mögliche Upgrades für später (nur nach Freigabe): HuggingFace PRO ~9 $/Monat (≈15–20 Bewegungsclips/Tag) ·
+fal.ai Kling 3.0 / Seedance (beste menschliche Bewegung, ~0,03–0,22 $/s) · ElevenLabs-Stimme.
+
 ## 1b. Format: Kurzfilme (Nutzerwunsch – langfristiger Aufbau)
 Jede Geschichte wird ein **Kurzfilm** und liefert drei Uploads:
 1. **Teil 1** (21–40 s, Cliffhanger) · 2. **Teil 2** am Folgetag (25–55 s, Auflösung) ·
