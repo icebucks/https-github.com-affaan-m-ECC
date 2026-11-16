@@ -237,7 +237,9 @@ function fotoMotif(ctx) {
   const w = !!scene.wendepunkt;
   const dir = r() > 0.5 ? 1 : -1;
   const zin = r() > 0.35; // meist hineinzoomen
-  const z0 = w ? 1.04 : zin ? 1.04 : 1.16, z1 = w ? 1.24 : zin ? 1.15 : 1.05;
+  // erste Szene: sofort spürbarer Zoom auf das Gesicht (Bewegung ab Frame 0)
+  const first = ctx.sid === "s01";
+  const z0 = first ? 1.0 : w ? 1.04 : zin ? 1.04 : 1.16, z1 = first ? 1.22 : w ? 1.24 : zin ? 1.15 : 1.05;
   const cam = {
     z0, z1,
     px0: -0.012 * dir, px1: 0.012 * dir, py0: 0.008 * (r() - 0.5), py1: -0.01 * (r() - 0.3),
@@ -311,19 +313,17 @@ function hookHtml(script, pal) {
   return `<template>
 <style>
 #root { position: absolute; inset: 0; }
-#hook-scrim { position: absolute; left: 0; top: 0; width: 1080px; height: 1100px; background: linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0) 100%); }
-#hook-box { position: absolute; left: 60px; top: 330px; width: 860px; text-align: center; transform-origin: 50% 50%; }
-#hook-year { font-family: "Playfair Display", serif; font-weight: 900; font-size: ${size}px; line-height: 1; color: #fff; text-shadow: 0 0 40px ${pal.accent}aa, 0 6px 20px rgba(0,0,0,0.8); }
-#hook-line { width: 520px; height: 6px; margin: 34px auto 30px; background: ${pal.accent}; box-shadow: 0 0 24px ${pal.accent}; transform-origin: 50% 50%; }
-#hook-place { font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 68px; letter-spacing: 0.22em; color: ${pal.accent2}; text-transform: uppercase; text-shadow: 0 4px 16px rgba(0,0,0,0.9); }
-#hook-text { margin-top: 40px; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 58px; line-height: 1.1; color: #fff; -webkit-text-stroke: 10px #000; paint-order: stroke fill; text-shadow: 0 6px 18px rgba(0,0,0,0.8); }
+#hook-scrim { position: absolute; left: 0; top: 0; width: 1080px; height: 1100px; background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 45%, rgba(0,0,0,0) 100%); }
+#hook-box { position: absolute; left: 60px; top: 250px; width: 860px; text-align: center; transform-origin: 50% 50%; }
+#hook-year { display: inline; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 40px; letter-spacing: 0.08em; color: #fff; text-shadow: 0 3px 12px rgba(0,0,0,0.9); }
+#hook-line { display: inline-block; width: 14px; height: 14px; margin: 0 16px 6px; border-radius: 50%; background: ${pal.accent}; vertical-align: middle; }
+#hook-place { display: inline; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 40px; letter-spacing: 0.08em; color: ${pal.accent2}; text-transform: uppercase; text-shadow: 0 3px 12px rgba(0,0,0,0.9); }
+#hook-text { margin-top: 28px; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 84px; line-height: 1.05; color: #fff; -webkit-text-stroke: 14px #000; paint-order: stroke fill; text-shadow: 0 6px 18px rgba(0,0,0,0.8); }
 </style>
 <div id="root" data-composition-id="hook" data-width="${FW}" data-height="${FH}">
   <div id="hook-scrim"></div>
   <div id="hook-box">
-    <div id="hook-year">${esc(a)}</div>
-    <div id="hook-line"></div>
-    <div id="hook-place">${esc(b || "")}</div>${script.hook_text ? `
+    <div><span id="hook-year">${esc(a)}</span><span id="hook-line"></span><span id="hook-place">${esc(b || "")}</span></div>${script.hook_text ? `
     <div id="hook-text">${esc(script.hook_text)}</div>` : ""}
   </div>
 </div>
@@ -331,8 +331,8 @@ function hookHtml(script, pal) {
 (function () {
   const tl = gsap.timeline({ paused: true });
   tl.fromTo("#hook-box", { scale: 1.14, y: 0, opacity: 1 }, { scale: 1, duration: 0.7, ease: "power3.out" }, 0);
-  tl.fromTo("#hook-line", { scaleX: 0.1 }, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 0.05);
-  tl.fromTo("#hook-place", { scale: 1.25, opacity: 0.6 }, { scale: 1, opacity: 1, duration: 0.9, ease: "power3.out" }, 0);
+  tl.fromTo("#hook-line", { scale: 0.2 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, 0.05);
+  
   ${script.hook_text ? `tl.fromTo("#hook-text", { scale: 1.3 }, { scale: 1, duration: 0.35, ease: "back.out(2)" }, 0);` : ""}
   tl.to("#hook-box", { opacity: 0, y: -40, duration: 0.4, ease: "power2.in" }, ${script.hook_text ? 2.35 : 1.75});
   tl.fromTo("#hook-scrim", { opacity: 1 }, { opacity: 0, duration: 0.45, ease: "power1.in" }, ${script.hook_text ? 2.3 : 1.7});
