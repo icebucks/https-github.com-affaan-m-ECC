@@ -3,20 +3,32 @@
 **So geht's:** YouTube Studio → Erstellen → Videos hochladen → Titel und Beschreibung aus der Liste unten kopieren → Playlist „Mindset Series“ wählen → Sichtbarkeit **„Planen“** mit Datum und Uhrzeit aus der Tabelle.
 Danach in der YouTube-App bei jedem Short unter „Ähnliches Video“ die **nächste Folge** verlinken. Das geht erst, wenn die nächste Folge veröffentlicht ist. Am einfachsten machst du es gesammelt am Ende, die letzte Folge (#10) bleibt ohne Verlinkung.
 
-| Datum | Uhrzeit | Folge | Datei | Titelbild |
+| Datum | YouTube | Folge | Datei | Titelbild |
 |---|---|---|---|---|
 | Mo 16.11. | 17:30 | #1 Planner vs Doer | `Folge1_Planner_EN.mp4` | `covers/Cover_01.jpg` |
 | Mo 16.11. | 19:30 | #2 Overthinker vs Doer | `Folge2_Overthinker_EN.mp4` | `covers/Cover_02.jpg` |
-| Di 17.11. | 18:30 | #3 Ego vs Humility | `Folge3_Ego_EN.mp4` | `covers/Cover_03.jpg` |
-| Mi 18.11. | 18:30 | #4 Excuses vs Discipline | `Folge4_Ausreden_EN.mp4` | `covers/Cover_04.jpg` |
-| Do 19.11. | 18:30 | #5 Envy vs Contentment | `Folge5_Neid_EN.mp4` | `covers/Cover_05.jpg` |
-| Fr 20.11. | 18:30 | #6 Comfort Zone vs Growth | `Folge6_Komfortzone_EN.mp4` | `covers/Cover_06.jpg` |
-| Sa 21.11. | 18:30 | #7 People Pleaser vs Boundaries | `Folge7_PeoplePleaser_EN.mp4` | `covers/Cover_07.jpg` |
-| So 22.11. | 18:30 | #8 Impatience vs Patience | `Folge8_Patience_EN.mp4` | `covers/Cover_08.jpg` |
-| Mo 23.11. | 18:30 | #9 Scroller vs Learner | `Folge9_Scroller_EN.mp4` | `covers/Cover_09.jpg` |
-| Di 24.11. | 18:30 | #10 Grudge vs Letting Go | `Folge10_LettingGo_EN.mp4` | `covers/Cover_10.jpg` |
+| Di 17.11. | 19:30 | #3 Ego vs Humility | `Folge3_Ego_EN.mp4` | `covers/Cover_03.jpg` |
+| Mi 18.11. | 19:30 | #4 Excuses vs Discipline | `Folge4_Ausreden_EN.mp4` | `covers/Cover_04.jpg` |
+| Do 19.11. | 19:30 | #5 Envy vs Contentment | `Folge5_Neid_EN.mp4` | `covers/Cover_05.jpg` |
+| Fr 20.11. | 22:00 | #6 Comfort Zone vs Growth | `Folge6_Komfortzone_EN.mp4` | `covers/Cover_06.jpg` |
+| Sa 21.11. | 17:30 | #7 People Pleaser vs Boundaries | `Folge7_PeoplePleaser_EN.mp4` | `covers/Cover_07.jpg` |
+| So 22.11. | 15:30 | #8 Impatience vs Patience | `Folge8_Patience_EN.mp4` | `covers/Cover_08.jpg` |
+| Mo 23.11. | 19:30 | #9 Scroller vs Learner | `Folge9_Scroller_EN.mp4` | `covers/Cover_09.jpg` |
+| Di 24.11. | 19:30 | #10 Grudge vs Letting Go | `Folge10_LettingGo_EN.mp4` | `covers/Cover_10.jpg` |
 
-Wenn die 10 durch sind: neue Folgen weiter um 18:30 Uhr, 1 pro Tag.
+Neue Folgen kommen jeweils am nächsten freien Tag dazu, zu den Zeiten aus der Tabelle unten.
+
+## Uploadzeiten (deutsche Zeit, Zielgruppe USA + Großbritannien)
+
+| Tag | TikTok | YouTube Shorts |
+|---|---|---|
+| Mo–Do | 21:00 | 19:30 |
+| Fr | 21:00 | 22:00 |
+| Sa | 17:00 | 17:30 |
+| So | 15:00 | 15:30 |
+
+Warum: Abends nach Feierabend in Großbritannien (19–22 Uhr dort) und nachmittags an der US-Ostküste (14–17 Uhr dort). Am Wochenende früher, weil dann vormittags in den USA viel geschaut wird. TikTok und YouTube sind um 30 Minuten versetzt, damit beide Uploads jeweils für sich laufen.
+Nach 2 Wochen mit den eigenen Analytics (TikTok: Follower → Aktivität; YouTube: „Wann deine Zuschauer auf YouTube sind“) prüfen und die Zeiten anpassen.
 
 ---
 
