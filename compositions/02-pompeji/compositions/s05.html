@@ -15,7 +15,7 @@
 #s05-dark { position: absolute; inset: 0; background: #000; opacity: 0; }
 </style>
 <div id="root" data-composition-id="s05" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
-  <div id="s05-fade"><div id="s05-shake"><div id="s05-cam"><div id="s05-L-sky" class="s05-layer"><svg viewBox="0 0 1260 2240" width="1260" height="2240" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="s05-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3b2c22"/><stop offset="50%" stop-color="#8a6440"/><stop offset="100%" stop-color="#c08a50"/></linearGradient></defs><g><rect x="0" y="0" width="1260" height="2240" fill="url(#s05-sky)" /></g></svg></div><div id="s05-L-vesuv" class="s05-layer"><svg viewBox="0 0 1260 2240" width="1260" height="2240" xmlns="http://www.w3.org/2000/svg"><defs></defs><g><path d="M-80,1600 L150,1340 C300,1180 420,1040 520,1000 L600,1030 L680,970 C800,1050 960,1220 1340,1420 L1340,1700Z" fill="#3a281d" /></g></svg></div><canvas id="s05-back" class="s05-back" width="630" height="1120"></canvas><div id="s05-light0" class="s05-light" style="left:-60px;top:550px;width:1400px;height:1400px;background:radial-gradient(circle, #ff4a1c 0%, #ff4a1c55 30%, transparent 70%);opacity:0.35"></div><div id="s05-L-town" class="s05-layer"><svg viewBox="0 0 1260 2240" width="1260" height="2240" xmlns="http://www.w3.org/2000/svg"><defs></defs><g><rect x="-60" y="1727.735000940971" width="184.2559147812426" height="622.2649990590289" fill="#0d0806"/><rect x="130.2559147812426" y="1806.6983334776014" width="200.72863885201514" height="543.3016665223986" fill="#0d0806"/><polygon points="124.3,1806.7 230.6,1770.7 337,1806.7" fill="#0d0806" /><rect x="336.98455363325775" y="1752.892655480653" width="145.87697493843734" height="597.107344519347" fill="#0d0806"/><polygon points="331,1752.9 409.9,1716.9 488.9,1752.9" fill="#0d0806" /><rect x="488.8615285716951" y="1801.3010836029425" width="176.76977099850774" height="548.6989163970575" fill="#0d0806"/><rect x="541.8924598712474" y="1731.3010836029425" width="18" height="70" fill="#0d0806"/><rect x="671.6312995702028" y="1793.0350074786693" width="201.2992424191907" height="556.9649925213307" fill="#0d0806"/><polygon points="665.6,1793 772.3,1757 878.9,1793" fill="#0d0806" /><rect x="732.02107229596" y="1723.0350074786693" width="18" height="70" fill="#0d0806"/><rect x="878.9305419893935" y="1817.7008391199633" width="208.31134024541825" height="532.2991608800367" fill="#0d0806"/><rect x="1093.2418822348118" y="1812.6686377022415" width="200.9475636528805" height="537.3313622977585" fill="#0d0806"/><polygon points="1087.2,1812.7 1193.7,1776.7 1300.2,1812.7" fill="#0d0806" /><rect x="1153.526151330676" y="1742.6686377022415" width="18" height="70" fill="#0d0806"/><rect x="1300.1894458876923" y="1836.5803753845394" width="213.9218882797286" height="513.4196246154606" fill="#0d0806"/><polygon points="1294.2,1836.6 1407.2,1800.6 1520.1,1836.6" fill="#0d0806" /><rect x="790" y="1650" width="440" height="44" fill="#0d0806"/><rect x="820" y="1690" width="30" height="260" fill="#0d0806"/><rect x="812" y="1690" width="46" height="14" fill="#0d0806"/><rect x="900" y="1690" width="30" height="260" fill="#0d0806"/><rect x="892" y="1690" width="46" height="14" fill="#0d0806"/><rect x="980" y="1690" width="30" height="260" fill="#0d0806"/><rect x="972" y="1690" width="46" height="14" fill="#0d0806"/><rect x="1060" y="1690" width="30" height="260" fill="#0d0806"/><rect x="1052" y="1690" width="46" height="14" fill="#0d0806"/><rect x="1140" y="1690" width="30" height="260" fill="#0d0806"/><rect x="1132" y="1690" width="46" height="14" fill="#0d0806"/></g></svg></div><div id="s05-cloud" class="s05-obj" style="width:1260px;height:1100px"><svg viewBox="0 0 1260 1100" width="1260" height="1100"><path d="M560,1000 C540,800 590,600 600,420 C470,400 330,330 300,230 C280,120 420,60 520,90 C560,10 700,10 740,90 C860,50 980,130 940,240 C910,330 760,390 660,420 C670,600 720,800 700,1000Z" fill="#2b2420"/><path d="M600,420 C480,390 380,330 360,250 C430,300 520,330 620,330Z" fill="#4a3e35" opacity="0.7"/></svg></div></div></div>
+  <div id="s05-fade"><div id="s05-shake"><canvas id="s05-gl" width="1080" height="1920" style="position:absolute;left:0;top:0;width:1080px;height:1920px"></canvas><div id="s05-cam"><canvas id="s05-back" class="s05-back" width="630" height="1120"></canvas></div></div>
   <canvas id="s05-front" width="1080" height="1920"></canvas>
   <div id="s05-grade"></div>
   <div id="s05-dark"></div></div>
@@ -227,19 +227,56 @@ function hfMakeFx(canvas, specs, seed) {
 
 (function () {
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#s05-cam", {scale:1,x:0,y:0}, {scale:1.06,x:0,y:40,duration:4.212,ease:"sine.inOut"}, 0);
-  tl.fromTo("#s05-L-vesuv", {x:-6.9}, {x:6.9,duration:8.139,ease:"none"}, 0);
-  tl.fromTo("#s05-L-town", {x:-27.6}, {x:27.6,duration:8.139,ease:"none"}, 0);
-  tl.fromTo("#s05-fade", {opacity:0}, {opacity:1,duration:0.4,ease:"power1.out"}, 0);
-  tl.fromTo("#s05-cloud", {x:0, y:420, scale:0.25, transformOrigin:"50% 95%"}, {scale:0.88, y:330, duration:8.139, ease:"power1.out"}, 0);
-  tl.fromTo("#s05-L-sky", {filter:"brightness(1)"}, {filter:"brightness(0.45)", duration:8.139, ease:"none"}, 0);
-  const fxB = hfMakeFx(document.getElementById("s05-back"), [], 61445);
-  const fxF = hfMakeFx(document.getElementById("s05-front"), [{"type":"asche","count":60,"speed":50,"size":2.5,"alpha":0.4,"sway":40,"color":"rgba(170,160,150,1)","ramp":[4.0695,8.139,0,1]}], 61446);
-  const lights = [{"i":0.35,"f":true,"fast":false}].map((L, i) => ({ ...L, el: document.getElementById("s05-light" + i) }));
+  tl.fromTo("#s05-cam", {scale:1,x:0,y:0}, {scale:1.08,x:0,y:0,duration:2.917,ease:"sine.inOut"}, 0);
+  tl.fromTo("#s05-fade", {opacity:0, scale:1.07}, {opacity:1, scale:1, duration:0.4, ease:"power2.out"}, 0);
+
+  const GLC = {"z0":1.04,"z1":1.15,"px0":0.012,"px1":-0.012,"py0":-0.0038039920199662448,"py1":0.0012926966878585517,"ox0":0.028,"ox1":-0.028,"oy0":0.006,"oy1":-0.006}, GLV = {"z":0,"x":0,"y":0}, GLD = 5.535;
+  const glCanvas = document.getElementById("s05-gl");
+  const g = glCanvas.getContext("webgl", { preserveDrawingBuffer: true, antialias: false });
+  let glReady = false, glU = null;
+  const glVS = "attribute vec2 p; varying vec2 v; void main(){ v = vec2(p.x*0.5+0.5, 0.5-p.y*0.5); gl_Position = vec4(p,0.0,1.0); }";
+  const glFS = "precision highp float; varying vec2 v; uniform sampler2D img; uniform sampler2D dep; uniform float zoom; uniform vec2 pan; uniform vec2 off; uniform float ax;" +
+    "void main(){ vec2 c = (v-0.5)/zoom; c.x *= ax; vec2 uv0 = c + 0.5 + pan; vec2 uv = uv0;" +
+    " for(int i=0;i<4;i++){ float d = texture2D(dep, clamp(uv,0.0,1.0)).r; uv = uv0 + off*(d-0.45); }" +
+    " gl_FragColor = texture2D(img, clamp(uv, 0.002, 0.998)); }";
+  function glLoad(src) { const im = new Image(); im.src = src; return im.decode().then(() => im); }
+  function glTex(unit, im) {
+    const t = g.createTexture(); g.activeTexture(g.TEXTURE0 + unit); g.bindTexture(g.TEXTURE_2D, t);
+    g.texParameteri(g.TEXTURE_2D, g.TEXTURE_WRAP_S, g.CLAMP_TO_EDGE); g.texParameteri(g.TEXTURE_2D, g.TEXTURE_WRAP_T, g.CLAMP_TO_EDGE);
+    g.texParameteri(g.TEXTURE_2D, g.TEXTURE_MIN_FILTER, g.LINEAR); g.texParameteri(g.TEXTURE_2D, g.TEXTURE_MAG_FILTER, g.LINEAR);
+    g.texImage2D(g.TEXTURE_2D, 0, g.RGBA, g.RGBA, g.UNSIGNED_BYTE, im);
+  }
+  function glDraw(t) {
+    if (!glReady) return;
+    const k = Math.min(1, Math.max(0, t / GLD)), e = k * k * (3 - 2 * k);
+    const L = (a, b) => a + (b - a) * e;
+    g.uniform1f(glU.zoom, L(GLC.z0, GLC.z1) + GLV.z);
+    g.uniform2f(glU.pan, L(GLC.px0, GLC.px1) + GLV.x, L(GLC.py0, GLC.py1) + GLV.y);
+    g.uniform2f(glU.off, L(GLC.ox0, GLC.ox1), L(GLC.oy0, GLC.oy1));
+    g.drawArrays(g.TRIANGLE_STRIP, 0, 4);
+  }
+  window.__hf = window.__hf || {}; window.__hf.buildReady = window.__hf.buildReady || {};
+  window.__hf.buildReady["s05-gl"] = Promise.all([glLoad("assets/bilder/b-e8c310f508.jpg"), glLoad("assets/bilder/b-e8c310f508_depth.png")]).then(([im, dp]) => {
+    const sh = (type, src) => { const o = g.createShader(type); g.shaderSource(o, src); g.compileShader(o); return o; };
+    const pr = g.createProgram(); g.attachShader(pr, sh(g.VERTEX_SHADER, glVS)); g.attachShader(pr, sh(g.FRAGMENT_SHADER, glFS)); g.linkProgram(pr); g.useProgram(pr);
+    const b = g.createBuffer(); g.bindBuffer(g.ARRAY_BUFFER, b); g.bufferData(g.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), g.STATIC_DRAW);
+    const loc = g.getAttribLocation(pr, "p"); g.enableVertexAttribArray(loc); g.vertexAttribPointer(loc, 2, g.FLOAT, false, 0, 0);
+    glTex(0, im); glTex(1, dp);
+    g.uniform1i(g.getUniformLocation(pr, "img"), 0); g.uniform1i(g.getUniformLocation(pr, "dep"), 1);
+    g.uniform1f(g.getUniformLocation(pr, "ax"), (1080 / 1920) / (im.width / im.height));
+    glU = { zoom: g.getUniformLocation(pr, "zoom"), pan: g.getUniformLocation(pr, "pan"), off: g.getUniformLocation(pr, "off") };
+    g.viewport(0, 0, 1080, 1920);
+    glReady = true; glDraw(0);
+    const px = new Uint8Array(4); g.readPixels(0, 0, 1, 1, g.RGBA, g.UNSIGNED_BYTE, px);
+  });
+  const fxB = hfMakeFx(document.getElementById("s05-back"), [], 25945);
+  const fxF = hfMakeFx(document.getElementById("s05-front"), [{"type":"rauch","count":8,"region":[0,1900,1080],"speed":70,"size":260,"alpha":0.18,"rgb":"40,36,34"}], 25946);
+  const lights = [].map((L, i) => ({ ...L, el: document.getElementById("s05-light" + i) }));
   const shake = 0, shakeFrom = 0;
   // Daumenkino-Figuren (Geh-/Lauf-/Arbeitszyklen): pro Bild genau ein Einzelbild sichtbar
   const walkers = [].map((w) => ({ ...w, frames: Array.from(document.getElementById(w.id)?.children || []) }));
   function render(t) {
+    glDraw(t);
     fxB(t);
     fxF(t);
     for (const w of walkers) {
@@ -255,11 +292,11 @@ function hfMakeFx(canvas, specs, seed) {
     }
   }
   const P = { t: 0 };
-  tl.to(P, { t: 8.139, duration: 8.139, ease: "none", onUpdate: () => render(P.t) }, 0);
-  // Einstellung = Ausschnitt 0s..4.212s der ganzen Szene
+  tl.to(P, { t: 5.535, duration: 5.535, ease: "none", onUpdate: () => render(P.t) }, 0);
+  // Einstellung = Ausschnitt 0s..2.917s der ganzen Szene
   const shot = gsap.timeline({ paused: true });
   const Q = { t: 0 };
-  shot.to(Q, { t: 4.212, duration: 4.212, ease: "none", onUpdate: () => tl.seek(Q.t, false) }, 0);
+  shot.to(Q, { t: 2.917, duration: 2.917, ease: "none", onUpdate: () => tl.seek(Q.t, false) }, 0);
   tl.seek(0, false);
   window.__timelines["s05"] = shot;
 })();</script>
