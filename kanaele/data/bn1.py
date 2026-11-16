@@ -9,6 +9,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "..", "beyondexcuses"))
 os.environ.setdefault("OUT_DIR", HERE)
 from lib import *
+sys.path.insert(0, HERE)
+from dlib import sfx
 
 T_END = 17.4
 ROWS = [  # big label, small label, years, start-year text
@@ -94,9 +96,12 @@ def frame(c, t):
 
 
 def events():
-    ev = [["pop", R0 + i * RD] for i in range(len(ROWS))]
-    ev += [["land", R0 + i * RD + 1.75] for i in range(len(ROWS))]
-    ev += [["summit", TURN + 1.6], ["sunrise", TURN - 1.0], ["text", 14.4], ["text2", 15.2]]
+    ev = []
+    for i in range(len(ROWS)):
+        t0 = R0 + i * RD
+        ev += [sfx(t0 + 0.15, "whoosh-fast-medium", -8), sfx(t0 + 0.3, "data-countup-short", -8), sfx(t0 + 1.75, "data-number-land", -4)]
+    ev += [sfx(TURN - 1.0, "riser-1s-soft", -4), sfx(TURN + 1.6, "money-coins-pour", -4), sfx(TURN + 1.7, "shimmer-medium-bright", -8),
+           ["sunrise", TURN - 1.0], ["text", 14.4], ["text2", 15.2]]
     return ev
 
 

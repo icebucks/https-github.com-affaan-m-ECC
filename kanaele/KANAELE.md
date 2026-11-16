@@ -1,5 +1,7 @@
 # Neue Kanäle: Test-Paket
 
+**Entscheidung (16.11.2026):** Wir starten mit **By The Numbers** (Daten und Vergleiche). Handbuch: `data/README.md`, Upload-Plan: `data/plan.md`, tägliche Produktion um 06:07 Uhr. „Broke vs Rich“ bleibt als Test im Archiv (zu nah am BeyondExcuses-Design).
+
 Beide Kanäle auf Englisch, gleicher Zeichenstil wie BeyondExcuses (eigene Bibliothek `beyondexcuses/lib.py`).
 Videos rendern: `cd kanaele/money && VID_LANG=en python3 mp1.py render` bzw. `cd kanaele/data && VID_LANG=en python3 bn1.py render`.
 

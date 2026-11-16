@@ -520,12 +520,12 @@ def finish(name, frame_fn, t_end, events, turn):
         json.dump(events, open(f"{d}/{name}_events.json", "w"))
         render(frame_fn, t_end, f"{d}/{name}_EN_v.mp4")
         if not os.path.exists(de_audio):
-            subprocess.run(["python3", os.path.join(os.path.dirname(os.path.abspath(__file__)), "sound.py"), f"{d}/{name}_events.json", str(t_end), str(turn), de_audio], check=True)
+            subprocess.run(["python3", (os.environ.get("SOUND_PY") or os.path.join(os.path.dirname(os.path.abspath(__file__)), "sound.py")), f"{d}/{name}_events.json", str(t_end), str(turn), de_audio], check=True)
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", f"{d}/{name}_EN_v.mp4", "-i", de_audio, "-map", "0:v", "-map", "1:a",
                         "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", f"{d}/{name}_EN.mp4"], check=True)
         return
     json.dump(events, open(f"{d}/{name}_events.json", "w"))
     render(frame_fn, t_end, f"{d}/{name}_v.mp4")
-    subprocess.run(["python3", os.path.join(os.path.dirname(os.path.abspath(__file__)), "sound.py"), f"{d}/{name}_events.json", str(t_end), str(turn), f"{d}/{name}_a.wav"], check=True)
+    subprocess.run(["python3", (os.environ.get("SOUND_PY") or os.path.join(os.path.dirname(os.path.abspath(__file__)), "sound.py")), f"{d}/{name}_events.json", str(t_end), str(turn), f"{d}/{name}_a.wav"], check=True)
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", f"{d}/{name}_v.mp4", "-i", f"{d}/{name}_a.wav", "-map", "0:v", "-map", "1:a",
                     "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", f"{d}/{name}.mp4"], check=True)

@@ -1,0 +1,3082 @@
+{
+ "source": "https://github.com/wyzowl/sfx-kit",
+ "license": "CC0-1.0",
+ "sounds": [
+  {
+   "id": "whoosh-fast-medium",
+   "name": "Whoosh, fast and medium",
+   "category": "whooshes",
+   "file": "whoosh-fast-medium.flac",
+   "variant": {
+    "speed": "fast",
+    "intensity": "medium"
+   },
+   "description": "A quick, clean swish of air with a defined middle.",
+   "use_for": [
+    "Cards flicking in or out",
+    "Carousel and tab swipes",
+    "Menus and drawers opening",
+    "Quick text slides"
+   ],
+   "avoid_for": [
+    "Very subtle micro-interactions (use soft)",
+    "Slow, calm moves"
+   ],
+   "tags": [
+    "whoosh",
+    "swish",
+    "transition",
+    "movement",
+    "air",
+    "natural",
+    "quick",
+    "balanced"
+   ],
+   "duration": 0.252,
+   "channels": 2,
+   "sync": {
+    "at": 0.096,
+    "meets": "move-peak",
+    "how": "Ease-in-out: put the sync point at the middle of the move. Ease-out (fast start, slowing to a stop): about a quarter of the way in. Ease-in (slow start, fast exit): about three quarters of the way in."
+   },
+   "timing": {
+    "audible_start": 0.012,
+    "onset": 0.053,
+    "peak": 0.096,
+    "body_end": 0.163,
+    "audible_end": 0.23
+   },
+   "fits_seconds": [
+    0.12,
+    0.44
+   ],
+   "level": {
+    "lufs": -20.5,
+    "true_peak_dbtp": -8.1,
+    "tier": "medium"
+   },
+   "under_voiceover_db": -3,
+   "adapt": {
+    "rate": [
+     0.85,
+     1.2
+    ],
+    "notes": "To fit a move up to about 15% shorter or 20% longer, play it faster or slower (its pitch moves with it); beyond that, use the next speed. Adjust level with gain, but for a clearly softer or harder sound use the other intensity rather than a big gain change."
+   },
+   "pairs_with": [
+    {
+     "category": "impacts",
+     "how": "Something landing: the whoosh on the move (its sync point at the move's fastest point) and the impact on the frame it lands. A whoosh that suits the move's length dies away just before the landing; use one a step softer than the impact."
+    },
+    {
+     "category": "pops",
+     "how": "Something arriving and appearing: the whoosh during the move, the pop as it lands, at a lower gain than the whoosh."
+    },
+    {
+     "category": "shimmers",
+     "how": "A reveal: the whoosh into the reveal, the shimmer starting at the whoosh's sync point."
+    }
+   ],
+   "character": "balanced, airy",
+   "sha256": "b3cf3c589e738a62c1cc9bd3f620b69c831b64616427fdce57ba073d2a357a0d"
+  },
+  {
+   "id": "whoosh-medium-soft",
+   "name": "Whoosh, medium and soft",
+   "category": "whooshes",
+   "file": "whoosh-medium-soft.flac",
+   "variant": {
+    "speed": "medium",
+    "intensity": "soft"
+   },
+   "description": "A smooth, gentle sweep of air that rises and fades without an edge.",
+   "use_for": [
+    "Panels sliding in",
+    "Gentle card reveals",
+    "Backgrounds shifting",
+    "Calm transitions between explainer scenes"
+   ],
+   "avoid_for": [
+    "Snappy, quick moves",
+    "Energetic edits"
+   ],
+   "tags": [
+    "whoosh",
+    "swish",
+    "transition",
+    "movement",
+    "air",
+    "natural",
+    "standard",
+    "subtle"
+   ],
+   "duration": 0.543,
+   "channels": 2,
+   "sync": {
+    "at": 0.229,
+    "meets": "move-peak",
+    "how": "Ease-in-out: put the sync point at the middle of the move. Ease-out (fast start, slowing to a stop): about a quarter of the way in. Ease-in (slow start, fast exit): about three quarters of the way in."
+   },
+   "timing": {
+    "audible_start": 0.02,
+    "onset": 0.1,
+    "peak": 0.229,
+    "body_end": 0.375,
+    "audible_end": 0.506
+   },
+   "fits_seconds": [
+    0.28,
+    0.81
+   ],
+   "level": {
+    "lufs": -24,
+    "true_peak_dbtp": -15.2,
+    "tier": "soft"
+   },
+   "under_voiceover_db": -2,
+   "adapt": {
+    "rate": [
+     0.85,
+     1.2
+    ],
+    "notes": "To fit a move up to about 15% shorter or 20% longer, play it faster or slower (its pitch moves with it); beyond that, use the next speed. Adjust level with gain, but for a clearly softer or harder sound use the other intensity rather than a big gain change."
+   },
+   "pairs_with": [
+    {
+     "category": "impacts",
+     "how": "Something landing: the whoosh on the move (its sync point at the move's fastest point) and the impact on the frame it lands. A whoosh that suits the move's length dies away just before the landing; use one a step softer than the impact."
+    },
+    {
+     "category": "pops",
+     "how": "Something arriving and appearing: the whoosh during the move, the pop as it lands, at a lower gain than the whoosh."
+    },
+    {
+     "category": "shimmers",
+     "how": "A reveal: the whoosh into the reveal, the shimmer starting at the whoosh's sync point."
+    }
+   ],
+   "character": "dark, airy",
+   "sha256": "a114611a09e02ab26cfbd8d796279eac358b6df4c3923db3f269ac34c340eeac"
+  },
+  {
+   "id": "whoosh-slow-medium",
+   "name": "Whoosh, slow and medium",
+   "category": "whooshes",
+   "file": "whoosh-slow-medium.flac",
+   "variant": {
+    "speed": "slow",
+    "intensity": "medium"
+   },
+   "description": "A slow, full sweep of air with a gentle swell and a long, settled tail.",
+   "use_for": [
+    "Large panels or maps sliding",
+    "Slow pans across a scene",
+    "Deliberate reveals"
+   ],
+   "avoid_for": [
+    "Fast cuts",
+    "Small UI elements"
+   ],
+   "tags": [
+    "whoosh",
+    "swish",
+    "transition",
+    "movement",
+    "air",
+    "natural",
+    "slow",
+    "balanced"
+   ],
+   "duration": 1.002,
+   "channels": 2,
+   "sync": {
+    "at": 0.438,
+    "meets": "move-peak",
+    "how": "Ease-in-out: put the sync point at the middle of the move. Ease-out (fast start, slowing to a stop): about a quarter of the way in. Ease-in (slow start, fast exit): about three quarters of the way in."
+   },
+   "timing": {
+    "audible_start": 0.047,
+    "onset": 0.24,
+    "peak": 0.438,
+    "body_end": 0.688,
+    "audible_end": 0.943
+   },
+   "fits_seconds": [
+    0.52,
+    1.5
+   ],
+   "level": {
+    "lufs": -20.5,
+    "true_peak_dbtp": -10.8,
+    "tier": "medium"
+   },
+   "under_voiceover_db": -3,
+   "adapt": {
+    "rate": [
+     0.85,
+     1.2
+    ],
+    "notes": "To fit a move up to about 15% shorter or 20% longer, play it faster or slower (its pitch moves with it); beyond that, use the next speed. Adjust level with gain, but for a clearly softer or harder sound use the other intensity rather than a big gain change."
+   },
+   "pairs_with": [
+    {
+     "category": "impacts",
+     "how": "Something landing: the whoosh on the move (its sync point at the move's fastest point) and the impact on the frame it lands. A whoosh that suits the move's length dies away just before the landing; use one a step softer than the impact."
+    },
+    {
+     "category": "pops",
+     "how": "Something arriving and appearing: the whoosh during the move, the pop as it lands, at a lower gain than the whoosh."
+    },
+    {
+     "category": "shimmers",
+     "how": "A reveal: the whoosh into the reveal, the shimmer starting at the whoosh's sync point."
+    }
+   ],
+   "character": "warm, airy",
+   "sha256": "abf3f8250bee145041d0d6786f34a5cbbfe14d4e9526e3395fc5a162a39808a9"
+  },
+  {
+   "id": "riser-1s-soft",
+   "name": "Riser, 1 s, soft",
+   "category": "risers-and-fallers",
+   "file": "riser-1s-soft.flac",
+   "variant": {
+    "direction": "rise",
+    "length": "1s",
+    "intensity": "soft"
+   },
+   "description": "A 1-second soft, airy rise that builds to its peak at the end.",
+   "use_for": [
+    "Building up to a reveal: a logo, a product, a big number",
+    "Leading into a new section",
+    "A short lift before something appears"
+   ],
+   "avoid_for": [
+    "Reveals that land before the rise ends: the peak is at its end",
+    "Big, energetic moments (use strong)"
+   ],
+   "tags": [
+    "riser",
+    "build",
+    "swell",
+    "1s",
+    "soft",
+    "air",
+    "natural"
+   ],
+   "duration": 1.19,
+   "channels": 2,
+   "sync": {
+    "at": 0.982,
+    "meets": "arrival",
+    "how": "Place it so its end (the sync point) lands on the reveal: start = reveal \u2212 sync.at."
+   },
+   "timing": {
+    "audible_start": 0.08,
+    "onset": 0.485,
+    "peak": 0.982,
+    "body_end": 1.083,
+    "audible_end": 1.167
+   },
+   "span_seconds": 0.902,
+   "fits_seconds": [
+    0.82,
+    1
+   ],
+   "level": {
+    "lufs": -24,
+    "true_peak_dbtp": -18.1,
+    "tier": "soft"
+   },
+   "under_voiceover_db": -3,
+   "adapt": {
+    "rate": [
+     0.9,
+     1.1
+    ],
+    "notes": "For other lengths, change the rate a little (its pitch moves with it), or take the next longer one and trim its quiet start (risers) or its quiet end (fallers)."
+   },
+   "pairs_with": [
+    {
+     "category": "impacts",
+     "how": "A reveal with weight: the rise into an impact on the reveal frame."
+    },
+    {
+     "category": "shimmers",
+     "how": "A bright reveal: the rise into a shimmer starting at its sync point."
+    },
+    {
+     "category": "booms-and-bass",
+     "how": "A big reveal: the rise into a boom on the reveal frame."
+    }
+   ],
+   "character": "soft, airy rise",
+   "sha256": "fca1d503b69d4ac32cd7f307cf497fa36c2db8589b878b075c8d372ac3f4fe61"
+  },
+  {
+   "id": "riser-2s-soft",
+   "name": "Riser, 2 s, soft",
+   "category": "risers-and-fallers",
+   "file": "riser-2s-soft.flac",
+   "variant": {
+    "direction": "rise",
+    "length": "2s",
+    "intensity": "soft"
+   },
+   "description": "A 2-second soft, airy rise that builds to its peak at the end.",
+   "use_for": [
+    "Building up to a reveal: a logo, a product, a big number",
+    "Leading into a new section",
+    "A short lift before something appears"
+   ],
+   "avoid_for": [
+    "Reveals that land before the rise ends: the peak is at its end",
+    "Big, energetic moments (use strong)"
+   ],
+   "tags": [
+    "riser",
+    "build",
+    "swell",
+    "2s",
+    "soft",
+    "air",
+    "natural"
+   ],
+   "duration": 2.189,
+   "channels": 2,
+   "sync": {
+    "at": 1.994,
+    "meets": "arrival",
+    "how": "Place it so its end (the sync point) lands on the reveal: start = reveal \u2212 sync.at."
+   },
+   "timing": {
+    "audible_start": 0.144,
+    "onset": 0.922,
+    "peak": 1.994,
+    "body_end": 2.082,
+    "audible_end": 2.165
+   },
+   "span_seconds": 1.85,
+   "fits_seconds": [
+    1.68,
+    2.06
+   ],
+   "level": {
+    "lufs": -24,
+    "true_peak_dbtp": -17.4,
+    "tier": "soft"
+   },
+   "under_voiceover_db": -3,
+   "adapt": {
+    "rate": [
+     0.9,
+     1.1
+    ],
+    "notes": "For other lengths, change the rate a little (its pitch moves with it), or take the next longer one and trim its quiet start (risers) or its quiet end (fallers)."
+   },
+   "pairs_with": [
+    {
+     "category": "impacts",
+     "how": "A reveal with weight: the rise into an impact on the reveal frame."
+    },
+    {
+     "category": "shimmers",
+     "how": "A bright reveal: the rise into a shimmer starting at its sync point."
+    },
+    {
+     "category": "booms-and-bass",
+     "how": "A big reveal: the rise into a boom on the reveal frame."
+    }
+   ],
+   "character": "soft, airy rise",
+   "sha256": "ffe1d0975ce052a9eb3247e2b0bb492413d6e04cbb81f749cf3b074e2a5f4467"
+  },
+  {
+   "id": "riser-2s-strong",
+   "name": "Riser, 2 s, strong",
+   "category": "risers-and-fallers",
+   "file": "riser-2s-strong.flac",
+   "variant": {
+    "direction": "rise",
+    "length": "2s",
+    "intensity": "strong"
+   },
+   "description": "A 2-second strong, bright rise that builds to its peak at the end.",
+   "use_for": [
+    "Building up to a reveal: a logo, a product, a big number",
+    "Leading into a new section",
+    "A short lift before something appears"
+   ],
+   "avoid_for": [
+    "Reveals that land before the rise ends: the peak is at its end",
+    "Calm, understated films"
+   ],
+   "tags": [
+    "riser",
+    "build",
+    "swell",
+    "2s",
+    "strong",
+    "air",
+    "natural"
+   ],
+   "duration": 2.195,
+   "channels": 2,
+   "sync": {
+    "at": 1.978,
+    "meets": "arrival",
+    "how": "Place it so its end (the sync point) lands on the reveal: start = reveal \u2212 sync.at."
+   },
+   "timing": {
+    "audible_start": 0.166,
+    "onset": 0.895,
+    "peak": 1.978,
+    "body_end": 2.085,
+    "audible_end": 2.169
+   },
+   "span_seconds": 1.812,
+   "fits_seconds": [
+    1.65,
+    2.01
+   ],
+   "level": {
+    "lufs": -20,
+    "true_peak_dbtp": -13.4,
+    "tier": "strong"
+   },
+   "under_voiceover_db": -5,
+   "adapt": {
+    "rate": [
+     0.9,
+     1.1
+    ],
+    "notes": "For other lengths, change the rate a little (its pitch moves with it), or take the next longer one and trim its quiet start (risers) or its quiet end (fallers)."
+   },
+   "pairs_with": [
+    {
+     "category": "impacts",
+     "how": "A reveal with weight: the rise into an impact on the reveal frame."
+    },
+    {
+     "category": "shimmers",
+     "how": "A bright reveal: the rise into a shimmer starting at its sync point."
+    },
+    {
+     "category": "booms-and-bass",
+     "how": "A big reveal: the rise into a boom on the reveal frame."
+    }
+   ],
+   "character": "bright, full rise",
+   "sha256": "26263a64a7b141a14f8bc6ab96db9c22926265b429a799d5f77db33c1a85d43f"
+  },
+  {
+   "id": "riser-4s-strong",
+   "name": "Riser, 4 s, strong",
+   "category": "risers-and-fallers",
+   "file": "riser-4s-strong.flac",
+   "variant": {
+    "direction": "rise",
+    "length": "4s",
+    "intensity": "strong"
+   },
+   "description": "A 4-second strong, bright rise that builds to its peak at the end.",
+   "use_for": [
+    "Building up to a reveal: a logo, a product, a big number",
+    "Leading into a new section",
+    "A long build under a title sequence"
+   ],
+   "avoid_for": [
+    "Reveals that land before the rise ends: the peak is at its end",
+    "Calm, understated films"
+   ],
+   "tags": [
+    "riser",
+    "build",
+    "swell",
+    "4s",
+    "strong",
+    "air",
+    "natural"
+   ],
+   "duration": 4.191,
+   "channels": 2,
+   "sync": {
+    "at": 3.977,
+    "meets": "arrival",
+    "how": "Place it so its end (the sync point) lands on the reveal: start = reveal \u2212 sync.at."
+   },
+   "timing": {
+    "audible_start": 0.376,
+    "onset": 1.824,
+    "peak": 3.977,
+    "body_end": 4.073,
+    "audible_end": 4.166
+   },
+   "span_seconds": 3.601,
+   "fits_seconds": [
+    3.27,
+    4
+   ],
+   "level": {
+    "lufs": -20,
+    "true_peak_dbtp": -13.3,
+    "tier": "strong"
+   },
+   "under_voiceover_db": -5,
+   "adapt": {
+    "rate": [
+     0.9,
+     1.1
+    ],
+    "notes": "For other lengths, change the rate a little (its pitch moves with it), or take the next longer one and trim its quiet start (risers) or its quiet end (fallers)."
+   },
+   "pairs_with": [
+    {
+     "category": "impacts",
+     "how": "A reveal with weight: the rise into an impact on the reveal frame."
+    },
+    {
+     "category": "shimmers",
+     "how": "A bright reveal: the rise into a shimmer starting at its sync point."
+    },
+    {
+     "category": "booms-and-bass",
+     "how": "A big reveal: the rise into a boom on the reveal frame."
+    }
+   ],
+   "character": "bright, full rise",
+   "sha256": "1b67475467df1818b0c175d1581db90e74951cf615c514269cdf29a527a5a63d"
+  },
+  {
+   "id": "cinematic-drum-big",
+   "name": "Cinematic drum hit, big",
+   "category": "cinematic-hits",
+   "file": "cinematic-drum-big.flac",
+   "variant": {
+    "kind": "drum",
+    "intensity": "big"
+   },
+   "description": "A giant drum struck hard: the crack of the stick and a big, deep boom.",
+   "use_for": [
+    "Title slams and trailer beats",
+    "A logo or product landing with force",
+    "Dramatic reveals",
+    "Big moments: a title, a reveal, a turning point"
+   ],
+   "avoid_for": [
+    "On top of speech: the bass masks it",
+    "Calm, understated or friendly films",
+    "Small elements and UI"
+   ],
+   "tags": [
+    "cinematic",
+    "impact",
+    "hit",
+    "trailer",
+    "bass",
+    "sub",
+    "drum",
+    "big",
+    "natural"
+   ],
+   "duration": 2.178,
+   "channels": 2,
+   "sync": {
+    "at": 0.011,
+    "meets": "instant",
+    "how": "Sync point on the frame of the hit: the title landing, the cut, the reveal. Let the hall ring out."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.011,
+    "body_end": 1.274,
+    "audible_end": 1.914
+   },
+   "level": {
+    "lufs": -20,
+    "true_peak_dbtp": -9.2,
+    "tier": "big"
+   },
+   "under_voiceover_db": -8,
+   "adapt": {
+    "rate": [
+     0.85,
+     1.15
+    ],
+    "notes": "Slower sounds bigger and deeper; faster tighter. To shorten one, fade its tail over 500 ms or more."
+   },
+   "pairs_with": [
+    {
+     "category": "reverse-whooshes",
+     "how": "A pull into the hit: the reverse whoosh's stop on the hit's sync point."
+    },
+    {
+     "category": "risers-and-fallers",
+     "how": "A built-up hit: a strong riser whose end meets the hit."
+    }
+   ],
+   "character": "big, drum and boom",
+   "sha256": "1f6f457da20a1ec5362d8823926a4faa8f70b3e5a61d18894642022442fafbd1"
+  },
+  {
+   "id": "cinematic-slam-big",
+   "name": "Cinematic slam, big",
+   "category": "cinematic-hits",
+   "file": "cinematic-slam-big.flac",
+   "variant": {
+    "kind": "slam",
+    "intensity": "big"
+   },
+   "description": "A big slam: a heavy wooden door crashing shut in a hall.",
+   "use_for": [
+    "A door closing on a scene, or an ending",
+    "Something final: done, locked, decided",
+    "A hard cut to black",
+    "Big moments: a title, a reveal, a turning point"
+   ],
+   "avoid_for": [
+    "On top of speech: the bass masks it",
+    "Calm, understated or friendly films",
+    "Small elements and UI"
+   ],
+   "tags": [
+    "cinematic",
+    "impact",
+    "hit",
+    "trailer",
+    "bass",
+    "sub",
+    "slam",
+    "big",
+    "natural"
+   ],
+   "duration": 2.225,
+   "channels": 2,
+   "sync": {
+    "at": 0.011,
+    "meets": "instant",
+    "how": "Sync point on the frame of the hit: the title landing, the cut, the reveal. Let the hall ring out."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.011,
+    "body_end": 1.203,
+    "audible_end": 1.728
+   },
+   "level": {
+    "lufs": -20,
+    "true_peak_dbtp": -10.1,
+    "tier": "big"
+   },
+   "under_voiceover_db": -8,
+   "adapt": {
+    "rate": [
+     0.85,
+     1.15
+    ],
+    "notes": "Slower sounds bigger and deeper; faster tighter. To shorten one, fade its tail over 500 ms or more."
+   },
+   "pairs_with": [
+    {
+     "category": "reverse-whooshes",
+     "how": "A pull into the hit: the reverse whoosh's stop on the hit's sync point."
+    },
+    {
+     "category": "risers-and-fallers",
+     "how": "A built-up hit: a strong riser whose end meets the hit."
+    }
+   ],
+   "character": "big, wooden slam",
+   "sha256": "c408030e25e636a865678c25d0e6eceeee5d74e06f04e65f9353443cec46f8ca"
+  },
+  {
+   "id": "bass-sub-drop-medium",
+   "name": "Sub drop, medium",
+   "category": "booms-and-bass",
+   "file": "bass-sub-drop-medium.flac",
+   "variant": {
+    "bass": "sub-drop",
+    "length": "medium"
+   },
+   "description": "A sub drop of about two seconds: deep and falling, felt more than heard.",
+   "use_for": [
+    "The moment after a build: a reveal, a logo or a big statement",
+    "Scene changes and title cards with weight",
+    "The bottom dropping out"
+   ],
+   "avoid_for": [
+    "On top of speech: its low end masks it",
+    "Small elements and UI"
+   ],
+   "tags": [
+    "bass",
+    "sub",
+    "low",
+    "sub drop",
+    "drop",
+    "medium",
+    "cinematic"
+   ],
+   "duration": 2.154,
+   "channels": 1,
+   "sync": {
+    "at": 0.021,
+    "meets": "instant",
+    "how": "Sync point on the frame of the reveal, the beat or the hit (it's at the very start)."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.021,
+    "body_end": 1.882,
+    "audible_end": 2.108
+   },
+   "level": {
+    "lufs": -21,
+    "true_peak_dbtp": -18.1,
+    "tier": "sub-drop"
+   },
+   "under_voiceover_db": -8,
+   "adapt": {
+    "rate": [
+     0.85,
+     1.2
+    ],
+    "notes": "For other lengths, pick the nearest and fade its tail out over 300 ms or more."
+   },
+   "pairs_with": [
+    {
+     "category": "risers-and-fallers",
+     "how": "A built-up reveal: the riser's end on the sync point."
+    },
+    {
+     "category": "impacts",
+     "how": "A hit with bass: a heavy or deep impact on the same frame, the bass at \u22123 dB."
+    }
+   ],
+   "character": "deep, falling tone",
+   "sha256": "90585643b1cb658a1edb16f083af184ed0545f2a913ee8408d9480bc9227f6d2"
+  },
+  {
+   "id": "boom-hit-medium",
+   "name": "Boom hit, medium",
+   "category": "booms-and-bass",
+   "file": "boom-hit-medium.flac",
+   "variant": {
+    "kind": "hit",
+    "intensity": "medium"
+   },
+   "description": "A deep, rounded boom with a warm hall.",
+   "use_for": [
+    "A title card or logo landing with weight",
+    "A big statement or a key number",
+    "A scene change with impact"
+   ],
+   "avoid_for": [
+    "On top of speech: its low end masks it",
+    "Small elements and UI"
+   ],
+   "tags": [
+    "boom",
+    "hit",
+    "sub",
+    "deep",
+    "low",
+    "reveal",
+    "medium",
+    "natural"
+   ],
+   "duration": 1.301,
+   "channels": 2,
+   "sync": {
+    "at": 0.038,
+    "meets": "instant",
+    "how": "Sync point on the frame of the reveal or the landing (it's at the very start). Leave the tail to ring out: the hall is part of it."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.038,
+    "body_end": 0.622,
+    "audible_end": 1.233
+   },
+   "level": {
+    "lufs": -24.5,
+    "true_peak_dbtp": -15.1,
+    "tier": "medium"
+   },
+   "under_voiceover_db": -8,
+   "adapt": {
+    "rate": [
+     0.9,
+     1.1
+    ],
+    "notes": "Slower sounds deeper and longer; faster lighter. For a shorter boom, fade the tail out over 300 ms or more rather than cutting it."
+   },
+   "pairs_with": [
+    {
+     "category": "risers-and-fallers",
+     "how": "A built-up reveal: the riser's end on the boom's sync point."
+    },
+    {
+     "category": "reverse-whooshes",
+     "how": "A pull into a big moment: the reverse whoosh's stop on the boom's sync point."
+    },
+    {
+     "category": "shimmers",
+     "how": "A big, bright reveal: the boom with a shimmer starting with it at \u22124 dB."
+    }
+   ],
+   "character": "deep, rounded boom",
+   "sha256": "8b5774f14c230aad4b7e826e60bfaca0af04d2ff285f3954418661a040781a4f"
+  },
+  {
+   "id": "pop-large-in",
+   "name": "Pop in, large",
+   "category": "pops",
+   "file": "pop-large-in.flac",
+   "variant": {
+    "size": "large",
+    "kind": "in"
+   },
+   "description": "A full, round pop with a little puff of air.",
+   "use_for": [
+    "Elements appearing or scaling up into view",
+    "Icons, badges and stickers popping in",
+    "Points on a chart appearing",
+    "Big shapes and panels"
+   ],
+   "avoid_for": [
+    "Things leaving the screen (use pop out)",
+    "Tiny details"
+   ],
+   "tags": [
+    "pop",
+    "appear",
+    "large",
+    "natural"
+   ],
+   "duration": 0.112,
+   "channels": 1,
+   "sync": {
+    "at": 0.011,
+    "meets": "instant",
+    "how": "Put the sync point where the element reaches full size (pop in, bubble) or where it vanishes (pop out). For a scale-up with overshoot, the sync point at the peak of the overshoot."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.011,
+    "body_end": 0.052,
+    "audible_end": 0.102
+   },
+   "level": {
+    "lufs": -20,
+    "true_peak_dbtp": -6.1,
+    "tier": "large"
+   },
+   "under_voiceover_db": -2,
+   "adapt": {
+    "rate": [
+     0.85,
+     1.25
+    ],
+    "notes": "Rate changes shift the pitch: a little faster for a smaller element, a little slower for a bigger one."
+   },
+   "pairs_with": [
+    {
+     "category": "whooshes",
+     "how": "Something flying in and appearing: the whoosh during the move, the pop at its end, about 3 dB under the whoosh."
+    },
+    {
+     "category": "notifications",
+     "how": "A message or badge appearing: the pop as it appears, the notification tone right after (40\u201380 ms)."
+    }
+   ],
+   "character": "low, lip pop",
+   "sha256": "6f92a0b5d0cce03a0768e5795b06fd7018fe52dfc753e40ed2580cc1bb953c2e"
+  },
+  {
+   "id": "pop-medium-in",
+   "name": "Pop in, medium",
+   "category": "pops",
+   "file": "pop-medium-in.flac",
+   "variant": {
+    "size": "medium",
+    "kind": "in"
+   },
+   "description": "A round, friendly pop that lifts into place.",
+   "use_for": [
+    "Elements appearing or scaling up into view",
+    "Icons, badges and stickers popping in",
+    "Points on a chart appearing",
+    "Cards, buttons and labels"
+   ],
+   "avoid_for": [
+    "Things leaving the screen (use pop out)"
+   ],
+   "tags": [
+    "pop",
+    "appear",
+    "medium",
+    "natural"
+   ],
+   "duration": 0.06,
+   "channels": 1,
+   "sync": {
+    "at": 0.011,
+    "meets": "instant",
+    "how": "Put the sync point where the element reaches full size (pop in, bubble) or where it vanishes (pop out). For a scale-up with overshoot, the sync point at the peak of the overshoot."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.011,
+    "body_end": 0.034,
+    "audible_end": 0.057
+   },
+   "level": {
+    "lufs": -22.5,
+    "true_peak_dbtp": -6.5,
+    "tier": "medium"
+   },
+   "under_voiceover_db": -2,
+   "adapt": {
+    "rate": [
+     0.85,
+     1.25
+    ],
+    "notes": "Rate changes shift the pitch: a little faster for a smaller element, a little slower for a bigger one."
+   },
+   "pairs_with": [
+    {
+     "category": "whooshes",
+     "how": "Something flying in and appearing: the whoosh during the move, the pop at its end, about 3 dB under the whoosh."
+    },
+    {
+     "category": "notifications",
+     "how": "A message or badge appearing: the pop as it appears, the notification tone right after (40\u201380 ms)."
+    }
+   ],
+   "character": "round, lip pop",
+   "sha256": "0c92cb9be01b1b5a3b51d4a6bfe427947b228ea71bb95d5a0b6c8641b7eab511"
+  },
+  {
+   "id": "pop-small-in",
+   "name": "Pop in, small",
+   "category": "pops",
+   "file": "pop-small-in.flac",
+   "variant": {
+    "size": "small",
+    "kind": "in"
+   },
+   "description": "A tiny, bright pop that lifts as it appears.",
+   "use_for": [
+    "Elements appearing or scaling up into view",
+    "Icons, badges and stickers popping in",
+    "Points on a chart appearing",
+    "Small elements: dots, icons, badges"
+   ],
+   "avoid_for": [
+    "Things leaving the screen (use pop out)",
+    "Big shapes"
+   ],
+   "tags": [
+    "pop",
+    "appear",
+    "small",
+    "natural"
+   ],
+   "duration": 0.04,
+   "channels": 1,
+   "sync": {
+    "at": 0.01,
+    "meets": "instant",
+    "how": "Put the sync point where the element reaches full size (pop in, bubble) or where it vanishes (pop out). For a scale-up with overshoot, the sync point at the peak of the overshoot."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.01,
+    "body_end": 0.025,
+    "audible_end": 0.038
+   },
+   "level": {
+    "lufs": -25,
+    "true_peak_dbtp": -7.6,
+    "tier": "small"
+   },
+   "under_voiceover_db": -2,
+   "adapt": {
+    "rate": [
+     0.85,
+     1.25
+    ],
+    "notes": "Rate changes shift the pitch: a little faster for a smaller element, a little slower for a bigger one."
+   },
+   "pairs_with": [
+    {
+     "category": "whooshes",
+     "how": "Something flying in and appearing: the whoosh during the move, the pop at its end, about 3 dB under the whoosh."
+    },
+    {
+     "category": "notifications",
+     "how": "A message or badge appearing: the pop as it appears, the notification tone right after (40\u201380 ms)."
+    }
+   ],
+   "character": "round, lip pop",
+   "sha256": "917759c812aff57bca97627a3c89c7aa5f1b4be7c9494a352cd6ba1dc0984769"
+  },
+  {
+   "id": "tone-ding-high",
+   "name": "Ding, high",
+   "category": "tones",
+   "file": "tone-ding-high.flac",
+   "variant": {
+    "kind": "ding",
+    "pitch": "high"
+   },
+   "description": "A small bell's clear ding (E, high).",
+   "use_for": [
+    "Highlighting a key point, a feature or a benefit",
+    "A tick, an answer or a result appearing",
+    "An idea: the lightbulb moment"
+   ],
+   "avoid_for": [
+    "Errors or warnings"
+   ],
+   "tags": [
+    "tone",
+    "ding",
+    "bell",
+    "high",
+    "note",
+    "musical",
+    "natural"
+   ],
+   "duration": 0.812,
+   "channels": 1,
+   "sync": {
+    "at": 0,
+    "meets": "instant",
+    "how": "Sync point on the frame the highlight appears."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.013,
+    "body_end": 0.36,
+    "audible_end": 0.737
+   },
+   "level": {
+    "lufs": -23,
+    "true_peak_dbtp": -18.4,
+    "tier": "ding"
+   },
+   "under_voiceover_db": -3,
+   "adapt": {
+    "rate": [
+     1,
+     1
+    ],
+    "notes": "Don't change the rate: it detunes the note."
+   },
+   "tuning": "C major pentatonic",
+   "pairs_with": [
+    {
+     "category": "shimmers",
+     "how": "A brighter highlight: the ding with a short soft shimmer starting with it at \u22124 dB."
+    }
+   ],
+   "character": "bright bell, E6",
+   "sha256": "4a77d6a7a7d10956997e9bf8353fc1aaa6bb5f191f5e1ffbb36c33471b162f92"
+  },
+  {
+   "id": "tone-step-1",
+   "name": "Step 1 of 5",
+   "category": "tones",
+   "file": "tone-step-1.flac",
+   "variant": {
+    "kind": "step",
+    "step": "1"
+   },
+   "description": "Step 1 of 5: a soft marimba note (C), each one higher.",
+   "use_for": [
+    "Words, lines or list items appearing one by one: step 1 for the first, 2 for the second\u2026",
+    "Bullet points and checklists building up",
+    "Icons or cards appearing in a row"
+   ],
+   "avoid_for": [
+    "Items appearing all at once (use a single pop)",
+    "Lists longer than five: there are five steps"
+   ],
+   "tags": [
+    "tone",
+    "step",
+    "marimba",
+    "step 1",
+    "note",
+    "musical",
+    "natural"
+   ],
+   "duration": 0.513,
+   "channels": 1,
+   "sync": {
+    "at": 0,
+    "meets": "instant",
+    "how": "Sync point on the frame each item appears; use the steps in order."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.012,
+    "body_end": 0.252,
+    "audible_end": 0.469
+   },
+   "level": {
+    "lufs": -26,
+    "true_peak_dbtp": -20.8,
+    "tier": "step"
+   },
+   "under_voiceover_db": -2,
+   "adapt": {
+    "rate": [
+     1,
+     1
+    ],
+    "notes": "Don't change the rate: it detunes the note."
+   },
+   "tuning": "C major pentatonic",
+   "pairs_with": [
+    {
+     "category": "pops",
+     "how": "Items popping in: the pop for each item and its step on top at \u22123 dB."
+    }
+   ],
+   "character": "warm marimba, C5",
+   "sha256": "425c4981f965f7db88f9d1971b6c9747539dc5209c52935319a7451feb5ec571"
+  },
+  {
+   "id": "tone-step-2",
+   "name": "Step 2 of 5",
+   "category": "tones",
+   "file": "tone-step-2.flac",
+   "variant": {
+    "kind": "step",
+    "step": "2"
+   },
+   "description": "Step 2 of 5: a soft marimba note (E), each one higher.",
+   "use_for": [
+    "Words, lines or list items appearing one by one: step 1 for the first, 2 for the second\u2026",
+    "Bullet points and checklists building up",
+    "Icons or cards appearing in a row"
+   ],
+   "avoid_for": [
+    "Items appearing all at once (use a single pop)",
+    "Lists longer than five: there are five steps"
+   ],
+   "tags": [
+    "tone",
+    "step",
+    "marimba",
+    "step 2",
+    "note",
+    "musical",
+    "natural"
+   ],
+   "duration": 0.445,
+   "channels": 1,
+   "sync": {
+    "at": 0,
+    "meets": "instant",
+    "how": "Sync point on the frame each item appears; use the steps in order."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.011,
+    "body_end": 0.227,
+    "audible_end": 0.406
+   },
+   "level": {
+    "lufs": -26,
+    "true_peak_dbtp": -19.9,
+    "tier": "step"
+   },
+   "under_voiceover_db": -2,
+   "adapt": {
+    "rate": [
+     1,
+     1
+    ],
+    "notes": "Don't change the rate: it detunes the note."
+   },
+   "tuning": "C major pentatonic",
+   "pairs_with": [
+    {
+     "category": "pops",
+     "how": "Items popping in: the pop for each item and its step on top at \u22123 dB."
+    }
+   ],
+   "character": "warm marimba, E5",
+   "sha256": "249b0751f67d067ec6c680cd236658d78a836562dc4fdac5f801a1235717a09f"
+  },
+  {
+   "id": "tone-step-3",
+   "name": "Step 3 of 5",
+   "category": "tones",
+   "file": "tone-step-3.flac",
+   "variant": {
+    "kind": "step",
+    "step": "3"
+   },
+   "description": "Step 3 of 5: a soft marimba note (G), each one higher.",
+   "use_for": [
+    "Words, lines or list items appearing one by one: step 1 for the first, 2 for the second\u2026",
+    "Bullet points and checklists building up",
+    "Icons or cards appearing in a row"
+   ],
+   "avoid_for": [
+    "Items appearing all at once (use a single pop)",
+    "Lists longer than five: there are five steps"
+   ],
+   "tags": [
+    "tone",
+    "step",
+    "marimba",
+    "step 3",
+    "note",
+    "musical",
+    "natural"
+   ],
+   "duration": 0.403,
+   "channels": 1,
+   "sync": {
+    "at": 0,
+    "meets": "instant",
+    "how": "Sync point on the frame each item appears; use the steps in order."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.011,
+    "body_end": 0.206,
+    "audible_end": 0.364
+   },
+   "level": {
+    "lufs": -26,
+    "true_peak_dbtp": -18.5,
+    "tier": "step"
+   },
+   "under_voiceover_db": -2,
+   "adapt": {
+    "rate": [
+     1,
+     1
+    ],
+    "notes": "Don't change the rate: it detunes the note."
+   },
+   "tuning": "C major pentatonic",
+   "pairs_with": [
+    {
+     "category": "pops",
+     "how": "Items popping in: the pop for each item and its step on top at \u22123 dB."
+    }
+   ],
+   "character": "warm marimba, G5",
+   "sha256": "f994c56e0c78fd3d87780e1f2c1819678029042a785fa7db859483a97ca2f30c"
+  },
+  {
+   "id": "tone-step-4",
+   "name": "Step 4 of 5",
+   "category": "tones",
+   "file": "tone-step-4.flac",
+   "variant": {
+    "kind": "step",
+    "step": "4"
+   },
+   "description": "Step 4 of 5: a soft marimba note (A), each one higher.",
+   "use_for": [
+    "Words, lines or list items appearing one by one: step 1 for the first, 2 for the second\u2026",
+    "Bullet points and checklists building up",
+    "Icons or cards appearing in a row"
+   ],
+   "avoid_for": [
+    "Items appearing all at once (use a single pop)",
+    "Lists longer than five: there are five steps"
+   ],
+   "tags": [
+    "tone",
+    "step",
+    "marimba",
+    "step 4",
+    "note",
+    "musical",
+    "natural"
+   ],
+   "duration": 0.372,
+   "channels": 1,
+   "sync": {
+    "at": 0,
+    "meets": "instant",
+    "how": "Sync point on the frame each item appears; use the steps in order."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.011,
+    "body_end": 0.176,
+    "audible_end": 0.335
+   },
+   "level": {
+    "lufs": -26,
+    "true_peak_dbtp": -18,
+    "tier": "step"
+   },
+   "under_voiceover_db": -2,
+   "adapt": {
+    "rate": [
+     1,
+     1
+    ],
+    "notes": "Don't change the rate: it detunes the note."
+   },
+   "tuning": "C major pentatonic",
+   "pairs_with": [
+    {
+     "category": "pops",
+     "how": "Items popping in: the pop for each item and its step on top at \u22123 dB."
+    }
+   ],
+   "character": "warm marimba, A5",
+   "sha256": "6a85540d361ee17199ed769f77b873c9c747cb5bf3e331299030fdc2e5467a84"
+  },
+  {
+   "id": "tone-step-5",
+   "name": "Step 5 of 5",
+   "category": "tones",
+   "file": "tone-step-5.flac",
+   "variant": {
+    "kind": "step",
+    "step": "5"
+   },
+   "description": "Step 5 of 5: a soft marimba note (C), each one higher.",
+   "use_for": [
+    "Words, lines or list items appearing one by one: step 1 for the first, 2 for the second\u2026",
+    "Bullet points and checklists building up",
+    "Icons or cards appearing in a row"
+   ],
+   "avoid_for": [
+    "Items appearing all at once (use a single pop)",
+    "Lists longer than five: there are five steps"
+   ],
+   "tags": [
+    "tone",
+    "step",
+    "marimba",
+    "step 5",
+    "note",
+    "musical",
+    "natural"
+   ],
+   "duration": 0.347,
+   "channels": 1,
+   "sync": {
+    "at": 0,
+    "meets": "instant",
+    "how": "Sync point on the frame each item appears; use the steps in order."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.011,
+    "body_end": 0.169,
+    "audible_end": 0.309
+   },
+   "level": {
+    "lufs": -26,
+    "true_peak_dbtp": -19.3,
+    "tier": "step"
+   },
+   "under_voiceover_db": -2,
+   "adapt": {
+    "rate": [
+     1,
+     1
+    ],
+    "notes": "Don't change the rate: it detunes the note."
+   },
+   "tuning": "C major pentatonic",
+   "pairs_with": [
+    {
+     "category": "pops",
+     "how": "Items popping in: the pop for each item and its step on top at \u22123 dB."
+    }
+   ],
+   "character": "warm marimba, C6",
+   "sha256": "d9ae370878290e3e8710accdaa283a3fec6d9aabd641d75807befa12dd2b0a5e"
+  },
+  {
+   "id": "shimmer-long-sparkle",
+   "name": "Shimmer, long, sparkle",
+   "category": "shimmers",
+   "file": "shimmer-long-sparkle.flac",
+   "variant": {
+    "length": "long",
+    "character": "sparkle"
+   },
+   "description": "A long shimmer: a dense, tinkling sparkle, high and light.",
+   "use_for": [
+    "Magic moments: something new, delightful or premium",
+    "Elements lighting up or being highlighted",
+    "A slow, lingering reveal"
+   ],
+   "avoid_for": [
+    "Negative or serious moments",
+    "Fast edits"
+   ],
+   "tags": [
+    "shimmer",
+    "sparkle",
+    "glint",
+    "reveal",
+    "magic",
+    "long",
+    "natural"
+   ],
+   "duration": 1.854,
+   "channels": 2,
+   "sync": {
+    "at": 0.01,
+    "meets": "instant",
+    "how": "Sync point near the start: put it on the frame the highlight or reveal appears; the shimmer trails after."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.01,
+    "body_end": 1.514,
+    "audible_end": 1.782
+   },
+   "level": {
+    "lufs": -22.5,
+    "true_peak_dbtp": -13.6,
+    "tier": "sparkle"
+   },
+   "under_voiceover_db": -3,
+   "adapt": {
+    "rate": [
+     1,
+     1
+    ],
+    "notes": "Don't change the rate: it detunes the glints. For a shorter shimmer, fade the end; for longer, use the next length."
+   },
+   "tuning": "C major pentatonic",
+   "pairs_with": [
+    {
+     "category": "risers-and-fallers",
+     "how": "A built-up reveal: the rise into the reveal, the shimmer starting at the rise's end."
+    },
+    {
+     "category": "pops",
+     "how": "Something appearing with delight: the pop as it appears, the shimmer starting with it at \u22124 dB."
+    },
+    {
+     "category": "whooshes",
+     "how": "A reveal after a move: the whoosh into it, the shimmer starting at the whoosh's sync point."
+    }
+   ],
+   "character": "sparkle, glassy",
+   "sha256": "30218af6dabf4f68e2f5f960cf628b7df4d15a7d65cc266835d8fdb30f0b82f6"
+  },
+  {
+   "id": "shimmer-medium-bright",
+   "name": "Shimmer, medium, bright",
+   "category": "shimmers",
+   "file": "shimmer-medium-bright.flac",
+   "variant": {
+    "length": "medium",
+    "character": "bright"
+   },
+   "description": "A shimmer: a bright cloud of glassy glints.",
+   "use_for": [
+    "Positive reveals: a result, a product, a logo",
+    "Elements lighting up or being highlighted",
+    "A quick highlight"
+   ],
+   "avoid_for": [
+    "Negative or serious moments"
+   ],
+   "tags": [
+    "shimmer",
+    "sparkle",
+    "glint",
+    "reveal",
+    "magic",
+    "bright",
+    "medium",
+    "natural"
+   ],
+   "duration": 1.109,
+   "channels": 2,
+   "sync": {
+    "at": 0.011,
+    "meets": "instant",
+    "how": "Sync point near the start: put it on the frame the highlight or reveal appears; the shimmer trails after."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.011,
+    "body_end": 0.578,
+    "audible_end": 1.07
+   },
+   "level": {
+    "lufs": -23.5,
+    "true_peak_dbtp": -16.8,
+    "tier": "bright"
+   },
+   "under_voiceover_db": -3,
+   "adapt": {
+    "rate": [
+     1,
+     1
+    ],
+    "notes": "Don't change the rate: it detunes the glints. For a shorter shimmer, fade the end; for longer, use the next length."
+   },
+   "tuning": "C major pentatonic",
+   "pairs_with": [
+    {
+     "category": "risers-and-fallers",
+     "how": "A built-up reveal: the rise into the reveal, the shimmer starting at the rise's end."
+    },
+    {
+     "category": "pops",
+     "how": "Something appearing with delight: the pop as it appears, the shimmer starting with it at \u22124 dB."
+    },
+    {
+     "category": "whooshes",
+     "how": "A reveal after a move: the whoosh into it, the shimmer starting at the whoosh's sync point."
+    }
+   ],
+   "character": "bright, glassy",
+   "sha256": "1659d0489056c10dfb048c6afaf086ec2eb5642d2176dbb0c12595ef1aa759e4"
+  },
+  {
+   "id": "celebration-applause-big",
+   "name": "Applause, a crowd",
+   "category": "celebration",
+   "file": "celebration-applause-big.flac",
+   "variant": {
+    "item": "applause-big"
+   },
+   "description": "A crowd applauding in a hall.",
+   "use_for": [
+    "A big achievement or launch",
+    "An award, an event, a stage",
+    "Celebrating with customers or a community"
+   ],
+   "avoid_for": [
+    "Serious or sensitive moments",
+    "On top of speech: it's busy"
+   ],
+   "tags": [
+    "celebration",
+    "party",
+    "success",
+    "applause big",
+    "applause",
+    "clapping",
+    "crowd",
+    "natural"
+   ],
+   "duration": 4.577,
+   "channels": 2,
+   "sync": {
+    "at": 0,
+    "meets": "action-start",
+    "how": "Start it with the moment; it swells in and fades out on its own."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 1.261,
+    "body_end": 3.888,
+    "audible_end": 4.488
+   },
+   "span_seconds": 3.888,
+   "fits_seconds": [
+    3.53,
+    4.32
+   ],
+   "level": {
+    "lufs": -22,
+    "true_peak_dbtp": -8.9,
+    "tier": "applause-big"
+   },
+   "under_voiceover_db": -5,
+   "adapt": {
+    "rate": [
+     0.9,
+     1.1
+    ],
+    "notes": "For longer applause, loop the middle with a crossfade of 300 ms or more."
+   },
+   "pairs_with": [
+    {
+     "category": "notifications",
+     "how": "A win: a success tone first, the celebration starting with it."
+    },
+    {
+     "category": "shimmers",
+     "how": "A sparkling moment: confetti with a soft shimmer at \u22124 dB."
+    }
+   ],
+   "character": "crowd applause",
+   "sha256": "d70a80dec14991467f56ee701d59b497dfb8a3b62dbe0e609a7b2e1ef4b8d787"
+  },
+  {
+   "id": "celebration-applause-small",
+   "name": "Applause, a few people",
+   "category": "celebration",
+   "file": "celebration-applause-small.flac",
+   "variant": {
+    "item": "applause-small"
+   },
+   "description": "A few people applauding warmly.",
+   "use_for": [
+    "Praise for a person or a team",
+    "A small win or a milestone",
+    "A presentation or a demo ending"
+   ],
+   "avoid_for": [
+    "Serious or sensitive moments",
+    "On top of speech: it's busy"
+   ],
+   "tags": [
+    "celebration",
+    "party",
+    "success",
+    "applause small",
+    "applause",
+    "clapping",
+    "crowd",
+    "natural"
+   ],
+   "duration": 2.938,
+   "channels": 2,
+   "sync": {
+    "at": 0,
+    "meets": "action-start",
+    "how": "Start it with the moment; it swells in and fades out on its own."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.816,
+    "body_end": 2.857,
+    "audible_end": 2.911
+   },
+   "span_seconds": 2.857,
+   "fits_seconds": [
+    2.6,
+    3.17
+   ],
+   "level": {
+    "lufs": -24,
+    "true_peak_dbtp": -8.1,
+    "tier": "applause-small"
+   },
+   "under_voiceover_db": -5,
+   "adapt": {
+    "rate": [
+     0.9,
+     1.1
+    ],
+    "notes": "For longer applause, loop the middle with a crossfade of 300 ms or more."
+   },
+   "pairs_with": [
+    {
+     "category": "notifications",
+     "how": "A win: a success tone first, the celebration starting with it."
+    },
+    {
+     "category": "shimmers",
+     "how": "A sparkling moment: confetti with a soft shimmer at \u22124 dB."
+    }
+   ],
+   "character": "warm applause",
+   "sha256": "6c6c9da1c56a22d28fb889a2a369538a672f5513ca82b5693411aac459d78e4c"
+  },
+  {
+   "id": "celebration-confetti",
+   "name": "Confetti burst",
+   "category": "celebration",
+   "file": "celebration-confetti.flac",
+   "variant": {
+    "item": "confetti"
+   },
+   "description": "A burst of confetti: a soft puff, then tiny paper flakes falling.",
+   "use_for": [
+    "Confetti falling on screen",
+    "A success moment lingering",
+    "Celebrations and parties"
+   ],
+   "avoid_for": [
+    "Serious or sensitive moments",
+    "On top of speech: it's busy"
+   ],
+   "tags": [
+    "celebration",
+    "party",
+    "success",
+    "confetti",
+    "natural"
+   ],
+   "duration": 2.05,
+   "channels": 2,
+   "sync": {
+    "at": 0.166,
+    "meets": "instant",
+    "how": "Sync point on the frame it pops or appears."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.166,
+    "body_end": 1.555,
+    "audible_end": 1.96
+   },
+   "level": {
+    "lufs": -27,
+    "true_peak_dbtp": -15.8,
+    "tier": "confetti"
+   },
+   "under_voiceover_db": -5,
+   "adapt": {
+    "rate": [
+     0.9,
+     1.1
+    ],
+    "notes": "Small rate changes only."
+   },
+   "pairs_with": [
+    {
+     "category": "notifications",
+     "how": "A win: a success tone first, the celebration starting with it."
+    },
+    {
+     "category": "shimmers",
+     "how": "A sparkling moment: confetti with a soft shimmer at \u22124 dB."
+    }
+   ],
+   "character": "fluttering paper",
+   "sha256": "7339030f9af6e7f14ca474c033dbbd3bb1d09623548694395f74b78b6eaa3b19"
+  },
+  {
+   "id": "celebration-fireworks",
+   "name": "Firework",
+   "category": "celebration",
+   "file": "celebration-fireworks.flac",
+   "variant": {
+    "item": "fireworks"
+   },
+   "description": "A firework: a rocket whistling up, a boom and a crackling shower.",
+   "use_for": [
+    "Big launches and grand openings",
+    "New year, festivals and records",
+    "A grand finale"
+   ],
+   "avoid_for": [
+    "Serious or sensitive moments",
+    "On top of speech: it's busy"
+   ],
+   "tags": [
+    "celebration",
+    "party",
+    "success",
+    "fireworks",
+    "natural"
+   ],
+   "duration": 3.334,
+   "channels": 2,
+   "sync": {
+    "at": 0.989,
+    "meets": "instant",
+    "how": "Put the burst (1 s in) on the frame the firework or the reveal bursts."
+   },
+   "parts": [
+    {
+     "what": "whistle",
+     "at": 0
+    },
+    {
+     "what": "burst",
+     "at": 0.982
+    }
+   ],
+   "timing": {
+    "audible_start": 0.005,
+    "onset": 0.049,
+    "peak": 0.989,
+    "body_end": 2.347,
+    "audible_end": 3.294
+   },
+   "level": {
+    "lufs": -20,
+    "true_peak_dbtp": -3.2,
+    "tier": "fireworks"
+   },
+   "under_voiceover_db": -5,
+   "adapt": {
+    "rate": [
+     0.9,
+     1.1
+    ],
+    "notes": "Small rate changes only."
+   },
+   "pairs_with": [
+    {
+     "category": "notifications",
+     "how": "A win: a success tone first, the celebration starting with it."
+    },
+    {
+     "category": "shimmers",
+     "how": "A sparkling moment: confetti with a soft shimmer at \u22124 dB."
+    }
+   ],
+   "character": "whistle, boom, crackle",
+   "sha256": "c1b40f6c1cf0b9277376863c185f8db48280929afac5c89a1f3668000b75bf6a"
+  },
+  {
+   "id": "celebration-popper",
+   "name": "Party popper",
+   "category": "celebration",
+   "file": "celebration-popper.flac",
+   "variant": {
+    "item": "popper"
+   },
+   "description": "A party popper: a sharp pop and streamers rustling out.",
+   "use_for": [
+    "Congratulations, birthdays, anniversaries",
+    "A celebration starting",
+    "A new feature or milestone unveiled"
+   ],
+   "avoid_for": [
+    "Serious or sensitive moments",
+    "On top of speech: it's busy"
+   ],
+   "tags": [
+    "celebration",
+    "party",
+    "success",
+    "popper",
+    "natural"
+   ],
+   "duration": 0.953,
+   "channels": 2,
+   "sync": {
+    "at": 0.01,
+    "meets": "instant",
+    "how": "Sync point on the frame it pops or appears."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.01,
+    "body_end": 0.281,
+    "audible_end": 0.79
+   },
+   "level": {
+    "lufs": -21,
+    "true_peak_dbtp": -6.5,
+    "tier": "popper"
+   },
+   "under_voiceover_db": -5,
+   "adapt": {
+    "rate": [
+     0.9,
+     1.1
+    ],
+    "notes": "Small rate changes only."
+   },
+   "pairs_with": [
+    {
+     "category": "notifications",
+     "how": "A win: a success tone first, the celebration starting with it."
+    },
+    {
+     "category": "shimmers",
+     "how": "A sparkling moment: confetti with a soft shimmer at \u22124 dB."
+    }
+   ],
+   "character": "pop and streamers",
+   "sha256": "029c305b45aa3c74a63bacea2330053d609e8697844799c1afd45efb1b547df3"
+  },
+  {
+   "id": "time-clock",
+   "name": "Clock ticking",
+   "category": "time",
+   "file": "time-clock.flac",
+   "variant": {
+    "item": "clock"
+   },
+   "description": "A clock ticking: tick, tock, once a second.",
+   "use_for": [
+    "Time passing, waiting",
+    "Saving time, deadlines, schedules",
+    "Loop it under a scene"
+   ],
+   "avoid_for": [
+    "Moments that need no sense of time"
+   ],
+   "tags": [
+    "time",
+    "clock",
+    "natural"
+   ],
+   "duration": 3.037,
+   "channels": 1,
+   "sync": {
+    "at": 0,
+    "meets": "action-start",
+    "how": "Start it with the scene: it ticks once a second from its very start. Loop it for longer."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.01,
+    "body_end": 3.02,
+    "audible_end": 3.029
+   },
+   "span_seconds": 3.02,
+   "fits_seconds": [
+    2.75,
+    3.36
+   ],
+   "level": {
+    "lufs": -27,
+    "true_peak_dbtp": -9.7,
+    "tier": "clock"
+   },
+   "under_voiceover_db": -1,
+   "adapt": {
+    "rate": [
+     0.9,
+     1.1
+    ],
+    "notes": "Small rate changes only; loop the ticking for longer scenes."
+   },
+   "pairs_with": [
+    {
+     "category": "notifications",
+     "how": "Time's up with a result: the timer, then a success or failure 200 ms after."
+    }
+   ],
+   "character": "tick-tock",
+   "sha256": "164a3bf0324a6914ddebf1593e1d718081ab91feb7ae38a09fe91200a2e0a54e"
+  },
+  {
+   "id": "time-clock-fast",
+   "name": "Fast ticking",
+   "category": "time",
+   "file": "time-clock-fast.flac",
+   "variant": {
+    "item": "clock-fast"
+   },
+   "description": "Fast, urgent ticking: twice a second.",
+   "use_for": [
+    "Time running out, urgency",
+    "A deadline approaching",
+    "Tension before a reveal"
+   ],
+   "avoid_for": [
+    "Moments that need no sense of time"
+   ],
+   "tags": [
+    "time",
+    "clock",
+    "clock fast",
+    "natural"
+   ],
+   "duration": 2.534,
+   "channels": 1,
+   "sync": {
+    "at": 0,
+    "meets": "action-start",
+    "how": "Start it with the scene: it ticks twice a second from its very start. Loop it for longer."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 1.01,
+    "body_end": 2.519,
+    "audible_end": 2.527
+   },
+   "span_seconds": 2.519,
+   "fits_seconds": [
+    2.29,
+    2.8
+   ],
+   "level": {
+    "lufs": -25,
+    "true_peak_dbtp": -7.8,
+    "tier": "clock-fast"
+   },
+   "under_voiceover_db": -1,
+   "adapt": {
+    "rate": [
+     0.9,
+     1.1
+    ],
+    "notes": "Small rate changes only; loop the ticking for longer scenes."
+   },
+   "pairs_with": [
+    {
+     "category": "notifications",
+     "how": "Time's up with a result: the timer, then a success or failure 200 ms after."
+    }
+   ],
+   "character": "urgent ticking",
+   "sha256": "a42d4067dd991cc1e841e346657db0b2577440e690d4ae3ed7839e787dd322fa"
+  },
+  {
+   "id": "money-coin-drop",
+   "name": "Coin drop",
+   "category": "money",
+   "file": "money-coin-drop.flac",
+   "variant": {
+    "item": "coin-drop"
+   },
+   "description": "A coin dropped on a table: it rings, bounces and rattles flat.",
+   "use_for": [
+    "A saving or a small payment",
+    "Tips, change, a coin of the realm",
+    "One coin landing on a graph or pile"
+   ],
+   "avoid_for": [
+    "Abstract money moments that are better as a chart or a number (use data sounds)"
+   ],
+   "tags": [
+    "money",
+    "cash",
+    "payment",
+    "coin drop",
+    "coin",
+    "natural"
+   ],
+   "duration": 0.681,
+   "channels": 1,
+   "sync": {
+    "at": 0.01,
+    "meets": "instant",
+    "how": "Sync point on the frame the coin lands."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.01,
+    "body_end": 0.527,
+    "audible_end": 0.668
+   },
+   "level": {
+    "lufs": -24,
+    "true_peak_dbtp": -12.8,
+    "tier": "coin-drop"
+   },
+   "under_voiceover_db": -3,
+   "adapt": {
+    "rate": [
+     0.9,
+     1.12
+    ],
+    "notes": "Small rate changes only: the coins' pitch moves with the rate."
+   },
+   "pairs_with": [
+    {
+     "category": "data",
+     "how": "A total counting up: the count-up, then the register or a coin drop as it lands."
+    }
+   ],
+   "character": "ringing coin",
+   "sha256": "618325d7d3a72b17a5768c43bc7dc85087abcd10e0450106e19bc34ca601e579"
+  },
+  {
+   "id": "money-coins-pour",
+   "name": "Coins pouring",
+   "category": "money",
+   "file": "money-coins-pour.flac",
+   "variant": {
+    "item": "coins-pour"
+   },
+   "description": "A handful of coins poured onto a pile: a dense, short clatter.",
+   "use_for": [
+    "Savings, revenue or rewards piling up",
+    "A jackpot or a big win",
+    "Money flowing in"
+   ],
+   "avoid_for": [
+    "Abstract money moments that are better as a chart or a number (use data sounds)"
+   ],
+   "tags": [
+    "money",
+    "cash",
+    "payment",
+    "coins pour",
+    "coin",
+    "natural"
+   ],
+   "duration": 1.125,
+   "channels": 1,
+   "sync": {
+    "at": 0,
+    "meets": "action-start",
+    "how": "Start it as the coins start to pour."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0.011,
+    "peak": 0.44,
+    "body_end": 1.005,
+    "audible_end": 1.087
+   },
+   "span_seconds": 1.005,
+   "fits_seconds": [
+    0.9,
+    1.12
+   ],
+   "level": {
+    "lufs": -23,
+    "true_peak_dbtp": -15.3,
+    "tier": "coins-pour"
+   },
+   "under_voiceover_db": -3,
+   "adapt": {
+    "rate": [
+     0.9,
+     1.12
+    ],
+    "notes": "Small rate changes only: the coins' pitch moves with the rate."
+   },
+   "pairs_with": [
+    {
+     "category": "data",
+     "how": "A total counting up: the count-up, then the register or a coin drop as it lands."
+    }
+   ],
+   "character": "shower of coins",
+   "sha256": "269722e36b8f7b2ef34d1f4385b8a8ec15ee757b595586cd8492a71fd6155a99"
+  },
+  {
+   "id": "money-register",
+   "name": "Cash register",
+   "category": "money",
+   "file": "money-register.flac",
+   "variant": {
+    "item": "register"
+   },
+   "description": "A cash register: a key, the bell's ching and the drawer sliding open.",
+   "use_for": [
+    "A sale made, revenue in",
+    "Ka-ching: profit, pricing and offers",
+    "Shops and retail"
+   ],
+   "avoid_for": [
+    "Abstract money moments that are better as a chart or a number (use data sounds)"
+   ],
+   "tags": [
+    "money",
+    "cash",
+    "payment",
+    "register",
+    "natural"
+   ],
+   "duration": 0.912,
+   "channels": 1,
+   "sync": {
+    "at": 0.093,
+    "meets": "instant",
+    "how": "Put the bell (about 0.09 s in, after the key press) on the frame the price or total appears."
+   },
+   "parts": [
+    {
+     "what": "key",
+     "at": 0.003
+    },
+    {
+     "what": "bell",
+     "at": 0.093
+    },
+    {
+     "what": "drawer stops",
+     "at": 0.423
+    }
+   ],
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.01,
+    "body_end": 0.549,
+    "audible_end": 0.897
+   },
+   "level": {
+    "lufs": -22,
+    "true_peak_dbtp": -9.5,
+    "tier": "register"
+   },
+   "under_voiceover_db": -3,
+   "adapt": {
+    "rate": [
+     0.9,
+     1.12
+    ],
+    "notes": "Small rate changes only: the bell's pitch moves with the rate."
+   },
+   "pairs_with": [
+    {
+     "category": "data",
+     "how": "A total counting up: the count-up, then the register or a coin drop as it lands."
+    }
+   ],
+   "character": "till and bell",
+   "sha256": "14a028b35622d610413a46da7374a170c6bb9bad62346397012cc90b23fb10b6"
+  },
+  {
+   "id": "data-bar-grow",
+   "name": "Bar growing",
+   "category": "data",
+   "file": "data-bar-grow.flac",
+   "variant": {
+    "item": "bar"
+   },
+   "description": "A quick upward swish that lands on a tick: a bar growing to its value.",
+   "use_for": [
+    "A bar in a chart growing",
+    "A level meter rising",
+    "A value being set"
+   ],
+   "avoid_for": [
+    "Things that aren't data (use whooshes, pops or shimmers)"
+   ],
+   "tags": [
+    "data",
+    "bar",
+    "numbers",
+    "chart",
+    "natural"
+   ],
+   "duration": 0.35,
+   "channels": 1,
+   "sync": {
+    "at": 0.328,
+    "meets": "arrival",
+    "how": "Put the tick (near the end) on the frame the bar arrives; the swish leads in before it."
+   },
+   "parts": [
+    {
+     "what": "swish",
+     "at": 0
+    },
+    {
+     "what": "tick",
+     "at": 0.32
+    }
+   ],
+   "timing": {
+    "audible_start": 0.002,
+    "onset": 0.026,
+    "peak": 0.328,
+    "body_end": 0.337,
+    "audible_end": 0.345
+   },
+   "span_seconds": 0.326,
+   "fits_seconds": [
+    0.27,
+    0.38
+   ],
+   "level": {
+    "lufs": -23,
+    "true_peak_dbtp": -9.8,
+    "tier": "bar"
+   },
+   "under_voiceover_db": -2,
+   "adapt": {
+    "rate": [
+     0.85,
+     1.2
+    ],
+    "notes": "Small rate changes only."
+   },
+   "pairs_with": [
+    {
+     "category": "data",
+     "how": "A chart and its key figure: the bars, then the number-land as the figure appears."
+    },
+    {
+     "category": "shimmers",
+     "how": "A standout chart: a short soft shimmer as it completes."
+    }
+   ],
+   "character": "swish and tick",
+   "sha256": "a5163dba7105203b02b3e4b3ce2227ff57b9b242c2621cec4757bbbf95470a9e"
+  },
+  {
+   "id": "data-chart-reveal",
+   "name": "Chart reveal",
+   "category": "data",
+   "file": "data-chart-reveal.flac",
+   "variant": {
+    "item": "chart"
+   },
+   "description": "A soft swell with a few glints: a chart appearing.",
+   "use_for": [
+    "A chart or graph appearing",
+    "A dashboard revealing",
+    "A set of results arriving"
+   ],
+   "avoid_for": [
+    "Things that aren't data (use whooshes, pops or shimmers)"
+   ],
+   "tags": [
+    "data",
+    "chart",
+    "numbers",
+    "natural"
+   ],
+   "duration": 0.833,
+   "channels": 1,
+   "sync": {
+    "at": 0.007,
+    "meets": "action-start",
+    "how": "Start it with the reveal."
+   },
+   "timing": {
+    "audible_start": 0.007,
+    "onset": 0.074,
+    "peak": 0.439,
+    "body_end": 0.769,
+    "audible_end": 0.82
+   },
+   "span_seconds": 0.762,
+   "fits_seconds": [
+    0.64,
+    0.9
+   ],
+   "level": {
+    "lufs": -23,
+    "true_peak_dbtp": -14.3,
+    "tier": "chart"
+   },
+   "under_voiceover_db": -2,
+   "adapt": {
+    "rate": [
+     0.85,
+     1.2
+    ],
+    "notes": "Small rate changes only."
+   },
+   "pairs_with": [
+    {
+     "category": "data",
+     "how": "A chart and its key figure: the chart, then the number-land as the figure appears."
+    },
+    {
+     "category": "shimmers",
+     "how": "A standout chart: a short soft shimmer as it completes."
+    }
+   ],
+   "character": "swell and glints",
+   "sha256": "50b79612d5003904b6e8286f2883c9eee08652faf0c6c0ca59493474ce194850"
+  },
+  {
+   "id": "data-countup-long",
+   "name": "Count-up, long",
+   "category": "data",
+   "file": "data-countup-long.flac",
+   "variant": {
+    "item": "countup",
+    "length": "long"
+   },
+   "description": "A long count-up of about 2.2 seconds.",
+   "use_for": [
+    "A statistic counting up to its value",
+    "A percentage climbing",
+    "A price or total adding up"
+   ],
+   "avoid_for": [
+    "Counts much longer than the run: use the next length or a count tick per step"
+   ],
+   "tags": [
+    "data",
+    "countup",
+    "long",
+    "numbers",
+    "chart",
+    "natural"
+   ],
+   "duration": 2.219,
+   "channels": 1,
+   "sync": {
+    "at": 0,
+    "meets": "action-start",
+    "how": "Start it with the count-up and match its length; the ticks ease in and out like the number. Put a number-land at the end."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.637,
+    "body_end": 2.213,
+    "audible_end": 2.217
+   },
+   "span_seconds": 2.213,
+   "fits_seconds": [
+    1.84,
+    2.6
+   ],
+   "level": {
+    "lufs": -25,
+    "true_peak_dbtp": -11.3,
+    "tier": "countup"
+   },
+   "under_voiceover_db": -2,
+   "adapt": {
+    "rate": [
+     0.85,
+     1.2
+    ],
+    "notes": "Pick the nearest length, then adjust the rate a little to fit."
+   },
+   "pairs_with": [
+    {
+     "category": "data",
+     "how": "A count-up and its finish: the count-up run, then the number-land on the final value."
+    },
+    {
+     "category": "shimmers",
+     "how": "A standout figure: the number-land with a short soft shimmer starting with it."
+    }
+   ],
+   "character": "ticking run",
+   "sha256": "664871a3c547331aaebbd1e853b044e00e273a9ce6884dac26330b817d7830cf"
+  },
+  {
+   "id": "data-countup-medium",
+   "name": "Count-up, medium",
+   "category": "data",
+   "file": "data-countup-medium.flac",
+   "variant": {
+    "item": "countup",
+    "length": "medium"
+   },
+   "description": "A count-up of about 1.2 seconds: ticks that speed up and settle.",
+   "use_for": [
+    "A statistic counting up to its value",
+    "A percentage climbing",
+    "A price or total adding up"
+   ],
+   "avoid_for": [
+    "Counts much longer than the run: use the next length or a count tick per step"
+   ],
+   "tags": [
+    "data",
+    "countup",
+    "medium",
+    "numbers",
+    "chart",
+    "natural"
+   ],
+   "duration": 1.222,
+   "channels": 1,
+   "sync": {
+    "at": 0,
+    "meets": "action-start",
+    "how": "Start it with the count-up and match its length; the ticks ease in and out like the number. Put a number-land at the end."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.496,
+    "body_end": 1.214,
+    "audible_end": 1.219
+   },
+   "span_seconds": 1.214,
+   "fits_seconds": [
+    1.01,
+    1.43
+   ],
+   "level": {
+    "lufs": -25,
+    "true_peak_dbtp": -12,
+    "tier": "countup"
+   },
+   "under_voiceover_db": -2,
+   "adapt": {
+    "rate": [
+     0.85,
+     1.2
+    ],
+    "notes": "Pick the nearest length, then adjust the rate a little to fit."
+   },
+   "pairs_with": [
+    {
+     "category": "data",
+     "how": "A count-up and its finish: the count-up run, then the number-land on the final value."
+    },
+    {
+     "category": "shimmers",
+     "how": "A standout figure: the number-land with a short soft shimmer starting with it."
+    }
+   ],
+   "character": "ticking run",
+   "sha256": "32d01c7394f45ee8e8e0d54ae50dd3c6a3dfa2a57efa6eef5162cf30265dee49"
+  },
+  {
+   "id": "data-countup-short",
+   "name": "Count-up, short",
+   "category": "data",
+   "file": "data-countup-short.flac",
+   "variant": {
+    "item": "countup",
+    "length": "short"
+   },
+   "description": "A short count-up: ticks that speed up and settle, about 0.6 seconds.",
+   "use_for": [
+    "A statistic counting up to its value",
+    "A percentage climbing",
+    "A price or total adding up"
+   ],
+   "avoid_for": [
+    "Counts much longer than the run: use the next length or a count tick per step"
+   ],
+   "tags": [
+    "data",
+    "countup",
+    "short",
+    "numbers",
+    "chart",
+    "natural"
+   ],
+   "duration": 0.621,
+   "channels": 1,
+   "sync": {
+    "at": 0,
+    "meets": "action-start",
+    "how": "Start it with the count-up and match its length; the ticks ease in and out like the number. Put a number-land at the end."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.31,
+    "body_end": 0.614,
+    "audible_end": 0.618
+   },
+   "span_seconds": 0.614,
+   "fits_seconds": [
+    0.51,
+    0.72
+   ],
+   "level": {
+    "lufs": -25,
+    "true_peak_dbtp": -10.9,
+    "tier": "countup"
+   },
+   "under_voiceover_db": -2,
+   "adapt": {
+    "rate": [
+     0.85,
+     1.2
+    ],
+    "notes": "Pick the nearest length, then adjust the rate a little to fit."
+   },
+   "pairs_with": [
+    {
+     "category": "data",
+     "how": "A count-up and its finish: the count-up run, then the number-land on the final value."
+    },
+    {
+     "category": "shimmers",
+     "how": "A standout figure: the number-land with a short soft shimmer starting with it."
+    }
+   ],
+   "character": "ticking run",
+   "sha256": "0500ae02404de9c0d863b270dbad0368ffff30e8fe17032f79c5cace714e0f5f"
+  },
+  {
+   "id": "data-decrease-long",
+   "name": "Count-down, long",
+   "category": "data",
+   "file": "data-decrease-long.flac",
+   "variant": {
+    "item": "decrease",
+    "length": "long"
+   },
+   "description": "A long count-down of about 2.2 seconds.",
+   "use_for": [
+    "A cost, price or time coming down",
+    "Risks, errors or waste falling",
+    "Counting down to zero"
+   ],
+   "avoid_for": [
+    "Counts much longer than the run: use the next length or a count tick per step"
+   ],
+   "tags": [
+    "data",
+    "decrease",
+    "long",
+    "numbers",
+    "chart",
+    "natural"
+   ],
+   "duration": 2.221,
+   "channels": 1,
+   "sync": {
+    "at": 0,
+    "meets": "action-start",
+    "how": "Start it with the count-down and match its length; the ticks ease in and out like the number. Put a number-land at the end if the final figure matters."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 1.856,
+    "body_end": 2.214,
+    "audible_end": 2.218
+   },
+   "span_seconds": 2.214,
+   "fits_seconds": [
+    1.85,
+    2.6
+   ],
+   "level": {
+    "lufs": -25,
+    "true_peak_dbtp": -10,
+    "tier": "decrease"
+   },
+   "under_voiceover_db": -2,
+   "adapt": {
+    "rate": [
+     0.85,
+     1.2
+    ],
+    "notes": "Pick the nearest length, then adjust the rate a little to fit."
+   },
+   "pairs_with": [
+    {
+     "category": "data",
+     "how": "A count-down and its finish: the count-down run, then the number-land on the final value."
+    },
+    {
+     "category": "shimmers",
+     "how": "A standout figure: the number-land with a short soft shimmer starting with it."
+    }
+   ],
+   "character": "falling ticking run",
+   "sha256": "26232a7a2ca59bc5ee97cea60555d0beb992c1e1e9bd1174fc25b93c6a249c89"
+  },
+  {
+   "id": "data-decrease-medium",
+   "name": "Count-down, medium",
+   "category": "data",
+   "file": "data-decrease-medium.flac",
+   "variant": {
+    "item": "decrease",
+    "length": "medium"
+   },
+   "description": "A count-down of about 1.2 seconds: a value easing down.",
+   "use_for": [
+    "A cost, price or time coming down",
+    "Risks, errors or waste falling",
+    "Counting down to zero"
+   ],
+   "avoid_for": [
+    "Counts much longer than the run: use the next length or a count tick per step"
+   ],
+   "tags": [
+    "data",
+    "decrease",
+    "medium",
+    "numbers",
+    "chart",
+    "natural"
+   ],
+   "duration": 1.221,
+   "channels": 1,
+   "sync": {
+    "at": 0,
+    "meets": "action-start",
+    "how": "Start it with the count-down and match its length; the ticks ease in and out like the number. Put a number-land at the end if the final figure matters."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.396,
+    "body_end": 1.214,
+    "audible_end": 1.218
+   },
+   "span_seconds": 1.214,
+   "fits_seconds": [
+    1.01,
+    1.43
+   ],
+   "level": {
+    "lufs": -25,
+    "true_peak_dbtp": -11.1,
+    "tier": "decrease"
+   },
+   "under_voiceover_db": -2,
+   "adapt": {
+    "rate": [
+     0.85,
+     1.2
+    ],
+    "notes": "Pick the nearest length, then adjust the rate a little to fit."
+   },
+   "pairs_with": [
+    {
+     "category": "data",
+     "how": "A count-down and its finish: the count-down run, then the number-land on the final value."
+    },
+    {
+     "category": "shimmers",
+     "how": "A standout figure: the number-land with a short soft shimmer starting with it."
+    }
+   ],
+   "character": "falling ticking run",
+   "sha256": "ed0f5cad3410e28db16f52af95147bff1d7f023f8ac290177372144e6d323cd9"
+  },
+  {
+   "id": "data-decrease-short",
+   "name": "Count-down, short",
+   "category": "data",
+   "file": "data-decrease-short.flac",
+   "variant": {
+    "item": "decrease",
+    "length": "short"
+   },
+   "description": "A short count-down: ticks that speed up and settle, falling a little, about 0.6 seconds.",
+   "use_for": [
+    "A cost, price or time coming down",
+    "Risks, errors or waste falling",
+    "Counting down to zero"
+   ],
+   "avoid_for": [
+    "Counts much longer than the run: use the next length or a count tick per step"
+   ],
+   "tags": [
+    "data",
+    "decrease",
+    "short",
+    "numbers",
+    "chart",
+    "natural"
+   ],
+   "duration": 0.62,
+   "channels": 1,
+   "sync": {
+    "at": 0,
+    "meets": "action-start",
+    "how": "Start it with the count-down and match its length; the ticks ease in and out like the number. Put a number-land at the end if the final figure matters."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.358,
+    "body_end": 0.613,
+    "audible_end": 0.618
+   },
+   "span_seconds": 0.613,
+   "fits_seconds": [
+    0.51,
+    0.72
+   ],
+   "level": {
+    "lufs": -25,
+    "true_peak_dbtp": -10.4,
+    "tier": "decrease"
+   },
+   "under_voiceover_db": -2,
+   "adapt": {
+    "rate": [
+     0.85,
+     1.2
+    ],
+    "notes": "Pick the nearest length, then adjust the rate a little to fit."
+   },
+   "pairs_with": [
+    {
+     "category": "data",
+     "how": "A count-down and its finish: the count-down run, then the number-land on the final value."
+    },
+    {
+     "category": "shimmers",
+     "how": "A standout figure: the number-land with a short soft shimmer starting with it."
+    }
+   ],
+   "character": "falling ticking run",
+   "sha256": "f8622d112160d0c95fdd764ad40e0f2d2b74761a0bd9c964dbc624354ee9d884"
+  },
+  {
+   "id": "data-number-land",
+   "name": "Number landing",
+   "category": "data",
+   "file": "data-number-land.flac",
+   "variant": {
+    "item": "land"
+   },
+   "description": "A woody knock with a small, bright ping: a number landing.",
+   "use_for": [
+    "The final number of a count-up landing",
+    "A key figure appearing",
+    "A result confirmed"
+   ],
+   "avoid_for": [
+    "Things that aren't data (use whooshes, pops or shimmers)"
+   ],
+   "tags": [
+    "data",
+    "land",
+    "numbers",
+    "chart",
+    "natural"
+   ],
+   "duration": 0.233,
+   "channels": 1,
+   "sync": {
+    "at": 0.011,
+    "meets": "instant",
+    "how": "Sync point on the frame the final number appears."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.011,
+    "body_end": 0.091,
+    "audible_end": 0.215
+   },
+   "level": {
+    "lufs": -22,
+    "true_peak_dbtp": -8.9,
+    "tier": "land"
+   },
+   "under_voiceover_db": -2,
+   "adapt": {
+    "rate": [
+     0.85,
+     1.2
+    ],
+    "notes": "Small rate changes only."
+   },
+   "pairs_with": [
+    {
+     "category": "data",
+     "how": "A count-up and its finish: the count-up run, then the number-land on the final value."
+    },
+    {
+     "category": "shimmers",
+     "how": "A standout figure: the number-land with a short soft shimmer starting with it."
+    }
+   ],
+   "character": "knock and ping",
+   "sha256": "5a8af582b3bea2dba401afa55b223cafa8d6a3d1259e72e57dc701b6fc0d82fa"
+  },
+  {
+   "id": "data-progress-long",
+   "name": "Progress fill, long",
+   "category": "data",
+   "file": "data-progress-long.flac",
+   "variant": {
+    "item": "progress",
+    "length": "long"
+   },
+   "description": "A two-second progress fill.",
+   "use_for": [
+    "A progress bar filling",
+    "Loading or uploading",
+    "A goal being reached"
+   ],
+   "avoid_for": [
+    "Things that aren't data (use whooshes, pops or shimmers)"
+   ],
+   "tags": [
+    "data",
+    "progress",
+    "long",
+    "numbers",
+    "chart",
+    "natural"
+   ],
+   "duration": 1.976,
+   "channels": 1,
+   "sync": {
+    "at": 0.008,
+    "meets": "action-start",
+    "how": "Start it with the fill and match its length; it brightens towards the end."
+   },
+   "timing": {
+    "audible_start": 0.008,
+    "onset": 0.014,
+    "peak": 1.908,
+    "body_end": 1.97,
+    "audible_end": 1.974
+   },
+   "span_seconds": 1.962,
+   "fits_seconds": [
+    1.64,
+    2.31
+   ],
+   "level": {
+    "lufs": -25,
+    "true_peak_dbtp": -11.3,
+    "tier": "progress"
+   },
+   "under_voiceover_db": -2,
+   "adapt": {
+    "rate": [
+     0.85,
+     1.2
+    ],
+    "notes": "Pick the nearest length, then adjust the rate a little to fit."
+   },
+   "pairs_with": [
+    {
+     "category": "notifications",
+     "how": "A finished task: the fill, then a success tone as it completes."
+    }
+   ],
+   "character": "rising air and ticks",
+   "sha256": "85a18545f0008865cc278fbe2c5667abb2d6c12324cc915eb16820236ba8679e"
+  },
+  {
+   "id": "data-progress-short",
+   "name": "Progress fill, short",
+   "category": "data",
+   "file": "data-progress-short.flac",
+   "variant": {
+    "item": "progress",
+    "length": "short"
+   },
+   "description": "A one-second progress fill: rising air with soft ticks filling in.",
+   "use_for": [
+    "A progress bar filling",
+    "Loading or uploading",
+    "A goal being reached"
+   ],
+   "avoid_for": [
+    "Things that aren't data (use whooshes, pops or shimmers)"
+   ],
+   "tags": [
+    "data",
+    "progress",
+    "short",
+    "numbers",
+    "chart",
+    "natural"
+   ],
+   "duration": 0.992,
+   "channels": 1,
+   "sync": {
+    "at": 0.007,
+    "meets": "action-start",
+    "how": "Start it with the fill and match its length; it brightens towards the end."
+   },
+   "timing": {
+    "audible_start": 0.007,
+    "onset": 0.032,
+    "peak": 0.931,
+    "body_end": 0.987,
+    "audible_end": 0.991
+   },
+   "span_seconds": 0.98,
+   "fits_seconds": [
+    0.82,
+    1.15
+   ],
+   "level": {
+    "lufs": -25,
+    "true_peak_dbtp": -10.9,
+    "tier": "progress"
+   },
+   "under_voiceover_db": -2,
+   "adapt": {
+    "rate": [
+     0.85,
+     1.2
+    ],
+    "notes": "Pick the nearest length, then adjust the rate a little to fit."
+   },
+   "pairs_with": [
+    {
+     "category": "notifications",
+     "how": "A finished task: the fill, then a success tone as it completes."
+    }
+   ],
+   "character": "rising air and ticks",
+   "sha256": "cbc68e926c97129101aa8f5089920515a8e1a0bc59c95ba62437bf525144319c"
+  },
+  {
+   "id": "data-tick",
+   "name": "Count tick",
+   "category": "data",
+   "file": "data-tick.flac",
+   "variant": {
+    "item": "tick"
+   },
+   "description": "A single soft, woody tick: one step of a number changing.",
+   "use_for": [
+    "A number stepping up or down",
+    "Each value of a counter (repeat it, a little varied)",
+    "Chart points appearing one by one"
+   ],
+   "avoid_for": [
+    "Long counts (use a count-up run)"
+   ],
+   "tags": [
+    "data",
+    "tick",
+    "numbers",
+    "chart",
+    "natural"
+   ],
+   "duration": 0.018,
+   "channels": 1,
+   "sync": {
+    "at": 0.008,
+    "meets": "instant",
+    "how": "Sync point on each step of the number."
+   },
+   "timing": {
+    "audible_start": 0,
+    "onset": 0,
+    "peak": 0.008,
+    "body_end": 0.015,
+    "audible_end": 0.018
+   },
+   "level": {
+    "lufs": -28,
+    "true_peak_dbtp": -9.2,
+    "tier": "tick"
+   },
+   "under_voiceover_db": -2,
+   "adapt": {
+    "rate": [
+     0.85,
+     1.2
+    ],
+    "notes": "Small rate changes only."
+   },
+   "pairs_with": [
+    {
+     "category": "data",
+     "how": "A count-up and its finish: the count-up run, then the number-land on the final value."
+    },
+    {
+     "category": "shimmers",
+     "how": "A standout figure: the number-land with a short soft shimmer starting with it."
+    }
+   ],
+   "character": "soft woody tick",
+   "sha256": "a60916f54e990d5c67be412e5791e889f6b82d96dcf9a9b8d6e91f20b01517ab"
+  }
+ ]
+}
