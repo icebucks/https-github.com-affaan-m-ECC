@@ -78,7 +78,7 @@ Comment your salary 👇
 #bythenumbers #facts #didyouknow #money #billionaire
 ```
 **Pin-Kommentar:** `How many years would YOU need? ⏳ = over 10,000 · 💼 = 1,000–10,000 · 🚀 = under 1,000`
-**YouTube-Titel:** `How long would it take YOU to earn $1 billion? 🤯 #money`
+**YouTube-Titel:** `How long to earn $1 billion? 🤯 (the last one is insane)`
 **YouTube-Beschreibung:**
 ```
 $1,000,000,000 – how long does it really take?
@@ -96,17 +96,17 @@ What's your number? 👇
 ## #2 – The world's tallest buildings, to scale
 **TikTok-Caption:**
 ```
-Tallest buildings in the world to scale – guess #1 BEFORE the end 👀🏙️
-Comment your guess 👇
+Tallest buildings in the world to scale 🏙️ Guess how tall No. 1 is BEFORE the end 👀
+Drop your guess in meters 👇
 #bythenumbers #comparison #facts #skyscraper #burjkhalifa
 ```
 **Pin-Kommentar:** `Which one would you climb? 🇦🇪 Burj Khalifa · 🇲🇾 Merdeka 118 · 🇨🇳 Shanghai Tower · 🇺🇸 One WTC`
-**YouTube-Titel:** `The world's tallest buildings – to scale 🏙️ (Burj Khalifa is insane) #shorts`
+**YouTube-Titel:** `Tallest buildings in the world – to scale 🏙️ (No. 1 is insane)`
 **YouTube-Beschreibung:**
 ```
 From a 1.75 m human to the 828 m Burj Khalifa – every building to scale.
-#10 CITIC Tower 528 m · #8 Tianjin CTF / Guangzhou CTF 530 m · #7 One World Trade Center 541 m · #6 Lotte World Tower 555 m
-#5 Ping An Finance Center 599 m · #4 Makkah Royal Clock Tower 601 m · #3 Shanghai Tower 632 m · #2 Merdeka 118 679 m · #1 Burj Khalifa 828 m
+No. 10 CITIC Tower 528 m · No. 8 Tianjin CTF / Guangzhou CTF 530 m · No. 7 One World Trade Center 541 m · No. 6 Lotte World Tower 555 m
+No. 5 Ping An Finance Center 599 m · No. 4 Makkah Royal Clock Tower 601 m · No. 3 Shanghai Tower 632 m · No. 2 Merdeka 118 679 m · No. 1 Burj Khalifa 828 m
 For scale: Statue of Liberty 93 m (with pedestal), Eiffel Tower 330 m.
 Heights including spires. Source: Wikipedia "List of tallest buildings" / CTBUH, as of November 2026.
 
