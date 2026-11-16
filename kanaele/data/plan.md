@@ -7,6 +7,9 @@
 | Di 17.11. | 21:00 | 19:30 | #1 How long to earn $1 billion? | `BN1_Billion_EN.mp4` | `Cover_BN1.jpg` | trap 150 |
 | Mi 18.11. | 21:00 | 19:30 | #2 Tallest buildings, to scale | `BN2_Tallest_EN.mp4` | `Cover_BN2.jpg` | synthwave 140 |
 
+## Lange Videos
+Jeden **Samstag 17:30** (YouTube) ein langes Video der Reihe „Cosmic Scale“ – Konzept und Pilot: `../space/LONGFORM.md`, `../space/pilot_script.md`. Shorts der Woche zum selben Thema verlinken per „Ähnliches Video“ darauf.
+
 ## Uploadzeiten (deutsche Zeit, Zielgruppe USA + Großbritannien)
 
 | Tag | TikTok | YouTube Shorts |

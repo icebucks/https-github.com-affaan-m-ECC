@@ -1,4 +1,6 @@
-# Cosmic Scale – long-form channel with narrator (Konzept)
+# By The Numbers – lange Videos mit Sprecher (Konzept)
+
+**Entscheidung 16.11.2026:** Kein eigener Kanal. Die langen Videos laufen auf **By The Numbers** neben den täglichen Shorts (gemeinsame Abonnenten fürs Partnerprogramm, Shorts verlinken per „Ähnliches Video“ aufs lange Video). „Cosmic Scale“ ist nur noch der Name der Weltall-Reihe innerhalb des Kanals.
 
 ## Nische & Begründung (16.11.2026)
 **Weltall & Größenordnungen, erzählt:** „How long / how far / how big“ – Reise-, Distanz- und Zeitfragen zu konkreten Himmelskörpern, mit Maßstabs-Animationen.
@@ -7,21 +9,16 @@
 - Werbeerlös laut Creator-Guides ca. 5–12 $ RPM (Science/Space); Finanzen wären höher (10–40 $), aber mit Finanzberatungs-Risiko und härterer Konkurrenz (`../youtube/long_finance.json`). Entscheidung: Space – prüfbare Fakten (NASA), kaum Regelrisiko, passt zu unserer Animations-Engine.
 
 ## Kanal
-- **Name (Arbeitstitel):** `Cosmic Scale` · Handle-Ideen: `@cosmicscale`, `@cosmicscalehq`, `@thecosmicscale` (Verfügbarkeit nur bei der Anmeldung prüfbar)
-- **Profilbild:** `profil_cosmic_scale.jpg`
-- **Beschreibung:**
-```
-How long would it take you to get there? How big is it really?
-Calm, exact, narrated videos about the scale of space – every number sourced, every comparison you can feel.
-🎬 A new long video every week + Shorts.
-```
-- **Stimm-Profil:** `../youtube/voice_cosmicscale.md`
-- **Sprecher:** Kokoro-82M (Apache-2.0, lokal, kommerziell nutzbar), Proben in `voice/`. Empfehlung: `bm_george` (britischer Doku-Ton) oder `am_michael` (warm, amerikanisch). Whisper-Verständlichkeit aller Proben 80–82 % (Abweichungen = Zahlen als Ziffern).
+- Kanal: **By The Numbers** (Profilbild, Bio und Handle bleiben). Bio ergänzen: `+ a long video every week.`
+- Reihe für die ersten langen Videos: **„Cosmic Scale“** (Weltall & Größenordnungen), später weitere Reihen (Geld, Gebäude, Länder) im selben Stil.
+- Playlists: „Shorts“ und „Long videos – Cosmic Scale“ getrennt, damit YouTube beide Zielgruppen sauber zuordnet.
+- Stimm-Profil für lange Videos: `../youtube/voice_cosmicscale.md`
+- Sprecher: Kokoro-82M (Apache-2.0, lokal, kommerziell nutzbar), Proben in `voice/`. Empfehlung `bm_george` oder `am_michael` – **Wahl der Person ausstehend.**
 
 ## Rhythmus (`/yt-plan`)
-- **1 langes Video pro Woche** (Anker, 8–12 min, Mid-Roll-Werbung ab 8 min möglich), immer am selben Tag.
-- **3 Shorts pro Woche aus dem langen Video geschnitten** (`/yt-shorts`: neue erste Zeile, Loop-Punkt) – auf diesem Kanal, mit Verweis aufs lange Video.
-- By The Numbers macht zum selben Thema einen eigenen Short (Zubringer).
+- **Täglich 1 Short** wie bisher (Automatisierung 06:07).
+- **1 langes Video pro Woche** (8–12 min, Mid-Roll-Werbung ab 8 min), immer am selben Tag, z. B. Samstag 17:30.
+- In der Woche davor: 2–3 der täglichen Shorts zum selben Thema (z. B. „How long to reach the Moon?“ vor dem Pilot) und danach per „Ähnliches Video“ aufs lange Video verlinken.
 
 ## Produktions-Pipeline (aufzubauen nach Freigabe)
 1. Thema → Recherche (NASA/ESA/JPL, Datum notieren) → Skript nach `/yt-script` (5 Hooks, `hookscore.py` ≥ 72, Wendepunkt bis 0:35, Beats mit `[ON SCREEN]`, Auflösung, eine Aufforderung).
