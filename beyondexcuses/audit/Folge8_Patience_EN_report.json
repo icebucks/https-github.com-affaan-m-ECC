@@ -1,0 +1,75 @@
+{
+ "video": "Folge8_Patience_EN",
+ "duration": 16.75,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.1791044776119403,
+   "seconds": [
+    9.25,
+    9.5,
+    9.75,
+    12.0,
+    12.25,
+    12.5,
+    12.75,
+    13.0,
+    13.25,
+    13.5,
+    13.75,
+    14.0
+   ]
+  },
+  "bottom caption": {
+   "share_of_frames": 0.13432835820895522,
+   "seconds": [
+    14.5,
+    14.75,
+    15.0,
+    15.25,
+    15.5,
+    15.75,
+    16.0,
+    16.25,
+    16.5
+   ]
+  }
+ },
+ "motion_per_second": [
+  1.66,
+  2.11,
+  8.6,
+  19.79,
+  21.1,
+  8.45,
+  20.31,
+  20.52,
+  8.76,
+  19.72,
+  19.22,
+  4.95,
+  4.15,
+  1.29,
+  11.81,
+  1.08
+ ],
+ "dead_seconds": [
+  15
+ ],
+ "first_second": {
+  "brightness": 119.99165344238281,
+  "contrast": 48.61048889160156,
+  "colourfulness": 41.00405693054199
+ },
+ "loop_difference": 46.8,
+ "font_sizes": [],
+ "audio": {
+  "first_half_s_db": -15.103764533996582,
+  "median_db": -14.466259002685547,
+  "silent_windows": 0,
+  "lufs": -14.1
+ }
+}

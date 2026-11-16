@@ -1,0 +1,71 @@
+{
+ "video": "Folge9_Scroller_EN",
+ "duration": 16.75,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.05970149253731343,
+   "seconds": [
+    13.25,
+    13.5,
+    13.75,
+    14.0
+   ]
+  },
+  "bottom caption": {
+   "share_of_frames": 0.13432835820895522,
+   "seconds": [
+    14.5,
+    14.75,
+    15.0,
+    15.25,
+    15.5,
+    15.75,
+    16.0,
+    16.25,
+    16.5
+   ]
+  }
+ },
+ "motion_per_second": [
+  0.97,
+  2.47,
+  1.99,
+  1.57,
+  1.6,
+  1.06,
+  1.9,
+  2.01,
+  1.65,
+  1.79,
+  8.07,
+  10.32,
+  4.35,
+  2.04,
+  11.15,
+  0.8
+ ],
+ "dead_seconds": [
+  0,
+  5,
+  15
+ ],
+ "first_second": {
+  "brightness": 45.31692886352539,
+  "contrast": 29.35306739807129,
+  "colourfulness": 27.869075298309326
+ },
+ "loop_difference": 40.0,
+ "font_sizes": [
+  24
+ ],
+ "audio": {
+  "first_half_s_db": -28.061338424682617,
+  "median_db": -14.145988464355469,
+  "silent_windows": 1,
+  "lufs": -13.9
+ }
+}

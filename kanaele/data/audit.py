@@ -14,7 +14,7 @@ import numpy as np
 from PIL import Image, ImageDraw
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(HERE, "audit")
+OUT = os.environ.get("AUDIT_OUT") or os.path.join(HERE, "audit")
 W, H = 1080, 1920
 ZONES = {   # name: (x0, y0, x1, y1) – content inside these is hidden or crowded on TikTok
     "top tabs": (0, 0, W, 210),
@@ -87,8 +87,10 @@ def audit(path):
     f0 = F[: fps]
     thumb = dict(brightness=float(f0.mean()), contrast=float(f0.mean(-1).std()), colourfulness=float(np.mean([colourfulness(f) for f in f0])))
     loop = float(np.abs(F[-1] - F[min(1, n - 1)]).mean())   # frame 0 carries the opening flash
-    num = re.search(r"BN(\d+)", name)
-    script = os.path.join(HERE, f"bn{num.group(1)}.py") if num else None
+    num = re.search(r"BN(\d+)", name); fol = re.search(r"Folge(\d+)", name)
+    if num: script = os.path.join(HERE, f"bn{num.group(1)}.py")
+    elif fol: script = os.path.join(HERE, "..", "..", "beyondexcuses", f"ep{fol.group(1)}.py")
+    else: script = None
     fonts = font_sizes(script)
     au = audio_stats(path)
     # visual: worst frames with zones drawn

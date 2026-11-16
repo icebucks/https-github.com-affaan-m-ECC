@@ -1,0 +1,69 @@
+{
+ "video": "Folge4_Ausreden_EN",
+ "duration": 18.0,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "bottom caption": {
+   "share_of_frames": 0.1388888888888889,
+   "seconds": [
+    15.25,
+    15.5,
+    15.75,
+    16.0,
+    16.25,
+    16.5,
+    16.75,
+    17.0,
+    17.25,
+    17.5
+   ]
+  }
+ },
+ "motion_per_second": [
+  7.75,
+  6.76,
+  2.54,
+  2.44,
+  2.91,
+  2.38,
+  2.67,
+  4.43,
+  6.73,
+  5.8,
+  3.12,
+  1.32,
+  1.03,
+  0.84,
+  1.62,
+  9.88,
+  0.38,
+  19.45
+ ],
+ "dead_seconds": [
+  12,
+  13,
+  16
+ ],
+ "first_second": {
+  "brightness": 57.97648239135742,
+  "contrast": 31.682937622070312,
+  "colourfulness": 21.632978916168213
+ },
+ "loop_difference": 38.8,
+ "font_sizes": [
+  70
+ ],
+ "audio": {
+  "first_half_s_db": -27.806718826293945,
+  "median_db": -15.771835327148438,
+  "silent_windows": 0,
+  "lufs": -14.5
+ }
+}

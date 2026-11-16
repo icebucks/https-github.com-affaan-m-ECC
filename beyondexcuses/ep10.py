@@ -50,9 +50,9 @@ def letgo(t):
         return dict(x=x, y=WL + 12, p=p, rot=-82, swim=True)
     if t < 10.9:
         k = seg(t, 10.3, 10.9)
-        return dict(x=lerp(770, 820, k), y=G - 40, p=crouch() if k < 0.5 else stand())
-    if t < TURN: return dict(x=820, y=G - 40, p=stand())
-    return dict(x=820, y=G - 40, p=cheer(t))
+        return dict(x=lerp(770, 790, k), y=G - 40, p=crouch() if k < 0.5 else stand())
+    if t < TURN: return dict(x=790, y=G - 40, p=stand())
+    return dict(x=790, y=G - 40, p=cheer(t))
 
 
 def grudge(t):

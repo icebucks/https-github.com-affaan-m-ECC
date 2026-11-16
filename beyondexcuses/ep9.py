@@ -8,7 +8,7 @@ from lib import *
 T_END = 17.0
 G = 1240
 S = 1.0
-XL, XS = 270, 745                     # Learner reading spot / Scroller on his crate
+XL, XS = 270, 700                     # Learner reading spot / Scroller on his crate
 COLS = [(360 + i * 44, 2.4 + i * 1.55) for i in range(6)]   # (x, time the column appears)
 BH = 26                                # book height
 TURN = 11.9
@@ -165,7 +165,7 @@ def frame(c, t):
                    pop=1 + 0.15 * (1 - seg(t, ts, ts + 0.2)))
     if TURN + 1.6 < t < TURN + 3.4:
         a = seg(t, TURN + 1.6, TURN + 1.8) * (1 - seg(t, TURN + 3.1, TURN + 3.4))
-        bubble(c, min(js["head"][0], 745), js["head"][1] - 125, "It's morning?!", a, "speech", tail=(js["head"][0], js["head"][1] - 30), size=32)
+        bubble(c, min(js["head"][0], 660), js["head"][1] - 125, "It's morning?!", a, "speech", tail=(js["head"][0], js["head"][1] - 30), size=32)
     c.restore()
     vignette(c, 0.45)
     grain(c, t, 0.035)

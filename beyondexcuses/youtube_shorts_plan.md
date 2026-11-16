@@ -45,7 +45,7 @@ Planning feels like progress. But it isn't.
 Which one are you? Tell me in the comments 👇
 
 Mindset Series – Part 1. Follow for Part 2.
-#mindset #motivation #discipline #selfimprovement #shorts
+#beyondexcuses #mindset #motivation #discipline #shorts
 ```
 
 ## #2 – Overthinker vs Doer
@@ -62,7 +62,7 @@ You don't have to overthink everything. Just take the next step.
 Be honest – are you an overthinker? 👇
 
 Mindset Series – Part 2. Follow for Part 3.
-#overthinking #mindset #motivation #psychology #shorts
+#beyondexcuses #overthinking #mindset #motivation #shorts
 ```
 
 ## #3 – Ego vs Humility
@@ -79,7 +79,7 @@ Accepting help isn't weakness. Pride keeps you down.
 Would you take the rope? 👇
 
 Mindset Series – Part 3. Follow for Part 4.
-#ego #humility #mindset #psychology #shorts
+#beyondexcuses #ego #humility #mindset #shorts
 ```
 
 ## #4 – Excuses vs Discipline
@@ -96,7 +96,7 @@ There will never be a perfect day. Start anyway.
 Drop your favourite excuse below 👇
 
 Mindset Series – Part 4. Follow for Part 5.
-#discipline #noexcuses #mindset #motivation #shorts
+#beyondexcuses #discipline #noexcuses #mindset #shorts
 ```
 
 ## #5 – Envy vs Contentment
@@ -113,7 +113,7 @@ Tend to yours.
 Who do you compare yourself to the most? 👇
 
 Mindset Series – Part 5. Follow for Part 6.
-#envy #comparison #mindset #psychology #shorts
+#beyondexcuses #envy #comparison #mindset #shorts
 ```
 
 ## #6 – Comfort Zone vs Growth
@@ -130,7 +130,7 @@ Step out.
 What's your comfort zone right now? 👇
 
 Mindset Series – Part 6. Follow for Part 7.
-#comfortzone #growth #mindset #motivation #shorts
+#beyondexcuses #comfortzone #growth #mindset #shorts
 ```
 
 ## #7 – People Pleaser vs Boundaries
@@ -146,7 +146,7 @@ You can't carry everyone. No is a complete sentence.
 When did you last say no? 👇
 
 Mindset Series – Part 7. Follow for Part 8.
-#peoplepleaser #boundaries #mindset #psychology #shorts
+#beyondexcuses #peoplepleaser #boundaries #mindset #shorts
 ```
 
 ## #8 – Impatience vs Patience
@@ -163,7 +163,7 @@ Plant. Wait. Trust.
 What are you waiting to grow right now? 👇
 
 Mindset Series – Part 8. Follow for Part 9.
-#patience #mindset #psychology #motivation #shorts
+#beyondexcuses #patience #mindset #psychology #shorts
 ```
 
 ## #9 – Scroller vs Learner
@@ -179,7 +179,7 @@ Same night. Same hours. One of them built stairs.
 How many hours did you scroll yesterday? Be honest 👇
 
 Mindset Series – Part 9. Follow for Part 10.
-#discipline #screentime #mindset #selfimprovement #shorts
+#beyondexcuses #discipline #screentime #mindset #shorts
 ```
 
 ## #10 – Grudge vs Letting Go
@@ -195,7 +195,7 @@ Holding on only hurts you. Let it go. Swim.
 What's your heaviest stone right now? 👇
 
 Mindset Series – Part 10. Follow for Part 11.
-#lettinggo #healing #mindset #psychology #shorts
+#beyondexcuses #lettinggo #healing #mindset #shorts
 ```
 
 ---

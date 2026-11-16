@@ -39,3 +39,15 @@ Soft ground shadows, rim light on the figures in the scene's light colour, atmos
 - `smooth(fn, t)`: temporal blend of character functions, so hard pose switches become ~0.2 s transitions. Use `x = smooth(char, t)` instead of `x = char(t)`.
 - Natural walk cycle (hip sway, knee lift), idle breathing (`lib.NOW`), and motion blur in `render()` (`MBLUR=3`, 180° shutter; `MBLUR=1` for fast drafts).
 
+## Reichweite & Qualität (Audit, Stand 16.11.2026)
+Jedes Video wird nach dem Rendern mit `python3 ../kanaele/data/audit.py FolgeN_..._EN.mp4` gemessen (Ergebnis in `audit/`). Regeln daraus:
+- **Abschlusstext über der TikTok-Caption:** `end_text` setzt die letzte Zeile automatisch auf höchstens y 1442 (`END_Y_MAX`). Ab y 1450 liegen bei TikTok Caption, Benutzername und Sound.
+- **Rechte Button-Spalte frei:** Figuren, Schilder, Sprechblasen und Anzeigen enden auf dem Bildschirm bei x 880 (y 760–1660). In der Szene mit Faktor 1,45 heißt das: Welt-x höchstens etwa 680–700 für Figuren mit Schild.
+- **Erste Sekunde hörbar und in Bewegung:** `finish_v2` macht das automatisch (Bass-Schlag + Whoosh aus dem CC0-Kit, kein langsames Einblenden, Kamera-Punch-in in den ersten 0,7 s, danach leichter Zoom bis zum Ende, damit es keine toten Sekunden gibt).
+- **Leichte Farbkorrektur** (+12 % Sättigung, etwas heller) automatisch in `finish_v2`. Nacht- und Sturmszenen trotzdem nicht fast schwarz anlegen.
+- Schrift: Bei Schildern in der skalierten Szene zählt die Bildschirmgröße (24 px × 1,45 ≈ 35 px). Text außerhalb der Szene mindestens 28 px.
+
+## Hashtags (TikTok)
+Format: `#thema #mindset #psychology #motivation #beyondexcuses`. Das Marken-Tag `#beyondexcuses` ersetzt `#fyp`, weil #fyp laut den meisten 2026-Analysen kaum etwas bringt und ein eigenes Tag die Serie sammelt. Genau 5 Hashtags, nie „#“ vor Zahlen.
+YouTube: dieselben Themen-Tags am Ende der Beschreibung, `#beyondexcuses` zuerst, `#shorts` am Ende.
+

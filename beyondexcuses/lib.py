@@ -194,9 +194,13 @@ def plate_label(c, s, x, y, col, a=1.0):
     label(c, s, x, y, col, a)
 
 
+END_Y_MAX = 1290   # the last line must stay above TikTok's caption/username area (y >= 1450)
+
+
 def end_text(c, t, t0, l1, l2, l3, y=1420):
-    """two white lines + one amber punchline in the ground area"""
+    """two white lines + one amber punchline in the ground area (kept above TikTok's caption zone)"""
     if t < t0: return
+    y = min(y, END_Y_MAX)
     a = ease((t - t0) / 0.5)
     c.drawRect(skia.Rect.MakeWH(W, H), P((0, 0, 0), 0.35 * a))
     text(c, l1, 540, y, F_CAP, 56, (255, 255, 255), a, stroke=12)
@@ -498,10 +502,32 @@ def series_overlay(c, t, num, hook, end_at, follow_y=380, series=None):
         text(c, f"Folge für Teil {num + 1}", 540, follow_y, F_CAP, 58, AMBER, b, stroke=14)
 
 
+def _grade_paint(sat=1.12, lift=0.025):
+    lr, lg, lb = 0.2126, 0.7152, 0.0722
+    m = [lr * (1 - sat) + sat, lg * (1 - sat), lb * (1 - sat), 0, lift,
+         lr * (1 - sat), lg * (1 - sat) + sat, lb * (1 - sat), 0, lift,
+         lr * (1 - sat), lg * (1 - sat), lb * (1 - sat) + sat, 0, lift,
+         0, 0, 0, 1, 0]
+    return skia.Paint(ColorFilter=skia.ColorFilters.Matrix(m))
+
+
+_GRADE = None
+
+
 def finish_v2(name, frame_fn, t_end, events, turn, num, hook, off, end_at, follow_y=380, series=None):
-    """improved cut: skips the idle start, adds hook/series/follow overlay"""
+    """improved cut: skips the idle start, adds hook/series/follow overlay.
+    v3 (audit fixes): punch-in camera at the start + slow drift (no dead seconds), light vibrance grade,
+    sound with an audible opening hit (CC0 SFX via kanaele/data/dsound.py)"""
+    global _GRADE
+    if _GRADE is None: _GRADE = _grade_paint()
+    dur = t_end - off
+
     def wrapped(c, t):
+        z = 1 + 0.09 * (1 - ease(t / 0.7)) + 0.035 * t / max(1.0, dur)
+        c.save(); c.translate(540, 1240); c.scale(z, z); c.translate(-540, -1240)
+        c.saveLayer(None, _GRADE)
         frame_fn(c, t + off)
+        c.restore(); c.restore()
         series_overlay(c, t, num, hook, end_at - off, follow_y, series)
     ev = []
     for e in events:
@@ -509,6 +535,10 @@ def finish_v2(name, frame_fn, t_end, events, turn, num, hook, off, end_at, follo
         if len(e) > 2 and e[0] == "rain": e[2] = e[2] - off
         if e[1] >= -0.05 or e[0] == "rain": e[1] = max(0.0, e[1]); ev.append(e)
     ev.append(["pop", 0.05])
+    dsound = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "kanaele", "data", "dsound.py")
+    if os.path.exists(dsound):
+        os.environ.setdefault("SOUND_PY", dsound)
+        ev += [["sfx", 0.02, "boom-hit-medium", -5], ["sfx", 0.06, "whoosh-medium-soft", -6], ["sfx", turn - off, "shimmer-medium-bright", -10]]
     finish(name, wrapped, t_end - off, ev, turn - off)
 
 

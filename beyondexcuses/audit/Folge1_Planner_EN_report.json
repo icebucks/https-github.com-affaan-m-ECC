@@ -1,0 +1,66 @@
+{
+ "video": "Folge1_Planner_EN",
+ "duration": 18.0,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  0.79,
+  0.46,
+  0.71,
+  0.7,
+  1.36,
+  0.94,
+  1.57,
+  2.0,
+  2.26,
+  2.09,
+  2.52,
+  2.25,
+  0.98,
+  0.13,
+  5.78,
+  0.69,
+  0.29,
+  11.1
+ ],
+ "dead_seconds": [
+  0,
+  1,
+  2,
+  3,
+  5,
+  12,
+  13,
+  15,
+  16
+ ],
+ "first_second": {
+  "brightness": 37.874610900878906,
+  "contrast": 29.162981033325195,
+  "colourfulness": 22.011908054351807
+ },
+ "loop_difference": 29.4,
+ "font_sizes": [
+  24,
+  56,
+  60
+ ],
+ "audio": {
+  "first_half_s_db": -28.00523567199707,
+  "median_db": -14.20176887512207,
+  "silent_windows": 1,
+  "lufs": -13.9
+ }
+}

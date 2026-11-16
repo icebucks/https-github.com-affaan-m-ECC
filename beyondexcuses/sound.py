@@ -107,7 +107,7 @@ for e in ev:
         add(boom * (0.35 if kind == "text" else 0.25), at)
 
 fo = int(0.6 * SR); mix[-fo:] *= np.linspace(1, 0, fo)[:, None]
-fi = int(0.4 * SR); mix[:fi] *= np.linspace(0, 1, fi)[:, None]
+fi = int(0.03 * SR); mix[:fi] *= np.linspace(0, 1, fi)[:, None]   # no slow fade-in: the first frame must be heard
 mix /= np.abs(mix).max() / 0.9
 pcm = (mix * 32767).astype(np.int16)
 with wave.open(OUT + ".raw.wav", "wb") as f:

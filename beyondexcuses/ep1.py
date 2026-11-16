@@ -327,10 +327,10 @@ def frame(c, t):
     if t > 15.3:
         a = ease((t - 15.3) / 0.5)
         c.drawRect(skia.Rect.MakeWH(W, H), P((0, 0, 0), 0.35 * a))
-        text(c, "Planen fühlt sich an", 540, 1420, F_CAP, 56, (255, 255, 255), a, stroke=12)
-        text(c, "wie Fortschritt.", 540, 1488, F_CAP, 56, (255, 255, 255), a, stroke=12)
+        text(c, "Planen fühlt sich an", 540, 1290, F_CAP, 56, (255, 255, 255), a, stroke=12)
+        text(c, "wie Fortschritt.", 540, 1358, F_CAP, 56, (255, 255, 255), a, stroke=12)
         b = ease((t - 16.1) / 0.4)
-        text(c, "Ist es aber nicht.", 540, 1572, F_CAP, 60, (255, 200, 90), b, stroke=12)
+        text(c, "Ist es aber nicht.", 540, 1442, F_CAP, 60, (255, 200, 90), b, stroke=12)
     # vignette + fades
     vg = skia.GradientShader.MakeRadial((540, 900), 1250, [C((0, 0, 0), 0), C((0, 0, 0), 0.5)])
     c.drawRect(skia.Rect.MakeWH(W, H), skia.Paint(Shader=vg))

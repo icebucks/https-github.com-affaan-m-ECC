@@ -7,7 +7,7 @@ from lib import *
 T_END = 17.2
 G = 1240                 # ground line
 S = 1.0                  # figure scale
-XP, XI = 380, 720        # Patience / Impatience
+XP, XI = 380, 680        # Patience / Impatience (Impatience left of the TikTok button column)
 LAPSE = (2.4, 11.4)      # time-lapse window: three day/night cycles
 TURN = 11.8
 DIGS = [(3.3, "Still nothing?"), (6.3, "Why so slow?"), (9.3, "This doesn't work.")]
