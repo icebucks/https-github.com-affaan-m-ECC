@@ -18,3 +18,8 @@ beyondexcuses/*_v.mp4
 beyondexcuses/*.part.mp4
 beyondexcuses/*_a.wav*
 beyondexcuses/check/
+kanaele/*/*_v.mp4
+kanaele/*/*.part.mp4
+kanaele/*/*_a.wav*
+kanaele/*/check_*.jpg
+kanaele/*/render.log

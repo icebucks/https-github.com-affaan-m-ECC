@@ -95,6 +95,7 @@ def text(c, s, x, y, tf, size, rgb, a=1.0, align="center", spacing=0, stroke=0):
         size = size * 990 / tw; f = skia.Font(tf, size)
         ws = [f.measureText(ch) + spacing for ch in s]; tw = sum(ws) - spacing
     if align == "center": x -= tw / 2
+    elif align == "right": x -= tw
     def draw(p):
         xx = x
         for ch, wd in zip(s, ws): c.drawString(ch, xx, y, f, p); xx += wd
@@ -261,6 +262,16 @@ def _round_paint(rgb, a, w):
     p = P(rgb, a, stroke=w); p.setStrokeCap(skia.Paint.kRound_Cap); p.setStrokeJoin(skia.Paint.kRound_Join); return p
 
 
+def _op(a, b, op):
+    """skia path boolean op that never crashes: falls back to a plain winding merge (union) or nothing (difference)"""
+    try:
+        return skia.Op(a, b, op)
+    except RuntimeError:
+        if op == skia.PathOp.kUnion_PathOp:
+            out = skia.Path(a); out.addPath(b); out.setFillType(skia.PathFillType.kWinding); return out
+        return skia.Path()
+
+
 def _quad(a, b, wa, wb):
     """tapered capsule from a (width wa) to b (width wb) as a filled path"""
     dx, dy = b[0] - a[0], b[1] - a[1]; ln = math.hypot(dx, dy) or 1e-3
@@ -269,7 +280,7 @@ def _quad(a, b, wa, wb):
     pth.moveTo(a[0] + nx * wa / 2, a[1] + ny * wa / 2); pth.lineTo(b[0] + nx * wb / 2, b[1] + ny * wb / 2)
     pth.lineTo(b[0] - nx * wb / 2, b[1] - ny * wb / 2); pth.lineTo(a[0] - nx * wa / 2, a[1] - ny * wa / 2); pth.close()
     ca = skia.Path(); ca.addCircle(a[0], a[1], wa / 2); cb = skia.Path(); cb.addCircle(b[0], b[1], wb / 2)
-    return skia.Op(skia.Op(pth, ca, skia.PathOp.kUnion_PathOp), cb, skia.PathOp.kUnion_PathOp)
+    return _op(_op(pth, ca, skia.PathOp.kUnion_PathOp), cb, skia.PathOp.kUnion_PathOp)
 
 
 def figure(c, x, y, p, s=0.8, facing=1, rot=0.0, body=WHITE, mode="feet", lift=0.0, rim=None, light=(-1, -1)):
@@ -295,24 +306,24 @@ def figure(c, x, y, p, s=0.8, facing=1, rot=0.0, body=WHITE, mode="feet", lift=0
         m = skia.Matrix(); m.setTranslate(-lx * w * 0.42, -ly * w * 0.42)
         sh = skia.Path(); shape.transform(m, sh)
         q = P((20, 22, 40), 0.16, blur=w * 0.18)
-        inv = skia.Path(); inv = skia.Op(shape, sh, skia.PathOp.kDifference_PathOp)
+        inv = skia.Path(); inv = _op(shape, sh, skia.PathOp.kDifference_PathOp)
         c.drawPath(inv, q)
         if rim:
             m2 = skia.Matrix(); m2.setTranslate(-lx * w * 0.30, -ly * w * 0.30)
             r2 = skia.Path(); shape.transform(m2, r2)
-            rr = skia.Path(); rr = skia.Op(shape, r2, skia.PathOp.kDifference_PathOp)
+            rr = skia.Path(); rr = _op(shape, r2, skia.PathOp.kDifference_PathOp)
             c.drawPath(rr, P(rim[0], rim[1], blur=w * 0.06))
         c.restore()
 
     def limb(a, b, e, col, w0, w1, w2, end=None):
         """two tapered segments a-b-e, optional end knob ('hand' or 'foot')"""
-        shape = skia.Path(); shape = skia.Op(_quad(a, b, w0, w1), _quad(b, e, w1, w2), skia.PathOp.kUnion_PathOp)
+        shape = skia.Path(); shape = _op(_quad(a, b, w0, w1), _quad(b, e, w1, w2), skia.PathOp.kUnion_PathOp)
         if end == "hand":
-            hp_ = skia.Path(); hp_.addCircle(e[0], e[1], w2 * 0.72); shape = skia.Op(shape, hp_, skia.PathOp.kUnion_PathOp)
+            hp_ = skia.Path(); hp_.addCircle(e[0], e[1], w2 * 0.72); shape = _op(shape, hp_, skia.PathOp.kUnion_PathOp)
         elif end == "foot":
             ang = math.atan2(e[1] - b[1], e[0] - b[0]) - math.pi / 2 * facing * 0.95
             tip = (e[0] + math.cos(ang) * 0 + facing * 13 * s, e[1] + 2 * s)
-            shape = skia.Op(shape, _quad(e, tip, w2 * 1.05, w2 * 0.8), skia.PathOp.kUnion_PathOp)
+            shape = _op(shape, _quad(e, tip, w2 * 1.05, w2 * 0.8), skia.PathOp.kUnion_PathOp)
         c.drawPath(shape, _round_paint(INK, 1, OL)); c.drawPath(shape, P(col))
         shade(shape, col, w0)
         return shape
@@ -327,8 +338,8 @@ def figure(c, x, y, p, s=0.8, facing=1, rot=0.0, body=WHITE, mode="feet", lift=0
     # torso: broad chest, narrower waist, slightly wider hips
     tx, ty = sh[0] - hip[0], sh[1] - hip[1]
     chest = (hip[0] + tx * 0.72, hip[1] + ty * 0.72); waist = (hip[0] + tx * 0.35, hip[1] + ty * 0.35)
-    torso = skia.Path(); torso = skia.Op(_quad(hip, waist, lw * 1.55, lw * 1.38), _quad(waist, chest, lw * 1.38, lw * 1.78), skia.PathOp.kUnion_PathOp)
-    torso = skia.Op(torso, _quad(chest, sh, lw * 1.78, lw * 1.5), skia.PathOp.kUnion_PathOp)
+    torso = skia.Path(); torso = _op(_quad(hip, waist, lw * 1.55, lw * 1.38), _quad(waist, chest, lw * 1.38, lw * 1.78), skia.PathOp.kUnion_PathOp)
+    torso = _op(torso, _quad(chest, sh, lw * 1.78, lw * 1.5), skia.PathOp.kUnion_PathOp)
     c.drawPath(torso, _round_paint(INK, 1, OL)); c.drawPath(torso, P(body)); shade(torso, body, lw * 1.6)
     # head: slightly egg-shaped, tilted with the neck
     hr = L["head"] * s
@@ -473,9 +484,9 @@ def stills(frame_fn, ts, prefix):
     sheet.save(prefix + "_sheet.jpg", quality=86)
 
 
-def series_overlay(c, t, num, hook, end_at, follow_y=380):
+def series_overlay(c, t, num, hook, end_at, follow_y=380, series=None):
     """hook question (first seconds), series tag, follow call at the end"""
-    text(c, f"MINDSET-SERIE #{num}", 540, 300, F_SANS, 26, AMBER, 0.95, spacing=3, stroke=6)
+    text(c, f"{series} #{num}" if series else f"MINDSET-SERIE #{num}", 540, 300, F_SANS, 26, AMBER, 0.95, spacing=3, stroke=6)
     a = 1 - seg(t, 4.2, 4.8)
     if a > 0:
         pop = 1 + 0.12 * (1 - ease(t / 0.25))
@@ -487,11 +498,11 @@ def series_overlay(c, t, num, hook, end_at, follow_y=380):
         text(c, f"Folge für Teil {num + 1}", 540, follow_y, F_CAP, 58, AMBER, b, stroke=14)
 
 
-def finish_v2(name, frame_fn, t_end, events, turn, num, hook, off, end_at, follow_y=380):
+def finish_v2(name, frame_fn, t_end, events, turn, num, hook, off, end_at, follow_y=380, series=None):
     """improved cut: skips the idle start, adds hook/series/follow overlay"""
     def wrapped(c, t):
         frame_fn(c, t + off)
-        series_overlay(c, t, num, hook, end_at - off, follow_y)
+        series_overlay(c, t, num, hook, end_at - off, follow_y, series)
     ev = []
     for e in events:
         e = list(e); e[1] = e[1] - off
@@ -503,18 +514,18 @@ def finish_v2(name, frame_fn, t_end, events, turn, num, hook, off, end_at, follo
 
 def finish(name, frame_fn, t_end, events, turn):
     """render video, build soundtrack, mux"""
-    d = os.path.dirname(os.path.abspath(__file__))
+    d = os.environ.get("OUT_DIR") or os.path.dirname(os.path.abspath(__file__))
     de_audio = f"{d}/{name}_a.wav"
     if LANG == "en":
         json.dump(events, open(f"{d}/{name}_events.json", "w"))
         render(frame_fn, t_end, f"{d}/{name}_EN_v.mp4")
         if not os.path.exists(de_audio):
-            subprocess.run(["python3", f"{d}/sound.py", f"{d}/{name}_events.json", str(t_end), str(turn), de_audio], check=True)
+            subprocess.run(["python3", os.path.join(os.path.dirname(os.path.abspath(__file__)), "sound.py"), f"{d}/{name}_events.json", str(t_end), str(turn), de_audio], check=True)
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", f"{d}/{name}_EN_v.mp4", "-i", de_audio, "-map", "0:v", "-map", "1:a",
                         "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", f"{d}/{name}_EN.mp4"], check=True)
         return
     json.dump(events, open(f"{d}/{name}_events.json", "w"))
     render(frame_fn, t_end, f"{d}/{name}_v.mp4")
-    subprocess.run(["python3", f"{d}/sound.py", f"{d}/{name}_events.json", str(t_end), str(turn), f"{d}/{name}_a.wav"], check=True)
+    subprocess.run(["python3", os.path.join(os.path.dirname(os.path.abspath(__file__)), "sound.py"), f"{d}/{name}_events.json", str(t_end), str(turn), f"{d}/{name}_a.wav"], check=True)
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", f"{d}/{name}_v.mp4", "-i", f"{d}/{name}_a.wav", "-map", "0:v", "-map", "1:a",
                     "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", f"{d}/{name}.mp4"], check=True)
