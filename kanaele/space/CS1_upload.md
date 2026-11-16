@@ -17,17 +17,17 @@ How far is the nearest star really – and why no human alive could get there wi
 
 Chapters
 0:00 The question
-0:26 What 4.24 light-years means
-1:32 A model you can walk
-2:09 On foot
-2:41 By car
+0:25 What 4.24 light-years means
+1:31 A model you can walk
+2:08 On foot
+2:40 By car
 3:07 By jet
 3:30 Voyager 1
-4:22 The fastest object ever built
-5:16 Why we can't just go faster
-5:43 At the speed of light
+4:21 The fastest object ever built
+5:15 Why we can't just go faster
+5:42 At the speed of light
 6:16 What waits at Proxima
-6:53 So how long would YOU need?
+6:52 So how long would YOU need?
 
 The math: 40,208,000,000,000 km ÷ speed ÷ 8,766 hours per year – non-stop, straight line, no acceleration.
 Walking 5 km/h: 917 million years · Car 100 km/h: 46 million · Jet 900 km/h: 5.1 million · Voyager 1 (17 km/s): 75,000 · Parker Solar Probe record (192.22 km/s): 6,600 · Light: 4.24 years.
