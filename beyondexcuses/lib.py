@@ -473,7 +473,7 @@ def stills(frame_fn, ts, prefix):
     sheet.save(prefix + "_sheet.jpg", quality=86)
 
 
-def series_overlay(c, t, num, hook, end_at):
+def series_overlay(c, t, num, hook, end_at, follow_y=380):
     """hook question (first seconds), series tag, follow call at the end"""
     text(c, f"MINDSET-SERIE #{num}", 540, 300, F_SANS, 26, AMBER, 0.95, spacing=3, stroke=6)
     a = 1 - seg(t, 4.2, 4.8)
@@ -484,14 +484,14 @@ def series_overlay(c, t, num, hook, end_at):
         c.restore()
     b = seg(t, end_at, end_at + 0.4)
     if b > 0:
-        text(c, f"Folge für Teil {num + 1}", 540, 380, F_CAP, 58, AMBER, b, stroke=14)
+        text(c, f"Folge für Teil {num + 1}", 540, follow_y, F_CAP, 58, AMBER, b, stroke=14)
 
 
-def finish_v2(name, frame_fn, t_end, events, turn, num, hook, off, end_at):
+def finish_v2(name, frame_fn, t_end, events, turn, num, hook, off, end_at, follow_y=380):
     """improved cut: skips the idle start, adds hook/series/follow overlay"""
     def wrapped(c, t):
         frame_fn(c, t + off)
-        series_overlay(c, t, num, hook, end_at - off)
+        series_overlay(c, t, num, hook, end_at - off, follow_y)
     ev = []
     for e in events:
         e = list(e); e[1] = e[1] - off
