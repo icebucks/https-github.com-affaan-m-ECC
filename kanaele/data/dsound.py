@@ -15,13 +15,23 @@ ev_file, DUR, TURN, OUT = sys.argv[1], float(sys.argv[2]), float(sys.argv[3]), s
 events = json.load(open(ev_file))
 bed_ev = [e for e in events if e[0] != "sfx"]
 fx_ev = [e for e in events if e[0] == "sfx"]
+bed_ev = [e for e in bed_ev if e[0] != "music"]
 
-# 1. music bed from the shared sound engine (peak-normalised raw mix)
-tmp_ev = OUT + ".bed.json"; json.dump(bed_ev, open(tmp_ev, "w"))
-subprocess.run(["python3", SOUND_PY, tmp_ev, str(DUR), str(TURN), OUT + ".bed.wav"], check=True)
-bed, sr = sf.read(OUT + ".bed.wav.raw.wav", dtype="float32")
-assert sr == SR
-mix = bed * 0.5
+# 1. music bed: own procedural track (music.py) if the video asks for one, else the shared sound engine
+mus = [e for e in events if e[0] == "music"]
+tmp_ev = OUT + ".bed.json"
+if mus:
+    sys.path.insert(0, HERE)
+    import music
+    _, style, bpm, build, drop, outro, seed = mus[0]
+    bed = music.render(style, bpm, DUR, dict(build=build, drop=drop, outro=outro), seed)
+    mix = bed * 0.55
+else:
+    json.dump(bed_ev, open(tmp_ev, "w"))
+    subprocess.run(["python3", SOUND_PY, tmp_ev, str(DUR), str(TURN), OUT + ".bed.wav"], check=True)
+    bed, sr = sf.read(OUT + ".bed.wav.raw.wav", dtype="float32")
+    assert sr == SR
+    mix = bed * 0.5
 
 # 2. sound effects on their sync points
 meta = {s["id"]: s for s in json.load(open(os.path.join(SFX, "sounds.json")))["sounds"]}

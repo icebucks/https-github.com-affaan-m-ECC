@@ -24,6 +24,14 @@ Umsetzung mit `dlib.finish_data(...)` (Rendern) und `dlib.preview(...)` (Kontakt
 6. **Loop:** Wenn möglich endet das Video im Bild des Anfangs (siehe `LOOP` in `bn2.py`). Dann schauen viele es ein zweites Mal.
 7. **Kommentar-Köder:** Der Abschlusstext endet mit einer Frage an die Zuschauer („Where would your city rank?“, „What's your number?“).
 
+## Musik & Timing (Pflicht)
+- Eigene Musik aus `music.py` über das Ereignis `dlib.music(style, bpm, build, drop, outro, seed)`. Stile: `trap` (140–150), `synthwave` (120–140), `upbeat` (115–125), `lofi` (80–90), `cinematic` (90–105).
+- **Rotation:** Stil nie gleich wie in einer der beiden letzten Folgen. Stil, Tempo und Seed in die Tabelle in `plan.md` (Spalte „Musik“) eintragen. Passend zum Thema wählen (Geld → trap, Städte/Technik/Weltall → synthwave, Tiere/Natur → upbeat oder lofi, Rekorde/Geschichte/Größe → cinematic).
+- **Alles sitzt auf dem Beat:** `set_bpm(BPM)`, Zeiten mit `beats(n)` setzen. Neue Elemente kommen alle 2–6 Beats, Zahlen landen auf einem Beat.
+- **Dramaturgie:** `build` = Beginn des Höhepunkts (Drums fallen weg, Snare-Wirbel), `drop` = Moment, in dem die stärkste Zahl landet (Trommelschlag, `shake`, Blitz), `outro` = Abschlusstext. Den Drop möglichst auf einen Taktanfang legen (Vielfaches von `beats(4)`).
+- Licht und Glow mit `pulse(t)` auf den Beat pulsieren lassen.
+- Titelbild: `dlib.cover(frame, t, [(Zeile, Größe), …], "Cover_BN<N>.jpg", N)` mit einem Bild vom Höhepunkt, 2–3 Zeilen, ein *goldenes* Wort.
+
 ## Formate (abwechseln, nie zweimal hintereinander dasselbe)
 | Format | Vorlage | Idee |
 |---|---|---|

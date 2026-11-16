@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.join(HERE, "..", "..", "beyondexcuses"))
 sys.path.insert(0, HERE)
 os.environ.setdefault("OUT_DIR", HERE)
 from lib import *
-from dlib import flag, sfx, finish_data, preview, punch, shake, burst
+from dlib import flag, sfx, finish_data, preview, punch, shake, burst, set_bpm, pulse, music
 
 T_END = 17.2
 HOOK = ("Guess how tall *#1* is", "before it's revealed!")
@@ -32,17 +32,20 @@ OBJ = [
     ("burj", "Burj Khalifa", "ae", 828, 1345, 90, 6, 220),
 ]
 # stop schedule: (start time of the move, index); first 3 slower (hook), last one big
-STOPS = []
-t = 0.0
-for i in range(len(OBJ)):
-    STOPS.append((t, i))
-    t += 1.4 if i < 3 else 0.8
-REVEAL = STOPS[-1][0]          # Burj Khalifa move starts (riser before it)
-OVER = REVEAL + 1.4            # zoom out to the whole skyline
-END = OVER + 1.9               # end text
-LOOP = T_END - 0.85            # zoom back to the person -> loops into the first frame
-LAND = REVEAL + 0.75           # Burj Khalifa counter lands
-MOVE = 0.55                    # length of each camera move
+BPM = 140                      # synthwave; every move and landing sits on the beat grid
+set_bpm(BPM)
+BEAT = 60.0 / BPM
+STOP_BEATS = [0, 3, 6] + [9 + 2 * k for k in range(9)] + [28]
+STOPS = [(b * BEAT, i) for i, b in enumerate(STOP_BEATS)]
+MOVE_D = [BEAT] * 12 + [4 * BEAT]                  # Burj Khalifa: slow 4-beat climb = the build-up
+LAND_T = [0.0] + [STOPS[i][0] + MOVE_D[i] for i in range(1, len(OBJ))]
+REVEAL = STOPS[-1][0]          # 12.0 s: build-up starts
+LAND = LAND_T[-1]              # 13.7 s: Burj Khalifa lands = drop
+OVER = LAND + 2 * BEAT         # zoom out to the whole skyline
+END = LAND + 4 * BEAT          # end text
+FOLLOW = LAND + 6 * BEAT
+LOOP = LAND + 7 * BEAT         # zoom back to the person -> loops into the first frame
+T_END = LAND + 9 * BEAT
 
 
 def rank_of(i):
@@ -64,15 +67,15 @@ def cam(t):
     x1, s1 = cam_target(cur)
     if cur == 0: return x1, s1
     x0, s0 = cam_target(cur - 1)
-    u = ease((t - ts) / MOVE)
+    u = ease((t - ts) / MOVE_D[cur])
     s = math.exp(lerp(math.log(s0), math.log(s1), u))
     x = x1 - (1 - u) * (x1 - x0) * s0 / s        # target glides to the centre on screen
     if t > OVER:                              # final zoom-out: whole skyline
-        v = ease((t - OVER) / 1.2)
+        v = ease((t - OVER) / (3 * BEAT))
         xs, ss = x, s
         s = math.exp(lerp(math.log(ss), math.log(0.62), v)); x = 690 - (1 - v) * (690 - xs) * ss / s
     if t > LOOP:
-        w = ease((t - LOOP) / 0.85)
+        w = ease((t - LOOP) / (T_END - LOOP))
         xs, ss = x, s
         s = math.exp(lerp(math.log(ss), math.log(cam_target(0)[1]), w)); x = 0 - (1 - w) * (0 - xs) * ss / s
     return x, s
@@ -186,10 +189,10 @@ def label(c, t, i, xc, sc, a):
     cx = clamp(sx(x, xc, sc), 230, 850)
     top = min(sy(h, sc), GY - 60) - 30
     y = max(690 if i < 3 else 650, top - 50)
-    v = h * (1 - (1 - clamp((t - ts - 0.15) / 0.6)) ** 3)
+    v = h * (1 - (1 - clamp((t - ts - 0.05) / max(0.2, LAND_T[i] - ts - 0.05))) ** 3)
     num = f"{v:,.2f} m" if h < 10 else f"{v:,.0f} m"
     r = rank_of(i)
-    pz = punch(t, ts + 0.75, 0.4 if i == len(OBJ) - 1 else 0.22)
+    pz = punch(t, LAND_T[i], 0.4 if i == len(OBJ) - 1 else 0.22)
     c.save(); c.translate(cx, y - 24); c.scale(pz, pz)
     text(c, num, 0, 24, F_CAP, 92 if i == len(OBJ) - 1 else 68, GOLD if i == len(OBJ) - 1 else (255, 255, 255), a, stroke=14)
     c.restore()
@@ -209,6 +212,9 @@ def frame(c, t):
     c.save(); c.translate(dx, dy)
     background(c, t, xc)
     cur = max(i for s, i in STOPS if t >= s) if t >= STOPS[0][0] else 0
+    co = OBJ[cur]
+    gx, gy = sx(co[4], xc, sc), max(560, sy(co[3], sc))
+    c.drawCircle(gx, gy, 220, P(GOLD, 0.06 + 0.10 * pulse(t, 1, 7), blur=90))
     for i, o in enumerate(OBJ):
         bx = sx(o[4], xc, sc)
         if bx < -600 or bx > W + 600: continue
@@ -246,15 +252,16 @@ def frame(c, t):
 
 def events():
     ev = []
-    for ts, i in STOPS:
+    for (ts, i), land in zip(STOPS, LAND_T):
         if i == 0: continue
         if i == len(OBJ) - 1:
-            ev += [sfx(ts - 0.6, "riser-2s-strong", -2), sfx(ts + 0.2, "data-countup-short", -6), sfx(ts + 0.75, "cinematic-drum-big", -1),
-                   sfx(ts + 0.75, "data-number-land", -2), sfx(ts + 0.9, "shimmer-medium-bright", -8)]
+            ev += [sfx(land, "riser-2s-strong", -3), sfx(land - 1.22, "data-countup-medium", -8), sfx(land, "cinematic-drum-big", -1),
+                   sfx(land, "data-number-land", -2), sfx(land + 0.15, "shimmer-medium-bright", -8)]
         else:
-            ev += [sfx(ts + 0.25, "whoosh-fast-medium" if i >= 3 else "whoosh-slow-medium", -6), sfx(ts + 0.75, "data-number-land", -8 if i >= 3 else -4)]
-    ev += [sfx(OVER + 0.5, "whoosh-slow-medium", -4), sfx(OVER + 1.0, "shimmer-long-sparkle", -6), ["text", END], ["text2", END + 0.8],
-           sfx(LOOP + 0.4, "whoosh-fast-medium", -4)]
+            ev += [sfx(ts + MOVE_D[i] / 2, "whoosh-fast-medium" if i >= 3 else "whoosh-slow-medium", -8 if i >= 3 else -5),
+                   sfx(land, "data-number-land", -8 if i >= 3 else -5)]
+    ev += [sfx(OVER + 0.4, "whoosh-slow-medium", -5), sfx(OVER + 0.7, "shimmer-long-sparkle", -8), sfx(LOOP + 0.35, "whoosh-fast-medium", -5),
+           music("synthwave", BPM, build=REVEAL, drop=LAND, outro=END, seed=4)]
     return ev
 
 
@@ -263,7 +270,7 @@ def step(t): return max(i for st, i in STOPS if t >= st) + 1 if t >= 0 else 1
 
 if __name__ == "__main__":
     if sys.argv[1] == "still":
-        preview(frame, 2, *HOOK, END + 1.3, [0.05, 0.6, 2.2, 4.4, 9.0, 12.2, 12.6, 14.5, 15.6, 16.6, 17.1], os.path.join(HERE, "check_bn2"),
+        preview(frame, 2, *HOOK, FOLLOW, [0.05, 0.6, 2.2, 4.4, 9.0, 12.4, 13.4, 13.8, 14.9, 16.0, 17.3], os.path.join(HERE, "check_bn2"),
                 step_fn=step, steps=len(OBJ))
     else:
-        finish_data("BN2_Tallest", frame, T_END, events(), REVEAL, 2, *HOOK, END + 1.3, step_fn=step, steps=len(OBJ))
+        finish_data("BN2_Tallest", frame, T_END, events(), REVEAL, 2, *HOOK, FOLLOW, step_fn=step, steps=len(OBJ))

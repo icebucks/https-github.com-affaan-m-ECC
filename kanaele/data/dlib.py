@@ -97,7 +97,7 @@ def hook_overlay(c, t, num, l1, l2, end_at, sticky="WAIT FOR #1", hook_end=3.0, 
     # sticky reminder
     if sticky and t > hook_end + 0.2:
         a = _lib.seg(t, hook_end + 0.2, hook_end + 0.5) * (1 - _lib.seg(t, end_at - 0.6, end_at - 0.2))
-        pulse = 1 + 0.04 * _m.sin(t * 6)
+        pulse = 1 + 0.07 * _m.exp(-((t % (60.0 / _BPM[0])) * 9))
         f = skia.Font(_lib.F_CAP, 34); w = f.measureText(sticky) + 48
         c.save(); c.translate(540, 322); c.scale(pulse, pulse)
         rr = skia.RRect.MakeRectXY(skia.Rect.MakeXYWH(-w / 2, -32, w, 50), 25, 25)
@@ -140,7 +140,11 @@ def finish_data(name, frame_fn, t_end, events, turn, num, l1, l2, end_at, off=0.
         frame_fn(c, t + off)
         hook_overlay(c, t, num, l1, l2, end_at - off, sticky, hook_end, step_fn(t + off) if step_fn else None, steps)
     ev = [list(e) for e in events]
-    for e in ev: e[1] = max(0.0, e[1] - off)
+    for e in ev:
+        if e[0] == "music":
+            e[3:6] = [x - off for x in e[3:6]]     # build, drop, outro
+        else:
+            e[1] = max(0.0, e[1] - off)
     ev += [sfx(0.02, "boom-hit-medium", -3), sfx(0.05, "whoosh-fast-medium", -6), sfx(0.38, "pop-medium-in", -6)]
     _lib.finish(name, wrapped, t_end - off, ev, turn - off)
 
@@ -149,3 +153,47 @@ def preview(frame_fn, num, l1, l2, end_at, ts, out, off=0.0, sticky="WAIT FOR #1
     """contact sheet with the same overlay as the final video"""
     _lib.stills(lambda c, t: (frame_fn(c, t + off), hook_overlay(c, t, num, l1, l2, end_at - off, sticky, hook_end,
                                                                    step_fn(t + off) if step_fn else None, steps)), ts, out)
+
+
+# ------------------------------------------------------------------ beat grid (animation locked to the music)
+_BPM = [120.0]
+
+
+def set_bpm(bpm): _BPM[0] = float(bpm)
+
+
+def beats(n): return n * 60.0 / _BPM[0]
+
+
+def pulse(t, every=1.0, decay=10.0):
+    """0..1 envelope that jumps on every beat (every=1) or bar (every=4) and decays – for glows, scale bumps, flashes"""
+    period = beats(every)
+    if t < 0: return 0.0
+    ph = t % period
+    return _m.exp(-ph * decay)
+
+
+def music(style, bpm, build, drop, outro, seed=1):
+    """event for dsound.py: own procedural track (music.py) arranged to the video"""
+    return ["music", style, bpm, build, drop, outro, seed]
+
+
+def cover(frame_fn, t, lines, out, num=None):
+    """thumbnail / cover (1080x1920): a frame of the video, darkened, with 2–3 huge lines inside the 3:4 grid crop (y 240–1680)"""
+    from PIL import Image
+    surf = skia.Surface(_lib.W, _lib.H); c = surf.getCanvas(); c.clear(skia.ColorBLACK)
+    _lib.NOW = t
+    frame_fn(c, t)
+    c.drawRect(skia.Rect.MakeWH(_lib.W, _lib.H), _lib.P((8, 10, 22), 0.45))
+    sh = skia.GradientShader.MakeLinear([(0, 420), (0, 1300)], [_lib.C((8, 10, 22), 0.0), _lib.C((8, 10, 22), 0.75), _lib.C((8, 10, 22), 0.0)], [0, 0.5, 1])
+    c.drawRect(skia.Rect.MakeXYWH(0, 420, _lib.W, 880), skia.Paint(Shader=sh))
+    if num is not None:
+        rr = skia.RRect.MakeRectXY(skia.Rect.MakeXYWH(390, 430, 300, 90), 45, 45)
+        c.drawRRect(rr, _lib.P(GOLD)); _lib.text(c, f"PART {num}", 540, 492, _lib.F_CAP, 48, (20, 20, 30), 1.0)
+    y = 680
+    for ln, size in lines:
+        rich(c, ln, 540, y, size, 1.0, stroke=22, maxw=980)
+        y += size * 1.12
+    arr = surf.makeImageSnapshot().toarray(colorType=skia.kRGBA_8888_ColorType)[:, :, :3]
+    Image.fromarray(arr).save(out, quality=93)
+    return out
