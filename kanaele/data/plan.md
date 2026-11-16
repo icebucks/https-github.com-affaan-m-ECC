@@ -23,7 +23,7 @@ Nach 2 Wochen mit den eigenen Analytics prüfen und anpassen.
 ## #1 – How long to earn $1 billion?
 **TikTok-Caption:**
 ```
-At minimum wage, you'd have to start in 64,300 BC 🤯💰
+The last one broke my brain 🤯💰
 Comment your salary 👇
 #money #billionaire #facts #numbers #fyp
 ```
@@ -46,8 +46,8 @@ What's your number? 👇
 ## #2 – The world's tallest buildings, to scale
 **TikTok-Caption:**
 ```
-From you to the Burj Khalifa – the world's tallest buildings to scale 🏙️📏
-Comment your city 👇
+Guess how tall #1 is BEFORE the end 👀🏙️
+Comment your guess 👇
 #skyscraper #burjkhalifa #facts #numbers #fyp
 ```
 **Pin-Kommentar:** `Which one would you climb? 🇦🇪 Burj Khalifa · 🇲🇾 Merdeka 118 · 🇨🇳 Shanghai Tower · 🇺🇸 One WTC`

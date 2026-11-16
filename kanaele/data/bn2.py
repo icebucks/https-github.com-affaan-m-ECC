@@ -8,9 +8,10 @@ sys.path.insert(0, os.path.join(HERE, "..", "..", "beyondexcuses"))
 sys.path.insert(0, HERE)
 os.environ.setdefault("OUT_DIR", HERE)
 from lib import *
-from dlib import flag, sfx
+from dlib import flag, sfx, finish_data, preview, punch, shake, burst
 
-T_END = 17.6
+T_END = 17.2
+HOOK = ("Guess how tall *#1* is", "before it's revealed!")
 GY = 1370                      # ground line on screen
 GOLD = (255, 200, 80)
 
@@ -32,13 +33,15 @@ OBJ = [
 ]
 # stop schedule: (start time of the move, index); first 3 slower (hook), last one big
 STOPS = []
-t = 0.3
+t = 0.0
 for i in range(len(OBJ)):
     STOPS.append((t, i))
     t += 1.4 if i < 3 else 0.8
 REVEAL = STOPS[-1][0]          # Burj Khalifa move starts (riser before it)
 OVER = REVEAL + 1.4            # zoom out to the whole skyline
 END = OVER + 1.9               # end text
+LOOP = T_END - 0.85            # zoom back to the person -> loops into the first frame
+LAND = REVEAL + 0.75           # Burj Khalifa counter lands
 MOVE = 0.55                    # length of each camera move
 
 
@@ -48,7 +51,8 @@ def rank_of(i):
 
 def cam_target(i):
     k, name, cc, h, x, w, wt, sp = OBJ[i]
-    return x, 760 / max(h, 1.75)          # object fills ~760 px
+    fill = 560 if i == 0 else (640 if i < 3 else 760)   # first objects smaller: room for the hook
+    return x, fill / max(h, 1.75)
 
 
 def cam(t):
@@ -61,10 +65,16 @@ def cam(t):
     if cur == 0: return x1, s1
     x0, s0 = cam_target(cur - 1)
     u = ease((t - ts) / MOVE)
-    x, s = lerp(x0, x1, u), math.exp(lerp(math.log(s0), math.log(s1), u))
+    s = math.exp(lerp(math.log(s0), math.log(s1), u))
+    x = x1 - (1 - u) * (x1 - x0) * s0 / s        # target glides to the centre on screen
     if t > OVER:                              # final zoom-out: whole skyline
         v = ease((t - OVER) / 1.2)
-        x = lerp(x, 690, v); s = math.exp(lerp(math.log(s), math.log(0.62), v))
+        xs, ss = x, s
+        s = math.exp(lerp(math.log(ss), math.log(0.62), v)); x = 690 - (1 - v) * (690 - xs) * ss / s
+    if t > LOOP:
+        w = ease((t - LOOP) / 0.85)
+        xs, ss = x, s
+        s = math.exp(lerp(math.log(ss), math.log(cam_target(0)[1]), w)); x = 0 - (1 - w) * (0 - xs) * ss / s
     return x, s
 
 
@@ -175,11 +185,14 @@ def label(c, t, i, xc, sc, a):
     ts = [s for s, j in STOPS if j == i][0]
     cx = clamp(sx(x, xc, sc), 230, 850)
     top = min(sy(h, sc), GY - 60) - 30
-    y = max(540, top - 50)
+    y = max(690 if i < 3 else 650, top - 50)
     v = h * (1 - (1 - clamp((t - ts - 0.15) / 0.6)) ** 3)
     num = f"{v:,.2f} m" if h < 10 else f"{v:,.0f} m"
     r = rank_of(i)
-    text(c, num, cx, y, F_CAP, 76 if i == len(OBJ) - 1 else 64, GOLD if i == len(OBJ) - 1 else (255, 255, 255), a, stroke=14)
+    pz = punch(t, ts + 0.75, 0.4 if i == len(OBJ) - 1 else 0.22)
+    c.save(); c.translate(cx, y - 24); c.scale(pz, pz)
+    text(c, num, 0, 24, F_CAP, 92 if i == len(OBJ) - 1 else 68, GOLD if i == len(OBJ) - 1 else (255, 255, 255), a, stroke=14)
+    c.restore()
     line = name if r is None else f"#{r}  {name}"
     fw = 46
     tw = skia.Font(F_SANS, 30).measureText(line)
@@ -192,6 +205,8 @@ def label(c, t, i, xc, sc, a):
 
 def frame(c, t):
     xc, sc = cam(t)
+    dx, dy = shake(t, LAND, 20, 0.45)
+    c.save(); c.translate(dx, dy)
     background(c, t, xc)
     cur = max(i for s, i in STOPS if t >= s) if t >= STOPS[0][0] else 0
     for i, o in enumerate(OBJ):
@@ -205,7 +220,7 @@ def frame(c, t):
         elif o[0] == "liberty": draw_liberty(c, o, xc, sc, hi)
         elif o[0] == "eiffel": draw_eiffel(c, o, xc, sc, hi)
         else: draw_tower(c, o, xc, sc, hi, i)
-    if t < OVER + 0.4:
+    if t < OVER + 0.4 and t < LOOP:
         a = seg(t, [s for s, j in STOPS if j == cur][0] + 0.1, [s for s, j in STOPS if j == cur][0] + 0.35)
         label(c, t, cur, xc, sc, a * (1 - seg(t, OVER, OVER + 0.4)))
     # overview: small height tags on every building
@@ -216,8 +231,17 @@ def frame(c, t):
         text(c, "THE 10 TALLEST BUILDINGS", 540, 700, F_SANS, 34, (210, 215, 235), a, spacing=4, stroke=6)
         text(c, "TO SCALE", 540, 790, F_CAP, 84, GOLD, a, stroke=16)
         text(c, "heights in meters incl. spires", 540, 845, F_SANS, 24, (150, 155, 180), a)
+    if LAND <= t < LAND + 0.9:
+        bx = sx(OBJ[-1][4], xc, sc)
+        burst(c, t, LAND, clamp(bx, 230, 850), 640, 30)
+    c.restore()
+    if LAND <= t < LAND + 0.16:
+        c.drawRect(skia.Rect.MakeWH(W, H), P((255, 240, 210), 0.45 * (1 - (t - LAND) / 0.16)))
     grain(c, t, 0.02)
-    end_text(c, t, END, "Burj Khalifa: 828 m.", "2.5x the Eiffel Tower.", "Where would your city rank?", y=1450)
+    if t < LOOP + 0.3:
+        c.saveLayerAlpha(skia.Rect.MakeWH(W, H), int(255 * (1 - seg(t, LOOP - 0.2, LOOP + 0.3))))
+        end_text(c, t, END, "Burj Khalifa: 828 m.", "2.5x the Eiffel Tower.", "Where would your city rank?", y=1450)
+        c.restore()
 
 
 def events():
@@ -225,17 +249,21 @@ def events():
     for ts, i in STOPS:
         if i == 0: continue
         if i == len(OBJ) - 1:
-            ev += [sfx(ts - 0.05, "riser-2s-strong", -2), sfx(ts + 0.45, "cinematic-drum-big", -1), sfx(ts + 0.8, "data-countup-medium", -6),
-                   sfx(ts + 1.4, "data-number-land", -2)]
+            ev += [sfx(ts - 0.6, "riser-2s-strong", -2), sfx(ts + 0.2, "data-countup-short", -6), sfx(ts + 0.75, "cinematic-drum-big", -1),
+                   sfx(ts + 0.75, "data-number-land", -2), sfx(ts + 0.9, "shimmer-medium-bright", -8)]
         else:
             ev += [sfx(ts + 0.25, "whoosh-fast-medium" if i >= 3 else "whoosh-slow-medium", -6), sfx(ts + 0.75, "data-number-land", -8 if i >= 3 else -4)]
-    ev += [sfx(OVER + 0.5, "whoosh-slow-medium", -4), sfx(OVER + 1.0, "shimmer-long-sparkle", -6), ["text", END], ["text2", END + 0.8]]
+    ev += [sfx(OVER + 0.5, "whoosh-slow-medium", -4), sfx(OVER + 1.0, "shimmer-long-sparkle", -6), ["text", END], ["text2", END + 0.8],
+           sfx(LOOP + 0.4, "whoosh-fast-medium", -4)]
     return ev
+
+
+def step(t): return max(i for st, i in STOPS if t >= st) + 1 if t >= 0 else 1
 
 
 if __name__ == "__main__":
     if sys.argv[1] == "still":
-        stills(lambda c, t: (frame(c, t + 0.3), series_overlay(c, t, 2, "How tall is the tallest building?", 16.3, series="BY THE NUMBERS")),
-               [0.8, 2.4, 4.2, 6.5, 9.5, 12.2, 13.6, 14.8, 16.8], os.path.join(HERE, "check_bn2"))
+        preview(frame, 2, *HOOK, END + 1.3, [0.05, 0.6, 2.2, 4.4, 9.0, 12.2, 12.6, 14.5, 15.6, 16.6, 17.1], os.path.join(HERE, "check_bn2"),
+                step_fn=step, steps=len(OBJ))
     else:
-        finish_v2("BN2_Tallest", frame, T_END, events(), REVEAL, 2, "How tall is the tallest building?", 0.3, 16.6, series="BY THE NUMBERS")
+        finish_data("BN2_Tallest", frame, T_END, events(), REVEAL, 2, *HOOK, END + 1.3, step_fn=step, steps=len(OBJ))
