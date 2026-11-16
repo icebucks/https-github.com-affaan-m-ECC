@@ -1,5 +1,7 @@
 # YouTube Shorts – Upload-Plan „Mindset Series“
 
+**Titel neu (16.11., geprüft mit title.py: 94–98/100):** Thema vorne, Teil-Nummer als Zahl, kein #mindset im Titel. Bei bereits hochgeladenen Folgen den Titel in YouTube Studio → Inhalte → Video → Titel ersetzen.
+
 **So geht's:** YouTube Studio → Erstellen → Videos hochladen → Titel und Beschreibung aus der Liste unten kopieren → Playlist „Mindset Series“ wählen → Sichtbarkeit **„Planen“** mit Datum und Uhrzeit aus der Tabelle.
 Danach in der YouTube-App bei jedem Short unter „Ähnliches Video“ die **nächste Folge** verlinken. Das geht erst, wenn die nächste Folge veröffentlicht ist. Am einfachsten machst du es gesammelt am Ende, die letzte Folge (#10) bleibt ohne Verlinkung.
 
@@ -35,7 +37,7 @@ Nach 2 Wochen mit den eigenen Analytics (TikTok: Follower → Aktivität; YouTub
 ## #1 – Planner vs Doer
 **Titel:**
 ```
-Still planning instead of doing? 🧠 Planner vs Doer #mindset
+Planner vs Doer (Part 1): still planning instead of doing?
 ```
 **Beschreibung:**
 ```
@@ -51,7 +53,7 @@ Mindset Series – Part 1. Follow for Part 2.
 ## #2 – Overthinker vs Doer
 **Titel:**
 ```
-Do you overthink too? 🌊 Overthinker vs Doer #mindset
+Overthinker vs Doer (Part 2): why you never take the step
 ```
 **Beschreibung:**
 ```
@@ -68,7 +70,7 @@ Mindset Series – Part 2. Follow for Part 3.
 ## #3 – Ego vs Humility
 **Titel:**
 ```
-Would you take the rope? 🪢 Ego vs Humility #mindset
+Ego vs Humility (Part 3): would you take the rope?
 ```
 **Beschreibung:**
 ```
@@ -85,7 +87,7 @@ Mindset Series – Part 3. Follow for Part 4.
 ## #4 – Excuses vs Discipline
 **Titel:**
 ```
-Which excuse is yours? ☔ Excuses vs Discipline #mindset
+Excuses vs Discipline (Part 4): which excuse is yours?
 ```
 **Beschreibung:**
 ```
@@ -102,7 +104,7 @@ Mindset Series – Part 4. Follow for Part 5.
 ## #5 – Envy vs Contentment
 **Titel:**
 ```
-Always looking over the fence? 🌻 Envy vs Contentment #mindset
+Envy vs Contentment (Part 5): stop watching their garden
 ```
 **Beschreibung:**
 ```
@@ -119,7 +121,7 @@ Mindset Series – Part 5. Follow for Part 6.
 ## #6 – Comfort Zone vs Growth
 **Titel:**
 ```
-How comfy is your bubble? ❄️ Comfort Zone vs Growth #mindset
+Comfort Zone vs Growth (Part 6): how comfy is your bubble?
 ```
 **Beschreibung:**
 ```
@@ -136,7 +138,7 @@ Mindset Series – Part 6. Follow for Part 7.
 ## #7 – People Pleaser vs Boundaries
 **Titel:**
 ```
-Do you say yes to everything? 🎒 People Pleaser vs Boundaries #mindset
+People Pleaser vs Boundaries (Part 7): why you can't say no
 ```
 **Beschreibung:**
 ```
@@ -152,7 +154,7 @@ Mindset Series – Part 7. Follow for Part 8.
 ## #8 – Impatience vs Patience
 **Titel:**
 ```
-Do you want results NOW? 🌱 Impatience vs Patience #mindset
+Impatience vs Patience (Part 8): why nothing grows for you
 ```
 **Beschreibung:**
 ```
@@ -169,7 +171,7 @@ Mindset Series – Part 8. Follow for Part 9.
 ## #9 – Scroller vs Learner
 **Titel:**
 ```
-Did you scroll all night? 📱 Scroller vs Learner #mindset
+Scroller vs Learner (Part 9): did you scroll all night?
 ```
 **Beschreibung:**
 ```
@@ -185,7 +187,7 @@ Mindset Series – Part 9. Follow for Part 10.
 ## #10 – Grudge vs Letting Go
 **Titel:**
 ```
-What are you still holding onto? 🪨 Grudge vs Letting Go #mindset
+Grudge vs Letting Go (Part 10): what are you still holding?
 ```
 **Beschreibung:**
 ```

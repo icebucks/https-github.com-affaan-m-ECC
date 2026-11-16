@@ -78,10 +78,13 @@ Comment your salary 👇
 #bythenumbers #facts #didyouknow #money #billionaire
 ```
 **Pin-Kommentar:** `How many years would YOU need? ⏳ = over 10,000 · 💼 = 1,000–10,000 · 🚀 = under 1,000`
-**YouTube-Titel:** `How long to earn $1 billion? 🤯 (the last one is insane)`
+**YouTube-Titel:** `How many years would YOUR salary need for $1 billion?` (title.py: 100/100)
+**Titelbild-Text:** `START: 64,300 BC` (Cover_BN1.jpg – sagt etwas anderes als der Titel)
 **YouTube-Beschreibung:**
 ```
-$1,000,000,000 – how long does it really take?
+How long does it take to earn a billion dollars? At US minimum wage: 66,313 years.
+How many years to make $1 billion at 5 different salaries – from $7.25 an hour to $1 every second.
+
 • $7.25/h (US minimum wage, 40 h a week): 66,313 years
 • $50,000 a year: 20,000 years
 • $100,000 a year: 10,000 years
@@ -101,10 +104,13 @@ Drop your guess in meters 👇
 #bythenumbers #comparison #facts #skyscraper #burjkhalifa
 ```
 **Pin-Kommentar:** `Which one would you climb? 🇦🇪 Burj Khalifa · 🇲🇾 Merdeka 118 · 🇨🇳 Shanghai Tower · 🇺🇸 One WTC`
-**YouTube-Titel:** `Tallest buildings in the world – to scale 🏙️ (No. 1 is insane)`
+**YouTube-Titel:** `Tallest buildings in the world, to scale (2026)` (title.py: 98/100)
+**Titelbild-Text:** `473 OF YOU` (Cover_BN2.jpg – 828 m ÷ 1.75 m = 473)
 **YouTube-Beschreibung:**
 ```
-From a 1.75 m human to the 828 m Burj Khalifa – every building to scale.
+The tallest buildings in the world to scale – from a 1.75 m human to the 828 m Burj Khalifa.
+Burj Khalifa height comparison with the Eiffel Tower, Shanghai Tower, Merdeka 118 and One World Trade Center.
+
 No. 10 CITIC Tower 528 m · No. 8 Tianjin CTF / Guangzhou CTF 530 m · No. 7 One World Trade Center 541 m · No. 6 Lotte World Tower 555 m
 No. 5 Ping An Finance Center 599 m · No. 4 Makkah Royal Clock Tower 601 m · No. 3 Shanghai Tower 632 m · No. 2 Merdeka 118 679 m · No. 1 Burj Khalifa 828 m
 For scale: Statue of Liberty 93 m (with pedestal), Eiffel Tower 330 m.

@@ -41,6 +41,15 @@ Umsetzung mit `dlib.finish_data(...)` (Rendern) und `dlib.preview(...)` (Kontakt
 - Nie `#` vor Zahlen schreiben („#1“, „#10“): TikTok und YouTube machen daraus Hashtags. Stattdessen „No. 1“.
 - YouTube: dieselben Tags am Ende der Beschreibung, `#shorts` statt `#learnontiktok`. Die ersten 3 erscheinen über dem Titel, deshalb `#bythenumbers` zuerst.
 
+## YouTube-Skill-Workflow (Pflicht, `.claude/skills/yt-*`, MIT, Jake Schincariol)
+0. Vorher `mkdir -p ~/.claude/youtube && cp kanaele/youtube/voice_bythenumbers.md ~/.claude/youtube/voice.md` – alle yt-Skills lesen dieses Stimm-Profil.
+1. **Hook (`/yt-script`):** 5 Hook-Varianten aus mindestens 3 verschiedenen Formeln in `.claude/skills/yt-script/hooks.json` schreiben (nicht immer „The Question“!), alle mit `python3 .claude/skills/yt-script/hookscore.py hooks.txt` bewerten. Die beste EHRLICHE nehmen: Ziel ≥ 55 (WORKABLE), besser ≥ 72 (STRONG). Hebel laut Werkzeug: „you“ in den ersten 6 Wörtern, eine konkrete Zahl, was auf dem Spiel steht (lose, cost, never, before …), ein offenes Fragewort, 9–24 Wörter, nicht selbst beantworten. Nie Zahlen oder Behauptungen erfinden. Auf dem Bildschirm in 2 kurze Zeilen teilen.
+2. **Titel + Titelbild (`/yt-package`):** 10 YouTube-Titel schreiben, alle mit `python3 .claude/skills/yt-package/title.py titles.txt` prüfen, den besten nehmen (Ziel ≥ 90). Hauptsuchwort vorne (z. B. „Tallest buildings in the world, to scale (2026)“), kein „insane/crazy“, höchstens 2 Wörter in Großbuchstaben. Titelbild: höchstens 3 Wörter, andere Wörter als der Titel (gleiches Versprechen), am besten eine Zahl. Paar mit `title.py --title "…" --thumb "…"` prüfen; die Titelbild-Wörter kommen ins Cover.
+3. **Suche (`/yt-seo`):** die 3 Suchanfragen aufschreiben, die das Video gewinnen soll. Titel und die ERSTEN ZWEI Zeilen der Beschreibung müssen deren Wörter enthalten. Tags sind unwichtig.
+4. **Kommentare (`/yt-comment`):** Wenn die Person Kommentare schickt: in Fragen / Korrekturen / Lob / Köder sortieren, Antworten unter 30 Wörtern, EINEN Kommentar zum Anpinnen empfehlen (die Frage, die die meisten haben). Fragen = Themen für nächste Folgen.
+5. **Retention (`/yt-retention`):** Exportierte Retention-CSV aus YouTube Studio (Video → Analytics → Engagement → Download) in `kanaele/data/analytics/` legen und mit `python3 .claude/skills/yt-retention/retention.py <csv> --duration <s>` auswerten. Größtes Leck zuerst.
+6. **Konkurrenz (`/yt-viral`):** `python3 kanaele/youtube/viral_collect.py out.json "<suchbegriff>" …` und `python3 .claude/skills/yt-viral/swipe.py out.json --min 2.0`. Gewertet wird das Vielfache des eigenen Kanal-Medians, nicht die Rohaufrufe. Nur öffentliche Listen.
+
 ## Formate (abwechseln, nie zweimal hintereinander dasselbe)
 | Format | Vorlage | Idee |
 |---|---|---|
@@ -65,6 +74,9 @@ Umsetzung mit `dlib.finish_data(...)` (Rendern) und `dlib.preview(...)` (Kontakt
 - Ablauf: `bnN.py` schreiben → `python3 bnN.py still` (nutzt `dlib.preview`, Bilder bei 0,05 s, 0,5 s, 2 s und über das ganze Video) ansehen → Überschneidungen mit Hook, Sticky-Chip und Fortschrittsbalken (y 200–560) beheben → `VID_LANG=en python3 bnN.py render` → Dauer und LUFS messen, Kontaktblatt aus der MP4 mit 1 Bild pro Sekunde ansehen.
 
 ## Themen-Backlog (oben = als Nächstes)
+0. **E** · How long to reach the Moon? Walking, car, plane, rocket (Distanz NASA, exakte Mathematik). *Grund: Zeit-/Distanz-Fragen im Weltall sind die stärksten Ausreißer der Nische (yt-viral 16.11.: 15–43× Kanal-Median).*
+0. **E** · How long would a plane take to fly around every planet? (Umfänge NASA, 900 km/h)
+0. **A** · How far is Jupiter really? Light, rocket, car, walking (NASA, Entfernung mit Datum angeben)
 1. **C** · Largest countries by area – Top 10 mit Flaggen (Wikipedia, km²)
 2. **E** · How long would it take to walk around the Earth? (Umfang 40.075 km, 5 km/h, 8 h pro Tag)
 3. **B** · Animals to scale: from an ant to the blue whale (Längen aus Wikipedia)

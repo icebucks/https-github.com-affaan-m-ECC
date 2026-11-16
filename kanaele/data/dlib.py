@@ -190,7 +190,7 @@ def cover(frame_fn, t, lines, out, num=None):
     if num is not None:
         rr = skia.RRect.MakeRectXY(skia.Rect.MakeXYWH(390, 430, 300, 90), 45, 45)
         c.drawRRect(rr, _lib.P(GOLD)); _lib.text(c, f"PART {num}", 540, 492, _lib.F_CAP, 48, (20, 20, 30), 1.0)
-    y = 680
+    y = 560 + lines[0][1] * 0.78     # first baseline clears the PART badge for any size
     for ln, size in lines:
         rich(c, ln, 540, y, size, 1.0, stroke=22, maxw=980)
         y += size * 1.12
