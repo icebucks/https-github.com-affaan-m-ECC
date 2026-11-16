@@ -1,6 +1,6 @@
 {
  "seed": 1135,
- "duration": 35.259,
+ "duration": 27.569,
  "voice": "/home/user/https-github.com-affaan-m-ECC/assets/01-teutoburg/voice.wav",
  "out": "/home/user/https-github.com-affaan-m-ECC/assets/01-teutoburg/mix.wav",
  "atmo": [
@@ -11,97 +11,67 @@
  "scenes": [
   {
    "start": 0,
-   "end": 3.055,
+   "end": 2.665,
    "wendepunkt": false,
    "ton": null
   },
   {
-   "start": 3.055,
-   "end": 5.815,
+   "start": 2.665,
+   "end": 5.329,
    "wendepunkt": false,
    "ton": null
   },
   {
-   "start": 5.815,
-   "end": 7.574,
+   "start": 5.329,
+   "end": 8.011,
    "wendepunkt": false,
    "ton": null
   },
   {
-   "start": 7.574,
-   "end": 9.333,
+   "start": 8.011,
+   "end": 10.395,
    "wendepunkt": false,
    "ton": null
   },
   {
-   "start": 9.333,
-   "end": 11.47,
+   "start": 10.395,
+   "end": 12.596,
    "wendepunkt": false,
    "ton": null
   },
   {
-   "start": 11.47,
-   "end": 13.278,
+   "start": 12.596,
+   "end": 15.4,
    "wendepunkt": false,
    "ton": null
   },
   {
-   "start": 13.278,
-   "end": 15.218,
+   "start": 15.4,
+   "end": 17.467,
    "wendepunkt": false,
    "ton": null
   },
   {
-   "start": 15.218,
-   "end": 17.158,
-   "wendepunkt": false,
-   "ton": null
-  },
-  {
-   "start": 17.158,
-   "end": 19.715,
-   "wendepunkt": false,
-   "ton": null
-  },
-  {
-   "start": 19.715,
-   "end": 22.272,
-   "wendepunkt": false,
-   "ton": null
-  },
-  {
-   "start": 22.272,
-   "end": 23.99,
+   "start": 17.467,
+   "end": 19.877,
    "wendepunkt": false,
    "ton": "stille"
   },
   {
-   "start": 23.99,
-   "end": 25.707,
+   "start": 19.877,
+   "end": 22.287,
    "wendepunkt": false,
    "ton": "stille"
   },
   {
-   "start": 25.707,
-   "end": 27.718,
-   "wendepunkt": false,
-   "ton": "stille"
-  },
-  {
-   "start": 27.718,
-   "end": 30.593,
-   "wendepunkt": true,
-   "ton": null
-  },
-  {
-   "start": 30.593,
-   "end": 35.259,
+   "start": 22.287,
+   "end": 27.569,
    "wendepunkt": true,
    "ton": null
   }
  ],
  "hook_hit": 0,
- "wende_start": 27.718,
- "endcard_start": 33.099,
+ "wende_start": 22.287,
+ "endcard_start": 25.369,
  "events": []
 }

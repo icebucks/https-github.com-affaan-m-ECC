@@ -318,7 +318,7 @@ function hookHtml(script, pal) {
 #hook-year { display: inline; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 40px; letter-spacing: 0.08em; color: #fff; text-shadow: 0 3px 12px rgba(0,0,0,0.9); }
 #hook-line { display: inline-block; width: 14px; height: 14px; margin: 0 16px 6px; border-radius: 50%; background: ${pal.accent}; vertical-align: middle; }
 #hook-place { display: inline; font-family: "Montserrat", sans-serif; font-weight: 800; font-size: 40px; letter-spacing: 0.08em; color: ${pal.accent2}; text-transform: uppercase; text-shadow: 0 3px 12px rgba(0,0,0,0.9); }
-#hook-text { margin-top: 28px; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 84px; line-height: 1.05; color: #fff; -webkit-text-stroke: 14px #000; paint-order: stroke fill; text-shadow: 0 6px 18px rgba(0,0,0,0.8); }
+#hook-text { margin-top: 28px; font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 74px; line-height: 1.05; color: #fff; -webkit-text-stroke: 13px #000; paint-order: stroke fill; text-shadow: 0 6px 18px rgba(0,0,0,0.8); }
 </style>
 <div id="root" data-composition-id="hook" data-width="${FW}" data-height="${FH}">
   <div id="hook-scrim"></div>
@@ -330,10 +330,10 @@ function hookHtml(script, pal) {
 <script>
 (function () {
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#hook-box", { scale: 1.14, y: 0, opacity: 1 }, { scale: 1, duration: 0.7, ease: "power3.out" }, 0);
+  tl.fromTo("#hook-box", { scale: 1.0, y: 0, opacity: 1 }, { scale: 1, duration: 0.7, ease: "power3.out" }, 0);
   tl.fromTo("#hook-line", { scale: 0.2 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, 0.05);
   
-  ${script.hook_text ? `tl.fromTo("#hook-text", { scale: 1.3 }, { scale: 1, duration: 0.35, ease: "back.out(2)" }, 0);` : ""}
+  ${script.hook_text ? `tl.fromTo("#hook-text", { scale: 1.08 }, { scale: 1, duration: 0.3, ease: "power2.out" }, 0);` : ""}
   tl.to("#hook-box", { opacity: 0, y: -40, duration: 0.4, ease: "power2.in" }, ${script.hook_text ? 2.35 : 1.75});
   tl.fromTo("#hook-scrim", { opacity: 1 }, { opacity: 0, duration: 0.45, ease: "power1.in" }, ${script.hook_text ? 2.3 : 1.7});
   window.__timelines["hook"] = tl;

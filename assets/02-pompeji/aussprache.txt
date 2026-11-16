@@ -1,68 +1,51 @@
-       GRUUT    Ich                      /ɪç/
-       GRUUT    bin                      /bɪn/
-       GRUUT    Bäcker                   /bɛkɐ/
-       GRUUT    in                       /ʔɪn/
+       GRUUT    Heute                    /hɔʏtə/
+       GRUUT    ist                      /ɪst/
+       ESPEAK   der                      /dɛɐ/   (gruut: /deːɐ/)
+       GRUUT    letzte                   /lɛtstə/
+       GRUUT    Tag                      /taːk/
+       GRUUT    von                      /fɔn/
        EIGEN    Pompeji                  /pɔmpeːjiː/
-       GRUUT    Jeden                    /jeːdn/
-       GRUUT    Morgen                   /mɔʁɡən/
-       GRUUT    um                       /ʊm/
-       ESPEAK   vier                     /fiːɐ/   (gruut: /viːʁ/)
-       GRUUT    heize                    /haeːtsə/
-       GRUUT    den                      /deːn/
-       GRUUT    Ofen                     /oːfən/
-       GRUUT    an                       /ʔan/
-       GRUUT    die                      /diː/
-       GRUUT    Brote                    /bʁoːtə/
-       GRUUT    liegen                   /liːɡən/
-       GRUUT    schon                    /ʃoːn/
-       ESPEAK   bereit                   /bəʁaeːt/   (gruut: /bəʁəiːt/)
+       GRUUT    Und                      /ʊnt/
+       GRUUT    ich                      /ɪç/
+       GRUUT    backe                    /bakə/
+       GRUUT    noch                     /nɔx/
+       GRUUT    Brot                     /bʁoːt/
        GRUUT    Seit                     /zaɪt/
        GRUUT    Tagen                    /taːɡən/
        GRUUT    bebt                     /bɛpt/
+       GRUUT    die                      /diː/
        ESPEAK   Erde                     /eːɐdə/   (gruut: /ʔɛʁdeː/)
-       GRUUT    leicht                   /laɪçt/
        GRUUT    Niemand                  /niːmant/
        GRUUT    macht                    /maxt/
        GRUUT    sich                     /zɪç/
        ESPEAK   Sorgen                   /zɔɐɡən/   (gruut: /zɔʁɡŋ/)
-       GRUUT    das                      /das/
-       GRUUT    kennen                   /kɛnən/
-       GRUUT    wir                      /viːɐ/
-       GRUUT    hier                     /hiːɐ/
-       GRUUT    Heute                    /hɔʏtə/
-       GRUUT    Mittag                   /mɪtaːk/
-       GRUUT    hat                      /hat/
-       ESPEAK   der                      /dɛɐ/   (gruut: /deːɐ/)
+       GRUUT    Dann                     /dan/
+       GRUUT    wird                     /vɪʁt/
        ESPEAK   Himmel                   /hɪməl/   (gruut: /hɪmmeːl/)
        GRUUT    über                     /yːbɐ/
        GRUUT    dem                      /deːm/
        EIGEN    Vesuv                    /veːzuːf/
-       GRUUT    verdunkelt               /fɛːɐdʊŋkɛlt/
+       GRUUT    schwarz                  /ʃvaʁts/
        GRUUT    Eine                     /ʔaɪnə/
        GRUUT    Wolke                    /vɔlkə/
-       ESPEAK   hoch                     /hoːx/   (gruut: /hɔx/)
+       GRUUT    wächst                   /vɛçst/
        GRUUT    wie                      /viː/
        GRUUT    ein                      /aeːn/
        GRUUT    Baum                     /baoːm/
-       GRUUT    wächst                   /vɛçst/
-       GRUUT    Jetzt                    /jɛtst/
-       GRUUT    fällt                    /fɛlt/
+       GRUUT    in                       /ʔɪn/
+       GRUUT    den                      /deːn/
        GRUUT    Asche                    /aʃə/
+       GRUUT    fällt                    /fɛlt/
        GRUUT    Erst                     /ʔɛʁst/
        ESPEAK   Schnee                   /ʃneː/   (gruut: /ʃnəə/)
-       GRUUT    Dann                     /dan/
        ESPEAK   Steine                   /ʃtaeːnə/   (gruut: /ʃtəɪnə/)
-       GRUUT    Leute                    /lɔʏtə/
+       GRUUT    Alle                     /alə/
        GRUUT    rennen                   /ʁɛnnən/
        GRUUT    zum                      /tsʊm/
        GEPRÜFT  Hafen                    /haːfən/
-       GRUUT    zögere                   /tsøːɡɐə/
-       GRUUT    Mein                     /maɪn/
-       GRUUT    ganzes                   /ɡantsəs/
-       GEPRÜFT  Leben                    /leːbən/
-       GRUUT    steckt                   /ʃtɛkt/
-       GRUUT    dieser                   /diːzəʁ/
-       EIGEN    Bäckerei                 /bɛkəʁaeː/
+       GRUUT    bleibe                   /blaeːbə/
+       GRUUT    Tür                      /tyːɐ/
+       GRUUT    stehen                   /ʃteːən/
        GRUUT    Teil                     /taeːl/
        GRUUT    zwei                     /tsvaɪ/
        GRUUT    folgt                    /fɔlkt/

@@ -227,10 +227,10 @@ function hfMakeFx(canvas, specs, seed) {
 
 (function () {
   const tl = gsap.timeline({ paused: true });
-  tl.fromTo("#s04-cam", {scale:1.24,x:-50,y:-70}, {scale:1.3800000000000001,x:30,y:-30,duration:2.159,ease:"sine.inOut"}, 1.759);
-  tl.fromTo("#s04-fade", {opacity:0, scale:1.07}, {opacity:1, scale:1, duration:0.4, ease:"power2.out"}, 1.759);
+  tl.fromTo("#s04-cam", {scale:1,x:0,y:0}, {scale:1.08,x:0,y:0,duration:2.784,ease:"sine.inOut"}, 0);
+  tl.fromTo("#s04-fade", {opacity:0, scale:1.07}, {opacity:1, scale:1, duration:0.4, ease:"power2.out"}, 0);
 
-  const GLC = {"z0":1.04,"z1":1.15,"px0":0.012,"px1":-0.012,"py0":0.0031155328545719387,"py1":0.0026004325291141867,"ox0":0.028,"ox1":-0.028,"oy0":0.006,"oy1":-0.006}, GLV = {"z":0.14,"x":0.05,"y":-0.03}, GLD = 6.055;
+  const GLC = {"z0":1.16,"z1":1.05,"px0":-0.012,"px1":0.012,"py0":-0.0003549335692077875,"py1":-0.002992831194307655,"ox0":-0.028,"ox1":0.028,"oy0":0.006,"oy1":-0.006}, GLV = {"z":0,"x":0,"y":0}, GLD = 4.985;
   const glCanvas = document.getElementById("s04-gl");
   const g = glCanvas.getContext("webgl", { preserveDrawingBuffer: true, antialias: false });
   let glReady = false, glU = null;
@@ -256,7 +256,7 @@ function hfMakeFx(canvas, specs, seed) {
     g.drawArrays(g.TRIANGLE_STRIP, 0, 4);
   }
   window.__hf = window.__hf || {}; window.__hf.buildReady = window.__hf.buildReady || {};
-  window.__hf.buildReady["s04-gl"] = Promise.all([glLoad("assets/bilder/b-5814595d41.jpg"), glLoad("assets/bilder/b-5814595d41_depth.png")]).then(([im, dp]) => {
+  window.__hf.buildReady["s04-gl"] = Promise.all([glLoad("assets/bilder/b-cdd660ce85.jpg"), glLoad("assets/bilder/b-cdd660ce85_depth.png")]).then(([im, dp]) => {
     const sh = (type, src) => { const o = g.createShader(type); g.shaderSource(o, src); g.compileShader(o); return o; };
     const pr = g.createProgram(); g.attachShader(pr, sh(g.VERTEX_SHADER, glVS)); g.attachShader(pr, sh(g.FRAGMENT_SHADER, glFS)); g.linkProgram(pr); g.useProgram(pr);
     const b = g.createBuffer(); g.bindBuffer(g.ARRAY_BUFFER, b); g.bufferData(g.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), g.STATIC_DRAW);
@@ -266,11 +266,11 @@ function hfMakeFx(canvas, specs, seed) {
     g.uniform1f(g.getUniformLocation(pr, "ax"), (1080 / 1920) / (im.width / im.height));
     glU = { zoom: g.getUniformLocation(pr, "zoom"), pan: g.getUniformLocation(pr, "pan"), off: g.getUniformLocation(pr, "off") };
     g.viewport(0, 0, 1080, 1920);
-    glReady = true; glDraw(1.759);
+    glReady = true; glDraw(0);
     const px = new Uint8Array(4); g.readPixels(0, 0, 1, 1, g.RGBA, g.UNSIGNED_BYTE, px);
   });
-  const fxB = hfMakeFx(document.getElementById("s04-back"), [], 43361);
-  const fxF = hfMakeFx(document.getElementById("s04-front"), [{"type":"regen","count":380,"angle":14,"speed":2300,"len":80,"alpha":0.28,"color":"rgba(190,210,205,1)"}], 43362);
+  const fxB = hfMakeFx(document.getElementById("s04-back"), [], 6232);
+  const fxF = hfMakeFx(document.getElementById("s04-front"), [{"type":"regen","count":380,"angle":14,"speed":2300,"len":80,"alpha":0.28,"color":"rgba(190,210,205,1)"}], 6233);
   const lights = [].map((L, i) => ({ ...L, el: document.getElementById("s04-light" + i) }));
   const shake = 0, shakeFrom = 0;
   // Daumenkino-Figuren (Geh-/Lauf-/Arbeitszyklen): pro Bild genau ein Einzelbild sichtbar
@@ -292,12 +292,12 @@ function hfMakeFx(canvas, specs, seed) {
     }
   }
   const P = { t: 0 };
-  tl.to(P, { t: 6.055, duration: 6.055, ease: "none", onUpdate: () => render(P.t) }, 0);
-  // Einstellung = Ausschnitt 1.759s..3.918s der ganzen Szene
+  tl.to(P, { t: 4.985, duration: 4.985, ease: "none", onUpdate: () => render(P.t) }, 0);
+  // Einstellung = Ausschnitt 0s..2.784s der ganzen Szene
   const shot = gsap.timeline({ paused: true });
-  const Q = { t: 1.759 };
-  shot.to(Q, { t: 3.918, duration: 2.159, ease: "none", onUpdate: () => tl.seek(Q.t, false) }, 0);
-  tl.seek(1.759, false);
+  const Q = { t: 0 };
+  shot.to(Q, { t: 2.784, duration: 2.784, ease: "none", onUpdate: () => tl.seek(Q.t, false) }, 0);
+  tl.seek(0, false);
   window.__timelines["s04"] = shot;
 })();</script>
 </template>
