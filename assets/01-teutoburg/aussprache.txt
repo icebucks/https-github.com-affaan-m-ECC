@@ -1,50 +1,43 @@
        GRUUT    Ich                      /ɪç/
-       GRUUT    bin                      /bɪn/
-       EIGEN    Legionär                 /leːɡioːnɛːɐ/
-       ESPEAK   der                      /dɛɐ/   (gruut: /deːɐ/)
-       GRUUT    neunzehnten              /nɔɔʏntseːntən/
-       EIGEN    Legion                   /leːɡioːn/
+       GRUUT    habe                     /haːbə/
+       GRUUT    gesehen                  /ɡəzeːən/
+       GRUUT    wie                      /viː/
+       GRUUT    drei                     /dʁaɪ/
+       GRUUT    Legionen                 /leːɡɪoːnən/
+       GRUUT    in                       /ʔɪn/
+       GRUUT    einem                    /ʔaeːnəm/
+       GRUUT    Wald                     /valt/
+       GRUUT    verschwanden             /fɛːɐʃvandən/
+       GRUUT    war                      /vaːɐ/
+       GRUUT    einer                    /ʔaeːnʔɛːɐ/
+       GRUUT    von                      /fɔn/
+       GRUUT    ihnen                    /ʔiːnən/
        GRUUT    Seit                     /zaɪt/
        GRUUT    Tagen                    /taːɡən/
        GRUUT    marschieren              /maʁʃiːʁeːn/
        GRUUT    wir                      /viːɐ/
        GRUUT    durch                    /dʊʁç/
-       ESPEAK   diesen                   /diːzən/   (gruut: /diːəsən/)
-       GRUUT    Wald                     /valt/
-       GRUUT    Auf                      /aʊf/
-       GRUUT    meinem                   /maɪnəm/
-       GRUUT    Rücken                   /ʁʏkən/
-       GRUUT    Rüstung                  /ʁʏstʊŋ/
-       EIGEN    Schanzwerkzeug           /ʃantsvɛʁktsɔɔʏk/
-       EIGEN    Proviant                 /pʁoːviant/
+       EIGEN    Germanien                /ɡɛʁmaːniən/
+       GRUUT    Regen                    /ʁeːɡən/
+       GRUUT    Schlamm                  /ʃlam/
        GRUUT    Über                     /yːbɐ/
        GEPRÜFT  dreißig                  /dʁaeːsɪç/
        GRUUT    Kilo                     /kiːloː/
-       ESPEAK   Es                       /ɛs/   (gruut: /ʔeːs/)
-       GRUUT    regnet                   /ʁɛɡnət/
-       GRUUT    ohne                     /oːnə/
-       GRUUT    Pause                    /paoːzə/
-       GRUUT    Weg                      /veːk/
-       GRUUT    ist                      /ɪst/
-       GRUUT    so                       /zoː/
-       GRUUT    schmal                   /ʃmal/
-       GRUUT    dass                     /das/
-       GRUUT    sich                     /zɪç/
-       GRUUT    unser                    /ʔʊnzɐ/
-       GRUUT    Zug                      /tsuːk/
-       EIGEN    kilometerweit            /kiːloːmeːtɐvaeːt/
-       GRUUT    zieht                    /tsiːt/
+       GRUUT    auf                      /aʊf/
+       GRUUT    dem                      /deːm/
+       GRUUT    Rücken                   /ʁʏkən/
+       GRUUT    Unser                    /ʔʊnzɐ/
        EIGEN    Feldherr                 /fɛlthɛʁ/
        EIGEN    Varus                    /vaːʁʊs/
        GRUUT    vertraut                 /fɛːɐtʁaoːt/
-       EIGEN    Arminius                 /ʔaʁmiːniʊs/
-       GRUUT    einem                    /ʔaeːnəm/
        EIGEN    Germanen                 /ɡɛʁmaːnən/
-       GRUUT    in                       /ʔɪn/
-       GRUUT    römischen                /ʁøːmɪʃən/
-       GRUUT    Diensten                 /diːnstən/
+       GRUUT    Sein                     /zaɪn/
+       GRUUT    Name                     /naːmə/
+       EIGEN    Arminius                 /ʔaʁmiːniʊs/
        GRUUT    Dann                     /dan/
-       GRUUT    Stille                   /ʃtɪllə/
+       GRUUT    wird                     /vɪʁt/
+       ESPEAK   es                       /ɛs/   (gruut: /ʔeːs/)
+       GRUUT    still                    /ʃtɪl/
        GRUUT    Kein                     /kaɪn/
        GRUUT    Vogel                    /foːɡəl/
        GRUUT    Wind                     /vɪnt/
@@ -55,9 +48,6 @@
        GRUUT    aus                      /aʊs/
        GRUUT    den                      /deːn/
        GRUUT    Bäumen                   /bɔɔʏmən/
-       GRUUT    hat                      /hat/
-       GRUUT    uns                      /ʔʊns/
-       GRUUT    verraten                 /fɛːɐʁaːtən/
        GRUUT    Teil                     /taeːl/
        GRUUT    zwei                     /tsvaɪ/
        GRUUT    folgt                    /fɔlkt/

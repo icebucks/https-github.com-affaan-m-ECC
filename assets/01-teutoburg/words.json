@@ -1,5 +1,5 @@
 {
- "duration": 34.739,
+ "duration": 29.294,
  "words": [
   {
    "text": "Ich",
@@ -8,405 +8,338 @@
    "satz": 0
   },
   {
-   "text": "bin",
+   "text": "habe",
    "start": 0.68,
-   "end": 0.86,
+   "end": 0.94,
    "satz": 0
   },
   {
-   "text": "Legionär",
-   "start": 0.86,
-   "end": 1.42,
+   "text": "gesehen",
+   "start": 0.94,
+   "end": 1.32,
    "satz": 0
   },
   {
-   "text": "der",
-   "start": 1.42,
-   "end": 1.56,
+   "text": "wie",
+   "start": 1.44,
+   "end": 1.5,
    "satz": 0
   },
   {
-   "text": "neunzehnten",
-   "start": 1.56,
-   "end": 2.08,
+   "text": "drei",
+   "start": 1.5,
+   "end": 1.72,
    "satz": 0
   },
   {
-   "text": "Legion",
-   "start": 2.3,
-   "end": 2.7,
+   "text": "Legionen",
+   "start": 1.72,
+   "end": 2.36,
    "satz": 0
   },
   {
-   "text": "Seit",
-   "start": 3.205,
-   "end": 3.505,
-   "satz": 1
+   "text": "in",
+   "start": 2.36,
+   "end": 2.76,
+   "satz": 0
   },
   {
-   "text": "Tagen",
-   "start": 3.505,
-   "end": 3.885,
-   "satz": 1
-  },
-  {
-   "text": "marschieren",
-   "start": 3.885,
-   "end": 4.465,
-   "satz": 1
-  },
-  {
-   "text": "wir",
-   "start": 4.465,
-   "end": 4.565,
-   "satz": 1
-  },
-  {
-   "text": "durch",
-   "start": 4.565,
-   "end": 4.845,
-   "satz": 1
-  },
-  {
-   "text": "diesen",
-   "start": 4.845,
-   "end": 5.125,
-   "satz": 1
+   "text": "einem",
+   "start": 2.76,
+   "end": 2.96,
+   "satz": 0
   },
   {
    "text": "Wald",
-   "start": 5.125,
-   "end": 5.485,
+   "start": 2.96,
+   "end": 3.32,
+   "satz": 0
+  },
+  {
+   "text": "verschwanden",
+   "start": 3.32,
+   "end": 3.98,
+   "satz": 0
+  },
+  {
+   "text": "Ich",
+   "start": 4.482,
+   "end": 4.682,
    "satz": 1
   },
   {
-   "text": "Auf",
-   "start": 5.965,
-   "end": 6.205,
+   "text": "war",
+   "start": 4.682,
+   "end": 4.902,
+   "satz": 1
+  },
+  {
+   "text": "einer",
+   "start": 4.902,
+   "end": 5.222,
+   "satz": 1
+  },
+  {
+   "text": "von",
+   "start": 5.222,
+   "end": 5.422,
+   "satz": 1
+  },
+  {
+   "text": "ihnen",
+   "start": 5.422,
+   "end": 5.722,
+   "satz": 1
+  },
+  {
+   "text": "Seit",
+   "start": 6.198,
+   "end": 6.638,
    "satz": 2
   },
   {
-   "text": "meinem",
-   "start": 6.205,
-   "end": 6.465,
+   "text": "Tagen",
+   "start": 6.638,
+   "end": 7.038,
    "satz": 2
   },
   {
-   "text": "Rücken",
-   "start": 6.465,
-   "end": 6.925,
+   "text": "marschieren",
+   "start": 7.038,
+   "end": 7.738,
    "satz": 2
   },
   {
-   "text": "Rüstung",
-   "start": 7.065,
-   "end": 7.525,
+   "text": "wir",
+   "start": 7.738,
+   "end": 7.858,
    "satz": 2
   },
   {
-   "text": "Schanzwerkzeug",
-   "start": 7.645,
-   "end": 8.385,
+   "text": "durch",
+   "start": 7.858,
+   "end": 8.118,
    "satz": 2
   },
   {
-   "text": "Proviant",
-   "start": 8.565,
-   "end": 9.025,
+   "text": "Germanien",
+   "start": 8.118,
+   "end": 8.818,
    "satz": 2
+  },
+  {
+   "text": "Regen",
+   "start": 9.281,
+   "end": 9.861,
+   "satz": 3
+  },
+  {
+   "text": "Schlamm",
+   "start": 10.53,
+   "end": 11.05,
+   "satz": 4
   },
   {
    "text": "Über",
-   "start": 9.483,
-   "end": 10.043,
-   "satz": 3
+   "start": 11.673,
+   "end": 11.973,
+   "satz": 5
   },
   {
    "text": "dreißig",
-   "start": 10.043,
-   "end": 10.503,
-   "satz": 3
+   "start": 11.973,
+   "end": 12.393,
+   "satz": 5
   },
   {
    "text": "Kilo",
-   "start": 10.503,
-   "end": 10.923,
-   "satz": 3
-  },
-  {
-   "text": "Es",
-   "start": 11.62,
-   "end": 11.88,
-   "satz": 4
-  },
-  {
-   "text": "regnet",
-   "start": 11.88,
-   "end": 12.22,
-   "satz": 4
-  },
-  {
-   "text": "ohne",
-   "start": 12.22,
-   "end": 12.58,
-   "satz": 4
-  },
-  {
-   "text": "Pause",
-   "start": 12.58,
-   "end": 12.96,
-   "satz": 4
-  },
-  {
-   "text": "Der",
-   "start": 13.428,
-   "end": 13.608,
+   "start": 12.393,
+   "end": 12.753,
    "satz": 5
   },
   {
-   "text": "Weg",
-   "start": 13.608,
-   "end": 13.868,
+   "text": "auf",
+   "start": 12.753,
+   "end": 12.933,
    "satz": 5
   },
   {
-   "text": "ist",
-   "start": 13.868,
-   "end": 14.068,
+   "text": "dem",
+   "start": 12.933,
+   "end": 13.113,
    "satz": 5
   },
   {
-   "text": "so",
-   "start": 14.068,
-   "end": 14.328,
-   "satz": 5
-  },
-  {
-   "text": "schmal",
-   "start": 14.328,
-   "end": 14.708,
-   "satz": 5
-  },
-  {
-   "text": "dass",
-   "start": 14.848,
-   "end": 14.928,
-   "satz": 5
-  },
-  {
-   "text": "sich",
-   "start": 14.928,
-   "end": 15.128,
-   "satz": 5
-  },
-  {
-   "text": "unser",
-   "start": 15.128,
-   "end": 15.348,
-   "satz": 5
-  },
-  {
-   "text": "Zug",
-   "start": 15.348,
-   "end": 15.588,
-   "satz": 5
-  },
-  {
-   "text": "kilometerweit",
-   "start": 15.588,
-   "end": 16.528,
-   "satz": 5
-  },
-  {
-   "text": "zieht",
-   "start": 16.528,
-   "end": 16.888,
+   "text": "Rücken",
+   "start": 13.113,
+   "end": 13.413,
    "satz": 5
   },
   {
    "text": "Unser",
-   "start": 17.308,
-   "end": 17.688,
+   "start": 13.884,
+   "end": 14.224,
    "satz": 6
   },
   {
    "text": "Feldherr",
-   "start": 17.688,
-   "end": 18.108,
+   "start": 14.224,
+   "end": 14.764,
    "satz": 6
   },
   {
    "text": "Varus",
-   "start": 18.108,
-   "end": 18.508,
+   "start": 14.764,
+   "end": 15.184,
    "satz": 6
   },
   {
    "text": "vertraut",
-   "start": 18.508,
-   "end": 19.048,
-   "satz": 6
-  },
-  {
-   "text": "Arminius",
-   "start": 19.048,
-   "end": 19.908,
+   "start": 15.184,
+   "end": 15.744,
    "satz": 6
   },
   {
    "text": "einem",
-   "start": 20.128,
-   "end": 20.248,
+   "start": 15.744,
+   "end": 15.984,
    "satz": 6
   },
   {
    "text": "Germanen",
-   "start": 20.248,
-   "end": 20.928,
+   "start": 15.984,
+   "end": 16.604,
    "satz": 6
   },
   {
-   "text": "in",
-   "start": 20.928,
-   "end": 21.068,
-   "satz": 6
-  },
-  {
-   "text": "römischen",
-   "start": 21.068,
-   "end": 21.528,
-   "satz": 6
-  },
-  {
-   "text": "Diensten",
-   "start": 21.528,
-   "end": 21.988,
-   "satz": 6
-  },
-  {
-   "text": "Dann",
-   "start": 22.422,
-   "end": 23.002,
+   "text": "Sein",
+   "start": 17.0,
+   "end": 17.46,
    "satz": 7
   },
   {
-   "text": "Stille",
-   "start": 23.002,
-   "end": 23.622,
+   "text": "Name",
+   "start": 17.46,
+   "end": 17.76,
    "satz": 7
-  },
-  {
-   "text": "Kein",
-   "start": 24.26,
-   "end": 24.72,
-   "satz": 8
-  },
-  {
-   "text": "Vogel",
-   "start": 24.72,
-   "end": 25.22,
-   "satz": 8
-  },
-  {
-   "text": "Kein",
-   "start": 25.857,
-   "end": 26.777,
-   "satz": 9
-  },
-  {
-   "text": "Wind",
-   "start": 26.777,
-   "end": 27.137,
-   "satz": 9
-  },
-  {
-   "text": "Und",
-   "start": 27.868,
-   "end": 28.128,
-   "satz": 10
-  },
-  {
-   "text": "plötzlich",
-   "start": 28.128,
-   "end": 28.548,
-   "satz": 10
-  },
-  {
-   "text": "fliegen",
-   "start": 28.548,
-   "end": 28.968,
-   "satz": 10
-  },
-  {
-   "text": "Speere",
-   "start": 28.968,
-   "end": 29.468,
-   "satz": 10
-  },
-  {
-   "text": "aus",
-   "start": 29.468,
-   "end": 29.708,
-   "satz": 10
-  },
-  {
-   "text": "den",
-   "start": 29.708,
-   "end": 29.948,
-   "satz": 10
-  },
-  {
-   "text": "Bäumen",
-   "start": 29.948,
-   "end": 30.288,
-   "satz": 10
   },
   {
    "text": "Arminius",
-   "start": 30.743,
-   "end": 31.423,
+   "start": 17.76,
+   "end": 18.52,
+   "satz": 7
+  },
+  {
+   "text": "Dann",
+   "start": 19.251,
+   "end": 19.611,
+   "satz": 8
+  },
+  {
+   "text": "wird",
+   "start": 19.611,
+   "end": 19.851,
+   "satz": 8
+  },
+  {
+   "text": "es",
+   "start": 19.851,
+   "end": 20.191,
+   "satz": 8
+  },
+  {
+   "text": "still",
+   "start": 20.191,
+   "end": 20.451,
+   "satz": 8
+  },
+  {
+   "text": "Kein",
+   "start": 20.935,
+   "end": 21.315,
+   "satz": 9
+  },
+  {
+   "text": "Vogel",
+   "start": 21.315,
+   "end": 21.795,
+   "satz": 9
+  },
+  {
+   "text": "Kein",
+   "start": 22.415,
+   "end": 23.175,
+   "satz": 10
+  },
+  {
+   "text": "Wind",
+   "start": 23.175,
+   "end": 23.455,
+   "satz": 10
+  },
+  {
+   "text": "Und",
+   "start": 24.183,
+   "end": 24.623,
    "satz": 11
   },
   {
-   "text": "hat",
-   "start": 31.423,
-   "end": 31.583,
+   "text": "plötzlich",
+   "start": 24.623,
+   "end": 25.023,
    "satz": 11
   },
   {
-   "text": "uns",
-   "start": 31.583,
-   "end": 31.783,
+   "text": "fliegen",
+   "start": 25.023,
+   "end": 25.403,
    "satz": 11
   },
   {
-   "text": "verraten",
-   "start": 31.783,
-   "end": 32.383,
+   "text": "Speere",
+   "start": 25.403,
+   "end": 25.923,
+   "satz": 11
+  },
+  {
+   "text": "aus",
+   "start": 25.923,
+   "end": 26.163,
+   "satz": 11
+  },
+  {
+   "text": "den",
+   "start": 26.163,
+   "end": 26.383,
+   "satz": 11
+  },
+  {
+   "text": "Bäumen",
+   "start": 26.383,
+   "end": 26.723,
    "satz": 11
   },
   {
    "text": "Teil",
-   "start": 33.219,
-   "end": 33.539,
+   "start": 27.63,
+   "end": 27.97,
    "satz": 12
   },
   {
    "text": "zwei",
-   "start": 33.539,
-   "end": 33.879,
+   "start": 27.97,
+   "end": 28.41,
    "satz": 12
   },
   {
    "text": "folgt",
-   "start": 33.879,
-   "end": 34.359,
+   "start": 28.41,
+   "end": 28.87,
    "satz": 12
   }
  ],
  "warnings": [
-  "Satz 0: Whisper hört „Ich bin Legionär der 19. Legion.“ (Übereinstimmung 83%)",
-  "Satz 3: Whisper hört „über 30 Kilo.“ (Übereinstimmung 67%)",
+  "Satz 5: Whisper hört „über 30 Kilo auf dem Rücken.“ (Übereinstimmung 83%)",
   "Satz 12: Whisper hört „Teil 2 folgt.“ (Übereinstimmung 67%)"
  ]
 }

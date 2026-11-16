@@ -1,8 +1,10 @@
-✓ Hook-Satz endet nach 2.7 s
+⚠ Erster Satz dauert 4.0 s – Hook muss in ≤ 3 s sitzen (kürzer, Spannung zuerst)
 ✓ Hook-Text im ersten Bild
-✓ Länge 35.3 s
-✓ Bildwechsel alle 2.4 s
-✓ Wendepunkt vor dem letzten Fünftel
+✓ Länge 29.8 s
+✓ Bildwechsel alle 2.7 s
+⚠ Wendepunkt fehlt oder kommt zu spät
 ✓ Frage an die Zuschauer (Kommentare)
-✓ 7 Hashtags
+✓ 5 Hashtags
+✓ Caption 137 Zeichen
+✓ Suchwort in der Caption
 ✓ Schlüsselwörter betont
