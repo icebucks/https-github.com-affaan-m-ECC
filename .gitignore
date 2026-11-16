@@ -25,3 +25,8 @@ kanaele/*/check_*.jpg
 kanaele/*/render.log
 kanaele/*/render*.log
 kanaele/data/check_*.jpg
+kanaele/space/*_v.part.mp4
+kanaele/space/*_a.wav*
+kanaele/space/render.log
+kanaele/space/check_*.jpg
+kanaele/space/__pycache__/
