@@ -1,0 +1,21 @@
+{
+ "_doc": "Themen der langen Videos (LONGFORM.md, Backlog 1-8 + veröffentlichte). Shorts dürfen diese Fragen NICHT beantworten und ihre Zahlen nicht verwenden. overlap.py prüft jede Short-Datei gegen diese Muster. Neues langes Video geplant -> hier eintragen, BEVOR der nächste Short gebaut wird.",
+ "topics": [
+  {"long": "CS1 How long to travel to the nearest star (Upload 21.11.2026)",
+   "patterns": ["proxima", "alpha centauri", "nearest star", "closest star", "starshot", "parker", "light-?day", "walk(ing)? to (the|a) star", "(by|on) (foot|car|jet|plane).{0,40}(star|moon)", "(walk|drive|fly)(ing)? to the moon", "reach the moon"]},
+  {"long": "CS2 How far has Voyager 1 really gone (geplant)",
+   "patterns": ["voyager", "pioneer 1[01]", "farthest (object|spacecraft|probe)", "interstellar space", "heliopause", "oort cloud"]},
+  {"long": "CS3 How fast are you moving right now (geplant)",
+   "patterns": ["how fast (are )?you", "you are (moving|flying|travell?ing)", "earth (spins|rotates) at", "orbit(s|ing)? the sun at", "around the (galaxy|milky way) at", "galactic year"]},
+  {"long": "CS4 How long is a day on every planet (geplant)",
+   "patterns": ["day on (mercury|venus|mars|jupiter|saturn|uranus|neptune|pluto)", "(a|one) day (lasts|is longer)", "day (is )?longer than (a|its) year", "year on (mercury|venus|mars|jupiter|saturn|uranus|neptune|pluto)"]},
+  {"long": "CS5 How long to travel to every planet (geplant)",
+   "patterns": ["(travel|fly|flight|drive|get|trip) to (mercury|venus|mars|jupiter|saturn|uranus|neptune|pluto)", "how long to (reach|get to)", "how far (is|away is) (mercury|venus|mars|jupiter|saturn|uranus|neptune|pluto)"]},
+  {"long": "CS6 How cold can space get (geplant)",
+   "patterns": ["coldest", "absolute zero", "boomerang nebula", "how cold", "minus 2[0-9]{2}", "-2[0-9]{2} ?°"]},
+  {"long": "CS7 How big is the Milky Way if the Sun were a grain of sand (geplant)",
+   "patterns": ["milky way", "grain of sand", "grains of sand", "stars in (our|the) galaxy", "size of (our|the) galaxy"]},
+  {"long": "CS8 How long does light take to reach us from the night sky (geplant)",
+   "patterns": ["light (takes|needs|travels)", "light from .{0,30} (left|ago)", "speed of light", "light-?seconds?", "light-?minutes?", "light-?years? away"]}
+ ]
+}

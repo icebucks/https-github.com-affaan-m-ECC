@@ -74,23 +74,18 @@ Umsetzung mit `dlib.finish_data(...)` (Rendern) und `dlib.preview(...)` (Kontakt
 - Ablauf: `bnN.py` schreiben → `python3 bnN.py still` (nutzt `dlib.preview`, Bilder bei 0,05 s, 0,5 s, 2 s und über das ganze Video) ansehen → Überschneidungen mit Hook, Sticky-Chip und Fortschrittsbalken (y 200–560) beheben → `VID_LANG=en python3 bnN.py render` → Dauer und LUFS messen, Kontaktblatt aus der MP4 mit 1 Bild pro Sekunde ansehen.
 
 ## Themen-Backlog (oben = als Nächstes)
-0. **E** · How long to reach the Moon? Walking, car, plane, rocket (Distanz NASA, exakte Mathematik). *Grund: Zeit-/Distanz-Fragen im Weltall sind die stärksten Ausreißer der Nische (yt-viral 16.11.: 15–43× Kanal-Median).*
-0. **E** · How long would a plane take to fly around every planet? (Umfänge NASA, 900 km/h)
-0. **A** · How far is Jupiter really? Light, rocket, car, walking (NASA, Entfernung mit Datum angeben)
+**Ab 16.11.2026: keine Weltall-Themen mehr in dieser Reihe.** Weltall läuft als eigene Short-Reihe mit Sprecher (`../space/shorts/SHORTS.md`), und die langen Videos (`../space/LONGFORM.md`) haben Vorrang. Vor jedem neuen Thema prüfen: `python3 ../space/overlap.py bnN.py` muss ohne Treffer durchlaufen.
 1. **C** · Largest countries by area – Top 10 mit Flaggen (Wikipedia, km²)
 2. **E** · How long would it take to walk around the Earth? (Umfang 40.075 km, 5 km/h, 8 h pro Tag)
 3. **B** · Animals to scale: from an ant to the blue whale (Längen aus Wikipedia)
-4. **D** · Sun vs. Earth vs. Moon – size, mass, distance (NASA Fact Sheets)
 5. **A** · How much is $1 million in different currencies? (Wechselkurse mit Datum)
 6. **C** · Most visited countries by tourists (UN Tourism, neuestes Jahr)
 7. **B** · Deepest places on Earth: from a swimming pool to the Mariana Trench
 8. **E** · What happens on the internet in one minute (nur mit aktueller, belegter Quelle)
 9. **D** · Your heart vs. a whale's heart: beats, weight, size
 10. **C** · Longest rivers in the world (Wikipedia, km)
-11. **B** · Planets to scale, ending with the Sun
 12. **A** · How long to count to 1 million / 1 billion (1 Zahl pro Sekunde, exakte Mathematik)
 13. **C** · Highest mountains – the Seven Summits with flags
-14. **E** · Light speed: how long light takes to the Moon, Sun, Mars (NASA)
 15. **D** · Cheetah vs. Usain Bolt vs. car: 100 m
 
 Wenn weniger als 5 Themen übrig sind: 5 neue im selben Stil ergänzen.

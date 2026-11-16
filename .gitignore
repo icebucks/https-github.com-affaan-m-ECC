@@ -30,3 +30,9 @@ kanaele/space/*_a.wav*
 kanaele/space/render.log
 kanaele/space/check_*.jpg
 kanaele/space/__pycache__/
+kanaele/space/shorts/audio/
+kanaele/space/shorts/*_v.part.mp4
+kanaele/space/shorts/*_a.wav*
+kanaele/space/shorts/render_*.log
+kanaele/space/shorts/check_*.jpg
+kanaele/space/shorts/__pycache__/

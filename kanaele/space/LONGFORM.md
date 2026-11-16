@@ -13,12 +13,14 @@
 - Reihe für die ersten langen Videos: **„Cosmic Scale“** (Weltall & Größenordnungen), später weitere Reihen (Geld, Gebäude, Länder) im selben Stil.
 - Playlists: „Shorts“ und „Long videos – Cosmic Scale“ getrennt, damit YouTube beide Zielgruppen sauber zuordnet.
 - Stimm-Profil für lange Videos: `../youtube/voice_cosmicscale.md`
-- Sprecher: Kokoro-82M (Apache-2.0, lokal, kommerziell nutzbar), Proben in `voice/`. Empfehlung `bm_george` oder `am_michael` – **Wahl der Person ausstehend.**
+- Sprecher: Kokoro-82M (Apache-2.0, lokal, kommerziell nutzbar), Proben in `voice/`. gewählt: **`bm_george`** (16.11.2026). Einrichtung auf neuen Containern: `bash setup_voice.sh`.
 
-## Rhythmus (`/yt-plan`)
-- **Täglich 1 Short** wie bisher (Automatisierung 06:07).
-- **1 langes Video pro Woche** (8–12 min, Mid-Roll-Werbung ab 8 min), immer am selben Tag, z. B. Samstag 17:30.
-- In der Woche davor: 2–3 der täglichen Shorts zum selben Thema (z. B. „How long to reach the Moon?“ vor dem Pilot) und danach per „Ähnliches Video“ aufs lange Video verlinken.
+## Rhythmus (`/yt-plan`, Stand 16.11.2026)
+- **Täglich 1 Daten-Short ohne Sprecher** (Erde, Geld, Länder, Tiere – `../data/`, Automatisierung 06:07).
+- **Täglich 1 Weltall-Short mit George** (`shorts/SHORTS.md`, Automatisierung 07:23), mindestens 3 h Abstand zum Daten-Short.
+- **1 langes Video pro Woche** (8–12 min, Mid-Roll-Werbung ab 8 min), Samstag 17:30.
+- **Keine Überschneidung:** Die Fragen der langen Videos sind für alle Shorts gesperrt (`reserved.json`, automatisch geprüft von `overlap.py`). Shorts verweisen auf ein langes Video nur per „Ähnliches Video“ in YouTube Studio und im Pin-Kommentar – nie inhaltlich, nie mit denselben Zahlen.
+- Neues langes Video geplant → zuerst Thema + Suchmuster in `reserved.json`, dann weiter mit den Shorts.
 
 ## Produktions-Pipeline (aufzubauen nach Freigabe)
 1. Thema → Recherche (NASA/ESA/JPL, Datum notieren) → Skript nach `/yt-script` (5 Hooks, `hookscore.py` ≥ 72, Wendepunkt bis 0:35, Beats mit `[ON SCREEN]`, Auflösung, eine Aufforderung).
