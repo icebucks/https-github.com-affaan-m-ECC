@@ -254,42 +254,119 @@ def pose_points(p, s, facing):
     return J
 
 
+NOW = None   # current video time (set by render/stills) – used for idle breathing
+
+
+def _round_paint(rgb, a, w):
+    p = P(rgb, a, stroke=w); p.setStrokeCap(skia.Paint.kRound_Cap); p.setStrokeJoin(skia.Paint.kRound_Join); return p
+
+
+def _quad(a, b, wa, wb):
+    """tapered capsule from a (width wa) to b (width wb) as a filled path"""
+    dx, dy = b[0] - a[0], b[1] - a[1]; ln = math.hypot(dx, dy) or 1e-3
+    nx, ny = -dy / ln, dx / ln
+    pth = skia.Path()
+    pth.moveTo(a[0] + nx * wa / 2, a[1] + ny * wa / 2); pth.lineTo(b[0] + nx * wb / 2, b[1] + ny * wb / 2)
+    pth.lineTo(b[0] - nx * wb / 2, b[1] - ny * wb / 2); pth.lineTo(a[0] - nx * wa / 2, a[1] - ny * wa / 2); pth.close()
+    ca = skia.Path(); ca.addCircle(a[0], a[1], wa / 2); cb = skia.Path(); cb.addCircle(b[0], b[1], wb / 2)
+    return skia.Op(skia.Op(pth, ca, skia.PathOp.kUnion_PathOp), cb, skia.PathOp.kUnion_PathOp)
+
+
 def figure(c, x, y, p, s=0.8, facing=1, rot=0.0, body=WHITE, mode="feet", lift=0.0, rim=None, light=(-1, -1)):
-    """draw figure; mode 'feet': lowest foot on y; 'hip': hip at (x,y). returns dict of world joints"""
+    """draw figure; mode 'feet': lowest foot on y; 'hip': hip at (x,y). returns dict of world joints
+    v2: tapered limbs, shaped torso, neck, hands, feet, soft shading, idle breathing"""
+    if NOW is not None:
+        br = math.sin(NOW * 2.3 + x * 0.017)
+        p = dict(p); p["arm_f"] = p.get("arm_f", 0) + 1.6 * br; p["arm_b"] = p.get("arm_b", 0) - 1.2 * br
+        p["head"] = p.get("head", 0) + 1.0 * math.sin(NOW * 1.1 + x * 0.01)
     J = pose_points(p, s, facing)
     if mode == "feet":
         low = max(J["foot_f"][1], J["foot_b"][1]); hx, hy = x, y - low - 6 * s - lift
     else:
         hx, hy = x, y
     c.save(); c.translate(hx, hy); c.rotate(rot)
-    lw = 17 * s; ow = lw + 7
+    lw = 17 * s; OL = 7
     back = tuple(v * 0.80 for v in body)
-
-    # rim: Lichtsaum in Lichtfarbe auf der Seite der Lichtquelle (light = Richtung in Bildkoordinaten)
     lx, ly = light; ln = math.hypot(lx, ly) or 1; lx, ly = lx / ln, ly / ln
-    def limb(pts, col, w=None, ol=7):
-        w = w or lw
-        path = poly(pts, close=False)
-        c.drawPath(path, P(INK, stroke=w + ol)); c.drawPath(path, P(col, stroke=w))
+
+    def shade(shape, col, w):
+        """soft volume: dark core on the side away from the light, rim on the light side"""
+        c.save(); c.clipPath(shape, doAntiAlias=True)
+        m = skia.Matrix(); m.setTranslate(-lx * w * 0.42, -ly * w * 0.42)
+        sh = skia.Path(); shape.transform(m, sh)
+        q = P((20, 22, 40), 0.16, blur=w * 0.18)
+        inv = skia.Path(); inv = skia.Op(shape, sh, skia.PathOp.kDifference_PathOp)
+        c.drawPath(inv, q)
         if rim:
-            rp = poly([(px + lx * w * 0.28, py + ly * w * 0.28) for px, py in pts], close=False)
-            c.save(); c.clipPath(path_stroke(path, w))
-            c.drawPath(rp, P(rim[0], rim[1], stroke=w * 0.38)); c.restore()
-    limb([J["sh"], J["el_b"], J["hand_b"]], back)
-    limb([J["hip"], J["knee_b"], J["foot_b"]], back)
-    limb([J["hip"], J["sh"]], body, lw * 1.55, 7 * 1.55)
+            m2 = skia.Matrix(); m2.setTranslate(-lx * w * 0.30, -ly * w * 0.30)
+            r2 = skia.Path(); shape.transform(m2, r2)
+            rr = skia.Path(); rr = skia.Op(shape, r2, skia.PathOp.kDifference_PathOp)
+            c.drawPath(rr, P(rim[0], rim[1], blur=w * 0.06))
+        c.restore()
+
+    def limb(a, b, e, col, w0, w1, w2, end=None):
+        """two tapered segments a-b-e, optional end knob ('hand' or 'foot')"""
+        shape = skia.Path(); shape = skia.Op(_quad(a, b, w0, w1), _quad(b, e, w1, w2), skia.PathOp.kUnion_PathOp)
+        if end == "hand":
+            hp_ = skia.Path(); hp_.addCircle(e[0], e[1], w2 * 0.72); shape = skia.Op(shape, hp_, skia.PathOp.kUnion_PathOp)
+        elif end == "foot":
+            ang = math.atan2(e[1] - b[1], e[0] - b[0]) - math.pi / 2 * facing * 0.95
+            tip = (e[0] + math.cos(ang) * 0 + facing * 13 * s, e[1] + 2 * s)
+            shape = skia.Op(shape, _quad(e, tip, w2 * 1.05, w2 * 0.8), skia.PathOp.kUnion_PathOp)
+        c.drawPath(shape, _round_paint(INK, 1, OL)); c.drawPath(shape, P(col))
+        shade(shape, col, w0)
+        return shape
+
+    sh, hip, hd = J["sh"], J["hip"], J["head"]
+    limb(sh, J["el_b"], J["hand_b"], back, lw * 1.0, lw * 0.86, lw * 0.74, "hand")
+    limb(hip, J["knee_b"], J["foot_b"], back, lw * 1.12, lw * 0.92, lw * 0.78, "foot")
+    # neck
+    nk = skia.Path(); nk.addPath(_quad(sh, hd, lw * 0.62, lw * 0.5))
+    c.drawPath(nk, _round_paint(INK, 1, OL)); c.drawPath(nk, P(body))
+    limb(hip, J["knee_f"], J["foot_f"], body, lw * 1.12, lw * 0.92, lw * 0.78, "foot")
+    # torso: broad chest, narrower waist, slightly wider hips
+    tx, ty = sh[0] - hip[0], sh[1] - hip[1]
+    chest = (hip[0] + tx * 0.72, hip[1] + ty * 0.72); waist = (hip[0] + tx * 0.35, hip[1] + ty * 0.35)
+    torso = skia.Path(); torso = skia.Op(_quad(hip, waist, lw * 1.55, lw * 1.38), _quad(waist, chest, lw * 1.38, lw * 1.78), skia.PathOp.kUnion_PathOp)
+    torso = skia.Op(torso, _quad(chest, sh, lw * 1.78, lw * 1.5), skia.PathOp.kUnion_PathOp)
+    c.drawPath(torso, _round_paint(INK, 1, OL)); c.drawPath(torso, P(body)); shade(torso, body, lw * 1.6)
+    # head: slightly egg-shaped, tilted with the neck
     hr = L["head"] * s
-    c.drawCircle(J["head"][0], J["head"][1], hr + 3.5, P(INK))
-    c.drawCircle(J["head"][0], J["head"][1], hr, P(body))
-    if rim:
-        c.save(); hp_ = skia.Path(); hp_.addCircle(J["head"][0], J["head"][1], hr); c.clipPath(hp_)
-        c.drawCircle(J["head"][0] - lx * hr * 0.35, J["head"][1] - ly * hr * 0.35, hr, P(rim[0], rim[1] * 0.9, stroke=hr * 0.42)); c.restore()
-    limb([J["hip"], J["knee_f"], J["foot_f"]], body)
-    limb([J["sh"], J["el_f"], J["hand_f"]], body)
+    hang = math.degrees(math.atan2(hd[0] - sh[0], -(hd[1] - sh[1])))
+    head = skia.Path(); head.addOval(skia.Rect.MakeXYWH(hd[0] - hr * 0.93, hd[1] - hr * 1.06, hr * 1.86, hr * 2.08))
+    m = skia.Matrix(); m.setRotate(hang, hd[0], hd[1]); head.transform(m)
+    c.drawPath(head, _round_paint(INK, 1, 7)); c.drawPath(head, P(body)); shade(head, body, hr * 1.6)
+    c.drawCircle(hd[0] + lx * hr * 0.38, hd[1] + ly * hr * 0.38, hr * 0.22, P((255, 255, 255), 0.28, blur=hr * 0.15))
+    limb(sh, J["el_f"], J["hand_f"], body, lw * 1.0, lw * 0.86, lw * 0.74, "hand")
     c.restore()
     m = skia.Matrix(); m.setTranslate(hx, hy); m.preRotate(rot)
     out = {k: m.mapXY(*v) for k, v in J.items()}
     out = {k: (v.x(), v.y()) for k, v in out.items()}
+    return out
+
+
+def _avg(vals, ws):
+    v0 = vals[len(vals) // 2]
+    if isinstance(v0, bool) or not isinstance(v0, (int, float, dict, tuple)): return v0
+    if isinstance(v0, dict):
+        keys = set().union(*[v.keys() for v in vals if isinstance(v, dict)])
+        return {k: _avg([v.get(k, 10 if k.startswith("elb") else 0) if isinstance(v, dict) else 0 for v in vals], ws) for k in keys} \
+            if all(isinstance(v, dict) for v in vals) else v0
+    if isinstance(v0, tuple): return v0
+    return sum(w * v for v, w in zip(vals, ws))
+
+
+def smooth(fn, t, w=0.12, n=7):
+    """temporal low-pass of a character function fn(t) -> dict(x, y, p, ...):
+    hard pose switches become ~0.2 s blends; numeric fields and poses are averaged"""
+    ts = [t + w * (2 * i / (n - 1) - 1) for i in range(n)]
+    ws = [1 - abs(2 * i / (n - 1) - 1) * 0.85 for i in range(n)]; sw = sum(ws); ws = [x / sw for x in ws]
+    vals = [fn(tt) for tt in ts]
+    mid = vals[n // 2]
+    out = dict(mid)
+    for k in mid:
+        if k in ("f", "facing", "mode"): continue          # discrete: keep the current value
+        if all(k in v for v in vals): out[k] = _avg([v[k] for v in vals], ws)
     return out
 
 
@@ -309,9 +386,12 @@ def stand(): return dict(lean=0, arm_f=6, arm_b=-6, elb_f=8, elb_b=8, leg_f=3, l
 
 def walk(ph, lean=6, stride=24, arm=22):
     sn = math.sin(ph)
-    return dict(lean=lean, head=-lean * 0.6, arm_f=-arm * sn + 4, arm_b=arm * sn + 4, elb_f=18, elb_b=18,
+    def knee(q):  # lifts during the swing, slight flex at heel strike
+        return 6 + 38 * max(0.0, math.sin(q)) ** 1.5
+    return dict(lean=lean + 1.5 * math.sin(2 * ph), head=-lean * 0.6 - 1.5 * math.sin(2 * ph),
+                arm_f=-arm * sn + 4, arm_b=arm * sn + 4, elb_f=16 + 8 * max(0, -sn), elb_b=16 + 8 * max(0, sn),
                 leg_f=stride * sn + lean * 0.4, leg_b=-stride * sn + lean * 0.4,
-                knee_f=max(0, 34 * math.sin(ph + 1.3)), knee_b=max(0, 34 * math.sin(ph + 1.3 + math.pi)))
+                knee_f=knee(ph + 1.3), knee_b=knee(ph + 1.3 + math.pi))
 
 
 def run(ph):
@@ -362,10 +442,18 @@ def render(frame_fn, t_end, out):
     ff = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgba", "-s", f"{W}x{H}", "-r", str(FPS),
                            "-i", "-", "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-pix_fmt", "yuv420p", tmp],
                           stdin=subprocess.PIPE)
+    global NOW
+    sub = int(os.environ.get("MBLUR", "3"))
     for f in range(int(t_end * FPS)):
-        c.clear(skia.ColorBLACK)
-        frame_fn(c, f / FPS)
-        ff.stdin.write(surf.makeImageSnapshot().toarray(colorType=skia.kRGBA_8888_ColorType).tobytes())
+        acc = None
+        for k in range(sub):
+            t = (f + (k - (sub - 1) / 2) / sub * 0.5) / FPS if sub > 1 else f / FPS   # 180° shutter
+            c.clear(skia.ColorBLACK); NOW = t
+            frame_fn(c, max(0.0, t))
+            arr = surf.makeImageSnapshot().toarray(colorType=skia.kRGBA_8888_ColorType)
+            acc = arr.astype(np.uint16) if acc is None else acc + arr
+        out_f = (acc // sub).astype(np.uint8) if sub > 1 else acc.astype(np.uint8)
+        ff.stdin.write(out_f.tobytes())
     ff.stdin.close()
     if ff.wait() == 0: os.replace(tmp, out)
 
@@ -374,6 +462,8 @@ def stills(frame_fn, ts, prefix):
     from PIL import Image
     ims = []
     for tt in ts:
+        global NOW
+        NOW = tt
         surf = skia.Surface(W, H); c = surf.getCanvas(); c.clear(skia.ColorBLACK); frame_fn(c, tt)
         arr = surf.makeImageSnapshot().toarray(colorType=skia.kRGBA_8888_ColorType)
         ims.append(Image.fromarray(arr[:, :, :3]).resize((360, 640)))

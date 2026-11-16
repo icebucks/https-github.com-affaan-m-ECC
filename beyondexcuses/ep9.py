@@ -133,7 +133,7 @@ def frame(c, t):
     lantern(c, XL - 70, n)
     stairs(c, t)
     # Scroller
-    s = scroller(t)
+    s = smooth(scroller, t)
     crate = skia.Rect.MakeXYWH(XS - 40, G - 62, 80, 62)
     c.drawRect(crate, P((150, 110, 70))); c.drawRect(crate, P(INK, stroke=5))
     shadow(c, XS, G, S)
@@ -142,7 +142,7 @@ def frame(c, t):
     if not (TURN + 1.5 < t < TURN + 3.5): plate_label(c, "SCROLLER", js["head"][0], js["head"][1] - 52, GREY, 0.9)
     if not (TURN + 1.5 < t < TURN + 3.5): battery(c, js["head"][0] - 10, js["head"][1] - 110, t)
     # Learner
-    l = learner(t)
+    l = smooth(learner, t)
     shadow(c, l["x"], l["y"], S)
     if t < TURN + 0.2:  # Bücherstapel als Sitz
         for k in range(2): book(c, XL + 6, G - k * 20, BOOKCOLS[(k + 3) % 6], w=58, h=20)

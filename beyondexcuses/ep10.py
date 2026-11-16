@@ -142,12 +142,12 @@ def frame(c, t):
     u = world(c, t)
     body = lerpc((215, 220, 232), (252, 246, 236), u)
     # Grudge
-    g = grudge(t)
+    g = smooth(grudge, t)
     jg = figure(c, g["x"], g["y"], g["p"], s=S, facing=1, body=body, rim=((170, 200, 255), 0.45))
     sx, sy = (jg["hand_f"][0] + jg["hand_b"][0]) / 2, (jg["hand_f"][1] + jg["hand_b"][1]) / 2
     stone(c, sx + 14, sy - 8)
     # Letting Go
-    l = letgo(t)
+    l = smooth(letgo, t)
     rim_l = (lerpc((170, 200, 255), (255, 200, 130), u), 0.55)
     if not l.get("swim"):
         jl = figure(c, l["x"], l["y"], l["p"], s=S, facing=1, body=body, rim=rim_l)

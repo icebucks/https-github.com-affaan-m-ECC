@@ -166,14 +166,14 @@ def frame(c, t):
     # Patience: plant + tree
     mound(c, XP + 60)
     tree(c, XP + 60, t)
-    p = patience(t)
+    p = smooth(patience, t)
     shadow(c, p["x"], G, S)
     jp = figure(c, p["x"], G - (0 if not p.get("sit") else 0), p["p"], s=S, facing=p["f"], body=body, rim=(rim_col, 0.55),
                 mode="feet")
     if p.get("can"): watering(c, jp, t)
     plate_label(c, "PATIENCE", jp["head"][0], jp["head"][1] - 52, AMBER, 0.95)
     # Impatience: keeps digging
-    im = impatience(t)
+    im = smooth(impatience, t)
     holes = sum(1 for d, _ in DIGS if t > d + 1.0)
     dug = 0.0
     for d, _ in DIGS:

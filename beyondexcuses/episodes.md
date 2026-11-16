@@ -32,3 +32,10 @@ Render: `VID_LANG=en python3 epN.py render` → `FolgeN_<Name>_EN.mp4`. Stills: 
 ## Graphics upgrades (from #8)
 
 Soft ground shadows, rim light on the figures in the scene's light colour, atmospheric haze at the horizon, light film grain, dark plates behind labels, bubbles that pop in, and figures at 1.3–1.45× scale. The style is unchanged.
+
+## Figures v2 + smoother motion (lib.py)
+
+- Figure: tapered limbs, chest/waist/hip torso, neck, round hands, small feet, soft shading away from the light, egg-shaped faceless head with a highlight. The returned joints are the same as before, so old episodes still render.
+- `smooth(fn, t)`: temporal blend of character functions, so hard pose switches become ~0.2 s transitions. Use `x = smooth(char, t)` instead of `x = char(t)`.
+- Natural walk cycle (hip sway, knee lift), idle breathing (`lib.NOW`), and motion blur in `render()` (`MBLUR=3`, 180° shutter; `MBLUR=1` for fast drafts).
+
