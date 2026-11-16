@@ -73,7 +73,7 @@ def hook_overlay(c, t, num, l1, l2, end_at, sticky="WAIT FOR #1", hook_end=3.0, 
     # flash on the very first frames
     if t < 0.14:
         c.drawRect(skia.Rect.MakeWH(W, _lib.H), _lib.P((255, 255, 255), 0.4 * (1 - t / 0.14)))
-    _lib.text(c, f"BY THE NUMBERS #{num}", 540, 236, _lib.F_SANS, 26, GOLD, 0.95, spacing=4, stroke=6)
+    _lib.text(c, f"BY THE NUMBERS #{num}", 540, 238, _lib.F_SANS, 30, GOLD, 0.95, spacing=4, stroke=6)
     # progress bar
     if steps and t > 0.2:
         a = min(1.0, (t - 0.2) / 0.3) * (1 - _lib.seg(t, end_at - 0.6, end_at - 0.2))
@@ -81,7 +81,7 @@ def hook_overlay(c, t, num, l1, l2, end_at, sticky="WAIT FOR #1", hook_end=3.0, 
         c.drawRRect(skia.RRect.MakeRectXY(skia.Rect.MakeLTRB(x0, y, x1, y + 10), 5, 5), _lib.P((255, 255, 255), 0.18 * a))
         fr = max(0.0, min(1.0, step / steps))
         c.drawRRect(skia.RRect.MakeRectXY(skia.Rect.MakeLTRB(x0, y, x0 + (x1 - x0) * fr, y + 10), 5, 5), _lib.P(GOLD, 0.95 * a))
-        _lib.text(c, f"{int(step)}/{steps}", x1 + 18, y + 11, _lib.F_SANS, 22, (220, 225, 240), a, align="left")
+        _lib.text(c, f"{int(step)}/{steps}", x1 + 16, y + 13, _lib.F_SANS, 28, (220, 225, 240), a, align="left")
     # hook lines
     out = _lib.seg(t, hook_end, hook_end + 0.3)
     if out < 1:
@@ -145,7 +145,7 @@ def finish_data(name, frame_fn, t_end, events, turn, num, l1, l2, end_at, off=0.
             e[3:6] = [x - off for x in e[3:6]]     # build, drop, outro
         else:
             e[1] = max(0.0, e[1] - off)
-    ev += [sfx(0.02, "boom-hit-medium", -3), sfx(0.05, "whoosh-fast-medium", -6), sfx(0.38, "pop-medium-in", -6)]
+    ev += [sfx(0.02, "boom-hit-medium", 0), sfx(0.02, "cinematic-slam-big", -8), sfx(0.05, "whoosh-fast-medium", -5), sfx(0.38, "pop-medium-in", -5)]
     _lib.finish(name, wrapped, t_end - off, ev, turn - off)
 
 
@@ -197,3 +197,20 @@ def cover(frame_fn, t, lines, out, num=None):
     arr = surf.makeImageSnapshot().toarray(colorType=skia.kRGBA_8888_ColorType)[:, :, :3]
     Image.fromarray(arr).save(out, quality=93)
     return out
+
+
+def end_card(c, t, t0, l1, l2, l3, y=1110, alpha=1.0):
+    """closing text ABOVE the TikTok caption area (y < 1450): two white lines + a gold question, on a dark plate"""
+    if t < t0 or alpha <= 0: return
+    a = min(1.0, (t - t0) / 0.35) * alpha
+    k = _back((t - t0) / 0.35)
+    plate = skia.RRect.MakeRectXY(skia.Rect.MakeLTRB(60, y - 80, 880, y + 215), 30, 30)
+    c.drawRect(skia.Rect.MakeWH(_lib.W, _lib.H), _lib.P((0, 0, 0), 0.35 * a))
+    c.drawRRect(plate, _lib.P((10, 12, 26), 0.82 * a)); c.drawRRect(plate, _lib.P(GOLD, 0.6 * a, stroke=3))
+    c.save(); c.translate(470, y); c.scale(0.9 + 0.1 * k, 0.9 + 0.1 * k)
+    rich(c, l1, 0, 0, 56, a, maxw=780)
+    rich(c, l2, 0, 70, 56, a, maxw=780)
+    b = min(1.0, max(0.0, (t - t0 - 0.6) / 0.3)) * alpha
+    if b > 0:
+        rich(c, l3, 0, 162, 62, b, base=GOLD, maxw=780)
+    c.restore()

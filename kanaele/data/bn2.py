@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.join(HERE, "..", "..", "beyondexcuses"))
 sys.path.insert(0, HERE)
 os.environ.setdefault("OUT_DIR", HERE)
 from lib import *
-from dlib import flag, sfx, finish_data, preview, punch, shake, burst, set_bpm, pulse, music
+from dlib import flag, sfx, finish_data, preview, punch, shake, burst, set_bpm, pulse, music, end_card
 
 T_END = 17.2
 HOOK = ("Guess how tall *#1* is", "before it's revealed!")
@@ -73,7 +73,7 @@ def cam(t):
     if t > OVER:                              # final zoom-out: whole skyline
         v = ease((t - OVER) / (3 * BEAT))
         xs, ss = x, s
-        s = math.exp(lerp(math.log(ss), math.log(0.62), v)); x = 690 - (1 - v) * (690 - xs) * ss / s
+        s = math.exp(lerp(math.log(ss), math.log(0.58), v)); x = 740 - (1 - v) * (740 - xs) * ss / s
     if t > LOOP:
         w = ease((t - LOOP) / (T_END - LOOP))
         xs, ss = x, s
@@ -87,7 +87,7 @@ def sy(hm, sc): return GY - hm * sc
 
 # ------------------------------------------------------------------ drawing
 def background(c, t, xc):
-    sh = skia.GradientShader.MakeLinear([(0, 0), (0, GY)], [C((10, 12, 30)), C((30, 32, 70)), C((90, 70, 110))], [0, 0.6, 1])
+    sh = skia.GradientShader.MakeLinear([(0, 0), (0, GY)], [C((18, 26, 70)), C((56, 42, 116)), C((160, 84, 120))], [0, 0.6, 1])
     c.drawRect(skia.Rect.MakeWH(W, H), skia.Paint(Shader=sh))
     rng = np.random.default_rng(4)
     for _ in range(140):
@@ -186,17 +186,21 @@ def draw_liberty(c, o, xc, sc, hi):
 def label(c, t, i, xc, sc, a):
     k, name, cc, h, x, w, wt, sp = OBJ[i]
     ts = [s for s, j in STOPS if j == i][0]
-    cx = clamp(sx(x, xc, sc), 230, 850)
+    cx = sx(x, xc, sc)
     top = min(sy(h, sc), GY - 60) - 30
     y = max(690 if i < 3 else 650, top - 50)
     v = h * (1 - (1 - clamp((t - ts - 0.05) / max(0.2, LAND_T[i] - ts - 0.05))) ** 3)
     num = f"{v:,.2f} m" if h < 10 else f"{v:,.0f} m"
     r = rank_of(i)
+    r_ = rank_of(i); line_ = name if r_ is None else f"No. {r_}  {name}"
+    half = max(skia.Font(F_CAP, 92 if i == len(OBJ) - 1 else 68).measureText(f"{h:,.0f} m") / 2,
+               (skia.Font(F_SANS, 30).measureText(line_) + 60) / 2)
+    cx = clamp(cx, 120 + half, 880 - half)
     pz = punch(t, LAND_T[i], 0.4 if i == len(OBJ) - 1 else 0.22)
     c.save(); c.translate(cx, y - 24); c.scale(pz, pz)
     text(c, num, 0, 24, F_CAP, 92 if i == len(OBJ) - 1 else 68, GOLD if i == len(OBJ) - 1 else (255, 255, 255), a, stroke=14)
     c.restore()
-    line = name if r is None else f"#{r}  {name}"
+    line = name if r is None else f"No. {r}  {name}"
     fw = 46
     tw = skia.Font(F_SANS, 30).measureText(line)
     if cc:
@@ -233,10 +237,10 @@ def frame(c, t):
     if t > OVER + 0.6:
         a = seg(t, OVER + 0.6, OVER + 1.0) * (1 - seg(t, END + 1.2, END + 1.5))
         for i, o in enumerate(OBJ[2:], start=2):
-            text(c, f"{o[3]}", sx(o[4], xc, sc), sy(o[3], sc) - 14, F_SANS, 22, GOLD if i == len(OBJ) - 1 else (220, 225, 240), a, stroke=5)
-        text(c, "THE 10 TALLEST BUILDINGS", 540, 700, F_SANS, 34, (210, 215, 235), a, spacing=4, stroke=6)
-        text(c, "TO SCALE", 540, 790, F_CAP, 84, GOLD, a, stroke=16)
-        text(c, "heights in meters incl. spires", 540, 845, F_SANS, 24, (150, 155, 180), a)
+            text(c, f"{o[3]}", sx(o[4], xc, sc), sy(o[3], sc) - 14, F_SANS, 30, GOLD if i == len(OBJ) - 1 else (220, 225, 240), a, stroke=6)
+        text(c, "THE 10 TALLEST BUILDINGS", 540, 700, F_SANS, 34, (210, 215, 235), a * (1 - seg(t, END - 0.25, END)), spacing=4, stroke=6)
+        text(c, "TO SCALE", 540, 790, F_CAP, 84, GOLD, a * (1 - seg(t, END - 0.25, END)), stroke=16)
+        text(c, "heights in meters incl. spires", 540, 845, F_SANS, 28, (170, 175, 200), a * (1 - seg(t, END - 0.25, END)))
     if LAND <= t < LAND + 0.9:
         bx = sx(OBJ[-1][4], xc, sc)
         burst(c, t, LAND, clamp(bx, 230, 850), 640, 30)
@@ -246,7 +250,7 @@ def frame(c, t):
     grain(c, t, 0.02)
     if t < LOOP + 0.3:
         c.saveLayerAlpha(skia.Rect.MakeWH(W, H), int(255 * (1 - seg(t, LOOP - 0.2, LOOP + 0.3))))
-        end_text(c, t, END, "Burj Khalifa: 828 m.", "2.5x the Eiffel Tower.", "Where would your city rank?", y=1450)
+        end_card(c, t, END, "Burj Khalifa: *828 m*.", "2.5x the Eiffel Tower.", "Where would your city rank?", y=640)
         c.restore()
 
 

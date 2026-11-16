@@ -1,0 +1,65 @@
+{
+ "video": "BN1_Billion_EN",
+ "duration": 16.0,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.078125,
+   "seconds": [
+    11.75,
+    12.0,
+    12.25,
+    12.5,
+    12.75
+   ]
+  },
+  "right buttons": {
+   "share_of_frames": 0.015625,
+   "seconds": [
+    0.5
+   ]
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  9.94,
+  4.3,
+  4.74,
+  3.67,
+  3.66,
+  2.35,
+  2.94,
+  3.52,
+  2.98,
+  4.19,
+  3.15,
+  5.5,
+  2.58,
+  8.17,
+  1.88,
+  8.57
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 68.86795806884766,
+  "contrast": 30.799997329711914,
+  "colourfulness": 41.346384048461914
+ },
+ "loop_difference": 15.7,
+ "font_sizes": [
+  28,
+  30,
+  34,
+  42,
+  52,
+  100
+ ],
+ "audio": {
+  "first_half_s_db": -14.22586441040039,
+  "median_db": -14.68763542175293,
+  "silent_windows": 0,
+  "lufs": -14.3
+ }
+}

@@ -53,7 +53,13 @@ Umsetzung mit `dlib.finish_data(...)` (Rendern) und `dlib.preview(...)` (Kontakt
 ## Regeln
 - 1080×1920, 30 fps, 15–18 s (Kurzversion). −14 LUFS. Nur Englisch, kein Sprecher.
 - Hook nach den Hook-Regeln oben (`finish_data`). Die stärkste Zahl kommt zuletzt. „Follow for part N+1“ kommt automatisch am Ende.
-- Sicherheitszonen: nichts unter y 1600, nichts bei x ≥ 950 zwischen y 900 und 1500, nichts über y 150.
+- Sicherheitszonen (gemessen mit `audit.py`, vorsichtige Werte aus TikToks Safe-Zone-Vorlage):
+  - Oben: unter y 210 nur Deko, keine Info.
+  - Rechts: wichtige Texte und Zahlen enden bei x 880 (y 760–1660 = Button-Spalte).
+  - Unten: ab y 1450 liegen Caption, Benutzername und Sound. Dort nichts Wichtiges. Abschlusstext mit `dlib.end_card(..., y=1110)` oder höher, NIE `end_text` (lag unter der Caption).
+- Erste Sekunde hell und farbig (Audit: Helligkeit ≥ 60/255, Farbigkeit ≥ 30). Hintergründe in Indigo, Violett und Dämmerung statt Fast-Schwarz.
+- Schrift mindestens 28 px.
+- Nach dem Rendern `python3 audit.py BN<N>_..._EN.mp4` ausführen. Alle ⚠️ beheben (Ausnahme: dekorative Partikel unter den Top-Tabs) und erneut rendern.
 - **Jede Zahl prüfen:** mit WebSearch aus einer verlässlichen Quelle (Wikipedia, Weltbank, UN, NASA, statistische Ämter, Hersteller). Lieber exakte Mathematik als Schätzungen. Quelle und Stand (Monat/Jahr) gehören in die YouTube-Beschreibung. Keine Zahl erfinden. Ist etwas unklar, ein anderes Thema wählen.
 - Keine politischen, religiösen oder tragischen Themen (Kriege, Katastrophen, Todeszahlen). Keine Markenlogos.
 - Ablauf: `bnN.py` schreiben → `python3 bnN.py still` (nutzt `dlib.preview`, Bilder bei 0,05 s, 0,5 s, 2 s und über das ganze Video) ansehen → Überschneidungen mit Hook, Sticky-Chip und Fortschrittsbalken (y 200–560) beheben → `VID_LANG=en python3 bnN.py render` → Dauer und LUFS messen, Kontaktblatt aus der MP4 mit 1 Bild pro Sekunde ansehen.
