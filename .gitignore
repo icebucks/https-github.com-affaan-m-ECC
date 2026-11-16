@@ -14,3 +14,7 @@ output/.*
 assets/*/tts_request.json
 assets/*/bilder_request.json
 assets/*/clips_request.json
+beyondexcuses/*_v.mp4
+beyondexcuses/*.part.mp4
+beyondexcuses/*_a.wav*
+beyondexcuses/check/
