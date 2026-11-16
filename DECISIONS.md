@@ -26,3 +26,9 @@ Nie gegen diese Punkte verstoßen. Neue Entscheidungen hier mit Datum ergänzen;
 
 ## Sprache
 - 2026-11-15 Mit dem Nutzer immer auf Deutsch kommunizieren.
+
+## Auswertung TikTok
+- 2026-11-16 Video „Teutoburg“ (alte Fassung, 35 s): 235 Aufrufe, Ø Wiedergabe **3,0 s**, ganz angesehen **0,4 %**, 0 Follower.
+  Diagnose: Hook verloren in den ersten 3 s (Titelfolie mit 3 Textzeilen + Vorstellung „Ich bin Legionär …“, Stimme startet spät/langsam).
+  Konsequenzen (gelten ab sofort): erster Satz mitten im Geschehen, Stimme ab ~0,15 s und Tempo 1,0, erstes Bild = Gesicht mit Emotion,
+  nur EINE große Hook-Zeile (Jahr/Ort klein), Zoom ab Frame 0, Teil 1 nur 20–25 s. Nächste Videos daran messen (Ziel: Ø > 8 s, > 15 % ganz angesehen).
