@@ -131,7 +131,7 @@ def frame(c, t):
     label(c, "DISZIPLIN", jd["head"][0], jd["head"][1] - 50, AMBER, 0.95)
     # day counter
     day = DAYS[m["lap"] - 1]
-    text(c, f"TAG {day}", 540, 520, F_CAP, 70, (255, 255, 255), 1.0, stroke=12)
+    text(c, f"TAG {day}", 540, 640, F_CAP, 70, (255, 255, 255), 1.0, stroke=12)
     # excuses as speech bubbles, one per lap
     for i, ex in enumerate(EXCUSES):
         t0 = T0 + 0.3 + i * 2.05
