@@ -38,7 +38,7 @@ GAP, LEAD, TAIL = 0.28, 0.15, 3.2       # pause between beats, start offset, end
 
 # ------------------------------------------------------------------ drawing kit
 BODIES = {   # base colour, second colour (bands / shade), glow
-    "sun": ((255, 196, 70), (255, 120, 30), (255, 170, 60)), "mercury": ((170, 160, 150), (110, 104, 98), None),
+    "sun": ((255, 196, 70), (255, 120, 30), (255, 170, 60)), "mercury": ((150, 135, 120), (95, 85, 75), None),
     "venus": ((235, 200, 140), (190, 150, 90), None), "earth": ((70, 140, 230), (60, 170, 90), None),
     "moon": ((200, 200, 205), (140, 140, 150), None), "mars": ((215, 100, 60), (160, 70, 40), None),
     "jupiter": ((215, 180, 140), (170, 110, 70), None), "saturn": ((230, 205, 150), (190, 160, 100), None),
@@ -46,6 +46,9 @@ BODIES = {   # base colour, second colour (bands / shade), glow
     "pluto": ((210, 185, 160), (150, 120, 100), None), "redstar": ((255, 110, 70), (200, 60, 40), (255, 90, 60)),
     "bluestar": ((170, 200, 255), (110, 150, 255), (150, 190, 255)), "neutron": ((230, 240, 255), (160, 190, 255), (180, 210, 255)),
     "blackhole": ((0, 0, 0), (255, 170, 80), None),
+    "io": ((235, 215, 110), (200, 120, 50), None), "europa": ((225, 215, 200), (170, 120, 90), None),
+    "ganymede": ((170, 160, 145), (110, 100, 90), None), "callisto": ((120, 105, 90), (80, 70, 60), None),
+    "titan": ((230, 165, 70), (190, 120, 50), None), "triton": ((215, 200, 205), (170, 150, 160), None),
 }
 _rng = np.random.default_rng(7)
 STARS = [(_rng.uniform(0, W), _rng.uniform(0, H), _rng.uniform(0.6, 2.6), _rng.uniform(0.25, 0.95), _rng.uniform(0, 6.28)) for _ in range(380)]
@@ -89,6 +92,15 @@ def body(c, kind, x, y, r, t=0.0, a=1.0, label=None, label_col=WHITE, rot=0.0):
         for dx, dy, s in ((-0.3, -0.2, 0.42), (0.35, 0.25, 0.34), (0.1, -0.55, 0.22), ((-0.1 + rot) % 2 - 1, 0.5, 0.25)):
             c.drawOval(skia.Rect.MakeXYWH(x + (dx - s / 2) * r, y + (dy - s / 3) * r, s * r, s * r * 0.7), P(sec, 0.95))
         c.restore()
+    if kind in ("moon", "mercury", "io", "europa", "ganymede", "callisto", "triton", "pluto") and r > 12:
+        rnd = np.random.default_rng(len(kind) * 7)
+        c.save(); c.clipPath(skia.Path().addCircle(x, y, r), doAntiAlias=True)
+        for k in range(18):
+            ang = rnd.uniform(0, 6.283); rr = r * math.sqrt(rnd.uniform(0, 0.9))
+            c.drawCircle(x + math.cos(ang) * rr, y + math.sin(ang) * rr, r * rnd.uniform(0.04, 0.13), P(sec, 0.45))
+        c.restore()
+    if kind == "titan" and r > 6:
+        c.drawCircle(x, y, r * 1.06, P((240, 180, 90), 0.35, stroke=max(2, r * 0.08)))
     if kind in ("sun", "redstar", "bluestar"):
         # hot core + limb darkening + fine granulation
         core = skia.GradientShader.MakeRadial((x, y), r, [C((255, 250, 225), 0.85), C(base, 0.0)], [0.0, 0.7])
@@ -233,7 +245,7 @@ def frame_fn(spec):
         b, u = current(spec, t)
         space(c, t, spec.get("tint", (28, 30, 80)))
         if t < 1.4:   # bright, colourful first second: warm glow behind the hook
-            g = skia.GradientShader.MakeRadial((SX, SY), 900, [C(GOLD, 0.30 * (1 - t / 1.4)), C(GOLD, 0.0)], [0.0, 1.0])
+            g = skia.GradientShader.MakeRadial((SX, SY), 900, [C(GOLD, 0.48 * (1 - t / 1.4)), C(GOLD, 0.0)], [0.0, 1.0])
             c.drawRect(skia.Rect.MakeWH(W, H), skia.Paint(Shader=g))
         # camera: punch-in at each beat start, steady push and a slow floating drift (never a static frame)
         ts = t - b["start"]
@@ -336,15 +348,16 @@ def cover(spec, t, lines):
     from PIL import Image
     surf = skia.Surface(W, H); c = surf.getCanvas(); c.clear(skia.ColorBLACK); lib.NOW = t
     b, u = current(spec, t); space(c, t, spec.get("tint", (28, 30, 80)))
-    c.save(); c.translate(SX, SY + 120); c.scale(1.1, 1.1); c.translate(-SX, -SY); b["fn"](c, t, u, b); c.restore()
-    hgt = sum(sz * 1.12 for _, sz in lines)
+    c.save(); c.translate(0, 120); b["fn"](c, t, u, b); c.restore()
+    hgt = sum(sz * 1.15 for _, sz in lines)
     y0 = 420
     sh = skia.GradientShader.MakeLinear([(0, y0 - 120), (0, y0 + hgt + 80)], [C((6, 7, 18), 0.0), C((6, 7, 18), 0.78), C((6, 7, 18), 0.0)], [0, 0.5, 1])
     c.drawRect(skia.Rect.MakeXYWH(0, y0 - 120, W, hgt + 200), skia.Paint(Shader=sh))
     lib.text(c, "BY THE NUMBERS · SPACE", 540, y0 - 40, F_SANS, 34, GOLD, 1.0, spacing=4, stroke=6)
     y = y0 + lines[0][1] * 0.8
-    for ln, size in lines:
-        rich(c, ln, 540, y, size, 1.0, stroke=22, maxw=980); y += size * 1.12
+    for k, (ln, size) in enumerate(lines):
+        rich(c, ln, 540, y, size, 1.0, stroke=22, maxw=980)
+        if k + 1 < len(lines): y += 0.3 * size + 0.85 * lines[k + 1][1]
     out = os.path.join(HERE, "shorts", f"Cover_{spec['name'].split('_')[0]}.jpg")
     Image.fromarray(surf.makeImageSnapshot().toarray(colorType=skia.kRGBA_8888_ColorType)[:, :, :3]).save(out, quality=93)
     return out

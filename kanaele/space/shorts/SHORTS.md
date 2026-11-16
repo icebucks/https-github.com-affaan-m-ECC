@@ -54,15 +54,16 @@ Samstag 17:30 kommt das lange Video – den Samstags-Short in YouTube Studio per
 TikTok genau 5: `#bythenumbers #space #astronomy` + 2 Thema (z. B. `#sun #solarsystem`). Kein #fyp, nie „#“ vor Zahlen. YouTube: dieselben am Ende der Beschreibung, `#shorts` zuletzt.
 
 ## Folgen
+Zeilen nach Nummer sortiert. Nächster Uploadtermin = Tag nach dem **spätesten** Datum in der Tabelle.
 | # | Datum | Thema | Format | Musik | tint | Hook-Formel (Score) | Kernzahlen | Datei |
 |---|---|---|---|---|---|---|---|---|
 | 1 | Di 17.11. | How many Earths fit in the Sun? | FILL | cinematic 100 | warm | Contrarian Flip (73) | 1.3 Mio Erden (Volumen), 109 Erden breit, ~10 Jupiter breit, 1.000 Erden in Jupiter, 99,8 % Masse | `ss1.py` → `SS1_SunEarths_EN.mp4` |
+| 2 | Mo 16.11. (vorgezogen, heute Nacht) | The 5 biggest moons in the Solar System | RANK | synthwave 112 | blau | The Question (76) | Durchmesser Ganymed 5.268, Titan 5.150, Kallisto 4.821, Io 3.643, Mond 3.475 km; Merkur 4.879 km | `ss2.py` → `SS2_BiggestMoons_EN.mp4` |
 
 ## Themen-Backlog (oben = als Nächstes; vor dem Bauen gegen `reserved.json` prüfen)
-1. **FILL** · How many Moons would fill the Earth? – Auflösung der Frage aus #1 (≈ 49, NASA Fact Sheets: Volumen 108,321 vs 2,1958 × 10¹⁰ km³), Einstieg „Yesterday you guessed …“
-2. **VS** · Olympus Mons vs. Mount Everest (Höhe, Fläche, Vulkan) – NASA Mars
-3. **YOU** · What would you weigh on every planet? – NASA Planetary Fact Sheet (Oberflächen-Schwerkraft)
-4. **RANK** · The 5 biggest moons in the Solar System – Ganymede größer als Merkur (NASA)
+1. **VS** · Earth vs. Moon in 3 rounds – löst die Frage aus #1 auf: Volumen ≈ 49 Monde füllen die Erde, Masse ≈ 81 Monde, Schwerkraft ≈ 1/6 (NASA Moon Fact Sheet, Verhältnisse). Einstieg „Yesterday you guessed …“. Nur Größe/Masse/Schwerkraft – keine Entfernung, keine Reisezeit.
+2. **VS** · Olympus Mons vs. Mount Everest (Höhe, Fläche, Vulkan) – Achtung: Höhenangaben schwanken je nach Bezugslinie (NASA/ESA ≈ 25 km über der Ebene, andere 21,9–27 km). Nur „about 25 km above the plains around it“ sagen und die Bezugslinie nennen; Fläche „about the size of Arizona“ (NASA-Grafik „How big is it“).
+3. **YOU** · What would you weigh on every planet? – Achtung: NASA nennt zwei Schwerkraft-Konventionen (Übersichtstabelle mit Rotation, z. B. Jupiter 23,1 / Saturn 9,0 m/s²; Einzelblätter ohne Rotation, 24,79 / 10,44). EINE Quelle durchgehend nehmen und nennen; keine Pointe, die nur in einer Konvention stimmt (z. B. „auf Saturn wiegst du weniger“). Skala unitless: „if your scale shows 100 at home …“.
 5. **WHAT IF** · Saturn would float in water – Dichte 0,687 g/cm³ (NASA)
 6. **ZOOM** · A teaspoon of neutron star – Masse aus NASA-Quelle, Vergleich mit Bergen/Gebäuden
 7. **VS** · The Great Red Spot vs. Earth – aktuelle Breite (NASA/Hubble, Jahr angeben), schrumpft
@@ -105,3 +106,29 @@ Datei `SS1_SunEarths_EN.mp4` (40,9 s, −14,3 LUFS, Audit: keine Überschneidung
 > #bythenumbers #space #astronomy #sun #solarsystem #shorts
 
 Suchanfragen: „how many earths fit in the sun“, „sun vs earth size comparison“, „how big is the sun“.
+
+---
+
+## SS2 Upload – Mo 16.11. (heute Nacht) · TikTok 22:30 · YouTube 22:00
+Datei `SS2_BiggestMoons_EN.mp4` (42,4 s, −14,2 LUFS, Audit: nichts unter der TikTok-Oberfläche, Loop nahtlos), Titelbild `Cover_SS2.jpg`. Hook 76/100 STRONG. Überschneidungs-Check mit den langen Videos: OK.
+
+**TikTok-Caption**
+> Biggest moons in the Solar System, ranked 🌕 Our Moon is only No. 5 – and 2 moons beat a whole planet 🤯
+> 3 of these 5 orbit the same planet. Which one? 👇
+> #bythenumbers #space #astronomy #moons #solarsystem
+
+**Pin-Kommentar:** Jupiter! 🪐 Io, Callisto and Ganymede all orbit Jupiter. Titan orbits Saturn.
+
+**YouTube-Titel (title.py 94/100):** Biggest moons in the Solar System: 2 beat a planet
+**Titelbild-Text:** OURS IS / 5TH
+
+**YouTube-Beschreibung**
+> The biggest moons in the Solar System, ranked by size: our Moon is only No. 5, and two moons are bigger than the planet Mercury.
+> Which moon is the biggest? Ganymede, Titan, Callisto, Io and the Moon compared.
+>
+> Diameters: Ganymede 5,268 km · Titan 5,150 km · Callisto 4,821 km · Io 3,643 km · Moon 3,475 km · (planet Mercury 4,879 km).
+> Sources: NASA JPL Ganymede fact sheet; NASA Science – Titan, Callisto, Io, Moon and Mercury facts (checked 16 Nov 2026). Narration: synthetic voice.
+>
+> #bythenumbers #space #astronomy #moons #solarsystem #shorts
+
+Suchanfragen: „biggest moons in the solar system“, „which moon is the biggest“, „moons bigger than mercury“.
