@@ -4,85 +4,86 @@
   "jahr_ort": "79 n. Chr. – Pompeji",
   "epoche": "pompeji",
   "figur": "baecker",
-  "erzaehltext": "Ich bin Bäcker in Pompeji. Jeden Morgen um vier heize ich den Ofen an, die Brote liegen schon bereit. Seit Tagen bebt die Erde leicht. Niemand macht sich Sorgen – das kennen wir hier. Heute Mittag hat sich der Himmel über dem Vesuv verdunkelt. Eine Wolke, hoch wie ein Baum, der in den Himmel wächst. Jetzt fällt Asche. Erst wie Schnee. Dann wie Steine. Die Leute rennen zum Hafen. Ich zögere. Mein ganzes Leben steckt in dieser Bäckerei. Teil zwei folgt.",
+  "erzaehltext": "Heute ist der letzte Tag von Pompeji. Und ich backe noch Brot. Seit Tagen bebt die Erde. Niemand macht sich Sorgen. Dann wird der Himmel über dem Vesuv schwarz. Eine Wolke wächst wie ein Baum in den Himmel. Asche fällt. Erst wie Schnee. Dann wie Steine. Alle rennen zum Hafen. Ich bleibe in der Tür stehen. Teil zwei folgt.",
   "szenen": [
     {
       "ab_satz": 0,
       "motiv": "ofenglut",
-      "beschreibung": "Ofenglut bei Nacht, Bäcker vor dem Ofen",
+      "beschreibung": "Großaufnahme Bäcker im Ofenlicht",
+      "bild": "extreme close-up of the face of {figur}, worried eyes, sweat and flour, orange glow of an oven fire on his face, dark bakery",
       "effekte": [
-        "funken",
-        "rauch"
+        "funken"
       ],
-      "bild": "night in an ancient Roman bakery in Pompeii, {figur} slides bread into a glowing brick dome oven with a long wooden peel, embers, lava-stone hourglass millstones in the background",
       "licht": "feuer",
-      "bewegung": "the baker slides the bread into the glowing oven with the wooden peel, sparks rise"
+      "bewegung": "the baker looks up slowly, worried, the firelight flickers on his face"
     },
     {
       "ab_satz": 1,
       "motiv": "brote",
-      "beschreibung": "Runde Brote auf dem Tresen im Ofenlicht",
+      "beschreibung": "Brote und Ofen",
+      "bild": "night in an ancient Roman bakery in Pompeii, {figur} slides round loaves of bread scored into eight segments into a glowing brick dome oven with a long wooden peel, lava-stone millstones behind",
       "effekte": [
-        "staub"
+        "funken",
+        "rauch"
       ],
-      "bild": "close-up of round Roman loaves of bread scored into eight segments on a stone counter, warm oven light, flour dust in the air",
-      "licht": "feuer"
+      "licht": "feuer",
+      "bewegung": "the baker slides the bread into the glowing oven, sparks rise"
     },
     {
       "ab_satz": 2,
       "motiv": "gasse",
-      "beschreibung": "Gasse mit Händlern und Amphoren, leichtes Beben",
+      "beschreibung": "Beben in der Gasse",
+      "bild": "a sunny street in ancient Pompeii with large stepping stones, merchants with amphorae, plastered house facades, Mount Vesuvius in the distance at the end of the street",
       "effekte": [
         "staub"
       ],
       "beben": true,
-      "bild": "a sunny street in ancient Pompeii with large stepping stones, merchants with amphorae, plastered house facades, Mount Vesuvius in the distance at the end of the street",
       "bewegung": "merchants walk through the street, the ground trembles slightly, dust falls from the walls"
     },
     {
       "ab_satz": 4,
       "motiv": "vesuv_wolke",
-      "beschreibung": "Wolke wächst über dem Vesuv wie ein Baum",
+      "beschreibung": "Wolke über dem Vesuv",
+      "bild": "wide view over the red-tiled rooftops of ancient Pompeii, an enormous dark eruption column rising from Mount Vesuvius and spreading at the top like an umbrella pine tree, darkening sky",
       "effekte": [
         "rauch"
       ],
-      "bild": "wide view over the red-tiled rooftops of ancient Pompeii, an enormous dark eruption column rising from Mount Vesuvius and spreading at the top like an umbrella pine tree, darkening sky",
       "bewegung": "the dark eruption column slowly grows and billows upward"
     },
     {
       "ab_satz": 6,
       "motiv": "ascheregen",
-      "beschreibung": "Asche fällt, erst fein, dann Steine",
+      "beschreibung": "Asche, dann Steine",
+      "bild": "an ancient Pompeii street darkened by falling grey volcanic ash and small pumice stones, people covering their heads with cloth, stone columns",
       "effekte": [
         "asche",
         "steine"
       ],
       "wendepunkt": true,
-      "bild": "an ancient Pompeii street darkened by falling grey volcanic ash and small pumice stones, people covering their heads with cloth, stone columns",
       "bewegung": "ash and pumice stones fall, people hurry past covering their heads"
     },
     {
       "ab_satz": 9,
       "motiv": "flucht_hafen",
-      "beschreibung": "Menschen rennen Richtung Hafen",
+      "beschreibung": "Flucht zum Hafen",
+      "bild": "crowds of Romans running through a dark ash-filled street of Pompeii toward the harbor, ships in the distance, panic, motion blur",
       "effekte": [
         "asche"
       ],
       "wendepunkt": true,
-      "bild": "crowds of Romans running through a dark ash-filled street of Pompeii toward the harbor, ships in the distance, panic, motion blur",
       "bewegung": "the crowd runs toward the harbor, ash falling"
     },
     {
       "ab_satz": 10,
       "motiv": "baecker_tuer",
-      "beschreibung": "Bäcker in der Tür seiner Bäckerei, Glut hinter ihm",
+      "beschreibung": "Bäcker in der Tür",
+      "bild": "{figur} standing in the doorway of his bakery, the glowing oven behind him, grey volcanic ash falling in front of him, hesitant worried expression",
       "effekte": [
         "asche",
         "funken"
       ],
-      "wendepunkt": true,
-      "bild": "{figur} standing in the doorway of his bakery, the glowing oven behind him, grey volcanic ash falling in front of him, hesitant worried expression",
       "licht": "feuer",
+      "wendepunkt": true,
       "bewegung": "the baker hesitates in the doorway, breathes heavily, ash drifts past him"
     }
   ],
@@ -101,12 +102,12 @@
     "#geschichtetiktok",
     "#history"
   ],
-  "hook_text": "Der letzte Morgen von Pompeji.",
+  "hook_text": "Der letzte Tag von Pompeji.",
   "betonung": [
-    "vesuv",
+    "letzte",
+    "schwarz",
     "asche",
-    "steine",
-    "zögere"
+    "steine"
   ],
   "figur_bild": "a stocky Roman baker in his forties, short dark hair grey at the temples, beard stubble, flour on his face, simple beige wool tunic and flour-dusted leather apron",
   "suchwort": "Pompeji"

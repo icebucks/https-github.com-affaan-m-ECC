@@ -4,86 +4,74 @@
   "jahr_ort": "14. April 1912 – Atlantik",
   "epoche": "titanic",
   "figur": "heizer",
-  "erzaehltext": "Ich bin Heizer auf der Titanic. Tief unten, wo kein Passagier je hinkommt. Hier gibt es keinen Luxus. Nur Hitze, Kohlenstaub und das Brüllen der Kessel. Oben schlafen die Passagiere in weichen Betten. Wir schaufeln, damit das Schiff schneller wird. Dann: ein Ruck. Ein langes, kratzendes Geräusch an der Bordwand. Und Sekunden später schießt eiskaltes Wasser durch die Wand neben mir. Die Glocke schrillt. Die wasserdichten Türen schließen sich. Und ich stehe auf der falschen Seite. Teil zwei folgt.",
+  "erzaehltext": "Das eiskalte Wasser kam durch die Wand direkt neben mir. Ich bin Heizer auf der Titanic. Tief unten, zwischen glühenden Kesseln. Oben schlafen die Passagiere. Wir schaufeln Kohle, Stunde um Stunde. Dann: ein Ruck. Ein langes Kratzen an der Bordwand. Die Glocke schrillt. Die wasserdichten Türen schließen sich. Und ich stehe auf der falschen Seite. Teil zwei folgt.",
   "szenen": [
     {
       "ab_satz": 0,
+      "motiv": "wassereinbruch",
+      "beschreibung": "Großaufnahme Heizer, Wasser spritzt",
+      "bild": "extreme close-up of the face of {figur}, shocked eyes, icy water spraying across his face, orange furnace light and cold blue light, dark steel boiler room",
+      "effekte": [
+        "gischt"
+      ],
+      "licht": "kessel",
+      "bewegung": "icy water sprays across the stoker's face, he flinches in shock"
+    },
+    {
+      "ab_satz": 1,
       "motiv": "kessel",
-      "beschreibung": "Glühende Kessel, Heizer schaufelt",
+      "beschreibung": "Kesselraum",
+      "bild": "the boiler room of an ocean liner in 1912, huge riveted boilers with glowing open furnace doors, {figur} shoveling coal into the fire, sparks and coal dust",
       "effekte": [
         "funken",
-        "rauch"
+        "staub"
       ],
-      "bild": "the boiler room of an ocean liner in 1912, huge riveted boilers with glowing open furnace doors, {figur} shoveling coal into the fire, sparks and coal dust",
       "licht": "kessel",
       "bewegung": "the stoker shovels coal into the glowing furnace, sparks fly"
     },
     {
-      "ab_satz": 2,
-      "motiv": "russgesicht",
-      "beschreibung": "Verrußtes Profil im Feuerschein",
+      "ab_satz": 3,
+      "motiv": "oben_luxus",
+      "beschreibung": "Leere Prunktreppe oben",
+      "bild": "the empty grand staircase of an Edwardian ocean liner at night, carved oak balustrades, wrought iron and a glass dome, crystal chandelier, warm golden light, nobody there",
       "effekte": [
-        "staub",
-        "funken"
-      ],
-      "bild": "close-up portrait of {figur} in orange furnace light, sweat and soot on his face, exhausted eyes",
-      "licht": "kessel"
+        "staub"
+      ]
     },
     {
       "ab_satz": 4,
-      "motiv": "oben_luxus",
-      "beschreibung": "Kontrast: warmes Licht, Kronleuchter, leere Prunktreppe oben",
-      "effekte": [
-        "staub"
-      ],
-      "bild": "the empty grand staircase of an Edwardian ocean liner at night, carved oak balustrades, wrought iron and a glass dome, crystal chandelier, warm golden light, nobody there"
-    },
-    {
-      "ab_satz": 5,
       "motiv": "kessel_schaufeln",
-      "beschreibung": "Schaufeln im Takt, Feuer lodert",
+      "beschreibung": "Schaufeln im Takt",
+      "bild": "several stokers shoveling coal in rhythm in front of open roaring furnaces in a steel boiler room of an ocean liner, 1912",
       "effekte": [
         "funken"
       ],
-      "bild": "several stokers shoveling coal in rhythm in front of open roaring furnaces in a steel boiler room of an ocean liner, 1912",
       "licht": "kessel",
       "bewegung": "the stokers shovel coal in rhythm, flames roar in the furnaces"
     },
     {
-      "ab_satz": 6,
+      "ab_satz": 5,
       "motiv": "bordwand",
-      "beschreibung": "Bordwand verformt sich, Nieten platzen",
+      "beschreibung": "Ruck, Bordwand verformt sich",
+      "bild": "riveted steel hull plates of a ship's boiler room buckling inward, popping rivets, dust in the air, flickering electric lights, 1912",
       "effekte": [
         "funken",
         "staub"
       ],
       "wendepunkt": true,
-      "bild": "riveted steel hull plates of a ship's boiler room buckling inward, popping rivets, dust in the air, flickering electric lights, 1912",
       "bewegung": "the steel plates shake and buckle, rivets pop, dust falls"
     },
     {
-      "ab_satz": 8,
-      "motiv": "wassereinbruch",
-      "beschreibung": "Wasser schießt durch die Wand",
-      "effekte": [
-        "wasser",
-        "gischt"
-      ],
-      "wendepunkt": true,
-      "bild": "ice-cold seawater bursting in a hard jet through the riveted steel wall of a ship's boiler room, {figur} staggering back, water on the floor",
-      "bewegung": "seawater bursts through the wall in a hard jet, the stoker staggers back"
-    },
-    {
-      "ab_satz": 9,
+      "ab_satz": 7,
       "motiv": "stahltuer",
-      "beschreibung": "Wasserdichte Tür senkt sich, Alarmlicht",
-      "effekte": [
-        "wasser",
-        "gischt"
-      ],
-      "wendepunkt": true,
+      "beschreibung": "Alarm, Tür senkt sich",
       "bild": "a heavy steel watertight door sliding down in a ship's boiler room, red alarm light, {figur} standing in front of it, water at his feet",
+      "effekte": [
+        "gischt",
+        "staub"
+      ],
       "licht": "alarm",
+      "wendepunkt": true,
       "bewegung": "the heavy steel door slides down slowly, the red alarm light pulses"
     }
   ],
@@ -103,11 +91,11 @@
     "#history"
   ],
   "hinweise": "Historisch geprüft: Die Titanic hatte keinen Ballsaal; Kollision am Sonntag, 14. April 1912, gegen 23:40 Uhr. Wasser drang u. a. in Kesselraum 6 ein, die wasserdichten Türen wurden von der Brücke geschlossen.",
-  "hook_text": "Ganz unten merkt man es zuerst.",
+  "hook_text": "Ganz unten. Kein Ausweg.",
   "betonung": [
-    "luxus",
+    "eiskalte",
     "ruck",
-    "eiskaltes",
+    "türen",
     "falschen"
   ],
   "figur_bild": "a young ship stoker in 1912, soot-covered face with sweat streaks, short hair under a dark flat cap, sleeveless grey undershirt, work trousers with braces",
