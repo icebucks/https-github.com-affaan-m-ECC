@@ -18,11 +18,28 @@
 
 Nach 2 Wochen mit den eigenen Analytics prüfen und anpassen.
 
+## Hashtags: die festen Sets
+
+**Formel (genau 5):** `#bythenumbers` + 2 Nische + 2 Thema. Kein #fyp, #viral, #foryou.
+
+| Thema | TikTok (Copy & Paste) | YouTube-Beschreibung |
+|---|---|---|
+| Geld & Reichtum | `#bythenumbers #facts #didyouknow #money #billionaire` | `#bythenumbers #money #billionaire #facts #shorts` |
+| Gebäude & Städte | `#bythenumbers #comparison #facts #skyscraper #architecture` | `#bythenumbers #skyscraper #architecture #facts #shorts` |
+| Länder & Rankings | `#bythenumbers #comparison #didyouknow #geography #countries` | `#bythenumbers #geography #countries #facts #shorts` |
+| Weltall | `#bythenumbers #learnontiktok #facts #space #planets` | `#bythenumbers #space #planets #facts #shorts` |
+| Tiere & Natur | `#bythenumbers #comparison #didyouknow #animals #wildlife` | `#bythenumbers #animals #wildlife #facts #shorts` |
+| Körper & Gesundheit | `#bythenumbers #learnontiktok #didyouknow #humanbody #science` | `#bythenumbers #humanbody #science #facts #shorts` |
+| Größenvergleiche | `#bythenumbers #comparison #datavisualization #sizecomparison #scale` | `#bythenumbers #sizecomparison #scale #facts #shorts` |
+| Zeit & Geschwindigkeit | `#bythenumbers #facts #learnontiktok #science #speed` | `#bythenumbers #science #speed #facts #shorts` |
+
+**Wichtiger als Hashtags:** Das Suchwort (z. B. „tallest buildings“) gehört vorne in die Caption und einmal groß ins Video. TikTok liest Caption und Bildtext und ordnet das Video danach in der Suche ein.
+
 ## Playbook: so behandeln Profis jeden Upload
 
 **Vor dem Posten**
 - Das Suchwort steht am Anfang der Caption bzw. des YouTube-Titels („tallest buildings“, „$1 billion“). TikTok und YouTube sind Suchmaschinen, und Videos mit Suchwort laufen über Monate weiter.
-- 3–5 Hashtags: 1 zum Thema (#skyscraper), 1–2 zur Nische (#facts #numbers), dazu #fyp bzw. #shorts. Nicht mehr.
+- Genau 5 Hashtags nach der Formel oben (`#bythenumbers` + 2 Nische + 2 Thema).
 - Titelbild hochladen (Serienmarke „PART N“, große Schrift). Das Profil-Raster ist dein Schaufenster.
 - „KI-generiert“ einschalten. Das schadet der Reichweite nicht, verhindert aber Strafen.
 
@@ -58,7 +75,7 @@ Nach 2 Wochen mit den eigenen Analytics prüfen und anpassen.
 ```
 How long to earn $1 billion? The last one broke my brain 🤯💰
 Comment your salary 👇
-#money #billionaire #facts #numbers #fyp
+#bythenumbers #facts #didyouknow #money #billionaire
 ```
 **Pin-Kommentar:** `How many years would YOU need? ⏳ = over 10,000 · 💼 = 1,000–10,000 · 🚀 = under 1,000`
 **YouTube-Titel:** `How long would it take YOU to earn $1 billion? 🤯 #money`
@@ -73,7 +90,7 @@ $1,000,000,000 – how long does it really take?
 Math: $1 billion ÷ yearly income. No taxes, no spending.
 
 What's your number? 👇
-#money #billionaire #facts #numbers #shorts
+#bythenumbers #money #billionaire #facts #shorts
 ```
 
 ## #2 – The world's tallest buildings, to scale
@@ -81,7 +98,7 @@ What's your number? 👇
 ```
 Tallest buildings in the world to scale – guess #1 BEFORE the end 👀🏙️
 Comment your guess 👇
-#skyscraper #burjkhalifa #facts #numbers #fyp
+#bythenumbers #comparison #facts #skyscraper #burjkhalifa
 ```
 **Pin-Kommentar:** `Which one would you climb? 🇦🇪 Burj Khalifa · 🇲🇾 Merdeka 118 · 🇨🇳 Shanghai Tower · 🇺🇸 One WTC`
 **YouTube-Titel:** `The world's tallest buildings – to scale 🏙️ (Burj Khalifa is insane) #shorts`
@@ -94,5 +111,5 @@ For scale: Statue of Liberty 93 m (with pedestal), Eiffel Tower 330 m.
 Heights including spires. Source: Wikipedia "List of tallest buildings" / CTBUH, as of November 2026.
 
 Where would your city rank? 👇
-#skyscraper #burjkhalifa #facts #numbers #shorts
+#bythenumbers #skyscraper #burjkhalifa #facts #shorts
 ```

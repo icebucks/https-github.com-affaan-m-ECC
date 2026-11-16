@@ -32,6 +32,14 @@ Umsetzung mit `dlib.finish_data(...)` (Rendern) und `dlib.preview(...)` (Kontakt
 - Licht und Glow mit `pulse(t)` auf den Beat pulsieren lassen.
 - Titelbild: `dlib.cover(frame, t, [(Zeile, Größe), …], "Cover_BN<N>.jpg", N)` mit einem Bild vom Höhepunkt, 2–3 Zeilen, ein *goldenes* Wort.
 
+## Hashtags (Formel, immer genau 5)
+`#bythenumbers` + 2 Nischen-Tags + 2 Themen-Tags. Kein #fyp, #viral oder #foryou (laut den meisten Analysen fast wirkungslos, sie verwässern die Einordnung).
+- **Marke (immer):** `#bythenumbers`, damit die Serie unter einem eigenen Tag sammelt.
+- **Nische (2 aus):** `#facts` `#didyouknow` `#learnontiktok` `#comparison` `#datavisualization`. Zum Format passend wählen: Ranking/Vergleich → `#comparison`, Zahlen/Grafik → `#datavisualization`, Wissen → `#didyouknow` oder `#learnontiktok`.
+- **Thema (2):** konkret und suchbar, siehe Tabelle in `plan.md` (z. B. `#skyscraper #burjkhalifa`, `#money #billionaire`, `#geography #flags`, `#space #planets`, `#animals #wildlife`).
+- Die Hashtags müssen zu den Wörtern in Caption und Bildtext passen. Das Hauptsuchwort steht vorne in der Caption UND einmal groß im Video.
+- YouTube: dieselben Tags am Ende der Beschreibung, `#shorts` statt `#learnontiktok`. Die ersten 3 erscheinen über dem Titel, deshalb `#bythenumbers` zuerst.
+
 ## Formate (abwechseln, nie zweimal hintereinander dasselbe)
 | Format | Vorlage | Idee |
 |---|---|---|
