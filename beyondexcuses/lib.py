@@ -248,6 +248,7 @@ _WARNED = []
 def _warn_joint(what):
     """printed once per run: a pose asked for a backwards elbow (it is clamped to straight)"""
     _WARNED.append(what)
+    if len(_WARNED) > 1: return
     print(f"WARNING joint: {what} bends the elbow backwards – clamped to 0. Rewrite the pose with a positive elbow "
           f"(see episodes.md 'Joints bend only the right way').", file=sys.stderr)
 ELBOW = (0.0, 155.0)
@@ -271,7 +272,7 @@ def pose_points(p, s, facing):
     for side in ("f", "b"):
         a = p.get(f"arm_{side}", 0); e = p.get(f"elb_{side}", 10)
         if JOINT_LIMITS:                                                # elbows only bend one way
-            if e < ELBOW[0] - 2 and not _WARNED: _warn_joint(f"elb_{side}={e:.0f}")
+            if e < ELBOW[0] - 2: _warn_joint(f"elb_{side}={e:.0f}")
             e = clamp(e, ELBOW[0], ELBOW[1])
         fs = p.get(f"fore_{side}", 1.0)                                 # < 1: forearm points toward/away from the camera
         d1 = V(a, facing); el = (sa[0] + d1[0] * L["up"] * s, sa[1] + d1[1] * L["up"] * s)
@@ -354,6 +355,7 @@ def figure(c, x, y, p, s=0.8, facing=1, rot=0.0, body=WHITE, mode="feet", lift=0
         def local(wp):
             dx, dy = wp[0] - hx, wp[1] - hy
             return (dx * cr - dy * sr) / abs(facing), (dx * sr + dy * cr)
+        if reach: p["crossed"] = 0                    # a grabbing hand cannot stay folded on the chest
         for side, wp in (reach or {}).items():
             lx_, ly_ = local(wp); sa = J["sa"]
             p[f"arm_{side}"], p[f"elb_{side}"] = _ik_angles(lx_ - sa[0], ly_ - sa[1], L["up"] * s, L["fore"] * s * p.get(f"fore_{side}", 1.0), facing)
@@ -433,7 +435,46 @@ def figure(c, x, y, p, s=0.8, facing=1, rot=0.0, body=WHITE, mode="feet", lift=0
     m = skia.Matrix(); m.setTranslate(hx, hy); m.preRotate(rot)
     out = {k: m.mapXY(*v) for k, v in J.items()}
     out = {k: (v.x(), v.y()) for k, v in out.items()}
+    if FIG_LOG is not None:
+        FIG_LOG.append(dict(x=hx, y=hy, f=facing, j=out, reach=dict(reach or {}), plant=dict(plant or {}) if mode != "feet" else {}))
     return out
+
+
+FIG_LOG = None      # list while figure_qa() runs
+
+
+def figure_qa(frame_fn, t_end, fps=15, t0=0.0):
+    """automatic figure check before rendering. Runs the frame function at `fps` and reports
+    flips (facing jumps instead of a turn), teleports (body/hand jumps), hands/feet that miss their IK target,
+    and backwards joints. Returns a list of problems; empty = clean."""
+    global FIG_LOG, NOW
+    surf = skia.Surface(W, H); c = surf.getCanvas()
+    probs, prev = [], None
+    warned0 = len(_WARNED)
+    n = int((t_end - t0) * fps)
+    for i in range(n):
+        t = t0 + i / fps; NOW = t
+        FIG_LOG = []
+        c.clear(skia.ColorBLACK); frame_fn(c, t)
+        cur = FIG_LOG
+        for k, fg in enumerate(cur):
+            for side, wp in fg["reach"].items():
+                hnd = fg["j"][f"hand_{side}"]; d = math.hypot(hnd[0] - wp[0], hnd[1] - wp[1])
+                if d > 8: probs.append(f"{t:5.2f}s figure {k}: hand_{side} misses its target by {d:.0f} px (out of reach – move the figure closer)")
+            for side, wp in fg["plant"].items():
+                ft = fg["j"][f"foot_{side}"]; d = math.hypot(ft[0] - wp[0], ft[1] - wp[1])
+                if d > 14: probs.append(f"{t:5.2f}s figure {k}: foot_{side} misses its step by {d:.0f} px")
+            if prev is not None and k < len(prev):
+                pf = prev[k]
+                if abs(fg["f"] - pf["f"]) > 1.0: probs.append(f"{t:5.2f}s figure {k}: facing flips {pf['f']:+.1f} -> {fg['f']:+.1f} (use smooth() so it turns)")
+                if math.hypot(fg["x"] - pf["x"], fg["y"] - pf["y"]) > 2400 / fps: probs.append(f"{t:5.2f}s figure {k}: body jumps {math.hypot(fg['x'] - pf['x'], fg['y'] - pf['y']):.0f} px")
+                for side in ("f", "b"):
+                    a_, b_ = fg["j"][f"hand_{side}"], pf["j"][f"hand_{side}"]
+                    if math.hypot(a_[0] - b_[0], a_[1] - b_[1]) > 3000 / fps: probs.append(f"{t:5.2f}s figure {k}: hand_{side} teleports {math.hypot(a_[0] - b_[0], a_[1] - b_[1]):.0f} px")
+        prev = cur
+    FIG_LOG = None; NOW = None
+    probs += [f"backwards joint requested: {w}" for w in _WARNED[warned0:]]
+    return probs
 
 
 def _first(vals, k):
@@ -594,9 +635,11 @@ def stills(frame_fn, ts, prefix):
     sheet.save(prefix + "_sheet.jpg", quality=86)
 
 
-def series_overlay(c, t, num, hook, end_at, follow_y=380, series=None):
-    """hook question (first seconds), series tag, follow call at the end"""
-    text(c, f"{series} #{num}" if series else f"MINDSET-SERIE #{num}", 540, 300, F_SANS, 26, AMBER, 0.95, spacing=3, stroke=6)
+def series_overlay(c, t, num, hook, end_at, follow_y=380, series=None, cta=None):
+    """hook (first seconds), series tag, call to action at the end.
+    num = the part number SHOWN to viewers (TikTok numbering); cta = concrete cliffhanger text ("\n" = 2 lines),
+    shown from end_at – keep at least 1.5 s on screen (default: "Follow for part num+1")"""
+    text(c, f"{series} #{num}" if series else f"MINDSET-SERIE #{num}", 540, 300, F_SANS, 32, AMBER, 0.95, spacing=3, stroke=7)
     a = 1 - seg(t, 4.2, 4.8)
     if a > 0:
         pop = 1 + 0.12 * (1 - ease(t / 0.25))
@@ -606,7 +649,12 @@ def series_overlay(c, t, num, hook, end_at, follow_y=380, series=None):
         c.restore()
     b = seg(t, end_at, end_at + 0.4)
     if b > 0:
-        text(c, f"Folge für Teil {num + 1}", 540, follow_y, F_CAP, 58, AMBER, b, stroke=14)
+        pop = 1 + 0.15 * (1 - ease((t - end_at) / 0.3))
+        c.save(); c.translate(540, follow_y); c.scale(pop, pop)
+        lines = cta.split("\n") if cta else [f"Folge für Teil {num + 1}"]
+        for i, ln in enumerate(lines):
+            text(c, ln, 0, i * 64, F_CAP, 58 if i == 0 else 50, AMBER if i == 0 else (255, 255, 255), b, stroke=14)
+        c.restore()
 
 
 def _grade_paint(sat=1.12, lift=0.025):
@@ -621,7 +669,7 @@ def _grade_paint(sat=1.12, lift=0.025):
 _GRADE = None
 
 
-def finish_v2(name, frame_fn, t_end, events, turn, num, hook, off, end_at, follow_y=380, series=None):
+def finish_v2(name, frame_fn, t_end, events, turn, num, hook, off, end_at, follow_y=380, series=None, cta=None):
     """improved cut: skips the idle start, adds hook/series/follow overlay.
     v3 (audit fixes): punch-in camera at the start + slow drift (no dead seconds), light vibrance grade,
     sound with an audible opening hit (CC0 SFX via kanaele/data/dsound.py)"""
@@ -635,7 +683,7 @@ def finish_v2(name, frame_fn, t_end, events, turn, num, hook, off, end_at, follo
         c.saveLayer(None, _GRADE)
         frame_fn(c, t + off)
         c.restore(); c.restore()
-        series_overlay(c, t, num, hook, end_at - off, follow_y, series)
+        series_overlay(c, t, num, hook, end_at - off, follow_y, series, cta)
     ev = []
     for e in events:
         e = list(e); e[1] = e[1] - off
@@ -656,7 +704,8 @@ def finish(name, frame_fn, t_end, events, turn):
     if LANG == "en":
         json.dump(events, open(f"{d}/{name}_events.json", "w"))
         render(frame_fn, t_end, f"{d}/{name}_EN_v.mp4")
-        if not os.path.exists(de_audio):
+        if os.path.exists(de_audio): os.remove(de_audio)          # never reuse a stale soundtrack
+        if True:
             subprocess.run(["python3", (os.environ.get("SOUND_PY") or os.path.join(os.path.dirname(os.path.abspath(__file__)), "sound.py")), f"{d}/{name}_events.json", str(t_end), str(turn), de_audio], check=True)
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", f"{d}/{name}_EN_v.mp4", "-i", de_audio, "-map", "0:v", "-map", "1:a",
                         "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", f"{d}/{name}_EN.mp4"], check=True)

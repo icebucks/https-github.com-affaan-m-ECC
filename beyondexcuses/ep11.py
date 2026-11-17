@@ -53,12 +53,13 @@ def limb_rung(c, off):
 
 
 def climbing(c, up=True):
-    """owner on the ladder at climbing progress c (rungs): hip position, hand and foot targets"""
-    hip_y = rung_y(c) - 84 * S - 6           # y returned = foot level (smooth() blends it with walking frames)
-    reach = {"f": (LAD + 8, rung_y(limb_rung(c, 0.0) + 4) + 2), "b": (LAD + 2, rung_y(limb_rung(c, 0.5) + 3) + 2)}
-    plant = {"f": (LAD + 6, rung_y(limb_rung(c, 0.25))), "b": (LAD + 0, rung_y(limb_rung(c, 0.75) - 1))}
+    """owner on the ladder at climbing progress c (rungs): hip position, hand and foot targets
+    (offsets found by a reach search: both feet stay on rungs within leg length for every c)"""
+    reach = {"f": (LAD + 8, rung_y(limb_rung(c, 0.0) + 3) + 2), "b": (LAD + 2, rung_y(limb_rung(c, 0.5) + 2.5) + 2)}
+    kf, kb = limb_rung(c, 0.5), limb_rung(c, 0.0)
+    plant = {"f": (LAD + 6, rung_y(kf) if kf >= 0 else G), "b": (LAD + 0, rung_y(kb) if kb >= 0 else G)}
     p = dict(lean=-4, head=-18, leg_f=20, leg_b=10, knee_f=40, knee_b=30)
-    return dict(x=LAD - 18, y=rung_y(c), p=p, f=1, mode="hip", reach=reach, plant=plant)
+    return dict(x=LAD - 24, y=rung_y(c) + 40, p=p, f=1, mode="hip", reach=reach, plant=plant)   # y + 40 → hip = rung_y(c) - 50
 
 
 def hammer_swing(t):
@@ -82,21 +83,23 @@ def owner(t):
     if t < 3.2:                                  # picks up the plank, turns to the ladder
         k = seg(t, 2.7, 2.95)
         f = -1 if t < 2.95 else lerp(-1, 1, seg(t, 2.95, 3.2))
-        return dict(x=LAD + 6 - 24 * seg(t, 2.95, 3.2), y=G, p=mix(stand(), dict(stand(), lean=14, head=10), k), f=f,
-                    reach={"b": (LAD - 40, G - 70 - 30 * seg(t, 2.95, 3.2))}, plank=t > 2.95)
+        bend = k * (1 - seg(t, 2.95, 3.15))       # bends down to the plank, straightens up with it
+        return dict(x=LAD + 6 - 24 * seg(t, 2.95, 3.2), y=G, p=mix(stand(), dict(crouch(), lean=40, head=10), bend), f=f,
+                    reach={"b": (LAD - 24, lerp(G - 74, G - 150, seg(t, 2.95, 3.2)))} if t > 2.88 else None, plank=t > 2.95)
     if t < 5.6:                                  # climbs, rung by rung
         o = climbing(C_TOP * seg(t, 3.2, 5.6))
         o["reach"]["b"] = (LAD + 14, o["y"] - 210)      # the plank hand stays up, carrying the plank
         return dict(o, plank=True)
     if t < 9.6:                                  # holds the plank to the hole and nails it
         o = climbing(C_TOP)
-        o["reach"] = {"b": (H1 - 40, roof_y(H1) + 46)}
+        o["x"] = LAD - 14                                       # leans in toward the hole
+        o["reach"] = {"b": (H1 - 45, roof_y(H1) + 46)}
         if t > PATCH:
             k = hammer_swing(t)
-            wind, strike = (LAD + 4, o["y"] - 240), (H1 - 30, roof_y(H1) + 52)
+            wind, strike = (LAD - 6, o["y"] - 200), (H1 - 32, roof_y(H1) + 52)
             o["reach"]["f"] = (lerp(wind[0], strike[0], k), lerp(wind[1], strike[1], k))
         else:
-            o["reach"]["f"] = (H1 - 10, roof_y(H1) + 50)
+            o["reach"]["f"] = (H1 - 28, roof_y(H1) + 50)
         o["p"] = dict(o["p"], head=-28)
         return dict(o, hammer=t > PATCH, plank=t < PATCH)
     if t < 11.0:                                 # climbs down
@@ -121,10 +124,10 @@ def victim(t):
             return dict(x=650, y=G, p=mix(base, shrug(1.0), k), f=-1)
     if t > 15.5:                  # … and finally takes the hammer
         k = seg(t, 15.5, 16.2)
-        o = dict(x=650 - 14 * k, y=G, p=mix(dict(base, lean=-2, head=8), dict(stand(), lean=6, head=6), k), f=-1)
+        o = dict(x=650 - 30 * k, y=G, p=mix(dict(base, lean=-2, head=8), dict(stand(), lean=6, head=6), k), f=-1)
         if k > 0.05:
             grab = (574, G - 108)
-            o["reach"] = {"f": (lerp(640, grab[0], k), lerp(G - 70, grab[1], k))}
+            o["reach"] = {"f": (lerp(642, grab[0], k), lerp(G - 100, grab[1], k))}
         return o
     if t > TURN + 0.3:            # looks over at the dry, sunny side – hands on hips
         k = seg(t, TURN + 0.3, TURN + 0.8)
