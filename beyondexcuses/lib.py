@@ -234,6 +234,7 @@ def bubble(c, x, y, s, a=1.0, kind="think", tail=None, size=30, col=(255, 255, 2
 
 # ------------------------------------------------------------------ figure
 L = dict(torso=72, neck=10, head=19, up=36, fore=34, thigh=42, shin=42)
+ARM_ROOT = 0.9          # arms attach at 90 % of the torso (real shoulder), not at the neck base
 
 
 def V(a, facing):
@@ -247,10 +248,11 @@ def pose_points(p, s, facing):
     nk = (sh[0] + ux * L["neck"] * s, sh[1] + uy * L["neck"] * s)
     ha = math.radians(lean + p.get("head", 0))
     hd = (nk[0] + math.sin(ha) * facing * L["head"] * s, nk[1] - math.cos(ha) * L["head"] * s)
-    J = dict(hip=(0, 0), sh=sh, head=hd)
+    sa = (ux * L["torso"] * s * ARM_ROOT, uy * L["torso"] * s * ARM_ROOT)     # shoulder joint, below the neck base
+    J = dict(hip=(0, 0), sh=sh, sa=sa, head=hd)
     for side in ("f", "b"):
         a = p.get(f"arm_{side}", 0); e = p.get(f"elb_{side}", 10)
-        d1 = V(a, facing); el = (sh[0] + d1[0] * L["up"] * s, sh[1] + d1[1] * L["up"] * s)
+        d1 = V(a, facing); el = (sa[0] + d1[0] * L["up"] * s, sa[1] + d1[1] * L["up"] * s)
         d2 = V(a + e, facing); hn = (el[0] + d2[0] * L["fore"] * s, el[1] + d2[1] * L["fore"] * s)
         tt = p.get(f"leg_{side}", 0); k = p.get(f"knee_{side}", 0)
         d3 = V(tt, facing); kn = (d3[0] * L["thigh"] * s, d3[1] * L["thigh"] * s)
@@ -335,7 +337,7 @@ def figure(c, x, y, p, s=0.8, facing=1, rot=0.0, body=WHITE, mode="feet", lift=0
         return shape
 
     sh, hip, hd = J["sh"], J["hip"], J["head"]
-    limb(sh, J["el_b"], J["hand_b"], back, lw * 1.0, lw * 0.86, lw * 0.74, "hand")
+    limb(J["sa"], J["el_b"], J["hand_b"], back, lw * 1.0, lw * 0.86, lw * 0.74, "hand")
     limb(hip, J["knee_b"], J["foot_b"], back, lw * 1.12, lw * 0.92, lw * 0.78, "foot")
     # neck
     nk = skia.Path(); nk.addPath(_quad(sh, hd, lw * 0.62, lw * 0.5))
@@ -367,7 +369,7 @@ def figure(c, x, y, p, s=0.8, facing=1, rot=0.0, body=WHITE, mode="feet", lift=0
         c.drawOval(skia.Rect.MakeXYWH(hd[0] + f * hr * 0.46 - hr * 0.13, hd[1] - hr * 0.42, hr * 0.26, hr * 0.32), P(INK, 0.9))
         c.restore()
     c.drawCircle(hd[0] + lx * hr * 0.38, hd[1] + ly * hr * 0.38, hr * 0.22, P((255, 255, 255), 0.28, blur=hr * 0.15))
-    limb(sh, J["el_f"], J["hand_f"], body, lw * 1.0, lw * 0.86, lw * 0.74, "hand")
+    limb(J["sa"], J["el_f"], J["hand_f"], body, lw * 1.0, lw * 0.86, lw * 0.74, "hand")
     c.restore()
     m = skia.Matrix(); m.setTranslate(hx, hy); m.preRotate(rot)
     out = {k: m.mapXY(*v) for k, v in J.items()}
@@ -414,12 +416,12 @@ def mix(a, b, u):
 def stand(): return dict(lean=0, arm_f=6, arm_b=-6, elb_f=8, elb_b=8, leg_f=3, leg_b=-3)
 
 
-def walk(ph, lean=6, stride=24, arm=22):
-    sn = math.sin(ph)
+def walk(ph, lean=6, stride=24, arm=32):
+    sn = math.sin(ph); sa = math.sin(ph - 0.35)          # arms trail the legs slightly (follow-through)
     def knee(q):  # lifts during the swing, slight flex at heel strike
         return 6 + 38 * max(0.0, math.sin(q)) ** 1.5
     return dict(lean=lean + 1.5 * math.sin(2 * ph), head=-lean * 0.6 - 1.5 * math.sin(2 * ph),
-                arm_f=-arm * sn + 4, arm_b=arm * sn + 4, elb_f=16 + 8 * max(0, -sn), elb_b=16 + 8 * max(0, sn),
+                arm_f=-arm * sa + 4, arm_b=arm * sa + 4, elb_f=14 + 26 * max(0, -sa), elb_b=14 + 26 * max(0, sa),
                 leg_f=stride * sn + lean * 0.4, leg_b=-stride * sn + lean * 0.4,
                 knee_f=knee(ph + 1.3), knee_b=knee(ph + 1.3 + math.pi))
 
@@ -439,11 +441,11 @@ def airborne(): return dict(lean=10, head=-10, arm_f=150, elb_f=10, arm_b=-140, 
 
 def cheer(t):
     b = math.sin(t * 6) * 8
-    return dict(lean=-4, head=-18, arm_f=168 + b, elb_f=-12, arm_b=-168 - b, elb_b=12, leg_f=10, leg_b=-10)
+    return dict(lean=-4, head=-18, arm_f=148 + b, elb_f=-14, arm_b=-150 - b, elb_b=14, leg_f=10, leg_b=-10)
 
 
 def arms_crossed(head=0):
-    return dict(lean=-4, head=head, arm_f=40, elb_f=-130, arm_b=35, elb_b=-125, leg_f=8, leg_b=-8)
+    return dict(lean=-4, head=head, arm_f=40, elb_f=-165, arm_b=34, elb_b=-154, leg_f=8, leg_b=-8)   # elbows forward, forearms folded across the chest
 
 
 def sit(t=0):  # on a bench, hip at bench height
@@ -452,7 +454,7 @@ def sit(t=0):  # on a bench, hip at bench height
 
 def think(t):  # hand on chin, slight sway
     sw = math.sin(t * 1.7) * 3
-    return dict(lean=6 + sw, head=12, arm_f=20, elb_f=150, arm_b=10, elb_b=-110, leg_f=3, leg_b=-3)
+    return dict(lean=6 + sw, head=12, arm_f=20, elb_f=150, arm_b=34, elb_b=-154, leg_f=3, leg_b=-3)
 
 
 def slump():
