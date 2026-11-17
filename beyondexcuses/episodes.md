@@ -27,6 +27,7 @@ Die Person nummeriert auf TikTok fortlaufend nach Upload-Reihenfolge, nicht nach
 ## Ideas (not made yet)
 
 - **Perfectionist vs. Finisher**: a workshop. One sands the same chair forever; the other builds ten imperfect chairs.
+- **People Pleaser (Part 2) – the bags get heavier**: SEQUEL to People Pleaser vs. Boundaries, from a viewer comment ("if he carries it till the end he'll endure more than the one with boundaries"). The pleaser does arrive – exhausted, carrying everyone's bags – while the boundaries one arrives with energy and time to help *by choice*. Ending: „Carrying everything isn't strength. / Choosing what to carry is.“
 - **Talker vs. Walker**: a mountain path. One tells everyone about the summit; the other is quietly already up there.
 - **Fear of Failure vs. Courage**: a high diving board at a pool. One climbs down again; the other jumps and comes up laughing.
 - **Comparer vs. Own Path**: a race on separate lanes. One keeps looking sideways and trips; the other only looks ahead.
