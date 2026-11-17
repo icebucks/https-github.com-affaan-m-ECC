@@ -34,6 +34,9 @@ Die Person nummeriert auf TikTok fortlaufend nach Upload-Reihenfolge, nicht nach
 - **Lone Wolf vs. Team**: a heavy boulder on a hill. One pushes alone and fails; the other calls friends.
 - **Consumer vs. Creator**: a market. One buys everything; the other builds a stall and sells.
 
+## Look bleibt (Entscheidung 17.11.2026)
+Der warme Serien-Look bleibt (Holz/Licht, amberfarbene vs. graue Figuren mit Kontur). Ein Test mit flachen weißen Figuren auf dunkler Bühne wurde verworfen – `FIG_STYLE="clean"` NICHT verwenden.
+
 ## Graphics upgrades (from #8)
 
 Soft ground shadows, rim light on the figures in the scene's light colour, atmospheric haze at the horizon, light film grain, dark plates behind labels, bubbles that pop in, and figures at 1.3–1.45× scale. The style is unchanged.
