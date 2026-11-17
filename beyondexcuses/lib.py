@@ -234,6 +234,15 @@ def bubble(c, x, y, s, a=1.0, kind="think", tail=None, size=30, col=(255, 255, 2
 
 # ------------------------------------------------------------------ figure
 L = dict(torso=72, neck=10, head=19, up=36, fore=34, thigh=42, shin=42)
+# Joint convention (side view, facing = +1 means looking right). Angles in degrees, 0 = hanging straight down,
+# +90 = pointing forward (where the figure looks), 180 = straight up, -90 = pointing backward.
+#   arm_x  = upper-arm angle at the shoulder        elb_x = elbow FLEXION, 0 (straight) … 155 (fully bent): forearm angle = arm_x + elb_x
+#   leg_x  = thigh angle at the hip                  knee_x = knee FLEXION, 0 … 160: shin angle = leg_x - knee_x
+# A negative elb/knee would bend the joint backwards (broken-looking), so JOINT_LIMITS clamps it.
+# fore_x (0.3 … 1) shortens a forearm that points toward/away from the camera (crossed arms, hands on hips, pockets).
+JOINT_LIMITS = True
+ELBOW = (0.0, 155.0)
+KNEE = (0.0, 160.0)
 ARM_ROOT = 0.9          # arms attach at 90 % of the torso (real shoulder), not at the neck base
 
 
@@ -252,9 +261,12 @@ def pose_points(p, s, facing):
     J = dict(hip=(0, 0), sh=sh, sa=sa, head=hd)
     for side in ("f", "b"):
         a = p.get(f"arm_{side}", 0); e = p.get(f"elb_{side}", 10)
+        if JOINT_LIMITS: e = clamp(e, ELBOW[0], ELBOW[1])              # elbows only bend one way
+        fs = p.get(f"fore_{side}", 1.0)                                 # < 1: forearm points toward/away from the camera
         d1 = V(a, facing); el = (sa[0] + d1[0] * L["up"] * s, sa[1] + d1[1] * L["up"] * s)
-        d2 = V(a + e, facing); hn = (el[0] + d2[0] * L["fore"] * s, el[1] + d2[1] * L["fore"] * s)
+        d2 = V(a + e, facing); hn = (el[0] + d2[0] * L["fore"] * s * fs, el[1] + d2[1] * L["fore"] * s * fs)
         tt = p.get(f"leg_{side}", 0); k = p.get(f"knee_{side}", 0)
+        if JOINT_LIMITS: k = clamp(k, KNEE[0], KNEE[1])                 # knees only bend one way
         d3 = V(tt, facing); kn = (d3[0] * L["thigh"] * s, d3[1] * L["thigh"] * s)
         d4 = V(tt - k, facing); ft = (kn[0] + d4[0] * L["shin"] * s, kn[1] + d4[1] * L["shin"] * s)
         J[f"el_{side}"], J[f"hand_{side}"], J[f"knee_{side}"], J[f"foot_{side}"] = el, hn, kn, ft
@@ -428,7 +440,7 @@ def walk(ph, lean=6, stride=24, arm=32):
 
 def run(ph):
     sn = math.sin(ph)
-    return dict(lean=16, head=-10, arm_f=-45 * sn + 10, arm_b=45 * sn + 10, elb_f=-80, elb_b=-80,
+    return dict(lean=16, head=-10, arm_f=-45 * sn + 5, arm_b=45 * sn + 5, elb_f=88, elb_b=88,
                 leg_f=40 * sn + 10, leg_b=-40 * sn + 10,
                 knee_f=max(10, 80 * math.sin(ph + 1.2)), knee_b=max(10, 80 * math.sin(ph + 1.2 + math.pi)))
 
@@ -441,11 +453,11 @@ def airborne(): return dict(lean=10, head=-10, arm_f=150, elb_f=10, arm_b=-140, 
 
 def cheer(t):
     b = math.sin(t * 6) * 8
-    return dict(lean=-4, head=-18, arm_f=148 + b, elb_f=-14, arm_b=-150 - b, elb_b=14, leg_f=10, leg_b=-10)
+    return dict(lean=-4, head=-18, arm_f=150 + b, elb_f=12, arm_b=-150 - b, elb_b=12, leg_f=10, leg_b=-10)
 
 
 def arms_crossed(head=0):
-    return dict(lean=-4, head=head, arm_f=40, elb_f=-165, arm_b=34, elb_b=-154, leg_f=8, leg_b=-8)   # elbows forward, forearms folded across the chest
+    return dict(lean=-4, head=head, arm_f=16, elb_f=84, fore_f=0.42, arm_b=10, elb_b=90, fore_b=0.42, leg_f=8, leg_b=-8)   # forearms across the chest, pointing at the camera
 
 
 def sit(t=0):  # on a bench, hip at bench height
@@ -454,7 +466,7 @@ def sit(t=0):  # on a bench, hip at bench height
 
 def think(t):  # hand on chin, slight sway
     sw = math.sin(t * 1.7) * 3
-    return dict(lean=6 + sw, head=12, arm_f=20, elb_f=150, arm_b=34, elb_b=-154, leg_f=3, leg_b=-3)
+    return dict(lean=6 + sw, head=12, arm_f=20, elb_f=150, arm_b=8, elb_b=92, fore_b=0.42, leg_f=3, leg_b=-3)
 
 
 def slump():
@@ -463,7 +475,7 @@ def slump():
 
 def climb_rope(ph):  # hanging, hand over hand
     sn = math.sin(ph)
-    return dict(lean=0, head=-25, arm_f=175 + 10 * sn, elb_f=-20 - 25 * sn, arm_b=-175 + 10 * sn, elb_b=20 - 25 * sn,
+    return dict(lean=0, head=-25, arm_f=168 + 10 * sn, elb_f=14 + 12 * sn, arm_b=-172 + 10 * sn, elb_b=14 - 12 * sn,
                 leg_f=30 + 15 * sn, leg_b=10 - 15 * sn, knee_f=50, knee_b=40)
 
 
