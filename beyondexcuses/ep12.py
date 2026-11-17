@@ -22,7 +22,8 @@ MORPH = (11.6, 12.3)           # VICTIM -> OWNER
 VICTIM_TALK = [(1.0, "Still raining…"), (4.2, "Somebody fix this!")]
 OWN_BODY, VIC_BODY = E.OWN_BODY, E.VIC_BODY
 NEW_BODY = (236, 214, 178)     # the victim after he owns it
-HOOK = "The fix was behind you for 3 days.\nWhy don't you ever turn around?"
+HOOK = "3 days in the same drip.\nThe fix was right behind him."
+FOCUS = (700, 1050)            # screen point of the victim under his drip – the opening close-up
 CTA = "Part 10 tomorrow:\nthe chair that never gets finished"
 
 # reuse the attic from #11 with this episode's timing and a lighter drizzle
@@ -220,9 +221,12 @@ if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "still"
     if cmd == "still":
         ts = [float(a) for a in sys.argv[2:]] or [0.5, 4.6, 6.8, 7.8, 8.4, 9.4, 10.6, 11.9, 12.6, 14.2, 15.2, 16.6]
-        stills(lambda c, t: (frame(c, t + OFF), overlay(c, t)), ts, "check/ep12")
+        def opening(c, t):
+            zf = 1 + 0.6 * (1 - ease(t / 1.1)); c.save(); c.translate(*FOCUS); c.scale(zf, zf); c.translate(-FOCUS[0], -FOCUS[1])
+            frame(c, t + OFF); c.restore(); overlay(c, t)
+        stills(opening, ts, "check/ep12")
     elif cmd == "qa":
         probs = figure_qa(lambda c, t: frame(c, t + OFF), T_END - OFF, fps=15)
         print(f"figure QA: {len(probs)} problem(s)"); print("\n".join(probs))
     else:
-        finish_v2("Folge12_OwnerPart2", frame, T_END, events(), TURN, SHOWN, HOOK, OFF, 15.0, cta=CTA)
+        finish_v2("Folge12_OwnerPart2", frame, T_END, events(), TURN, SHOWN, HOOK, OFF, 15.0, cta=CTA, focus=FOCUS)

@@ -16,13 +16,13 @@
   }
  },
  "motion_per_second": [
-  6.71,
-  1.35,
-  1.9,
+  16.53,
+  1.37,
+  1.89,
   2.05,
-  2.37,
+  2.33,
   2.52,
-  1.56,
+  1.57,
   2.31,
   2.54,
   2.5,
@@ -35,11 +35,11 @@
  ],
  "dead_seconds": [],
  "first_second": {
-  "brightness": 86.18280792236328,
-  "contrast": 33.46913146972656,
-  "colourfulness": 29.55711555480957
+  "brightness": 89.58195495605469,
+  "contrast": 33.406005859375,
+  "colourfulness": 31.476322174072266
  },
- "loop_difference": 26.9,
+ "loop_difference": 33.8,
  "font_sizes": [],
  "audio": {
   "first_half_s_db": -16.35416030883789,

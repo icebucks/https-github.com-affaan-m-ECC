@@ -296,6 +296,7 @@ def pose_points(p, s, facing):
     return J
 
 
+FIG_STYLE = os.environ.get("FIG_STYLE", "warm")   # "warm" (series look) or "clean" (flat white, thin limbs, big head)
 FACE_CUE = os.environ.get("FACE_CUE", "1") != "0"   # nose + eye show where a figure looks (from #12; set FACE_CUE=0 for the old faceless look)
 FACE_CUE_NOSE_FILL = True
 NOW = None   # current video time (set by render/stills) – used for idle breathing
@@ -339,7 +340,7 @@ def _ik_angles(dx, dy, a, b, facing, knee=False):
 
 
 def figure(c, x, y, p, s=0.8, facing=1, rot=0.0, body=WHITE, mode="feet", lift=0.0, rim=None, light=(-1, -1),
-           reach=None, plant=None):
+           reach=None, plant=None, style=None):
     """draw figure; mode 'feet': lowest foot on y; 'hip': hip at (x,y). returns dict of world joints
     v2: tapered limbs, shaped torso, neck, hands, feet, soft shading, idle breathing
     reach={'f': (wx, wy), 'b': ...}: hands grab these WORLD points (IK, elbows bend the right way)
@@ -371,12 +372,14 @@ def figure(c, x, y, p, s=0.8, facing=1, rot=0.0, body=WHITE, mode="feet", lift=0
                 p[f"leg_{side}"], p[f"knee_{side}"] = _ik_angles(lx_, ly_ - 6 * s, L["thigh"] * s, L["shin"] * s, facing, knee=True)
         J = pose_points(p, s, facing)
     c.save(); c.translate(hx, hy); c.rotate(rot)
-    lw = 17 * s; OL = 7
+    clean = (style or FIG_STYLE) == "clean"
+    lw = (10 if clean else 17) * s; OL = 2 if clean else 7
     back = tuple(v * 0.80 for v in body)
     lx, ly = light; ln = math.hypot(lx, ly) or 1; lx, ly = lx / ln, ly / ln
 
     def shade(shape, col, w):
         """soft volume: dark core on the side away from the light, rim on the light side"""
+        if clean: return                        # flat, graphic look
         c.save(); c.clipPath(shape, doAntiAlias=True)
         m = skia.Matrix(); m.setTranslate(-lx * w * 0.42, -ly * w * 0.42)
         sh = skia.Path(); shape.transform(m, sh)
@@ -417,7 +420,7 @@ def figure(c, x, y, p, s=0.8, facing=1, rot=0.0, body=WHITE, mode="feet", lift=0
     torso = _op(torso, _quad(chest, sh, lw * 1.78, lw * 1.5), skia.PathOp.kUnion_PathOp)
     c.drawPath(torso, _round_paint(INK, 1, OL)); c.drawPath(torso, P(body)); shade(torso, body, lw * 1.6)
     # head: slightly egg-shaped, tilted with the neck
-    hr = L["head"] * s
+    hr = L["head"] * s * (1.3 if clean else 1.0)
     hang = math.degrees(math.atan2(hd[0] - sh[0], -(hd[1] - sh[1])))
     head = skia.Path(); head.addOval(skia.Rect.MakeXYWH(hd[0] - hr * 0.93, hd[1] - hr * 1.06, hr * 1.86, hr * 2.08))
     m = skia.Matrix(); m.setRotate(hang, hd[0], hd[1]); head.transform(m)
@@ -647,12 +650,18 @@ def series_overlay(c, t, num, hook, end_at, follow_y=380, series=None, cta=None)
     shown from end_at – keep at least 1.5 s on screen (default: "Follow for part num+1")"""
     text(c, f"{series} #{num}" if series else f"MINDSET-SERIE #{num}", 540, 300, F_SANS, 32, AMBER, 0.95, spacing=3, stroke=7)
     a = 1 - seg(t, 4.2, 4.8)
-    if a > 0:
-        pop = 1 + 0.12 * (1 - ease(t / 0.25))
-        c.save(); c.translate(540, 380); c.scale(pop, pop)
-        for i, ln in enumerate(hook.split("\n")):   # "\n" splits the hook into stacked lines
-            text(c, ln, 0, i * 66, F_CAP, 62, (255, 255, 255), a, stroke=14)
-        c.restore()
+    if a > 0:   # line 1 = short punch (≤ 6 words), BIG and on screen from frame 0; line 2 pops in 0.45 s later
+        for i, ln in enumerate(hook.split("\n")):
+            t0 = 0.45 * i
+            if t < t0: continue
+            k = t - t0
+            pop = 1 + (0.12 if i == 0 else 0.1) * (1 - ease(k / 0.25))
+            size = 86 if i == 0 else 60
+            w_ = skia.Font(F_CAP, size).measureText(tr(ln)); size *= min(1.0, 860 / w_) if w_ else 1   # room for the pop
+            y = 392 if i == 0 else 392 + 82 + (i - 1) * 64
+            c.save(); c.translate(540, y); c.scale(pop, pop)
+            text(c, ln, 0, 0, F_CAP, size, (255, 255, 255) if i == 0 else (255, 226, 160), a * min(1.0, k / 0.06), stroke=16)
+            c.restore()
     b = seg(t, end_at, end_at + 0.4)
     if b > 0:
         pop = 1 + 0.15 * (1 - ease((t - end_at) / 0.3))
@@ -677,7 +686,7 @@ def _grade_paint(sat=1.12, lift=0.025):
 _GRADE = None
 
 
-def finish_v2(name, frame_fn, t_end, events, turn, num, hook, off, end_at, follow_y=380, series=None, cta=None):
+def finish_v2(name, frame_fn, t_end, events, turn, num, hook, off, end_at, follow_y=380, series=None, cta=None, focus=None):
     """improved cut: skips the idle start, adds hook/series/follow overlay.
     v3 (audit fixes): punch-in camera at the start + slow drift (no dead seconds), light vibrance grade,
     sound with an audible opening hit (CC0 SFX via kanaele/data/dsound.py)"""
@@ -687,7 +696,11 @@ def finish_v2(name, frame_fn, t_end, events, turn, num, hook, off, end_at, follo
 
     def wrapped(c, t):
         z = 1 + 0.09 * (1 - ease(t / 0.7)) + 0.035 * t / max(1.0, dur)
-        c.save(); c.translate(540, 1240); c.scale(z, z); c.translate(-540, -1240)
+        c.save()
+        if focus:   # opening reveal: start in a close-up on the conflict (screen point), pull back within 1.1 s
+            zf = 1 + 0.6 * (1 - ease(t / 1.1))
+            c.translate(focus[0], focus[1]); c.scale(zf, zf); c.translate(-focus[0], -focus[1])
+        c.translate(540, 1240); c.scale(z, z); c.translate(-540, -1240)
         c.saveLayer(None, _GRADE)
         frame_fn(c, t + off)
         c.restore(); c.restore()

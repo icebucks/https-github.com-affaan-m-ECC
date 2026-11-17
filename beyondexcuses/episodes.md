@@ -65,6 +65,7 @@ Jedes Video wird nach dem Rendern mit `python3 ../kanaele/data/audit.py FolgeN_.
 - **Teilen-Aufforderung** in Caption und Pin-Kommentar, an eine konkrete Person gerichtet: „Send this to someone who always blames the rain.“ (Thema der Folge einsetzen).
 - **Speicherwürdiger Merksatz:** Die amberfarbene Schlusszeile ist eine kurze Regel, die man sich merken will („Own it.“ → „Blame keeps you wet. Fixing keeps you dry.“). In der Caption: „Save this for the next storm.“
 - **Konkreter Cliffhanger statt nur „Follow for part N+1“:** bei Fortsetzungen den nächsten Teil benennen („Part 12: the victim turns around 👀“), sonst die nächste Folge anteasern („Tomorrow: the perfectionist who never finishes“). Text um 16 s, über der Caption-Zone.
+- **Die erste Sekunde (Retention #11: −25 % bis 0:01):** Hook-Zeile 1 ist ein Punch mit höchstens 6 Wörtern (groß, ab Bild 0), Zeile 2 die Auflösung (kommt nach 0,45 s). Eröffnung immer als Nahaufnahme auf den Konflikt: `finish_v2(..., focus=(screen_x, screen_y))` – die Kamera fährt in 1,1 s zur Totalen zurück.
 - **Tempo am Ende:** Wendepunkt bis 11 s, Schlusstext ab ~13,5 s, damit nach der Pointe niemand wegwischt; Gesamtlänge 15–17 s.
 - Ziele: > 80 % Ø Wiedergabe, > 5 Kommentare und > 3 neue Follower pro 1.000 Aufrufe, Shares > 0,5 %.
 

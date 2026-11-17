@@ -230,7 +230,7 @@ A new episode every day – start with Part 1.
 ```
 
 ## #12 – Victim vs Owner, Part 2 (TikTok: Part 9)
-**TikTok:** heute, Di 17.11., zwischen 19 und 20 Uhr (Wunsch der Person) · **YouTube:** Do 26.11. 19:30 · **Titelbild:** `covers/Cover_12.jpg` („HE TURNED AROUND“, #9)
+**TikTok:** heute, Di 17.11., zwischen 19 und 20 Uhr (Wunsch der Person) · **YouTube:** Do 26.11. 19:30 · **Titelbild:** `covers/Cover_12.jpg` („HE TURNED AROUND“, #9) · **Hook im Video:** „3 days in the same drip.“ / „The fix was right behind him.“
 **Hinweis:** Im Video steht „MINDSET SERIES #9“ und „Part 10 tomorrow“ (TikTok-Nummerierung). Auf YouTube passt das erst, wenn die YouTube-Reihenfolge angeglichen ist – Entscheidung der Person offen.
 **TikTok-Caption:**
 ```
