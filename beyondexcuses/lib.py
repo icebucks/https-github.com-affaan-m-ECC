@@ -259,6 +259,8 @@ def pose_points(p, s, facing):
     return J
 
 
+FACE_CUE = os.environ.get("FACE_CUE", "1") != "0"   # nose + eye show where a figure looks (from #12; set FACE_CUE=0 for the old faceless look)
+FACE_CUE_NOSE_FILL = True
 NOW = None   # current video time (set by render/stills) – used for idle breathing
 
 
@@ -350,7 +352,20 @@ def figure(c, x, y, p, s=0.8, facing=1, rot=0.0, body=WHITE, mode="feet", lift=0
     hang = math.degrees(math.atan2(hd[0] - sh[0], -(hd[1] - sh[1])))
     head = skia.Path(); head.addOval(skia.Rect.MakeXYWH(hd[0] - hr * 0.93, hd[1] - hr * 1.06, hr * 1.86, hr * 2.08))
     m = skia.Matrix(); m.setRotate(hang, hd[0], hd[1]); head.transform(m)
+    if FACE_CUE and abs(facing) >= 0.5:      # small nose bump on the facing side (drawn first, so the head covers its root)
+        f = 1 if facing > 0 else -1
+        c.save(); c.rotate(hang, hd[0], hd[1])
+        nose = skia.Path(); nose.addOval(skia.Rect.MakeXYWH(hd[0] + f * hr * 1.0 - hr * 0.25, hd[1] - hr * 0.12, hr * 0.5, hr * 0.38))
+        c.drawPath(nose, _round_paint(INK, 1, 6)); c.drawPath(nose, P(body))
+        c.restore()
     c.drawPath(head, _round_paint(INK, 1, 7)); c.drawPath(head, P(body)); shade(head, body, hr * 1.6)
+    if FACE_CUE and abs(facing) >= 0.5:      # one calm eye looking where the figure faces
+        f = 1 if facing > 0 else -1
+        c.save(); c.rotate(hang, hd[0], hd[1])
+        if FACE_CUE_NOSE_FILL:
+            c.drawOval(skia.Rect.MakeXYWH(hd[0] + f * hr * 0.86 - hr * 0.13, hd[1] - hr * 0.05, hr * 0.26, hr * 0.26), P(body))
+        c.drawOval(skia.Rect.MakeXYWH(hd[0] + f * hr * 0.46 - hr * 0.13, hd[1] - hr * 0.42, hr * 0.26, hr * 0.32), P(INK, 0.9))
+        c.restore()
     c.drawCircle(hd[0] + lx * hr * 0.38, hd[1] + ly * hr * 0.38, hr * 0.22, P((255, 255, 255), 0.28, blur=hr * 0.15))
     limb(sh, J["el_f"], J["hand_f"], body, lw * 1.0, lw * 0.86, lw * 0.74, "hand")
     c.restore()

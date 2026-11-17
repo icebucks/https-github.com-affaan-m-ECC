@@ -39,6 +39,7 @@ Soft ground shadows, rim light on the figures in the scene's light colour, atmos
 - Figure: tapered limbs, chest/waist/hip torso, neck, round hands, small feet, soft shading away from the light, egg-shaped faceless head with a highlight. The returned joints are the same as before, so old episodes still render.
 - `smooth(fn, t)`: temporal blend of character functions, so hard pose switches become ~0.2 s transitions. Use `x = smooth(char, t)` instead of `x = char(t)`.
 - Natural walk cycle (hip sway, knee lift), idle breathing (`lib.NOW`), and motion blur in `render()` (`MBLUR=3`, 180° shutter; `MBLUR=1` for fast drafts).
+- **Facing cue (from #12):** a small nose and one eye on the side the figure faces (`facing=1` right, `-1` left), so viewers always see where someone looks – even with crossed arms (comment on #11: „which way is the victim facing?“). Default on; `FACE_CUE=0` restores the old faceless look. Already uploaded episodes are not re-rendered. Use it in scenes: the negative figure faces away from the solution, turning toward it is a visible turning point.
 
 ## Reichweite & Qualität (Audit, Stand 16.11.2026)
 Jedes Video wird nach dem Rendern mit `python3 ../kanaele/data/audit.py FolgeN_..._EN.mp4` gemessen (Ergebnis in `audit/`). Regeln daraus:
