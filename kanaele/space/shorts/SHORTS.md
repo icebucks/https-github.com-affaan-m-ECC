@@ -59,11 +59,11 @@ Zeilen nach Nummer sortiert. Nächster Uploadtermin = Tag nach dem **spätesten*
 |---|---|---|---|---|---|---|---|---|
 | 1 | Di 17.11. | How many Earths fit in the Sun? | FILL | cinematic 100 | warm | Contrarian Flip (73) | 1.3 Mio Erden (Volumen), 109 Erden breit, ~10 Jupiter breit, 1.000 Erden in Jupiter, 99,8 % Masse | `ss1.py` → `SS1_SunEarths_EN.mp4` |
 | 2 | Mo 16.11. (vorgezogen, heute Nacht) | The 5 biggest moons in the Solar System | RANK | synthwave 112 | blau | The Question (76) | Durchmesser Ganymed 5.268, Titan 5.150, Kallisto 4.821, Io 3.643, Mond 3.475 km; Merkur 4.879 km | `ss2.py` → `SS2_BiggestMoons_EN.mp4` |
+| 3 | Mi 18.11. | Earth vs. the Moon in 3 rounds | VS | trap 144 | grün-türkis | The Comparison (76) | ≈ 49 Monde füllen das Erdvolumen (Verhältnis 0,0203), ≈ 81 Monde = Erdmasse (0,0123), Dichte Mond 3.344 vs. Erde 5.514 kg/m³ (≈ 60 %), Schwerkraft 1,62 vs. 9,80 m/s² (≈ 1/6) → gleicher Wurf ≈ 6× höher | `ss3.py` → `SS3_EarthVsMoon_EN.mp4` |
 
 ## Themen-Backlog (oben = als Nächstes; vor dem Bauen gegen `reserved.json` prüfen)
-1. **VS** · Earth vs. Moon in 3 rounds – löst die Frage aus #1 auf: Volumen ≈ 49 Monde füllen die Erde, Masse ≈ 81 Monde, Schwerkraft ≈ 1/6 (NASA Moon Fact Sheet, Verhältnisse). Einstieg „Yesterday you guessed …“. Nur Größe/Masse/Schwerkraft – keine Entfernung, keine Reisezeit.
 2. **VS** · Olympus Mons vs. Mount Everest (Höhe, Fläche, Vulkan) – Achtung: Höhenangaben schwanken je nach Bezugslinie (NASA/ESA ≈ 25 km über der Ebene, andere 21,9–27 km). Nur „about 25 km above the plains around it“ sagen und die Bezugslinie nennen; Fläche „about the size of Arizona“ (NASA-Grafik „How big is it“).
-3. **YOU** · What would you weigh on every planet? – Achtung: NASA nennt zwei Schwerkraft-Konventionen (Übersichtstabelle mit Rotation, z. B. Jupiter 23,1 / Saturn 9,0 m/s²; Einzelblätter ohne Rotation, 24,79 / 10,44). EINE Quelle durchgehend nehmen und nennen; keine Pointe, die nur in einer Konvention stimmt (z. B. „auf Saturn wiegst du weniger“). Skala unitless: „if your scale shows 100 at home …“.
+3. **YOU** · What would you weigh on every planet? – Mond weglassen (≈ 1/6 schon in #3). Achtung: NASA nennt zwei Schwerkraft-Konventionen (Übersichtstabelle mit Rotation, z. B. Jupiter 23,1 / Saturn 9,0 m/s²; Einzelblätter ohne Rotation, 24,79 / 10,44). EINE Quelle durchgehend nehmen und nennen; keine Pointe, die nur in einer Konvention stimmt (z. B. „auf Saturn wiegst du weniger“). Skala unitless: „if your scale shows 100 at home …“.
 5. **WHAT IF** · Saturn would float in water – Dichte 0,687 g/cm³ (NASA)
 6. **ZOOM** · A teaspoon of neutron star – Masse aus NASA-Quelle, Vergleich mit Bergen/Gebäuden
 7. **VS** · The Great Red Spot vs. Earth – aktuelle Breite (NASA/Hubble, Jahr angeben), schrumpft
@@ -132,3 +132,30 @@ Datei `SS2_BiggestMoons_EN.mp4` (42,4 s, −14,2 LUFS, Audit: nichts unter der T
 > #bythenumbers #space #astronomy #moons #solarsystem #shorts
 
 Suchanfragen: „biggest moons in the solar system“, „which moon is the biggest“, „moons bigger than mercury“.
+
+---
+
+## SS3 Upload – Mi 18.11. · TikTok 17:00 · YouTube 16:30
+Datei `SS3_EarthVsMoon_EN.mp4` (41,8 s, −14,2 LUFS, Audit: alles ✅ – nichts unter der TikTok-Oberfläche, keine bewegungsarmen Sekunden, Loop nahtlos), Titelbild `Cover_SS3.jpg`. Hook 76/100 STRONG (The Comparison). Überschneidungs-Check mit den langen Videos: OK.
+
+**TikTok-Caption**
+> Earth vs Moon size comparison 🌍🌕 49 Moons fill the Earth – but it takes 81 to match its weight. Why?
+> Your guess: how many Mars-size planets would fill the Earth? 👇
+> #bythenumbers #space #astronomy #moon #earth
+
+**Pin-Kommentar:** Only about 6.6! Mars has about 15% of Earth's volume (NASA Mars Fact Sheet), so not even 7 Mars-size planets would fill the Earth. Who got closest? 🔴
+
+**YouTube-Titel (title.py 98/100):** Earth vs Moon size comparison: round 2 is weird
+**Titelbild-Text:** 81 / NOT 49
+
+**YouTube-Beschreibung**
+> Earth vs Moon size comparison in 3 rounds: how many Moons fit in Earth? About 49 fill its volume – but you need 81 to match its weight.
+> How big is the Moon compared to Earth, why Moon rock is so light, and how gravity on the Moon changes a simple throw.
+>
+> About 49 Moons fill Earth's volume · about 81 Moons match Earth's mass · the Moon is about 60% as dense (3,344 vs 5,514 kg/m³) · Moon gravity is about 1/6 of Earth's (1.62 vs 9.80 m/s²), so the same throw goes about 6 times higher.
+> Sources: NASA NSSDC Moon Fact Sheet (updated 11 Jan 2024); NASA NSSDC Mars Fact Sheet (updated 19 May 2025) – checked 17 Nov 2026. Narration: synthetic voice.
+>
+> #bythenumbers #space #astronomy #moon #earth #shorts
+
+Suchanfragen: „earth vs moon size comparison“, „how big is the moon compared to earth“, „how many moons fit in earth“.
+Mittwoch – kein Samstags-Hinweis nötig.

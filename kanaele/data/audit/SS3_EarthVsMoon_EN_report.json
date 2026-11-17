@@ -1,0 +1,75 @@
+{
+ "video": "SS3_EarthVsMoon_EN",
+ "duration": 41.75,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  11.08,
+  3.08,
+  1.86,
+  1.95,
+  1.32,
+  1.47,
+  2.13,
+  6.21,
+  2.62,
+  2.91,
+  3.39,
+  2.23,
+  1.88,
+  24.24,
+  3.89,
+  3.35,
+  4.62,
+  4.91,
+  2.42,
+  3.96,
+  2.53,
+  2.97,
+  2.32,
+  2.57,
+  2.85,
+  5.23,
+  2.61,
+  2.01,
+  1.92,
+  2.17,
+  2.24,
+  1.53,
+  4.94,
+  6.03,
+  17.26,
+  17.83,
+  18.12,
+  18.4,
+  17.69,
+  10.78,
+  9.8
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 61.50237274169922,
+  "contrast": 41.66677474975586,
+  "colourfulness": 34.376471519470215
+ },
+ "loop_difference": 11.8,
+ "font_sizes": [],
+ "audio": {
+  "first_half_s_db": -12.964130401611328,
+  "median_db": -13.750361442565918,
+  "silent_windows": 0,
+  "lufs": -14.2
+ }
+}
