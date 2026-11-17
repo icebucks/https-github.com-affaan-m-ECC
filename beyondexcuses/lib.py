@@ -1,5 +1,5 @@
 """Baukasten für Strichfiguren-Metapher-Videos (1080x1920, 30 fps)."""
-import math, os, subprocess, json
+import math, sys, os, subprocess, json
 import numpy as np
 import skia
 
@@ -241,6 +241,14 @@ L = dict(torso=72, neck=10, head=19, up=36, fore=34, thigh=42, shin=42)
 # A negative elb/knee would bend the joint backwards (broken-looking), so JOINT_LIMITS clamps it.
 # fore_x (0.3 … 1) shortens a forearm that points toward/away from the camera (crossed arms, hands on hips, pockets).
 JOINT_LIMITS = True
+_WARNED = []
+
+
+def _warn_joint(what):
+    """printed once per run: a pose asked for a backwards elbow (it is clamped to straight)"""
+    _WARNED.append(what)
+    print(f"WARNING joint: {what} bends the elbow backwards – clamped to 0. Rewrite the pose with a positive elbow "
+          f"(see episodes.md 'Joints bend only the right way').", file=sys.stderr)
 ELBOW = (0.0, 155.0)
 KNEE = (0.0, 160.0)
 ARM_ROOT = 0.9          # arms attach at 90 % of the torso (real shoulder), not at the neck base
@@ -261,7 +269,9 @@ def pose_points(p, s, facing):
     J = dict(hip=(0, 0), sh=sh, sa=sa, head=hd)
     for side in ("f", "b"):
         a = p.get(f"arm_{side}", 0); e = p.get(f"elb_{side}", 10)
-        if JOINT_LIMITS: e = clamp(e, ELBOW[0], ELBOW[1])              # elbows only bend one way
+        if JOINT_LIMITS:                                                # elbows only bend one way
+            if e < ELBOW[0] - 2 and not _WARNED: _warn_joint(f"elb_{side}={e:.0f}")
+            e = clamp(e, ELBOW[0], ELBOW[1])
         fs = p.get(f"fore_{side}", 1.0)                                 # < 1: forearm points toward/away from the camera
         d1 = V(a, facing); el = (sa[0] + d1[0] * L["up"] * s, sa[1] + d1[1] * L["up"] * s)
         d2 = V(a + e, facing); hn = (el[0] + d2[0] * L["fore"] * s * fs, el[1] + d2[1] * L["fore"] * s * fs)
