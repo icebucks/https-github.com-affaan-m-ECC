@@ -17,7 +17,8 @@ EPS = {  # num: (module, scene time, negative, positive)
     8: ("ep8", 14.2, "IMPATIENCE", "PATIENCE"),
     9: ("ep9", 13.2, "SCROLLER", "LEARNER"),
     10: ("ep10", 13.2, "GRUDGE", "LETTING GO"),
-    11: ("ep11", 12.4, "VICTIM", "OWNER", "ONLY 1|FIXES"),   # optional 5th: thumbnail words (≤ 3, "|" = line break)
+    11: ("ep11", 12.4, "VICTIM", "OWNER", "ONLY 1|FIXES", 8),   # optional 5th: thumbnail words (≤ 3, "|" = line break)
+    12: ("ep12", 8.4, "VICTIM", "OWNER", "HE TURNED|AROUND", 9),   # optional 6th: part number shown on TikTok
 }
 
 
@@ -29,6 +30,7 @@ def fit(s, maxw, size):
 def cover(num, out):
     mod, t, neg, pos = EPS[num][:4]
     thumb = EPS[num][4] if len(EPS[num]) > 4 else None
+    shown = EPS[num][5] if len(EPS[num]) > 5 else num        # TikTok numbering can differ from the file number
     m = importlib.import_module(mod)
     surf = skia.Surface(W, H); c = surf.getCanvas(); c.clear(skia.ColorBLACK)
     lib.NOW = t
@@ -41,7 +43,7 @@ def cover(num, out):
     text(c, "MINDSET SERIES", 540, 330, F_SANS, 34, AMBER, 1.0, spacing=6, stroke=6)
     c.drawRRect(skia.RRect.MakeRectXY(skia.Rect.MakeXYWH(440, 370, 200, 110), 26, 26), P(AMBER))
     c.drawRRect(skia.RRect.MakeRectXY(skia.Rect.MakeXYWH(440, 370, 200, 110), 26, 26), P(INK, stroke=6))
-    text(c, f"#{num}", 540, 452, F_CAP, 80, INK, 1.0)
+    text(c, f"#{shown}", 540, 452, F_CAP, 80, INK, 1.0)
     if thumb:   # thumbnail words (different from the title, same promise): white line + amber line
         l1, l2 = thumb.split("|")
         text(c, l1, 540, 660, F_CAP, fit(l1, 940, 150), (245, 246, 250), 1.0, stroke=20)

@@ -197,16 +197,22 @@ def plate_label(c, s, x, y, col, a=1.0):
 END_Y_MAX = 1290   # the last line must stay above TikTok's caption/username area (y >= 1450)
 
 
+END_MAXW = 660
+
+
 def end_text(c, t, t0, l1, l2, l3, y=1420):
     """two white lines + one amber punchline in the ground area (kept above TikTok's caption zone)"""
     if t < t0: return
     y = min(y, END_Y_MAX)
     a = ease((t - t0) / 0.5)
     c.drawRect(skia.Rect.MakeWH(W, H), P((0, 0, 0), 0.35 * a))
-    text(c, l1, 540, y, F_CAP, 56, (255, 255, 255), a, stroke=12)
-    if l2: text(c, l2, 540, y + 68, F_CAP, 56, (255, 255, 255), a, stroke=12)
+    def fit(s_, size):   # keep every line clear of TikTok's button column (x > 880): max 680 px wide around x 540
+        w_ = skia.Font(F_CAP, size).measureText(tr(s_))
+        return size * min(1.0, END_MAXW / w_) if w_ > 0 else size
+    text(c, l1, 540, y, F_CAP, fit(l1, 56), (255, 255, 255), a, stroke=12)
+    if l2: text(c, l2, 540, y + 68, F_CAP, fit(l2, 56), (255, 255, 255), a, stroke=12)
     b = ease((t - t0 - 0.8) / 0.4)
-    text(c, l3, 540, y + 152, F_CAP, 60, AMBER, b, stroke=12)
+    text(c, l3, 540, y + 152, F_CAP, fit(l3, 60), AMBER, b, stroke=12)
 
 
 def bubble(c, x, y, s, a=1.0, kind="think", tail=None, size=30, col=(255, 255, 255), pop=1.0):
@@ -653,7 +659,9 @@ def series_overlay(c, t, num, hook, end_at, follow_y=380, series=None, cta=None)
         c.save(); c.translate(540, follow_y); c.scale(pop, pop)
         lines = cta.split("\n") if cta else [f"Folge für Teil {num + 1}"]
         for i, ln in enumerate(lines):
-            text(c, ln, 0, i * 64, F_CAP, 58 if i == 0 else 50, AMBER if i == 0 else (255, 255, 255), b, stroke=14)
+            sz = 58 if i == 0 else 50
+            w_ = skia.Font(F_CAP, sz).measureText(tr(ln)); sz *= min(1.0, 900 / w_) if w_ else 1   # y 380 is above the button column
+            text(c, ln, 0, i * 64, F_CAP, sz, AMBER if i == 0 else (255, 255, 255), b, stroke=14)
         c.restore()
 
 

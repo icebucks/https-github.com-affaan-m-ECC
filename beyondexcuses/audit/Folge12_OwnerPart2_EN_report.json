@@ -1,0 +1,50 @@
+{
+ "video": "Folge12_OwnerPart2_EN",
+ "duration": 16.75,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  6.71,
+  1.35,
+  1.9,
+  2.05,
+  2.37,
+  2.52,
+  1.56,
+  2.31,
+  2.54,
+  2.5,
+  5.29,
+  4.49,
+  1.99,
+  10.98,
+  2.5,
+  1.36
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 86.18280792236328,
+  "contrast": 33.46913146972656,
+  "colourfulness": 29.55711555480957
+ },
+ "loop_difference": 26.9,
+ "font_sizes": [],
+ "audio": {
+  "first_half_s_db": -16.35416030883789,
+  "median_db": -15.531045913696289,
+  "silent_windows": 0,
+  "lufs": -14.5
+ }
+}

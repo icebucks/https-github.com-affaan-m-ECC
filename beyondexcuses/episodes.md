@@ -17,11 +17,15 @@ Render: `VID_LANG=en python3 epN.py render` → `FolgeN_<Name>_EN.mp4`. Stills: 
 | 8 | Impatience vs. Patience | spring meadow, time-lapse of days and nights | Do you want results NOW? | Plant. Wait. Trust. | `ep8.py` → `Folge8_Patience_EN.mp4` |
 | 9 | Scroller vs. Learner | city rooftop, night → sunrise | Did you scroll all night? | One of them built stairs. | `ep9.py` → `Folge9_Scroller_EN.mp4` |
 | 10 | Grudge vs. Letting Go | stormy lake → golden dusk | What are you still holding onto? | Let it go. Swim. | `ep10.py` → `Folge10_LettingGo_EN.mp4` |
-| 11 | Victim vs. Owner | leaking attic in a rainstorm, flickering bare bulb → sun shaft through the window | If you blame the rain, you never fix the roof. Watch what 2 people do before it floods. (hookscore 72) | Own it. | `ep11.py` → `Folge11_Owner_EN.mp4` |
+| 11 | Victim vs. Owner (**TikTok: Part 8**) | leaking attic in a rainstorm, flickering bare bulb → sun shaft through the window | If you blame the rain, you never fix the roof. Watch what 2 people do before it floods. (hookscore 72) | Own it. | `ep11.py` → `Folge11_Owner_EN.mp4` |
+| 12 | Victim vs. Owner, Part 2 (**TikTok: Part 9**) | same attic (sequel), grey dawn + drizzle → sun; stepladder behind the victim | The fix was behind you for 3 days. Why don't you ever turn around? (caption hook 75) | Your fix is behind you. | `ep12.py` → `Folge12_OwnerPart2_EN.mp4` |
+
+## Nummerierung auf TikTok (Stand 17.11.2026)
+Die Person nummeriert auf TikTok fortlaufend nach Upload-Reihenfolge, nicht nach Dateinummer: intern #11 = **TikTok Part 8**, intern #12 = **TikTok Part 9**. Ab jetzt gilt: **angezeigte Nummer = letzte TikTok-Nummer + 1** (nächste Folge = Part 10). Im Video `SHOWN` als Nummer an `finish_v2` geben (Serien-Tag + Cliffhanger), in `covers.py` als 6. Feld eintragen, im Cliffhanger den nächsten Teil mit dieser Nummer ankündigen. Dateinamen bleiben intern (`ep13.py`, `Folge13_…`).
+**Versprochen in Part 9:** „Part 10 tomorrow: the chair that never gets finished“ → die nächste Folge MUSS „Perfectionist vs. Finisher“ (Werkstatt, Stuhl) sein.
 
 ## Ideas (not made yet)
 
-- **Victim vs. Owner (Part 2) – after the storm**: SEQUEL to #11 (1,424 views in the first hour). Same attic (exception to the new-location rule), new light: grey dawn after the storm, water on the floor. The victim finally *turns around* – clearly facing the ladder (answers the comment „which way is the victim facing?“) – takes the hammer the owner left and fixes the second hole himself. Hook again as a statement, not a question. Ending: „Blame is comfortable. / Fixing is freedom. / Own it.“
 - **Perfectionist vs. Finisher**: a workshop. One sands the same chair forever; the other builds ten imperfect chairs.
 - **Talker vs. Walker**: a mountain path. One tells everyone about the summit; the other is quietly already up there.
 - **Fear of Failure vs. Courage**: a high diving board at a pool. One climbs down again; the other jumps and comes up laughing.

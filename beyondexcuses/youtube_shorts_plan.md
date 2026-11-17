@@ -18,6 +18,7 @@ Danach in der YouTube-App bei jedem Short unter „Ähnliches Video“ die **nä
 | Mo 23.11. | 19:30 | #9 Scroller vs Learner | `Folge9_Scroller_EN.mp4` | `covers/Cover_09.jpg` |
 | Di 24.11. | 19:30 | #10 Grudge vs Letting Go | `Folge10_LettingGo_EN.mp4` | `covers/Cover_10.jpg` |
 | Mi 25.11. | 19:30 | #11 Victim vs Owner | `Folge11_Owner_EN.mp4` | `covers/Cover_11.jpg` |
+| Do 26.11. | 19:30 | #12 Victim vs Owner, Part 2 (im Video: Part 9) | `Folge12_OwnerPart2_EN.mp4` | `covers/Cover_12.jpg` |
 
 Neue Folgen kommen jeweils am nächsten freien Tag dazu, zu den Zeiten aus der Tabelle unten.
 
@@ -226,4 +227,30 @@ Mindset Series – Part 11. Follow for Part 12.
 Two people. One choice. 🧠
 Short animated mindset stories about discipline, patience and growth.
 A new episode every day – start with Part 1.
+```
+
+## #12 – Victim vs Owner, Part 2 (TikTok: Part 9)
+**TikTok:** heute, Di 17.11., zwischen 19 und 20 Uhr (Wunsch der Person) · **YouTube:** Do 26.11. 19:30 · **Titelbild:** `covers/Cover_12.jpg` („HE TURNED AROUND“, #9)
+**Hinweis:** Im Video steht „MINDSET SERIES #9“ und „Part 10 tomorrow“ (TikTok-Nummerierung). Auf YouTube passt das erst, wenn die YouTube-Reihenfolge angeglichen ist – Entscheidung der Person offen.
+**TikTok-Caption:**
+```
+The fix was behind you for 3 days. Why don't you ever turn around before it floods? 🌧️🔨
+Send this to someone who still blames the rain 👀
+Comment "TURN" if you're done blaming.
+#ownership #mindset #psychology #motivation #beyondexcuses
+```
+**Pin-Kommentar:** `What's behind YOU right now? 🔨 = I'm fixing it · 🌧️ = still blaming the rain`
+**Titel (title.py 98 mit Titelbild):**
+```
+Victim vs Owner (Part 9): stop blaming the rain
+```
+**Beschreibung:**
+```
+Stop blaming the rain: the victim finally turns around – and the fix was behind him the whole time.
+Victim mindset vs ownership mindset, part 2: blame kept him wet, one turn kept him dry.
+
+Your fix is behind you. Send this to someone who needs it 👇
+
+Mindset Series – Part 9. Part 10 tomorrow: the chair that never gets finished.
+#beyondexcuses #ownership #victimmindset #mindset #shorts
 ```
