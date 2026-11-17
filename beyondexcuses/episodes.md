@@ -21,6 +21,7 @@ Render: `VID_LANG=en python3 epN.py render` → `FolgeN_<Name>_EN.mp4`. Stills: 
 
 ## Ideas (not made yet)
 
+- **Victim vs. Owner (Part 2) – after the storm**: SEQUEL to #11 (1,424 views in the first hour). Same attic (exception to the new-location rule), new light: grey dawn after the storm, water on the floor. The victim finally *turns around* – clearly facing the ladder (answers the comment „which way is the victim facing?“) – takes the hammer the owner left and fixes the second hole himself. Hook again as a statement, not a question. Ending: „Blame is comfortable. / Fixing is freedom. / Own it.“
 - **Perfectionist vs. Finisher**: a workshop. One sands the same chair forever; the other builds ten imperfect chairs.
 - **Talker vs. Walker**: a mountain path. One tells everyone about the summit; the other is quietly already up there.
 - **Fear of Failure vs. Courage**: a high diving board at a pool. One climbs down again; the other jumps and comes up laughing.
