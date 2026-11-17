@@ -6,6 +6,7 @@
 |---|---|---|---|---|---|---|
 | Di 17.11. | 21:00 | 19:30 | #1 How long to earn $1 billion? | `BN1_Billion_EN.mp4` | `Cover_BN1.jpg` | trap 150 |
 | Mi 18.11. | 21:00 | 19:30 | #2 Tallest buildings, to scale | `BN2_Tallest_EN.mp4` | `Cover_BN2.jpg` | synthwave 140 |
+| Do 19.11. | 21:00 | 19:30 | #3 How long to walk around the Earth? | `BN3_WalkEarth_EN.mp4` | `Cover_BN3.jpg` | upbeat 120 (Seed 3) |
 
 ## Lange Videos
 Jeden **Samstag 17:30** (YouTube) ein langes Video der Reihe „Cosmic Scale“ – Konzept und Pilot: `../space/LONGFORM.md`, `../space/pilot_script.md`. Shorts der Woche zum selben Thema verlinken per „Ähnliches Video“ darauf.
@@ -35,6 +36,7 @@ Nach 2 Wochen mit den eigenen Analytics prüfen und anpassen.
 | Körper & Gesundheit | `#bythenumbers #learnontiktok #didyouknow #humanbody #science` | `#bythenumbers #humanbody #science #facts #shorts` |
 | Größenvergleiche | `#bythenumbers #comparison #datavisualization #sizecomparison #scale` | `#bythenumbers #sizecomparison #scale #facts #shorts` |
 | Zeit & Geschwindigkeit | `#bythenumbers #facts #learnontiktok #science #speed` | `#bythenumbers #science #speed #facts #shorts` |
+| Reisen & Erde (zu Fuß, Strecken) | `#bythenumbers #comparison #didyouknow #walking #earth` | `#bythenumbers #walking #earth #facts #shorts` |
 
 **Wichtiger als Hashtags:** Das Suchwort (z. B. „tallest buildings“) gehört vorne in die Caption und einmal groß ins Video. TikTok liest Caption und Bildtext und ordnet das Video danach in der Suche ein.
 
@@ -122,3 +124,35 @@ Heights including spires. Source: Wikipedia "List of tallest buildings" / CTBUH,
 Where would your city rank? 👇
 #bythenumbers #skyscraper #burjkhalifa #facts #shorts
 ```
+
+## #3 – How long to walk around the Earth?
+**Format:** E · Zeitvergleich (Globus + Zähler + Zeitachse) · **Musik:** upbeat 120 BPM, Seed 3 (build 10 s, drop 12 s = 1,002 DAYS, outro 14,5 s)
+**Hook:** „Jet around Earth: *44.5 hours*.“ / „How long to *WALK* it?“ (hookscore 73 STRONG, Formel „The Clock“: „You can fly around the Earth in 44 hours. How long before you could walk it?“)
+**TikTok-Caption:**
+```
+Walk around the Earth: how long would it take? A jet needs 44.5 hours ✈️🌍 Guess the walk BEFORE the end
+Comment your guess in days 👇
+#bythenumbers #comparison #didyouknow #walking #earth
+```
+**Pin-Kommentar:** `How far would YOU get? 🚶 = 1 day · 🥾 = 1 month · 🌍 = all 1,002 days`
+**YouTube-Titel:** `How many days to walk around the Earth at 5 km/h?` (title.py: 98/100, mit Titelbild 100/100)
+**Titelbild-Text:** `2.7 YEARS` (Cover_BN3.jpg – andere Wörter als der Titel, gleiches Versprechen)
+**Suchanfragen (yt-seo):** „how long to walk around the earth“ · „walk around the world how many days“ · „how long to fly around the earth“
+**YouTube-Beschreibung:**
+```
+How long to walk around the Earth? At 5 km/h, 8 hours a day: 1,002 days – about 2.7 years. Walking nonstop: 334 days.
+How many days to walk around the world vs. how long to fly around the Earth by jet (44.5 hours), drive by car or ride a bike.
+
+The route: the equator, 40,075 km (as if there were a road all the way around).
+• Jet airliner, 900 km/h cruising speed, nonstop: 44.5 hours
+• Car, 100 km/h, nonstop: 16.7 days
+• Bike, 20 km/h, nonstop: 83.5 days
+• Walking, 5 km/h, nonstop: 334 days
+• Walking, 5 km/h, 8 hours a day: 1,002 days = 2.7 years
+Math: 40,075 km ÷ speed. Car and bike speeds are round example values.
+Sources: NASA Earth Fact Sheet (equatorial radius 6,378.137 km → 40,075 km), Wikipedia "Walking" / "Preferred walking speed" (~1.4 m/s ≈ 5 km/h), Wikipedia "Cruise (aeronautics)" (Mach 0.85 ≈ 900 km/h). As of November 2026.
+
+Would you make it? 👇
+#bythenumbers #walking #earth #facts #shorts
+```
+

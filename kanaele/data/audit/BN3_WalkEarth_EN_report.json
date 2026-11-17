@@ -1,0 +1,56 @@
+{
+ "video": "BN3_WalkEarth_EN",
+ "duration": 17.5,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  8.67,
+  2.55,
+  3.94,
+  3.15,
+  2.94,
+  3.58,
+  2.56,
+  2.33,
+  3.63,
+  2.71,
+  3.31,
+  8.77,
+  9.6,
+  2.98,
+  10.0,
+  1.33,
+  8.8
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 85.56535339355469,
+  "contrast": 30.501304626464844,
+  "colourfulness": 53.484984397888184
+ },
+ "loop_difference": 8.7,
+ "font_sizes": [
+  28,
+  32,
+  46,
+  108
+ ],
+ "audio": {
+  "first_half_s_db": -14.747740745544434,
+  "median_db": -15.881123542785645,
+  "silent_windows": 0,
+  "lufs": -14.0
+ }
+}

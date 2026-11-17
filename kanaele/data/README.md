@@ -75,8 +75,8 @@ Umsetzung mit `dlib.finish_data(...)` (Rendern) und `dlib.preview(...)` (Kontakt
 
 ## Themen-Backlog (oben = als Nächstes)
 **Ab 16.11.2026: keine Weltall-Themen mehr in dieser Reihe.** Weltall läuft als eigene Short-Reihe mit Sprecher (`../space/shorts/SHORTS.md`), und die langen Videos (`../space/LONGFORM.md`) haben Vorrang. Vor jedem neuen Thema prüfen: `python3 ../space/overlap.py bnN.py` muss ohne Treffer durchlaufen.
-1. **C** · Largest countries by area – Top 10 mit Flaggen (Wikipedia, km²)
-2. **E** · How long would it take to walk around the Earth? (Umfang 40.075 km, 5 km/h, 8 h pro Tag)
+1. **C** · Largest countries by area – Top 10 mit Flaggen (Wikipedia, km²) – ⚠️ Platz 3/4 USA vs. China je nach Quelle umstritten (9,83 vs. 9,37/9,53 Mio. km²); nur mit klarer Definition (Landfläche) oder als Top 10 ohne die beiden bauen
+2. ~~**E** · How long would it take to walk around the Earth?~~ → erledigt als BN3
 3. **B** · Animals to scale: from an ant to the blue whale (Längen aus Wikipedia)
 5. **A** · How much is $1 million in different currencies? (Wechselkurse mit Datum)
 6. **C** · Most visited countries by tourists (UN Tourism, neuestes Jahr)
