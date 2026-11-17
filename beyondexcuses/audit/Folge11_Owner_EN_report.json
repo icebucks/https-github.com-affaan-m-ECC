@@ -1,0 +1,50 @@
+{
+ "video": "Folge11_Owner_EN",
+ "duration": 16.75,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  16.24,
+  2.83,
+  3.5,
+  4.06,
+  3.93,
+  3.59,
+  3.34,
+  2.14,
+  3.2,
+  4.23,
+  3.12,
+  8.1,
+  3.78,
+  1.99,
+  11.71,
+  1.43
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 93.74353790283203,
+  "contrast": 32.83808135986328,
+  "colourfulness": 31.138253688812256
+ },
+ "loop_difference": 42.2,
+ "font_sizes": [],
+ "audio": {
+  "first_half_s_db": -15.031335830688477,
+  "median_db": -15.540315628051758,
+  "silent_windows": 0,
+  "lufs": -14.4
+ }
+}

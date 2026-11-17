@@ -17,6 +17,7 @@ EPS = {  # num: (module, scene time, negative, positive)
     8: ("ep8", 14.2, "IMPATIENCE", "PATIENCE"),
     9: ("ep9", 13.2, "SCROLLER", "LEARNER"),
     10: ("ep10", 13.2, "GRUDGE", "LETTING GO"),
+    11: ("ep11", 12.4, "VICTIM", "OWNER", "ONLY 1|FIXES"),   # optional 5th: thumbnail words (≤ 3, "|" = line break)
 }
 
 
@@ -26,7 +27,8 @@ def fit(s, maxw, size):
 
 
 def cover(num, out):
-    mod, t, neg, pos = EPS[num]
+    mod, t, neg, pos = EPS[num][:4]
+    thumb = EPS[num][4] if len(EPS[num]) > 4 else None
     m = importlib.import_module(mod)
     surf = skia.Surface(W, H); c = surf.getCanvas(); c.clear(skia.ColorBLACK)
     lib.NOW = t
@@ -40,11 +42,15 @@ def cover(num, out):
     c.drawRRect(skia.RRect.MakeRectXY(skia.Rect.MakeXYWH(440, 370, 200, 110), 26, 26), P(AMBER))
     c.drawRRect(skia.RRect.MakeRectXY(skia.Rect.MakeXYWH(440, 370, 200, 110), 26, 26), P(INK, stroke=6))
     text(c, f"#{num}", 540, 452, F_CAP, 80, INK, 1.0)
-    # matchup
-    s1 = fit(neg, 940, 118); s2 = fit(pos, 940, 118)
-    text(c, neg, 540, 640, F_CAP, s1, (235, 236, 242), 1.0, stroke=18)
-    text(c, "vs", 540, 735, F_CAP, 64, (255, 255, 255), 0.9, stroke=12)
-    text(c, pos, 540, 850, F_CAP, s2, AMBER, 1.0, stroke=18)
+    if thumb:   # thumbnail words (different from the title, same promise): white line + amber line
+        l1, l2 = thumb.split("|")
+        text(c, l1, 540, 660, F_CAP, fit(l1, 940, 150), (245, 246, 250), 1.0, stroke=20)
+        text(c, l2, 540, 830, F_CAP, fit(l2, 940, 150), AMBER, 1.0, stroke=20)
+    else:       # matchup
+        s1 = fit(neg, 940, 118); s2 = fit(pos, 940, 118)
+        text(c, neg, 540, 640, F_CAP, s1, (235, 236, 242), 1.0, stroke=18)
+        text(c, "vs", 540, 735, F_CAP, 64, (255, 255, 255), 0.9, stroke=12)
+        text(c, pos, 540, 850, F_CAP, s2, AMBER, 1.0, stroke=18)
     arr = surf.makeImageSnapshot().toarray(colorType=skia.kRGBA_8888_ColorType)[:, :, :3]
     Image.fromarray(arr).save(out, quality=92)
     return out

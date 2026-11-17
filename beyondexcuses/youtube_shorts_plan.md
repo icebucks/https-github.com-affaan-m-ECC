@@ -3,7 +3,7 @@
 **Titel neu (16.11., geprüft mit title.py: 94–98/100):** Thema vorne, Teil-Nummer als Zahl, kein #mindset im Titel. Bei bereits hochgeladenen Folgen den Titel in YouTube Studio → Inhalte → Video → Titel ersetzen.
 
 **So geht's:** YouTube Studio → Erstellen → Videos hochladen → Titel und Beschreibung aus der Liste unten kopieren → Playlist „Mindset Series“ wählen → Sichtbarkeit **„Planen“** mit Datum und Uhrzeit aus der Tabelle.
-Danach in der YouTube-App bei jedem Short unter „Ähnliches Video“ die **nächste Folge** verlinken. Das geht erst, wenn die nächste Folge veröffentlicht ist. Am einfachsten machst du es gesammelt am Ende, die letzte Folge (#10) bleibt ohne Verlinkung.
+Danach in der YouTube-App bei jedem Short unter „Ähnliches Video“ die **nächste Folge** verlinken. Das geht erst, wenn die nächste Folge veröffentlicht ist. Am einfachsten machst du es gesammelt am Ende, die letzte Folge (#11) bleibt ohne Verlinkung.
 
 | Datum | YouTube | Folge | Datei | Titelbild |
 |---|---|---|---|---|
@@ -17,6 +17,7 @@ Danach in der YouTube-App bei jedem Short unter „Ähnliches Video“ die **nä
 | So 22.11. | 15:30 | #8 Impatience vs Patience | `Folge8_Patience_EN.mp4` | `covers/Cover_08.jpg` |
 | Mo 23.11. | 19:30 | #9 Scroller vs Learner | `Folge9_Scroller_EN.mp4` | `covers/Cover_09.jpg` |
 | Di 24.11. | 19:30 | #10 Grudge vs Letting Go | `Folge10_LettingGo_EN.mp4` | `covers/Cover_10.jpg` |
+| Mi 25.11. | 19:30 | #11 Victim vs Owner | `Folge11_Owner_EN.mp4` | `covers/Cover_11.jpg` |
 
 Neue Folgen kommen jeweils am nächsten freien Tag dazu, zu den Zeiten aus der Tabelle unten.
 
@@ -198,6 +199,24 @@ What's your heaviest stone right now? 👇
 
 Mindset Series – Part 10. Follow for Part 11.
 #beyondexcuses #lettinggo #healing #mindset #shorts
+```
+
+## #11 – Victim vs Owner
+**Upload:** Mi 25.11. – TikTok 21:00, YouTube 19:30 · **Titelbild:** `covers/Cover_11.jpg` („ONLY 1 FIXES“)
+**Suchanfragen:** victim mindset · stop blaming others · ownership mindset
+**Titel:**
+```
+Victim vs Owner (Part 11): still blaming the rain?
+```
+**Beschreibung:**
+```
+Victim mindset vs ownership mindset: one blames the rain, the other fixes the roof.
+Stop blaming others for the storm. It's not your fault it rained – but it's your roof.
+
+Who are you still blaming right now? 👇
+
+Mindset Series – Part 11. Follow for Part 12.
+#beyondexcuses #victimmindset #ownership #mindset #shorts
 ```
 
 ---

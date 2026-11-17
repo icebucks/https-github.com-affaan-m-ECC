@@ -495,7 +495,8 @@ def series_overlay(c, t, num, hook, end_at, follow_y=380, series=None):
     if a > 0:
         pop = 1 + 0.12 * (1 - ease(t / 0.25))
         c.save(); c.translate(540, 380); c.scale(pop, pop)
-        text(c, hook, 0, 0, F_CAP, 62, (255, 255, 255), a, stroke=14)
+        for i, ln in enumerate(hook.split("\n")):   # "\n" splits the hook into stacked lines
+            text(c, ln, 0, i * 66, F_CAP, 62, (255, 255, 255), a, stroke=14)
         c.restore()
     b = seg(t, end_at, end_at + 0.4)
     if b > 0:

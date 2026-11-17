@@ -17,10 +17,10 @@ Render: `VID_LANG=en python3 epN.py render` → `FolgeN_<Name>_EN.mp4`. Stills: 
 | 8 | Impatience vs. Patience | spring meadow, time-lapse of days and nights | Do you want results NOW? | Plant. Wait. Trust. | `ep8.py` → `Folge8_Patience_EN.mp4` |
 | 9 | Scroller vs. Learner | city rooftop, night → sunrise | Did you scroll all night? | One of them built stairs. | `ep9.py` → `Folge9_Scroller_EN.mp4` |
 | 10 | Grudge vs. Letting Go | stormy lake → golden dusk | What are you still holding onto? | Let it go. Swim. | `ep10.py` → `Folge10_LettingGo_EN.mp4` |
+| 11 | Victim vs. Owner | leaking attic in a rainstorm, flickering bare bulb → sun shaft through the window | If you blame the rain, you never fix the roof. Watch what 2 people do before it floods. (hookscore 72) | Own it. | `ep11.py` → `Folge11_Owner_EN.mp4` |
 
 ## Ideas (not made yet)
 
-- **Victim vs. Owner**: a flooded room. One complains about the rain; the other picks up a bucket and fixes the roof.
 - **Perfectionist vs. Finisher**: a workshop. One sands the same chair forever; the other builds ten imperfect chairs.
 - **Talker vs. Walker**: a mountain path. One tells everyone about the summit; the other is quietly already up there.
 - **Fear of Failure vs. Courage**: a high diving board at a pool. One climbs down again; the other jumps and comes up laughing.
