@@ -56,6 +56,14 @@ Jedes Video wird nach dem Rendern mit `python3 ../kanaele/data/audit.py FolgeN_.
 - **Leichte Farbkorrektur** (+12 % Sättigung, etwas heller) automatisch in `finish_v2`. Nacht- und Sturmszenen trotzdem nicht fast schwarz anlegen.
 - Schrift: Bei Schildern in der skalierten Szene zählt die Bildschirmgröße (24 px × 1,45 ≈ 35 px). Text außerhalb der Szene mindestens 28 px.
 
+## Teilen, Speichern, Folgen (aus den Zahlen von #11, 17.11.2026)
+#11 wurde gut geschaut (1.830 Aufrufe in 2 h, Ø 65 % Wiedergabe), aber 0 Shares, 0 Saves und nur 1 neuer Follower. Ab #12:
+- **Teilen-Aufforderung** in Caption und Pin-Kommentar, an eine konkrete Person gerichtet: „Send this to someone who always blames the rain.“ (Thema der Folge einsetzen).
+- **Speicherwürdiger Merksatz:** Die amberfarbene Schlusszeile ist eine kurze Regel, die man sich merken will („Own it.“ → „Blame keeps you wet. Fixing keeps you dry.“). In der Caption: „Save this for the next storm.“
+- **Konkreter Cliffhanger statt nur „Follow for part N+1“:** bei Fortsetzungen den nächsten Teil benennen („Part 12: the victim turns around 👀“), sonst die nächste Folge anteasern („Tomorrow: the perfectionist who never finishes“). Text um 16 s, über der Caption-Zone.
+- **Tempo am Ende:** Wendepunkt bis 11 s, Schlusstext ab ~13,5 s, damit nach der Pointe niemand wegwischt; Gesamtlänge 15–17 s.
+- Ziele: > 80 % Ø Wiedergabe, > 5 Kommentare und > 3 neue Follower pro 1.000 Aufrufe, Shares > 0,5 %.
+
 ## Hashtags (TikTok)
 Format: `#thema #mindset #psychology #motivation #beyondexcuses`. Das Marken-Tag `#beyondexcuses` ersetzt `#fyp`, weil #fyp laut den meisten 2026-Analysen kaum etwas bringt und ein eigenes Tag die Serie sammelt. Genau 5 Hashtags, nie „#“ vor Zahlen.
 YouTube: dieselben Themen-Tags am Ende der Beschreibung, `#beyondexcuses` zuerst, `#shorts` am Ende.
