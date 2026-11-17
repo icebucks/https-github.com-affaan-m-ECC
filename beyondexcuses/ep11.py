@@ -32,26 +32,41 @@ def water_lvl(t): return 6 + 24 * seg(t, 0.0, 11.0)
 
 
 # ------------------------------------------------------------------ characters
+# v2 poses (17.11.2026): elbows/knees only bend the right way, hands and feet grab the ladder rungs (IK),
+# the owner turns around instead of flipping, the hammer is handed over hand to hand.
+# The uploaded video (Folge11_Owner_EN.mp4) was rendered with the v1 poses (git history).
+RUNG0, RUNG = G - 30, 46                     # lowest rung y, rung spacing
+def rung_y(k): return RUNG0 - RUNG * k
+C_TOP = (G - TOP - 30) / RUNG               # climbing progress (in rungs) when the feet stand at TOP
+
+
 def carry_bucket(ph):
     p = walk(ph, lean=6)
-    p.update(arm_f=14, elb_f=6)
+    p.update(arm_f=8, elb_f=10)              # arm hangs straight down, holding the handle
     return p
 
 
-def climb(ph):
-    sn = math.sin(ph)
-    return dict(lean=-2, head=-25, arm_f=150 + 18 * sn, elb_f=-25, arm_b=150 - 18 * sn, elb_b=-25,
-                leg_f=38 + 22 * sn, knee_f=70 + 30 * sn, leg_b=38 - 22 * sn, knee_b=70 - 30 * sn)
+def limb_rung(c, off):
+    """rung index of a hand/foot while climbing: holds 70 % of the cycle, then moves up (or down) one rung"""
+    q = c + off; n = math.floor(q); fr = q - n
+    return n + ease(clamp((fr - 0.7) / 0.3))
 
 
-def hammer_pose(t):
+def climbing(c, up=True):
+    """owner on the ladder at climbing progress c (rungs): hip position, hand and foot targets"""
+    hip_y = rung_y(c) - 84 * S - 6           # y returned = foot level (smooth() blends it with walking frames)
+    reach = {"f": (LAD + 8, rung_y(limb_rung(c, 0.0) + 4) + 2), "b": (LAD + 2, rung_y(limb_rung(c, 0.5) + 3) + 2)}
+    plant = {"f": (LAD + 6, rung_y(limb_rung(c, 0.25))), "b": (LAD + 0, rung_y(limb_rung(c, 0.75) - 1))}
+    p = dict(lean=-4, head=-18, leg_f=20, leg_b=10, knee_f=40, knee_b=30)
+    return dict(x=LAD - 18, y=rung_y(c), p=p, f=1, mode="hip", reach=reach, plant=plant)
+
+
+def hammer_swing(t):
+    """0 = wind-up (hammer behind the head) … 1 = strike on the nail"""
     k = 0.0
     for h in HITS:
-        if h - 0.4 < t < h + 0.1: k = 1 - abs((t - h + 0.15) / 0.25) if t < h else 1 - (t - h) / 0.1
-    k = clamp(k)
-    # back hand holds the plank against the hole, front hand swings the hammer
-    return dict(lean=-6, head=-40, arm_b=150, elb_b=-8, arm_f=165 - 55 * k, elb_f=-70 + 40 * k,
-                leg_f=10, knee_f=8, leg_b=-4, knee_b=4)
+        if h - 0.4 < t < h + 0.12: k = ease((t - (h - 0.4)) / 0.4) if t < h else 1 - (t - h) / 0.12
+    return clamp(k)
 
 
 def owner(t):
@@ -59,48 +74,61 @@ def owner(t):
         x = lerp(190, 378, seg(t, 0.0, 1.4))
         return dict(x=x, y=G, p=carry_bucket(t * 8), f=1, bucket=True)
     if t < 2.0:                                  # sets it down under the drip
-        k = seg(t, 1.4, 1.7)
-        return dict(x=378, y=G, p=mix(stand(), dict(crouch(), arm_f=10, elb_f=10), k if t < 1.85 else 1 - seg(t, 1.85, 2.0)), f=1,
-                    bucket=t < 1.75)
+        k = seg(t, 1.4, 1.7) if t < 1.85 else 1 - seg(t, 1.85, 2.0)
+        return dict(x=378, y=G, p=mix(stand(), dict(crouch(), arm_f=30, elb_f=20), k), f=1, bucket=t < 1.75)
     if t < 2.7:                                  # back to the ladder
         x = lerp(378, LAD + 6, seg(t, 2.0, 2.7))
         return dict(x=x, y=G, p=walk(t * 8, lean=6), f=-1)
-    if t < 3.2:                                  # grabs the plank
+    if t < 3.2:                                  # picks up the plank, turns to the ladder
         k = seg(t, 2.7, 2.95)
-        return dict(x=LAD + 6, y=G, p=mix(stand(), dict(stand(), lean=18, arm_f=60, elb_f=-20), k), f=-1, plank=t > 2.95)
-    if t < 5.6:                                  # climbs
-        k = seg(t, 3.2, 5.6)
-        return dict(x=LAD, y=lerp(G, TOP, k), p=climb(t * 7), f=1, plank=True)
-    if t < 9.6:                                  # nails the plank over the hole
-        p = hammer_pose(t) if t > PATCH else dict(hammer_pose(0), arm_f=120, elb_f=-40)
-        return dict(x=LAD, y=TOP, p=p, f=1, hammer=t > PATCH, plank=t < PATCH)
+        f = -1 if t < 2.95 else lerp(-1, 1, seg(t, 2.95, 3.2))
+        return dict(x=LAD + 6 - 24 * seg(t, 2.95, 3.2), y=G, p=mix(stand(), dict(stand(), lean=14, head=10), k), f=f,
+                    reach={"b": (LAD - 40, G - 70 - 30 * seg(t, 2.95, 3.2))}, plank=t > 2.95)
+    if t < 5.6:                                  # climbs, rung by rung
+        o = climbing(C_TOP * seg(t, 3.2, 5.6))
+        o["reach"]["b"] = (LAD + 14, o["y"] - 210)      # the plank hand stays up, carrying the plank
+        return dict(o, plank=True)
+    if t < 9.6:                                  # holds the plank to the hole and nails it
+        o = climbing(C_TOP)
+        o["reach"] = {"b": (H1 - 40, roof_y(H1) + 46)}
+        if t > PATCH:
+            k = hammer_swing(t)
+            wind, strike = (LAD + 4, o["y"] - 240), (H1 - 30, roof_y(H1) + 52)
+            o["reach"]["f"] = (lerp(wind[0], strike[0], k), lerp(wind[1], strike[1], k))
+        else:
+            o["reach"]["f"] = (H1 - 10, roof_y(H1) + 50)
+        o["p"] = dict(o["p"], head=-28)
+        return dict(o, hammer=t > PATCH, plank=t < PATCH)
     if t < 11.0:                                 # climbs down
-        k = seg(t, 9.6, 11.0)
-        return dict(x=LAD, y=lerp(TOP, G, k), p=climb(t * 7), f=1)
+        return dict(climbing(C_TOP * (1 - seg(t, 9.6, 11.0)), up=False))
     if t < TURN:                                 # steps off, looks up at the patch
         x = lerp(LAD, 470, seg(t, 11.0, 11.7))
-        return dict(x=x, y=G, p=dict(stand(), head=-30, lean=-3) if t > 11.7 else walk(t * 8), f=1)
+        return dict(x=x, y=G, p=dict(stand(), head=-26, lean=-3) if t > 11.7 else walk(t * 8), f=1)
     if t < 14.7:                                 # jumps for joy in the sun
         ph = (t - TURN) / 0.62
         hop = max(0.0, math.sin(ph * math.pi)) if int(ph) % 2 == 0 else 0.0
-        return dict(x=470, y=G - 46 * hop, p=cheer(t) if hop < 0.2 else dict(airborne(), arm_f=160, arm_b=-160), f=1)
+        return dict(x=470, y=G - 46 * hop, p=cheer(t) if hop < 0.2 else dict(airborne(), arm_f=150, arm_b=-150), f=1)
     if t < 15.5:                                 # walks over …
-        return dict(x=lerp(470, 515, seg(t, 14.7, 15.5)), y=G, p=walk(t * 8), f=1, hammer=True)
-    return dict(x=515, y=G, p=dict(stand(), arm_f=82, elb_f=-12, head=-6), f=1, hammer=True)   # … and offers the hammer
+        return dict(x=lerp(470, 505, seg(t, 14.7, 15.5)), y=G, p=walk(t * 8), f=1, hammer=True)
+    return dict(x=505, y=G, p=offer(), f=1, hammer=True, reach={"f": (566, G - 112)})   # … and holds the hammer out
 
 
 def victim(t):
     base = arms_crossed(head=-6)
     for ts, _ in VICTIM_TALK[:4]:
-        if ts < t < ts + 1.8:    # gestures while complaining
+        if ts < t < ts + 1.8:    # complains: palms up, shrugging
             k = seg(t, ts, ts + 0.25) * (1 - seg(t, ts + 1.5, ts + 1.8))
-            return dict(x=650, y=G, p=mix(base, dict(lean=-6, head=-18, arm_f=62, elb_f=-55, arm_b=58, elb_b=-55, leg_f=6, leg_b=-6), k), f=-1)
-    if t > 15.5:                  # … and finally reaches for the hammer
+            return dict(x=650, y=G, p=mix(base, shrug(1.0), k), f=-1)
+    if t > 15.5:                  # … and finally takes the hammer
         k = seg(t, 15.5, 16.2)
-        return dict(x=650 - 14 * k, y=G, p=mix(dict(base, lean=-2, head=8), dict(stand(), lean=6, head=4, arm_f=78, elb_f=-14, arm_b=10), k), f=-1)
-    if t > TURN + 0.3:            # looks over at the dry, sunny side – shrugs
+        o = dict(x=650 - 14 * k, y=G, p=mix(dict(base, lean=-2, head=8), dict(stand(), lean=6, head=6), k), f=-1)
+        if k > 0.05:
+            grab = (574, G - 108)
+            o["reach"] = {"f": (lerp(640, grab[0], k), lerp(G - 70, grab[1], k))}
+        return o
+    if t > TURN + 0.3:            # looks over at the dry, sunny side – hands on hips
         k = seg(t, TURN + 0.3, TURN + 0.8)
-        return dict(x=650, y=G, p=mix(base, dict(lean=-2, head=8, arm_f=50, elb_f=-70, arm_b=46, elb_b=-70, leg_f=6, leg_b=-6), k), f=-1)
+        return dict(x=650, y=G, p=mix(base, dict(hands_on_hips(), head=8), k), f=-1)
     return dict(x=650, y=G, p=dict(base, lean=-4 + math.sin(t * 2) * 2), f=-1)
 
 
@@ -269,7 +297,8 @@ def frame(c, t):
     rim_o = (lerpc((255, 196, 110), (255, 214, 150), u), 0.6)
     lo = (1, -0.4) if t < TURN else (1, -1)
     shadow(c, o["x"], o["y"], S, 0.3)
-    jo = figure(c, o["x"], o["y"], o["p"], s=S, facing=o["f"], body=OWN_BODY, rim=rim_o, light=lo)
+    jo = figure(c, o["x"], o["y"] - (84 * S + 6 if o.get("mode") == "hip" else 0), o["p"], s=S, facing=o["f"], body=OWN_BODY, rim=rim_o, light=lo,
+                mode=o.get("mode", "feet"), reach=o.get("reach"), plant=o.get("plant"))
     if o.get("bucket"): bucket(c, jo["hand_f"][0] + 4, jo["hand_f"][1] + 46, 0)
     elif t > 1.7: bucket(c, H1 + 8, G, fill)
     if o.get("plank"):
@@ -291,7 +320,8 @@ def frame(c, t):
     v = smooth(victim, t)
     lv = (-1, -0.4) if t < TURN else (-1, -0.8)
     shadow(c, v["x"], v["y"], S, 0.3)
-    jv = figure(c, v["x"], v["y"], v["p"], s=S, facing=v["f"], body=VIC_BODY, rim=((170, 200, 255), 0.5), light=lv)
+    jv = figure(c, v["x"], v["y"], v["p"], s=S, facing=v["f"], body=VIC_BODY, rim=((170, 200, 255), 0.5), light=lv,
+                reach=v.get("reach"))
     drips(c, t, H2, roof_y(H2) + 30, jv["head"][1] - 18, lerp(1.0, 0.75, u), rate=1.1, seed=4)
     # wet sheen on the victim's head
     c.drawCircle(jv["head"][0], jv["head"][1] - 8, 14, P((180, 210, 240), 0.35))

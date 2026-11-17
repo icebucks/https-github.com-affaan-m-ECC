@@ -241,6 +241,7 @@ L = dict(torso=72, neck=10, head=19, up=36, fore=34, thigh=42, shin=42)
 # A negative elb/knee would bend the joint backwards (broken-looking), so JOINT_LIMITS clamps it.
 # fore_x (0.3 … 1) shortens a forearm that points toward/away from the camera (crossed arms, hands on hips, pockets).
 JOINT_LIMITS = True
+HEAD_TILT = 30.0        # head can look up/down at most this much relative to the torso
 _WARNED = []
 
 
@@ -275,6 +276,11 @@ def pose_points(p, s, facing):
         fs = p.get(f"fore_{side}", 1.0)                                 # < 1: forearm points toward/away from the camera
         d1 = V(a, facing); el = (sa[0] + d1[0] * L["up"] * s, sa[1] + d1[1] * L["up"] * s)
         d2 = V(a + e, facing); hn = (el[0] + d2[0] * L["fore"] * s * fs, el[1] + d2[1] * L["fore"] * s * fs)
+        cr = p.get("crossed", 0)
+        if cr > 0:   # folded arms seen from the side: the forearm runs across the chest (out-of-plane, so no joint limit)
+            dc = V(-84 if side == "f" else -78, facing); fc = L["fore"] * s * 0.62
+            hc = (el[0] + dc[0] * fc, el[1] + dc[1] * fc)
+            hn = (lerp(hn[0], hc[0], cr), lerp(hn[1], hc[1], cr))
         tt = p.get(f"leg_{side}", 0); k = p.get(f"knee_{side}", 0)
         if JOINT_LIMITS: k = clamp(k, KNEE[0], KNEE[1])                 # knees only bend one way
         d3 = V(tt, facing); kn = (d3[0] * L["thigh"] * s, d3[1] * L["thigh"] * s)
@@ -313,18 +319,49 @@ def _quad(a, b, wa, wb):
     return _op(_op(pth, ca, skia.PathOp.kUnion_PathOp), cb, skia.PathOp.kUnion_PathOp)
 
 
-def figure(c, x, y, p, s=0.8, facing=1, rot=0.0, body=WHITE, mode="feet", lift=0.0, rim=None, light=(-1, -1)):
+def _ik_angles(dx, dy, a, b, facing, knee=False):
+    """2-bone IK in the side-view convention: returns (root_angle, flexion) so the chain end lands on (dx, dy)
+    elbows flex forward (+), knees flex backward (shin = thigh - knee)"""
+    f = 1 if facing >= 0 else -1
+    b = max(b, 1e-3); d = max(abs(a - b) + 1e-3, min(a + b - 1e-3, math.hypot(dx, dy)))
+    th = math.degrees(math.atan2(dx * f, dy))
+    al = math.degrees(math.acos(max(-1, min(1, (a * a + d * d - b * b) / (2 * a * d)))))
+    inner = math.degrees(math.acos(max(-1, min(1, (a * a + b * b - d * d) / (2 * a * b)))))
+    flex = 180 - inner
+    return (th + al, flex) if knee else (th - al, flex)
+
+
+def figure(c, x, y, p, s=0.8, facing=1, rot=0.0, body=WHITE, mode="feet", lift=0.0, rim=None, light=(-1, -1),
+           reach=None, plant=None):
     """draw figure; mode 'feet': lowest foot on y; 'hip': hip at (x,y). returns dict of world joints
-    v2: tapered limbs, shaped torso, neck, hands, feet, soft shading, idle breathing"""
+    v2: tapered limbs, shaped torso, neck, hands, feet, soft shading, idle breathing
+    reach={'f': (wx, wy), 'b': ...}: hands grab these WORLD points (IK, elbows bend the right way)
+    plant={'f': (wx, wy), ...}: feet stand on these WORLD points (IK, only with mode='hip', e.g. on ladder rungs)
+    facing may be fractional (-1 … 1): a figure turning around squeezes through 0 instead of flipping"""
     if NOW is not None:
         br = math.sin(NOW * 2.3 + x * 0.017)
         p = dict(p); p["arm_f"] = p.get("arm_f", 0) + 1.6 * br; p["arm_b"] = p.get("arm_b", 0) - 1.2 * br
         p["head"] = p.get("head", 0) + 1.0 * math.sin(NOW * 1.1 + x * 0.01)
+    if abs(facing) < 0.12: facing = 0.12 if facing >= 0 else -0.12
+    p = dict(p); p["head"] = clamp(p.get("head", 0), -HEAD_TILT, HEAD_TILT)     # no broken necks
     J = pose_points(p, s, facing)
     if mode == "feet":
         low = max(J["foot_f"][1], J["foot_b"][1]); hx, hy = x, y - low - 6 * s - lift
     else:
         hx, hy = x, y
+    if reach or plant:
+        cr, sr = math.cos(math.radians(-rot)), math.sin(math.radians(-rot))
+        def local(wp):
+            dx, dy = wp[0] - hx, wp[1] - hy
+            return (dx * cr - dy * sr) / abs(facing), (dx * sr + dy * cr)
+        for side, wp in (reach or {}).items():
+            lx_, ly_ = local(wp); sa = J["sa"]
+            p[f"arm_{side}"], p[f"elb_{side}"] = _ik_angles(lx_ - sa[0], ly_ - sa[1], L["up"] * s, L["fore"] * s * p.get(f"fore_{side}", 1.0), facing)
+        if mode != "feet":
+            for side, wp in (plant or {}).items():
+                lx_, ly_ = local(wp)
+                p[f"leg_{side}"], p[f"knee_{side}"] = _ik_angles(lx_, ly_ - 6 * s, L["thigh"] * s, L["shin"] * s, facing, knee=True)
+        J = pose_points(p, s, facing)
     c.save(); c.translate(hx, hy); c.rotate(rot)
     lw = 17 * s; OL = 7
     back = tuple(v * 0.80 for v in body)
@@ -399,13 +436,31 @@ def figure(c, x, y, p, s=0.8, facing=1, rot=0.0, body=WHITE, mode="feet", lift=0
     return out
 
 
+def _first(vals, k):
+    for v in vals:
+        if k in v: return v[k]
+    return 0
+
+
 def _avg(vals, ws):
     v0 = vals[len(vals) // 2]
+    if any(isinstance(v, (tuple, list)) for v in vals):     # IK targets: blend points, keep the current one if shapes differ
+        if all(isinstance(v, (tuple, list)) and len(v) == len(v0) for v in vals):
+            return tuple(sum(w * v[i] for v, w in zip(vals, ws)) for i in range(len(v0)))
+        return v0
     if isinstance(v0, bool) or not isinstance(v0, (int, float, dict, tuple)): return v0
     if isinstance(v0, dict):
-        keys = set().union(*[v.keys() for v in vals if isinstance(v, dict)])
-        return {k: _avg([v.get(k, 10 if k.startswith("elb") else 0) if isinstance(v, dict) else 0 for v in vals], ws) for k in keys} \
-            if all(isinstance(v, dict) for v in vals) else v0
+        if not all(isinstance(v, dict) for v in vals): return v0
+        out = {}
+        for k in set().union(*[v.keys() for v in vals]):
+            if k not in v0 and not isinstance(_first(vals, k), (int, float)): continue   # a target the current frame does not use
+            if isinstance(v0.get(k), (tuple, list)):                                   # IK target: blend only where it exists
+                pts = [(v[k], w) for v, w in zip(vals, ws) if isinstance(v.get(k), (tuple, list)) and len(v[k]) == len(v0[k])]
+                sw_ = sum(w for _, w in pts)
+                out[k] = tuple(sum(w * q[i] for q, w in pts) / sw_ for i in range(len(v0[k])))
+            else:
+                out[k] = _avg([v.get(k, _pdef(k)) for v in vals], ws)
+        return out
     if isinstance(v0, tuple): return v0
     return sum(w * v for v, w in zip(vals, ws))
 
@@ -419,7 +474,10 @@ def smooth(fn, t, w=0.12, n=7):
     mid = vals[n // 2]
     out = dict(mid)
     for k in mid:
-        if k in ("f", "facing", "mode"): continue          # discrete: keep the current value
+        if k == "mode": continue                           # discrete: keep the current value
+        if k in ("f", "facing"):                           # continuous turn: -1 … 1 through 0 (no flip, no ghosting)
+            if all(k in v for v in vals): out[k] = sum(w * v[k] for v, w in zip(vals, ws))
+            continue
         if all(k in v for v in vals): out[k] = _avg([v[k] for v in vals], ws)
     return out
 
@@ -431,8 +489,11 @@ def path_stroke(path, w):
     out = skia.Path(); p.getFillPath(path, out); return out
 
 
+def _pdef(k): return 1.0 if k.startswith("fore_") else 10 if k.startswith("elb") else 0   # "crossed" defaults to 0
+
+
 def mix(a, b, u):
-    return {k: lerp(a.get(k, 0), b.get(k, 0), u) for k in set(a) | set(b)}
+    return {k: lerp(a.get(k, _pdef(k)), b.get(k, _pdef(k)), u) for k in set(a) | set(b)}
 
 
 def stand(): return dict(lean=0, arm_f=6, arm_b=-6, elb_f=8, elb_b=8, leg_f=3, leg_b=-3)
@@ -467,7 +528,13 @@ def cheer(t):
 
 
 def arms_crossed(head=0):
-    return dict(lean=-4, head=head, arm_f=16, elb_f=84, fore_f=0.42, arm_b=10, elb_b=90, fore_b=0.42, leg_f=8, leg_b=-8)   # forearms across the chest, pointing at the camera
+    return dict(lean=-4, head=head, arm_f=40, elb_f=0, arm_b=34, elb_b=0, crossed=1.0, leg_f=8, leg_b=-8)   # elbows forward, forearms across the chest
+
+
+def hands_on_hips(): return dict(lean=-3, head=-4, arm_f=-8, elb_f=95, fore_f=0.45, arm_b=-14, elb_b=95, fore_b=0.45, leg_f=6, leg_b=-6)
+def shrug(k=1.0):     # palms up, elbows at the waist, shoulders "up" via a small lean back
+    return dict(lean=-3 * k, head=-10 * k, arm_f=12, elb_f=80 * k + 8, arm_b=6, elb_b=76 * k + 8, leg_f=6, leg_b=-6)
+def offer(): return dict(lean=6, head=4, arm_f=72, elb_f=18, arm_b=-4, elb_b=12, leg_f=6, leg_b=-6)   # hand held out
 
 
 def sit(t=0):  # on a bench, hip at bench height
