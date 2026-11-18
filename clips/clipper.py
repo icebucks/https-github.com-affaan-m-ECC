@@ -68,6 +68,54 @@ def find(path, top=8, length=35.0):
     return js
 
 
+CATS = {   # viral categories: keywords the streamer says + how much loudness / on-screen motion count
+    "funny":   (re.compile(r"\b(ha(ha)+|lol|lmao|bro+|why|what the|no way|dude|bruh|oh my god|omg|wtf|hell|crazy|insane|funny|weird|wait what|he just|she just)\b", re.I), 1.0, 0.4),
+    "action":  (re.compile(r"\b(cops?|police|run+|go go|shoot|shot|gun|chase|wanted|stars?|drive|crash|dead|die|kill|explo\w*|heli\w*|swat|escape|get out|floor it)\b", re.I), 1.0, 1.4),
+    "secrets": (re.compile(r"\b(look at (this|that)|did you see|easter egg|detail|hidden|secret|notice|reference|map|you can (even|actually)|they (added|put)|that'?s sick|wait look)\b", re.I), 0.3, 0.2),
+}
+
+
+def motion(path, sec, fps=2):
+    """mean frame difference per second (tiny grey frames) – chases, crashes and explosions move a lot"""
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-vf", f"fps={fps},scale=64:36,format=gray", "-f", "rawvideo", "-"],
+                         capture_output=True).stdout
+    f = np.frombuffer(raw, dtype=np.uint8).reshape(-1, 36, 64).astype(np.float32)
+    d = np.abs(np.diff(f, axis=0)).mean((1, 2)) if len(f) > 1 else np.zeros(1)
+    per = np.array([d[i * fps:(i + 1) * fps].mean() if i * fps < len(d) else 0 for i in range(sec)])
+    return (per - np.median(per)) / (per.std() + 1e-6)
+
+
+def find_cats(path, per_cat=4, length=30.0):
+    """best moments per viral category (funny / action / secrets) -> <video>.cats.json, printed for review"""
+    a = audio(path); sr = 16000; sec = len(a) // sr
+    rms = np.array([np.sqrt(np.mean(a[i * sr:(i + 1) * sr] ** 2) + 1e-12) for i in range(sec)])
+    db = 20 * np.log10(rms); z = np.clip((db - np.median(db)) / (np.std(db) + 1e-6), 0, None)
+    mo = np.clip(motion(path, sec), 0, None)
+    words = transcribe(a)
+    L = int(length); res = {}; used = []
+    for cat, (rx, wl, wm) in CATS.items():
+        kw = np.zeros(sec)
+        text_by_sec = [""] * sec
+        for w, s, e in words:
+            text_by_sec[min(sec - 1, int(s))] += " " + w
+        for i in range(sec):
+            ctx = " ".join(text_by_sec[max(0, i - 1):i + 2])
+            kw[i] = len(rx.findall(text_by_sec[i])) + 0.5 * (len(rx.findall(ctx)) > 0)
+        score = np.array([kw[i:i + L].sum() * 2.0 + z[i:i + L].sum() * wl * 0.3 + mo[i:i + L].sum() * wm * 0.3 for i in range(max(1, sec - L))])
+        picks = []
+        for i in np.argsort(-score):
+            if all(abs(i - p) >= L for p in picks + used): picks.append(int(i))
+            if len(picks) >= per_cat: break
+        used += picks
+        res[cat] = [dict(start=i, end=min(sec, i + L), score=round(float(score[i]), 1),
+                         text=" ".join(w for w, s, e in words if i <= s < i + L)) for i in sorted(picks, key=lambda p: -score[p])]
+    json.dump(dict(video=path, cats=res), open(path + ".cats.json", "w"), indent=1)
+    for cat, ms in res.items():
+        print(f"== {cat}")
+        for m in ms: print(f"  {m['start']:5d}–{m['end']:5d}s  {m['score']:6.1f}  {m['text'][:110]}")
+    return res
+
+
 def ass_time(t):
     t = max(0.0, t); h = int(t // 3600); m = int(t % 3600 // 60); s = t % 60
     return f"{h}:{m:02d}:{s:05.2f}"
@@ -93,8 +141,10 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
     ev = []
     pop = r"{\fscx112\fscy112\t(0,120,\fscx100\fscy100)}"
-    ev.append(f"Dialogue: 2,{ass_time(0)},{ass_time(3.2)},Hook,,0,0,0,,{pop}{l1.upper()}")
-    if l2: ev.append(f"Dialogue: 2,{ass_time(0.45)},{ass_time(3.2)},Hook2,,0,0,0,,{pop}{l2.upper()}")
+    def fit(txt, size):   # Poppins Bold caps ≈ 0.68 em per character; keep each line inside ~940 px (clear of the button column)
+        return min(size, int(940 / (0.68 * max(1, len(txt)))))
+    ev.append(f"Dialogue: 2,{ass_time(0)},{ass_time(3.2)},Hook,,0,0,0,,{pop}{{\\fs{fit(l1, 78)}}}{l1.upper()}")
+    if l2: ev.append(f"Dialogue: 2,{ass_time(0.45)},{ass_time(3.2)},Hook2,,0,0,0,,{pop}{{\\fs{fit(l2, 66)}}}{l2.upper()}")
     ev.append(f"Dialogue: 1,{ass_time(0)},{ass_time(dur)},Credit,,0,0,0,,{credit}")
     # captions: groups of up to 3 words, the spoken word in gold
     groups = []; g = []
@@ -264,7 +314,8 @@ def cut(path, start, end, hook, credit, cam=None, out=None, gameplay=False, cx=0
     if gameplay:     # pure gameplay: no facecam, no chat overlay, no streamer voice, no captions
         if dialog:                                   # captions = the game's own dialogue, read from the cleaned mix
             aud, _ = remove_streamer(path, start, dur, tmp)
-            words = [(w, s, e) for w, s, e in transcribe(audio(aud)) if s < dur]
+            words = [(w, s, e) for w, s, e in transcribe(audio(aud)) if s < dur and e - s < 1.5]   # long "words" = hallucination
+            if len(words) < 4: words = []                                                      # stray words on a silent track
         else: aud, words = remove_voices(path, start, dur, tmp), []
     else:
         a = audio(path, start=start, dur=dur)
@@ -294,7 +345,7 @@ def cut(path, start, end, hook, credit, cam=None, out=None, gameplay=False, cx=0
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["find", "cut"])
+    ap.add_argument("cmd", choices=["find", "cats", "cut"])
     ap.add_argument("video")
     ap.add_argument("start", nargs="?", type=float)
     ap.add_argument("end", nargs="?", type=float)
@@ -309,4 +360,5 @@ if __name__ == "__main__":
     ap.add_argument("--dialog", action="store_true", help="with --gameplay: mute only the streamer's voice, keep in-game dialogue")
     A = ap.parse_args()
     if A.cmd == "find": find(A.video, A.top, A.len)
+    elif A.cmd == "cats": find_cats(A.video, max(1, A.top // 2), A.len)
     else: cut(A.video, A.start, A.end, A.hook, A.credit, [int(v) for v in A.cam.split(",")] if A.cam else None, A.out, A.gameplay, A.cx, A.dialog)

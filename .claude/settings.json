@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(streamlink:*)",
+      "Bash(python3 clips/twitch_find.py:*)",
+      "Bash(python3 clips/pick_streamer.py:*)",
+      "Bash(python3 clips/clipper.py:*)",
+      "Bash(bash clips/record_loop.sh:*)"
+    ]
+  }
+}
