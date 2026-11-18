@@ -269,12 +269,27 @@ def remove_streamer(path, start, dur, tmp, pre=0.35, post=0.6, bridge=0.8):
         for g in gaps:
             a, b = on[g], on[g + 1]
             if (b - a) / 100 < bridge: keep[a:b] = 1.0
+    # each open stretch stays open as a whole (smooth), but only if what is SAID there matches what the subtitles SAY –
+    # mission hints and objective text are subtitled too, while the streamer talks over them
+    from rapidfuzz import fuzz
+    words = transcribe(audio(voc))
+    on = np.concatenate([[0], keep, [0]]); d = np.diff(on)
+    starts, ends = np.where(d == 1)[0], np.where(d == -1)[0]
+    dropped = 0
+    for a, b in zip(starts, ends):
+        t0, t1 = a / 100, b / 100
+        ws = [re.sub(r"[^a-z']", "", w.lower()) for w, s, e in words if t0 <= s < t1]
+        ws = [w for w in ws if len(w) >= 3]
+        if not ws: continue
+        txt = " ".join(x for t, x in subs if t0 - 1 <= t <= t1 + 1).split()
+        hit = sum(1 for w in ws if any(fuzz.ratio(w, c) >= 80 for c in txt)) / len(ws)
+        if hit < 0.4: keep[a:b] = 0.0; dropped += 1
     k = np.hanning(31); k /= k.sum()                                    # ~150 ms soft fades
     gain = np.clip(np.convolve(keep, k, mode="same"), 0, 1)
     g = np.interp(np.arange(len(v)) / sr, np.arange(len(gain)) / 100, gain)
     mix = ins + v * (g[:, None] if v.ndim == 2 else g)
     out = os.path.join(tmp, "dialog_mix.wav"); sf.write(out, mix, sr)
-    print(f"subtitle lines read: {len(subs)}, dialogue open {keep.mean():.0%} of the clip, streamer muted elsewhere", file=sys.stderr)
+    print(f"subtitle lines read: {len(subs)}, dialogue open {keep.mean():.0%} of the clip, {dropped} stretch(es) dropped (streamer over hints)", file=sys.stderr)
     return out, []
 
 
