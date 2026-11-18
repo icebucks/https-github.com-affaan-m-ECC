@@ -1,0 +1,50 @@
+{
+ "video": "Folge15_TalkerWalker_EN",
+ "duration": 16.75,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  14.47,
+  1.79,
+  2.15,
+  2.58,
+  3.31,
+  3.19,
+  3.0,
+  2.88,
+  2.64,
+  2.98,
+  2.68,
+  1.37,
+  1.54,
+  11.56,
+  2.44,
+  1.26
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 101.2735595703125,
+  "contrast": 39.947357177734375,
+  "colourfulness": 39.58992385864258
+ },
+ "loop_difference": 41.9,
+ "font_sizes": [],
+ "audio": {
+  "first_half_s_db": -14.87137222290039,
+  "median_db": -14.117583274841309,
+  "silent_windows": 0,
+  "lufs": -14.0
+ }
+}

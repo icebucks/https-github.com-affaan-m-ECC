@@ -21,6 +21,7 @@ EPS = {  # num: (module, scene time, negative, positive)
     12: ("ep12", 8.4, "VICTIM", "OWNER", "HE TURNED|AROUND", 9),   # optional 6th: part number shown on TikTok
     13: ("ep13", 12.2, "PERFECTIONIST", "FINISHER", "3 WEEKS|0 SOLD", 10),
     14: ("ep14", 7.2, "PEOPLE PLEASER", "BOUNDARIES", "NONE|WERE HIS", 11),
+    15: ("ep15", 13.1, "TALKER", "WALKER", "SHE'S|ALREADY UP", 12, 400),   # 7th field: scene shift (summit below the title band)
 }
 
 
@@ -36,7 +37,8 @@ def cover(num, out):
     m = importlib.import_module(mod)
     surf = skia.Surface(W, H); c = surf.getCanvas(); c.clear(skia.ColorBLACK)
     lib.NOW = t
-    c.save(); c.translate(0, 190); m.frame(c, t); c.restore()
+    dy = EPS[num][6] if len(EPS[num]) > 6 else 190
+    c.save(); c.translate(0, dy); m.frame(c, t); c.restore()
     # calm dark band for the title; fades into the scene below
     c.drawRect(skia.Rect.MakeWH(W, 860), P((14, 16, 26), 0.93))
     sh = skia.Paint(Shader=skia.GradientShader.MakeLinear([(0, 860), (0, 1120)], [C((14, 16, 26), 0.93), C((14, 16, 26), 0.0)]))

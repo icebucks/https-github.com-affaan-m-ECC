@@ -21,6 +21,7 @@ Danach in der YouTube-App bei jedem Short unter „Ähnliches Video“ die **nä
 | Do 26.11. | 19:30 | #12 Victim vs Owner, Part 2 (im Video: Part 9) | `Folge12_OwnerPart2_EN.mp4` | `covers/Cover_12.jpg` |
 | Fr 27.11. | 22:00 | #13 Perfectionist vs Finisher (im Video: Part 10) | `Folge13_Finisher_EN.mp4` | `covers/Cover_13.jpg` |
 | Sa 28.11. | 17:30 | #14 People Pleaser, Part 2 (im Video: Part 11) | `Folge14_PleaserPart2_EN.mp4` | `covers/Cover_14.jpg` |
+| So 29.11. | 15:30 | #15 Talker vs Walker (im Video: Part 12) | `Folge15_TalkerWalker_EN.mp4` | `covers/Cover_15.jpg` |
 
 Neue Folgen kommen jeweils am nächsten freien Tag dazu, zu den Zeiten aus der Tabelle unten.
 
@@ -301,4 +302,27 @@ Send this to the friend who never says no 👇
 
 Mindset Series – Part 11. Part 12 tomorrow: the one who talks, the one who walks.
 #beyondexcuses #peoplepleaser #boundaries #mindset #shorts
+```
+
+## #15 – Talker vs Walker (TikTok: Part 12)
+**TikTok:** Fr 20.11., 20:00 (wie Part 9–11, Teil-Rhythmus „tomorrow“) · **YouTube:** So 29.11. 15:30 · **Titelbild:** `covers/Cover_15.jpg` („SHE'S / ALREADY UP“, #12) · **Hook im Video:** „He's told everyone. 0 steps.“ / „Watch who reaches the top.“
+**Suchanfragen:** „stop announcing your goals“ · „talking about goals vs doing“ · „all talk no action“
+**TikTok-Caption:**
+```
+You keep announcing the climb. Why is the quiet one already at the top before you take 1 step? 🏔️📱
+Send this to someone who's been "starting tomorrow" for months 👀
+Comment "WALK" if you're starting today.
+#goals #mindset #psychology #motivation #beyondexcuses
+```
+**Pin-Kommentar:** `Be honest: are you the one filming or the one climbing? 📱 = still talking · 🥾 = already walking`
+**Titel (title.py 98, mit Titelbild 100):** `Talker vs Walker (Part 12): are you all talk and 0 steps?`
+**Beschreibung:**
+```
+All talk, no action? Stop announcing your goals: he films "Day 1 of my summit era" at the trailhead, she just walks.
+Talking about goals vs doing them: when the sun comes up, she's at the top – and he hasn't taken a step.
+
+Send this to someone who's been "starting tomorrow" for months 👇
+
+Mindset Series – Part 12. Part 13 tomorrow: the one who never jumps.
+#beyondexcuses #goals #discipline #mindset #shorts
 ```
