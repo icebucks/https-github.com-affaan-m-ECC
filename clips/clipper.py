@@ -83,10 +83,10 @@ WrapStyle: 2
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Hook,Poppins,78,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,7,2,8,90,90,330,1
-Style: Hook2,Poppins,66,&H0050C8FF,&H0050C8FF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,7,2,8,90,90,430,1
+Style: Hook,Poppins,78,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,7,2,8,60,60,272,1
+Style: Hook2,Poppins,66,&H0050C8FF,&H0050C8FF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,7,2,8,60,60,362,1
 Style: Cap,Poppins,74,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,1,0,0,0,100,100,0,0,1,8,2,2,90,200,560,1
-Style: Credit,Poppins,34,&H00E6E6E6,&H00E6E6E6,&H00000000,&H64000000,1,0,0,0,100,100,1,0,1,4,1,8,90,90,236,1
+Style: Credit,Poppins,30,&H00E6E6E6,&H00E6E6E6,&H00000000,&H64000000,1,0,0,0,100,100,1,0,1,4,1,8,90,90,222,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
@@ -118,15 +118,16 @@ def cut(path, start, end, hook, credit, cam=None, out=None):
     words = [(w, s, e) for w, s, e in transcribe(a) if s < dur]
     tmp = tempfile.mkdtemp()
     ass = os.path.join(tmp, "c.ass"); make_ass(words, hook, credit, dur, ass)
-    if cam:
+    bg = "[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,gblur=sigma=30,eq=brightness=-0.18[bg];"
+    if cam:   # small source facecams: a 600 px box (no blurry 4x upscale), gameplay large underneath
         x, y, w, h = cam
-        fc = (f"[0:v]crop={w}:{h}:{x}:{y},scale=1080:-2,setsar=1[cam];"
-              f"[0:v]scale=-2:1240,crop=1080:1240,setsar=1[game];"
-              f"[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,gblur=sigma=30,eq=brightness=-0.15[bg];"
-              f"[bg][game]overlay=0:680[b1];[b1][cam]overlay=0:120[b2];[b2]ass={ass}[v]")
-    else:
-        fc = (f"[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,gblur=sigma=30,eq=brightness=-0.15[bg];"
-              f"[0:v]scale=-2:900,crop=1080:900,setsar=1[game];[bg][game]overlay=0:540[b1];[b1]ass={ass}[v]")
+        ch = int(round(600 * h / w / 2)) * 2
+        gy = 460 + ch + 16
+        fc = (bg + f"[0:v]crop={w}:{h}:{x}:{y},scale=600:{ch},setsar=1,pad=608:{ch + 8}:4:4:color=0xFFC850[cam];"
+              f"[0:v]scale=-2:{1720 - gy},crop=1080:{1720 - gy},setsar=1[game];"
+              f"[bg][game]overlay=0:{gy}[b1];[b1][cam]overlay=236:456[b2];[b2]ass={ass}[v]")
+    else:     # no facecam: big gameplay window
+        fc = (bg + f"[0:v]scale=-2:1000,crop=1080:1000,setsar=1[game];[bg][game]overlay=0:460[b1];[b1]ass={ass}[v]")
     sh(["ffmpeg", "-v", "error", "-y", "-ss", str(start), "-t", str(dur), "-i", path, "-filter_complex", fc, "-map", "[v]", "-map", "0:a",
         "-c:v", "libx264", "-crf", "19", "-preset", "medium", "-pix_fmt", "yuv420p", "-r", "30",
         "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", out])
