@@ -10,9 +10,9 @@ Neuer Account der Person, nur echtes Gameplay aus englischen Twitch-Streams. Zie
 - `clipper.py cut <video> <start> <ende> --gameplay --dialog --hook "ZEILE 1|zeile 2" --out <datei>` – fertiger 9:16-Clip.
 
 ## Clip-Regeln
-- **Bild:** 4:5-Fenster aus der Bildmitte, über dem Untertitelband (Facecam, Chat, Minimap und der Peanut-Avatar liegen in den Ecken und fallen raus), unscharfer Rand, 1080×1920.
-- **Ton (`--dialog`):** KI-Stimmtrennung (UVR-MDX) → Wörter der Stimmspur (Whisper) gegen die GTA-Untertitel (OCR) prüfen → nur Sätze, die als Untertitel im Bild stehen, bleiben (Spieldialog); alles andere = Streamer → stumm. Ohne Dialog: nur Musik/Effekte. −14 LUFS.
-- **Untertitel:** eigene Wort-für-Wort-Untertitel aus dem bereinigten Dialog (Halluzinationsfilter: Wörter > 1,5 s und Einzelwörter fliegen raus).
+- **Bild (v2, 18.11. nach Feedback „schneidet zu viel aus“):** breites 1,2:1-Fenster (67 % der Breite, volle Höhe, fast ohne Hochskalierung) mittig im 9:16-Bild, dunkel-unscharfer Rand. Die echten GTA-Untertitel bleiben im Bild. Overlays, die ins Fenster ragen (`HIDE`, z. B. Peanut-Avatar), werden unscharf gemacht und mit einem weichen Badge „GTA 6 DAILY CLIPS“ überdeckt; bei Facecams am Rand wird das Fenster verschoben (`CX`: xqc 0.66, darkviperau 0.37).
+- **Ton (`--dialog`, v2, nach Feedback „Dialoge abgehackt“):** KI-Stimmtrennung (UVR-MDX); die Stimmspur bleibt offen, solange ein GTA-Untertitel im Bild steht (OCR 4×/s, 0,35 s vorher, 0,6 s nachher, Lücken < 0,8 s überbrückt, 150-ms-Blenden) – sonst stumm (= Streamer). Ohne Dialog: nur Musik/Effekte. −14 LUFS.
+- **Keine eigenen Untertitel** im Gameplay-Modus (die Spiel-Untertitel sind vollständig im Bild).
 - **Hook:** 2 Zeilen, ehrlich (nur was im Clip passiert), Zeile 1 kurz (≤ 24 Zeichen = volle Größe). Schriftgröße passt sich automatisch an.
 - **Prüfen vor dem Abliefern:** Whisper (small.en) auf den fertigen Ton – darf keine Streamer-Sätze enthalten; Kontaktblatt 1 Bild / 3 s ansehen (Hook passt zum Inhalt, nichts abgeschnitten).
 - Länge 25–35 s, Pointe in den letzten 5 s, Start direkt in der Aktion.

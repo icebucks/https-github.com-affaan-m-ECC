@@ -251,36 +251,31 @@ def ocr_subtitles(path, start, dur, tmp, fps=4):
     return out
 
 
-def remove_streamer(path, start, dur, tmp, pad=0.12):
-    """drop only the streamer's voice, keep in-game dialogue.
-    Game dialogue is subtitled: a spoken word that shows up in the subtitle band (±1.2 s) is the game, everything else is
-    the streamer -> separate voices from the rest, mute the streamer's words, remix."""
+def remove_streamer(path, start, dur, tmp, pre=0.35, post=0.6, bridge=0.8):
+    """drop only the streamer's voice, keep in-game dialogue – smoothly.
+    GTA shows a subtitle while a character speaks: the voice stem stays open for the whole time a subtitle is on screen
+    (plus a little before/after, short gaps bridged, 150 ms fades); outside subtitles the voice stem is muted (= streamer)."""
     import soundfile as sf
-    from rapidfuzz import fuzz
     voc, inst = separate(path, start, dur, tmp)
     v, sr = sf.read(voc); ins, _ = sf.read(inst)
-    subs = ocr_subtitles(path, start, dur, tmp)
-    words = transcribe(audio(voc))
-    keep = np.zeros(int(dur * 100) + 1)                          # 10 ms grid, 1 = game voice
-    n_keep = 0; kept = []
-    norm = [re.sub(r"[^a-z']", "", w.lower()) for w, _, _ in words]
-    hits = []
-    for i, (w, s, e) in enumerate(words):        # a word counts as game dialogue only if its 3-word phrase is in the subtitles
-        near = " ".join(t for ts, t in subs if s - 1.2 <= ts <= e + 1.2)
-        phrase = " ".join(x for x in norm[max(0, i - 1):i + 2] if x)
-        hits.append(bool(near) and len(phrase) >= 6 and fuzz.partial_ratio(phrase, near) >= 85
-                    and (len(norm[i]) < 3 or any(fuzz.ratio(norm[i], c) >= 80 for c in near.split())))
-    for i, (w, s, e) in enumerate(words):
-        if hits[i] or (0 < i < len(words) - 1 and hits[i - 1] and hits[i + 1]):
-            keep[max(0, int((s - pad) * 100)):int((e + pad) * 100)] = 1.0; n_keep += 1; kept.append((w, s, e))
-    k = np.ones(8) / 8
-    gain = np.convolve(keep, k, mode="same")
+    subs = [(t, x) for t, x in ocr_subtitles(path, start, dur, tmp)
+            if sum(1 for w in x.split() if len(w) >= 3) >= 2]          # real subtitle lines, not OCR noise on bright skies
+    keep = np.zeros(int(dur * 100) + 1)
+    for t, _ in subs:
+        keep[max(0, int((t - pre) * 100)):int((t + 0.25 + post) * 100)] = 1.0
+    on = np.where(keep > 0)[0]                                          # bridge short gaps between subtitle lines
+    if len(on):
+        gaps = np.where(np.diff(on) > 1)[0]
+        for g in gaps:
+            a, b = on[g], on[g + 1]
+            if (b - a) / 100 < bridge: keep[a:b] = 1.0
+    k = np.hanning(31); k /= k.sum()                                    # ~150 ms soft fades
+    gain = np.clip(np.convolve(keep, k, mode="same"), 0, 1)
     g = np.interp(np.arange(len(v)) / sr, np.arange(len(gain)) / 100, gain)
     mix = ins + v * (g[:, None] if v.ndim == 2 else g)
     out = os.path.join(tmp, "dialog_mix.wav"); sf.write(out, mix, sr)
-    print(f"words: {len(words)}, kept as game dialogue: {n_keep}, muted (streamer): {len(words) - n_keep}, subtitle reads: {len(subs)}",
-          file=sys.stderr)
-    return out, kept
+    print(f"subtitle lines read: {len(subs)}, dialogue open {keep.mean():.0%} of the clip, streamer muted elsewhere", file=sys.stderr)
+    return out, []
 
 
 def remove_streamer_by_voiceprint(path, start, dur, tmp, thr=0.5):
@@ -307,25 +302,54 @@ def remove_streamer_by_voiceprint(path, start, dur, tmp, thr=0.5):
     return out
 
 
-def cut(path, start, end, hook, credit, cam=None, out=None, gameplay=False, cx=0.5, dialog=False):
+HIDE = {   # overlays that reach into the centred 1.3:1 window (720p source pixels: x, y, w, h) -> blurred
+    "theburntpeanut": [(225, 505, 150, 215)],      # peanut avatar, bottom left
+    "xqc": [(0, 0, 270, 440)],                     # facecam + chat, top left
+    "darkviperau": [(1025, 110, 255, 260)],        # facecam + chat, top right
+}
+
+
+CX = {"xqc": 0.66, "darkviperau": 0.37}     # window position per streamer (0 = left … 1 = right) to dodge the facecam
+
+
+def cut(path, start, end, hook, credit, cam=None, out=None, gameplay=False, cx=0.5, dialog=False, hide=None):
     dur = end - start
     out = out or os.path.splitext(path)[0] + f"_clip_{int(start)}.mp4"
     tmp = tempfile.mkdtemp()
-    if gameplay:     # pure gameplay: no facecam, no chat overlay, no streamer voice, no captions
-        if dialog:                                   # captions = the game's own dialogue, read from the cleaned mix
-            aud, _ = remove_streamer(path, start, dur, tmp)
-            words = [(w, s, e) for w, s, e in transcribe(audio(aud)) if s < dur and e - s < 1.5]   # long "words" = hallucination
-            if len(words) < 4: words = []                                                      # stray words on a silent track
-        else: aud, words = remove_voices(path, start, dur, tmp), []
+    if gameplay:     # pure gameplay: no facecam, no chat, no streamer voice; the game's own subtitles stay in the picture
+        aud = remove_streamer(path, start, dur, tmp)[0] if dialog else remove_voices(path, start, dur, tmp)
+        words = []
     else:
         a = audio(path, start=start, dur=dur)
         words = [(w, s, e) for w, s, e in transcribe(a) if s < dur]
         aud = None
     ass = os.path.join(tmp, "c.ass"); make_ass(words, hook, credit, dur, ass)
-    bg = "[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,gblur=sigma=30,eq=brightness=-0.18[bg];"
-    if gameplay:   # 4:5 window from the middle (overlays sit in the corners), above the game's subtitle band -> 1080x1350
-        fc = (bg + f"[0:v]crop=ih*0.64:ih*0.8:(iw-ih*0.64)*{cx}:0,scale=1080:1350,setsar=1[game];"
-              f"[bg][game]overlay=0:330[b1];[b1]ass={ass}[v]")
+    bg = "[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,gblur=sigma=40,eq=brightness=-0.32[bg];"
+    if gameplay:   # wide 1.3:1 window (73 % of the width, full height, near-native sharpness), overlays in it blurred away
+        who = os.path.basename(path).split("_")[0].split(".")[0]
+        boxes = hide if hide is not None else HIDE.get(who, [])
+        if cx == 0.5 and who in CX: cx = CX[who]           # shift the window so a corner facecam falls outside it
+        src = "[0:v]null[s0];"
+        for n, (x, y, w, h) in enumerate(boxes):
+            src += f"[s{n}]split[s{n}a][s{n}b];[s{n}b]crop={w}:{h}:{x}:{y},gblur=sigma=22,eq=brightness=-0.08[h{n}];[s{n}a][h{n}]overlay={x}:{y}[s{n + 1}];"
+        last = f"[s{len(boxes)}]"
+        pr = sh(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height", "-of", "default=nw=1", path])
+        iw, ih = int(re.search(r"width=(\d+)", pr).group(1)), int(re.search(r"height=(\d+)", pr).group(1))
+        A = 1.2; cw = int(ih * A) // 2 * 2; x0 = int((iw - cw) * cx); sc = 1080 / cw; gh = int(ih * sc) // 2 * 2
+        gy = (1920 - gh) // 2 + 40
+        badges = []
+        for (x, y, w, h) in boxes:      # where the hidden overlay lands in the 9:16 frame -> a soft branded badge on top
+            bx0, bx1 = max(0, (x - x0) * sc), min(1080, (x + w - x0) * sc)
+            if bx1 - bx0 < 10: continue
+            badges.append((bx0, gy + y * sc, bx1, gy + (y + h) * sc))
+        with open(ass, "a") as fa:
+            for bx0, by0, bx1, by1 in badges:
+                fa.write(f"Dialogue: 3,{ass_time(0)},{ass_time(dur)},Credit,,0,0,0,,{{\\an7\\pos(0,0)\\bord0\\shad0\\blur14\\1c&H1A1410&\\1a&H18&\\p1}}"
+                         f"m {bx0 - 6:.0f} {by0 - 6:.0f} l {bx1 + 6:.0f} {by0 - 6:.0f} {bx1 + 6:.0f} {by1 + 6:.0f} {bx0 - 6:.0f} {by1 + 6:.0f}{{\\p0}}\n")
+                cxm, cym = (bx0 + bx1) / 2, (by0 + by1) / 2
+                fa.write(f"Dialogue: 4,{ass_time(0)},{ass_time(dur)},Credit,,0,0,0,,{{\\an5\\pos({cxm:.0f},{cym - 16:.0f})\\fs34\\1c&H50C8FF&}}GTA 6\\N{{\\fs24\\1c&HFFFFFF&}}DAILY CLIPS\n")
+        fc = (bg + src + f"{last}crop={cw}:{ih}:{x0}:0,scale=1080:{gh},setsar=1[game];"
+              f"[bg][game]overlay=0:{gy}[b1];[b1]ass={ass}[v]")
     elif cam:   # small source facecams: a 600 px box (no blurry 4x upscale), gameplay large underneath
         x, y, w, h = cam
         ch = int(round(600 * h / w / 2)) * 2
