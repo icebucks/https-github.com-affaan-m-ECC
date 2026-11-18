@@ -1,0 +1,59 @@
+{
+ "video": "BN4_WhaleHeart_EN",
+ "duration": 17.0,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  7.29,
+  2.22,
+  2.13,
+  4.52,
+  2.36,
+  4.08,
+  2.44,
+  3.36,
+  2.74,
+  7.73,
+  9.29,
+  3.42,
+  2.4,
+  10.73,
+  1.42,
+  8.33,
+  4.0
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 90.40442657470703,
+  "contrast": 29.184677124023438,
+  "colourfulness": 63.08913707733154
+ },
+ "loop_difference": 9.2,
+ "font_sizes": [
+  28,
+  30,
+  32,
+  46,
+  74,
+  110,
+  150
+ ],
+ "audio": {
+  "first_half_s_db": -13.90799331665039,
+  "median_db": -14.879834175109863,
+  "silent_windows": 0,
+  "lufs": -14.5
+ }
+}

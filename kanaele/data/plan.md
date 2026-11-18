@@ -7,6 +7,7 @@
 | Di 17.11. | 21:00 | 19:30 | #1 How long to earn $1 billion? | `BN1_Billion_EN.mp4` | `Cover_BN1.jpg` | trap 150 |
 | Mi 18.11. | 21:00 | 19:30 | #2 Tallest buildings, to scale | `BN2_Tallest_EN.mp4` | `Cover_BN2.jpg` | synthwave 140 |
 | Do 19.11. | 21:00 | 19:30 | #3 How long to walk around the Earth? | `BN3_WalkEarth_EN.mp4` | `Cover_BN3.jpg` | upbeat 120 (Seed 3) |
+| Fr 20.11. | 21:00 | 22:00 | #4 Blue whale heart rate vs yours | `BN4_WhaleHeart_EN.mp4` | `Cover_BN4.jpg` | cinematic 90 (Seed 4) |
 
 ## Lange Videos
 Jeden **Samstag 17:30** (YouTube) ein langes Video der Reihe „Cosmic Scale“ – Konzept und Pilot: `../space/LONGFORM.md`, `../space/pilot_script.md`. Shorts der Woche zum selben Thema verlinken per „Ähnliches Video“ darauf.
@@ -37,6 +38,7 @@ Nach 2 Wochen mit den eigenen Analytics prüfen und anpassen.
 | Größenvergleiche | `#bythenumbers #comparison #datavisualization #sizecomparison #scale` | `#bythenumbers #sizecomparison #scale #facts #shorts` |
 | Zeit & Geschwindigkeit | `#bythenumbers #facts #learnontiktok #science #speed` | `#bythenumbers #science #speed #facts #shorts` |
 | Reisen & Erde (zu Fuß, Strecken) | `#bythenumbers #comparison #didyouknow #walking #earth` | `#bythenumbers #walking #earth #facts #shorts` |
+| Tierkörper & Herz (Wal vs. Mensch) | `#bythenumbers #comparison #didyouknow #bluewhale #heartrate` | `#bythenumbers #bluewhale #heartrate #facts #shorts` |
 
 **Wichtiger als Hashtags:** Das Suchwort (z. B. „tallest buildings“) gehört vorne in die Caption und einmal groß ins Video. TikTok liest Caption und Bildtext und ordnet das Video danach in der Suche ein.
 
@@ -156,3 +158,31 @@ Would you make it? 👇
 #bythenumbers #walking #earth #facts #shorts
 ```
 
+## #4 – Blue whale heart rate vs yours
+**Format:** D · Duell (zwei Herzen schlagen im echten Takt, EKG-Linien, 4 Runden) · **Musik:** cinematic 90 BPM, Seed 4 (build 9,3 s, drop 10,7 s = 2 BPM, outro 13,3 s). Das Menschenherz schlägt mit 90/min genau auf dem Beat.
+**Hook:** „Your heart: *60–100* a minute.“ / „How slow can a *blue whale's* go?“ (hookscore 73 STRONG, „The Question“: „Your heart beats 60 to 100 times a minute. How slow can a blue whale's heart go before the end of a dive?“)
+**Suchanfragen (yt-seo):** „blue whale heart rate“ · „blue whale heartbeat per minute“ · „human heart vs blue whale heart“
+**TikTok-Caption:**
+```
+Blue whale heart rate vs yours 💙🐋 Your heart beats 60–100 times a minute. How slow can a blue whale's go on a dive? Guess BEFORE the end
+Comment your resting heart rate 👇
+#bythenumbers #comparison #didyouknow #bluewhale #heartrate
+```
+**Pin-Kommentar:** `What's YOUR resting heart rate? 🐢 = under 60 · ❤️ = 60–80 · 🐇 = over 80`
+**YouTube-Titel:** `Blue whale heart rate vs yours: guess the lowest (2019 ECG)` (title.py: 98/100, mit Titelbild 100/100)
+**Titelbild-Text:** `1 BEAT / 30 SEC` (Cover_BN4.jpg – andere Wörter als der Titel, gleiches Versprechen)
+**YouTube-Beschreibung:**
+```
+Blue whale heart rate vs human heart: your heartbeat is 60–100 beats per minute at rest.
+A blue whale's heartbeat per minute on a deep dive: typically 4–8 – and as low as 2, one beat every 30 seconds.
+
+• You, at rest: 60–100 beats per minute (normal adult range)
+• Blue whale at the surface, catching its breath: 25–37 beats per minute
+• Blue whale on a deep feeding dive: typically 4–8 beats per minute
+• Lowest ever recorded: 2 beats per minute = 1 beat every 30 seconds
+• In those 30 seconds your heart beats 30–50 times (60–100 bpm × 0.5 min)
+Sources: Goldbogen et al. 2019, PNAS "Extreme bradycardia and tachycardia in the world's largest animal" (first ECG of a free-swimming blue whale, Stanford University); American Heart Association (normal resting heart rate 60–100 bpm). As of November 2026.
+
+What's your resting heart rate? 👇
+#bythenumbers #bluewhale #heartrate #facts #shorts
+```
