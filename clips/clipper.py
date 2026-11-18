@@ -303,12 +303,14 @@ def remove_streamer_by_voiceprint(path, start, dur, tmp, thr=0.5):
 
 
 HIDE = {   # overlays that reach into the centred 1.3:1 window (720p source pixels: x, y, w, h) -> blurred
-    "theburntpeanut": [(225, 505, 150, 215)],      # peanut avatar, bottom left
+    "theburntpeanut": [(200, 500, 178, 220)],      # peanut avatar, bottom left
     "xqc": [(0, 0, 270, 440)],                     # facecam + chat, top left
     "darkviperau": [(1025, 110, 255, 260)],        # facecam + chat, top right
 }
 
 
+LOGO_BADGE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "logo_badge.png")
+LOGO_WM = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "logo_watermark.png")
 CX = {"xqc": 0.66, "darkviperau": 0.37}     # window position per streamer (0 = left … 1 = right) to dodge the facecam
 
 
@@ -324,6 +326,7 @@ def cut(path, start, end, hook, credit, cam=None, out=None, gameplay=False, cx=0
         words = [(w, s, e) for w, s, e in transcribe(a) if s < dur]
         aud = None
     ass = os.path.join(tmp, "c.ass"); make_ass(words, hook, credit, dur, ass)
+    extra = []
     bg = "[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,gblur=sigma=40,eq=brightness=-0.32[bg];"
     if gameplay:   # wide 1.3:1 window (73 % of the width, full height, near-native sharpness), overlays in it blurred away
         who = os.path.basename(path).split("_")[0].split(".")[0]
@@ -346,10 +349,20 @@ def cut(path, start, end, hook, credit, cam=None, out=None, gameplay=False, cx=0
             for bx0, by0, bx1, by1 in badges:
                 fa.write(f"Dialogue: 3,{ass_time(0)},{ass_time(dur)},Credit,,0,0,0,,{{\\an7\\pos(0,0)\\bord0\\shad0\\blur14\\1c&H1A1410&\\1a&H18&\\p1}}"
                          f"m {bx0 - 6:.0f} {by0 - 6:.0f} l {bx1 + 6:.0f} {by0 - 6:.0f} {bx1 + 6:.0f} {by1 + 6:.0f} {bx0 - 6:.0f} {by1 + 6:.0f}{{\\p0}}\n")
-                cxm, cym = (bx0 + bx1) / 2, (by0 + by1) / 2
-                fa.write(f"Dialogue: 4,{ass_time(0)},{ass_time(dur)},Credit,,0,0,0,,{{\\an5\\pos({cxm:.0f},{cym - 16:.0f})\\fs34\\1c&H50C8FF&}}GTA 6\\N{{\\fs24\\1c&HFFFFFF&}}DAILY CLIPS\n")
         fc = (bg + src + f"{last}crop={cw}:{ih}:{x0}:0,scale=1080:{gh},setsar=1[game];"
-              f"[bg][game]overlay=0:{gy}[b1];[b1]ass={ass}[v]")
+              f"[bg][game]overlay=0:{gy}[b1];[b1]ass={ass}[a0];")
+        # the creator's logo: (1) as the badge over every hidden overlay, (2) as a faint watermark drifting slowly
+        # through the picture, so the clip cannot simply be cropped and re-uploaded
+        li = 2 if aud else 1
+        extra += ["-i", LOGO_BADGE, "-i", LOGO_WM]
+        cur = "[a0]"
+        for n, (bx0, by0, bx1, by1) in enumerate(badges):
+            sz = int(min(bx1 - bx0, by1 - by0, 230)) // 2 * 2
+            fc += (f"[{li}:v]scale={sz}:{sz}[lb{n}];{cur}[lb{n}]overlay={(bx0 + bx1 - sz) / 2:.0f}:{(by0 + by1 - sz) / 2:.0f}[a{n + 1}];")
+            cur = f"[a{n + 1}]"
+        ws, wy0, wy1 = 150, gy + 30, gy + gh - 150 - 60
+        fc += (f"[{li + 1}:v]scale={ws}:{ws},format=rgba,colorchannelmixer=aa=0.32[wm];"
+               f"{cur}[wm]overlay=x='70+(1080-{ws}-140)*(0.5+0.5*sin(t*0.21))':y='{wy0}+({wy1 - wy0})*(0.5+0.5*sin(t*0.13+1.3))'[v]")
     elif cam:   # small source facecams: a 600 px box (no blurry 4x upscale), gameplay large underneath
         x, y, w, h = cam
         ch = int(round(600 * h / w / 2)) * 2
@@ -359,7 +372,7 @@ def cut(path, start, end, hook, credit, cam=None, out=None, gameplay=False, cx=0
               f"[bg][game]overlay=0:{gy}[b1];[b1][cam]overlay=236:456[b2];[b2]ass={ass}[v]")
     else:     # no facecam: big gameplay window
         fc = (bg + f"[0:v]scale=-2:1000,crop=1080:1000,setsar=1[game];[bg][game]overlay=0:460[b1];[b1]ass={ass}[v]")
-    ins = ["-ss", str(start), "-t", str(dur), "-i", path] + (["-i", aud] if aud else [])
+    ins = ["-ss", str(start), "-t", str(dur), "-i", path] + (["-i", aud] if aud else []) + extra
     sh(["ffmpeg", "-v", "error", "-y"] + ins + ["-filter_complex", fc, "-map", "[v]", "-map", "1:a" if aud else "0:a", "-shortest",
         "-c:v", "libx264", "-crf", "19", "-preset", "medium", "-pix_fmt", "yuv420p", "-r", "30",
         "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", out])
