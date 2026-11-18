@@ -60,8 +60,11 @@ def audio_stats(path):
 def font_sizes(script):
     if not script or not os.path.exists(script): return []
     src = open(script).read()
-    sizes = [int(float(s)) for s in re.findall(r"F_(?:CAP|SANS),\s*([\d.]+)", src)]
-    return sorted(set(sizes))
+    sizes = [float(s) for s in re.findall(r"F_(?:CAP|SANS),\s*([\d.]+)", src)]
+    # BeyondExcuses scenes are drawn in a zoomed world (SC = scene scale): on the phone a size 22 sign is 22 × SC px
+    m = re.search(r"^SC\s*=\s*([\d.]+)", src, re.M)
+    sc = float(m.group(1)) if m else 1.0
+    return sorted(set(int(round(x * sc)) for x in sizes))
 
 
 def audit(path):

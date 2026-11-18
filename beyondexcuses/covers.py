@@ -19,6 +19,8 @@ EPS = {  # num: (module, scene time, negative, positive)
     10: ("ep10", 13.2, "GRUDGE", "LETTING GO"),
     11: ("ep11", 12.4, "VICTIM", "OWNER", "ONLY 1|FIXES", 8),   # optional 5th: thumbnail words (≤ 3, "|" = line break)
     12: ("ep12", 8.4, "VICTIM", "OWNER", "HE TURNED|AROUND", 9),   # optional 6th: part number shown on TikTok
+    13: ("ep13", 12.2, "PERFECTIONIST", "FINISHER", "3 WEEKS|0 SOLD", 10),
+    14: ("ep14", 7.2, "PEOPLE PLEASER", "BOUNDARIES", "NONE|WERE HIS", 11),
 }
 
 

@@ -1,0 +1,59 @@
+{
+ "video": "Folge13_Finisher_EN",
+ "duration": 16.75,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.029850746268656716,
+   "seconds": [
+    0.0,
+    0.25
+   ]
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  14.96,
+  2.66,
+  2.57,
+  1.9,
+  3.74,
+  3.0,
+  2.7,
+  2.56,
+  2.53,
+  4.07,
+  5.94,
+  4.87,
+  3.3,
+  10.79,
+  3.28,
+  1.86
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 82.77055358886719,
+  "contrast": 34.9944953918457,
+  "colourfulness": 27.39032506942749
+ },
+ "loop_difference": 35.0,
+ "font_sizes": [
+  31,
+  32,
+  34,
+  48,
+  56
+ ],
+ "audio": {
+  "first_half_s_db": -15.095306396484375,
+  "median_db": -13.215538024902344,
+  "silent_windows": 0,
+  "lufs": -14.5
+ }
+}

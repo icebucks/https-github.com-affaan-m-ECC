@@ -19,15 +19,16 @@ Render: `VID_LANG=en python3 epN.py render` → `FolgeN_<Name>_EN.mp4`. Stills: 
 | 10 | Grudge vs. Letting Go | stormy lake → golden dusk | What are you still holding onto? | Let it go. Swim. | `ep10.py` → `Folge10_LettingGo_EN.mp4` |
 | 11 | Victim vs. Owner (**TikTok: Part 8**) | leaking attic in a rainstorm, flickering bare bulb → sun shaft through the window | If you blame the rain, you never fix the roof. Watch what 2 people do before it floods. (hookscore 72) | Own it. | `ep11.py` → `Folge11_Owner_EN.mp4` |
 | 12 | Victim vs. Owner, Part 2 (**TikTok: Part 9**) | same attic (sequel), grey dawn + drizzle → sun; stepladder behind the victim | The fix was behind you for 3 days. Why don't you ever turn around? (caption hook 75) | Your fix is behind you. | `ep12.py` → `Folge12_OwnerPart2_EN.mp4` |
+| 13 | Perfectionist vs. Finisher (**TikTok: Part 10**) | woodworking shop, cold blue dawn through a skylight → golden noon | You keep fixing 1 chair until it's perfect. She finished 9 before you did. Why? (caption hook 78) | Finish it. Then improve it. | `ep13.py` → `Folge13_Finisher_EN.mp4` |
+| 14 | People Pleaser, Part 2 (**TikTok: Part 11**) | autumn hill at sunset (sequel to #7, from a viewer comment) | You carry 4 bags for everyone else. Why do you never stop before you lose your own? (caption hook 77) | Put some bags down. | `ep14.py` → `Folge14_PleaserPart2_EN.mp4` |
 
 ## Nummerierung auf TikTok (Stand 17.11.2026)
 Die Person nummeriert auf TikTok fortlaufend nach Upload-Reihenfolge, nicht nach Dateinummer: intern #11 = **TikTok Part 8**, intern #12 = **TikTok Part 9**. Ab jetzt gilt: **angezeigte Nummer = letzte TikTok-Nummer + 1** (nächste Folge = Part 10). Im Video `SHOWN` als Nummer an `finish_v2` geben (Serien-Tag + Cliffhanger), in `covers.py` als 6. Feld eintragen, im Cliffhanger den nächsten Teil mit dieser Nummer ankündigen. Dateinamen bleiben intern (`ep13.py`, `Folge13_…`).
-**Versprochen in Part 9:** „Part 10 tomorrow: the chair that never gets finished“ → die nächste Folge MUSS „Perfectionist vs. Finisher“ (Werkstatt, Stuhl) sein.
+Stand 18.11.: intern #13 = Part 10 (Perfectionist), intern #14 = Part 11 (People Pleaser 2).
+**Versprochen in Part 11:** „Part 12 tomorrow: the one who talks, the one who walks“ → die nächste Folge MUSS „Talker vs. Walker“ (Bergweg) sein, angezeigt als **Part 12**.
 
 ## Ideas (not made yet)
 
-- **Perfectionist vs. Finisher**: a workshop. One sands the same chair forever; the other builds ten imperfect chairs.
-- **People Pleaser (Part 2) – the bags get heavier**: SEQUEL to People Pleaser vs. Boundaries, from a viewer comment ("if he carries it till the end he'll endure more than the one with boundaries"). The pleaser does arrive – exhausted, carrying everyone's bags – while the boundaries one arrives with energy and time to help *by choice*. Ending: „Carrying everything isn't strength. / Choosing what to carry is.“
 - **Talker vs. Walker**: a mountain path. One tells everyone about the summit; the other is quietly already up there.
 - **Fear of Failure vs. Courage**: a high diving board at a pool. One climbs down again; the other jumps and comes up laughing.
 - **Comparer vs. Own Path**: a race on separate lanes. One keeps looking sideways and trips; the other only looks ahead.

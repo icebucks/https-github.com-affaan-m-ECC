@@ -19,6 +19,8 @@ Danach in der YouTube-App bei jedem Short unter „Ähnliches Video“ die **nä
 | Di 24.11. | 19:30 | #10 Grudge vs Letting Go | `Folge10_LettingGo_EN.mp4` | `covers/Cover_10.jpg` |
 | Mi 25.11. | 19:30 | #11 Victim vs Owner | `Folge11_Owner_EN.mp4` | `covers/Cover_11.jpg` |
 | Do 26.11. | 19:30 | #12 Victim vs Owner, Part 2 (im Video: Part 9) | `Folge12_OwnerPart2_EN.mp4` | `covers/Cover_12.jpg` |
+| Fr 27.11. | 22:00 | #13 Perfectionist vs Finisher (im Video: Part 10) | `Folge13_Finisher_EN.mp4` | `covers/Cover_13.jpg` |
+| Sa 28.11. | 17:30 | #14 People Pleaser, Part 2 (im Video: Part 11) | `Folge14_PleaserPart2_EN.mp4` | `covers/Cover_14.jpg` |
 
 Neue Folgen kommen jeweils am nächsten freien Tag dazu, zu den Zeiten aus der Tabelle unten.
 
@@ -253,4 +255,50 @@ Your fix is behind you. Send this to someone who needs it 👇
 
 Mindset Series – Part 9. Part 10 tomorrow: the chair that never gets finished.
 #beyondexcuses #ownership #victimmindset #mindset #shorts
+```
+
+## #13 – Perfectionist vs Finisher (TikTok: Part 10)
+**TikTok:** Mi 18.11., 20:00 (gleiche Uhrzeit wie Part 9) · **YouTube:** Fr 27.11. 22:00 · **Titelbild:** `covers/Cover_13.jpg` („3 WEEKS / 0 SOLD“, #10) · **Hook im Video:** „3 weeks. 1 chair.“ / „She already finished 9.“
+**TikTok-Caption:**
+```
+You keep fixing 1 chair until it's perfect. She finished 9 before you did. Why? 🪑🔨
+Send this to someone who's been "almost done" for weeks 👀
+Comment "DONE" if you're shipping it today.
+#perfectionism #mindset #psychology #motivation #beyondexcuses
+```
+**Pin-Kommentar:** `What are YOU still sanding? 🪑 = still perfecting · ✅ = shipped it`
+**Titel (title.py 94):** `Perfectionist vs Finisher (Part 10): why you never finish`
+**Beschreibung:**
+```
+Why you never finish: the perfectionist sands the same chair for 3 weeks, the finisher builds 9 – a little crooked, all sold.
+Perfectionism vs progress: done beats perfect. Finish it, then improve it.
+
+Send this to someone who's been "almost done" for weeks 👇
+
+Mindset Series – Part 10. Part 11 tomorrow: the one who carries everyone's bags.
+#beyondexcuses #perfectionism #procrastination #mindset #shorts
+```
+
+## #14 – People Pleaser, Part 2 (TikTok: Part 11)
+**TikTok:** Do 19.11., 20:00 · **YouTube:** Sa 28.11. 17:30 · **Titelbild:** `covers/Cover_14.jpg` („NONE / WERE HIS“, #11) · **Hook im Video:** „4 bags. None of them his.“ / „Watch what's left at the top.“
+**Herkunft:** Kommentar von Silliest unter Part 7 – im Pin-Kommentar darauf verweisen.
+**TikTok-Caption:**
+```
+You carry 4 bags for everyone else. Why do you never stop before you lose your own? 🎒⛰️
+Send this to the friend who never says no 👀
+Comment "BAGS" if this is you.
+#peoplepleaser #boundaries #mindset #psychology #beyondexcuses
+```
+**Pin-Kommentar:** `This one's for @Silliest :33 – you said he'd endure more. He did. But what was left? 🎒 = carry it all · 🛑 = put some down`
+(Den Namen nur so markieren, wie er auf TikTok heißt – sonst ohne @ schreiben.)
+**Titel (title.py 94):** `People Pleaser vs Boundaries (Part 11): put some bags down`
+**Beschreibung:**
+```
+People pleaser vs boundaries, part 2: he carried everyone's bags to the top – and had nothing left. She chose what to carry.
+How to stop people pleasing: carrying everything isn't strength. Put some bags down.
+
+Send this to the friend who never says no 👇
+
+Mindset Series – Part 11. Part 12 tomorrow: the one who talks, the one who walks.
+#beyondexcuses #peoplepleaser #boundaries #mindset #shorts
 ```
