@@ -342,7 +342,8 @@ def cut(path, start, end, hook, credit, cam=None, out=None, gameplay=False, cx=0
         aud = None
     ass = os.path.join(tmp, "c.ass"); make_ass(words, hook, credit, dur, ass)
     extra = []
-    bg = "[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,gblur=sigma=40,eq=brightness=-0.32[bg];"
+    bg = ("[0:v]scale=270:480:force_original_aspect_ratio=increase,crop=270:480,gblur=sigma=10,eq=brightness=-0.32,"
+          "scale=1080:1920:flags=bilinear[bg];")          # blur at 1/4 size: same look, many times faster
     if gameplay:   # wide 1.3:1 window (73 % of the width, full height, near-native sharpness), overlays in it blurred away
         who = os.path.basename(path).split("_")[0].split(".")[0]
         boxes = hide if hide is not None else HIDE.get(who, [])
@@ -389,7 +390,7 @@ def cut(path, start, end, hook, credit, cam=None, out=None, gameplay=False, cx=0
         fc = (bg + f"[0:v]scale=-2:1000,crop=1080:1000,setsar=1[game];[bg][game]overlay=0:460[b1];[b1]ass={ass}[v]")
     ins = ["-ss", str(start), "-t", str(dur), "-i", path] + (["-i", aud] if aud else []) + extra
     sh(["ffmpeg", "-v", "error", "-y"] + ins + ["-filter_complex", fc, "-map", "[v]", "-map", "1:a" if aud else "0:a", "-shortest",
-        "-c:v", "libx264", "-crf", "19", "-preset", "medium", "-pix_fmt", "yuv420p", "-r", "30",
+        "-c:v", "libx264", "-crf", "20", "-preset", "veryfast", "-pix_fmt", "yuv420p", "-r", "30",
         "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", out])
     print(out)
     return out
