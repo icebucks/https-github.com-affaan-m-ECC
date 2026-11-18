@@ -123,21 +123,157 @@ def remove_voices(path, start, dur, tmp, model="UVR-MDX-NET-Inst_HQ_4.onnx"):
     return inst if os.path.isabs(inst) else os.path.join(tmp, inst)
 
 
-def cut(path, start, end, hook, credit, cam=None, out=None, gameplay=False, cx=0.5):
+_ECAPA = []
+
+
+def ecapa():
+    if not _ECAPA:
+        from speechbrain.inference.speaker import EncoderClassifier
+        _ECAPA.append(EncoderClassifier.from_hparams(source="speechbrain/spkrec-ecapa-voxceleb",
+                                                     savedir=os.path.expanduser("~/.cache/spkrec-ecapa"), run_opts={"device": "cpu"}))
+    return _ECAPA[0]
+
+
+def separate(path, start, dur, tmp, model="UVR-MDX-NET-Inst_HQ_4.onnx"):
+    """returns (vocals.wav, instrumental.wav) for a section of the video"""
+    from audio_separator.separator import Separator
+    wav = os.path.join(tmp, f"src_{int(start)}.wav")
+    sh(["ffmpeg", "-v", "error", "-y", "-ss", str(start), "-t", str(dur), "-i", path, "-vn", "-ac", "2", "-ar", "44100", wav])
+    sep = Separator(output_dir=tmp, model_file_dir=os.path.expanduser("~/.cache/audio-separator"), output_format="WAV")
+    sep.load_model(model)
+    files = [f if os.path.isabs(f) else os.path.join(tmp, f) for f in sep.separate(wav)]
+    return next(f for f in files if "(Vocals)" in f), next(f for f in files if "Instrumental" in f)
+
+
+def windows(x, sr, win=1.5, hop=0.5, min_db=-42):
+    """speech-active windows of a vocal stem: (start_s, end_s, samples)"""
+    out = []
+    for i in range(0, max(1, len(x) - int(win * sr)), int(hop * sr)):
+        seg = x[i:i + int(win * sr)]
+        if 20 * np.log10(np.sqrt(np.mean(seg ** 2)) + 1e-9) > min_db: out.append((i / sr, i / sr + win, seg))
+    return out
+
+
+def embed(segs):
+    import torch
+    m = ecapa(); E = []
+    same = len({len(s) for s in segs}) == 1
+    for k in range(0, len(segs), 32 if same else 1):      # variable-length utterances are embedded one by one
+        b = torch.tensor(np.stack(segs[k:k + (32 if same else 1)]), dtype=torch.float32)
+        E.append(m.encode_batch(b).squeeze(1).numpy())
+    E = np.concatenate(E) if E else np.zeros((0, 192))
+    return E / (np.linalg.norm(E, axis=1, keepdims=True) + 1e-9)
+
+
+def streamer_profile(path, sample=420.0):
+    """voice print of the streamer = the voice that talks most across the recording (cached next to the video)"""
+    npy = path + ".streamer.npy"
+    if os.path.exists(npy): return np.load(npy)
+    tmp = tempfile.mkdtemp()
+    voc, _ = separate(path, 0, sample, tmp)
+    x = audio(voc)
+    E = embed([s for _, _, s in windows(x, 16000, hop=1.5)])
+    sim = E @ E.T
+    best = int(np.argmax((sim > 0.55).sum(1)))                   # the window with the most look-alikes
+    prof = E[sim[best] > 0.55].mean(0); prof /= np.linalg.norm(prof)
+    share = float((E @ prof > 0.55).mean())
+    print(f"streamer voice print: {share:.0%} of speech windows match", file=sys.stderr)
+    np.save(npy, prof)
+    return prof
+
+
+SUB_BOX = (0.23, 0.80, 0.87, 0.975)     # GTA subtitle band (x0, y0, x1, y1 as fractions of the frame): bottom centre
+
+
+def ocr_subtitles(path, start, dur, tmp, fps=4):
+    """read the in-game subtitle band fps times a second -> [(t, text)]"""
+    x0, y0, x1, y1 = SUB_BOX
+    d = os.path.join(tmp, "sub"); os.makedirs(d, exist_ok=True)
+    sh(["ffmpeg", "-v", "error", "-y", "-ss", str(start), "-t", str(dur), "-i", path, "-vf",
+        f"fps={fps},crop=iw*{x1 - x0}:ih*{y1 - y0}:iw*{x0}:ih*{y0},scale=iw*2:-1,format=gray,lutyuv=y='if(gt(val,200),0,255)'",
+        os.path.join(d, "%05d.png")])
+    out = []
+    for k, f in enumerate(sorted(os.listdir(d))):
+        r = subprocess.run(["tesseract", os.path.join(d, f), "-", "--psm", "6"], capture_output=True, text=True)
+        txt = re.sub(r"[^a-z' ]", " ", r.stdout.lower())
+        txt = " ".join(w for w in txt.split() if len(w) > 1 or w in ("i", "a"))
+        if len(txt) >= 4: out.append((k / fps, txt))
+    return out
+
+
+def remove_streamer(path, start, dur, tmp, pad=0.12):
+    """drop only the streamer's voice, keep in-game dialogue.
+    Game dialogue is subtitled: a spoken word that shows up in the subtitle band (±1.2 s) is the game, everything else is
+    the streamer -> separate voices from the rest, mute the streamer's words, remix."""
+    import soundfile as sf
+    from rapidfuzz import fuzz
+    voc, inst = separate(path, start, dur, tmp)
+    v, sr = sf.read(voc); ins, _ = sf.read(inst)
+    subs = ocr_subtitles(path, start, dur, tmp)
+    words = transcribe(audio(voc))
+    keep = np.zeros(int(dur * 100) + 1)                          # 10 ms grid, 1 = game voice
+    n_keep = 0; kept = []
+    norm = [re.sub(r"[^a-z']", "", w.lower()) for w, _, _ in words]
+    hits = []
+    for i, (w, s, e) in enumerate(words):        # a word counts as game dialogue only if its 3-word phrase is in the subtitles
+        near = " ".join(t for ts, t in subs if s - 1.2 <= ts <= e + 1.2)
+        phrase = " ".join(x for x in norm[max(0, i - 1):i + 2] if x)
+        hits.append(bool(near) and len(phrase) >= 6 and fuzz.partial_ratio(phrase, near) >= 85
+                    and (len(norm[i]) < 3 or any(fuzz.ratio(norm[i], c) >= 80 for c in near.split())))
+    for i, (w, s, e) in enumerate(words):
+        if hits[i] or (0 < i < len(words) - 1 and hits[i - 1] and hits[i + 1]):
+            keep[max(0, int((s - pad) * 100)):int((e + pad) * 100)] = 1.0; n_keep += 1; kept.append((w, s, e))
+    k = np.ones(8) / 8
+    gain = np.convolve(keep, k, mode="same")
+    g = np.interp(np.arange(len(v)) / sr, np.arange(len(gain)) / 100, gain)
+    mix = ins + v * (g[:, None] if v.ndim == 2 else g)
+    out = os.path.join(tmp, "dialog_mix.wav"); sf.write(out, mix, sr)
+    print(f"words: {len(words)}, kept as game dialogue: {n_keep}, muted (streamer): {len(words) - n_keep}, subtitle reads: {len(subs)}",
+          file=sys.stderr)
+    return out, kept
+
+
+def remove_streamer_by_voiceprint(path, start, dur, tmp, thr=0.5):
+    """drop only the streamer's voice, keep in-game dialogue: separate -> voice print per window -> mute the streamer -> remix"""
+    import soundfile as sf
+    prof = streamer_profile(path)
+    voc, inst = separate(path, start, dur, tmp)
+    v, sr = sf.read(voc); ins, _ = sf.read(inst)
+    v16 = audio(voc)
+    W_ = windows(v16, 16000)
+    sims = embed([s for _, _, s in W_]) @ prof if W_ else np.zeros(0)
+    gain = np.ones(len(v16) // 160 + 1)                         # 10 ms resolution
+    kept = 0
+    for (a, b, _), s in zip(W_, sims):
+        if s > thr: gain[int(a * 100):int(b * 100)] = 0.0
+        else: kept += 1
+    k = np.ones(8) / 8                                            # ~80 ms fades instead of hard cuts
+    gain = np.convolve(gain, k, mode="same")
+    g = np.interp(np.arange(len(v)) / sr, np.arange(len(gain)) / 100, gain)
+    mix = ins + v * g[:, None] if v.ndim == 2 else ins + v * g
+    out = os.path.join(tmp, "dialog_mix.wav"); sf.write(out, mix, sr)
+    muted = float((sims > thr).mean()) if len(sims) else 0.0
+    print(f"voice windows: {len(sims)}, streamer muted {muted:.0%}, other voices kept {kept}", file=sys.stderr)
+    return out
+
+
+def cut(path, start, end, hook, credit, cam=None, out=None, gameplay=False, cx=0.5, dialog=False):
     dur = end - start
     out = out or os.path.splitext(path)[0] + f"_clip_{int(start)}.mp4"
     tmp = tempfile.mkdtemp()
     if gameplay:     # pure gameplay: no facecam, no chat overlay, no streamer voice, no captions
-        words = []
-        aud = remove_voices(path, start, dur, tmp)
+        if dialog:                                   # captions = the game's own dialogue, read from the cleaned mix
+            aud, _ = remove_streamer(path, start, dur, tmp)
+            words = [(w, s, e) for w, s, e in transcribe(audio(aud)) if s < dur]
+        else: aud, words = remove_voices(path, start, dur, tmp), []
     else:
         a = audio(path, start=start, dur=dur)
         words = [(w, s, e) for w, s, e in transcribe(a) if s < dur]
         aud = None
     ass = os.path.join(tmp, "c.ass"); make_ass(words, hook, credit, dur, ass)
     bg = "[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,gblur=sigma=30,eq=brightness=-0.18[bg];"
-    if gameplay:   # 3:4 window from the middle of the screen (overlays sit in the corners), 2x scale -> 1080x1440
-        fc = (bg + f"[0:v]crop=ih*3/4:ih:(iw-ih*3/4)*{cx}:0,scale=1080:1440,setsar=1[game];"
+    if gameplay:   # 4:5 window from the middle (overlays sit in the corners), above the game's subtitle band -> 1080x1350
+        fc = (bg + f"[0:v]crop=ih*0.64:ih*0.8:(iw-ih*0.64)*{cx}:0,scale=1080:1350,setsar=1[game];"
               f"[bg][game]overlay=0:330[b1];[b1]ass={ass}[v]")
     elif cam:   # small source facecams: a 600 px box (no blurry 4x upscale), gameplay large underneath
         x, y, w, h = cam
@@ -170,6 +306,7 @@ if __name__ == "__main__":
     ap.add_argument("--out", default=None)
     ap.add_argument("--gameplay", action="store_true", help="pure gameplay: crop out facecam/chat, remove all voices, no captions")
     ap.add_argument("--cx", type=float, default=0.5, help="horizontal position of the gameplay window (0 = left … 1 = right)")
+    ap.add_argument("--dialog", action="store_true", help="with --gameplay: mute only the streamer's voice, keep in-game dialogue")
     A = ap.parse_args()
     if A.cmd == "find": find(A.video, A.top, A.len)
-    else: cut(A.video, A.start, A.end, A.hook, A.credit, [int(v) for v in A.cam.split(",")] if A.cam else None, A.out, A.gameplay, A.cx)
+    else: cut(A.video, A.start, A.end, A.hook, A.credit, [int(v) for v in A.cam.split(",")] if A.cam else None, A.out, A.gameplay, A.cx, A.dialog)
