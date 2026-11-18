@@ -111,15 +111,35 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     open(out, "w").write(head + "\n".join(ev) + "\n")
 
 
-def cut(path, start, end, hook, credit, cam=None, out=None):
+def remove_voices(path, start, dur, tmp, model="UVR-MDX-NET-Inst_HQ_4.onnx"):
+    """AI source separation: keep music, engines, shots, ambience – drop ALL voices (streamer and in-game dialogue)"""
+    from audio_separator.separator import Separator
+    wav = os.path.join(tmp, "src.wav")
+    sh(["ffmpeg", "-v", "error", "-y", "-ss", str(start), "-t", str(dur), "-i", path, "-vn", "-ac", "2", "-ar", "44100", wav])
+    sep = Separator(output_dir=tmp, model_file_dir=os.path.expanduser("~/.cache/audio-separator"), output_format="WAV")
+    sep.load_model(model)
+    files = sep.separate(wav)
+    inst = next(f for f in files if "Instrumental" in f)
+    return inst if os.path.isabs(inst) else os.path.join(tmp, inst)
+
+
+def cut(path, start, end, hook, credit, cam=None, out=None, gameplay=False, cx=0.5):
     dur = end - start
     out = out or os.path.splitext(path)[0] + f"_clip_{int(start)}.mp4"
-    a = audio(path, start=start, dur=dur)
-    words = [(w, s, e) for w, s, e in transcribe(a) if s < dur]
     tmp = tempfile.mkdtemp()
+    if gameplay:     # pure gameplay: no facecam, no chat overlay, no streamer voice, no captions
+        words = []
+        aud = remove_voices(path, start, dur, tmp)
+    else:
+        a = audio(path, start=start, dur=dur)
+        words = [(w, s, e) for w, s, e in transcribe(a) if s < dur]
+        aud = None
     ass = os.path.join(tmp, "c.ass"); make_ass(words, hook, credit, dur, ass)
     bg = "[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,gblur=sigma=30,eq=brightness=-0.18[bg];"
-    if cam:   # small source facecams: a 600 px box (no blurry 4x upscale), gameplay large underneath
+    if gameplay:   # 3:4 window from the middle of the screen (overlays sit in the corners), 2x scale -> 1080x1440
+        fc = (bg + f"[0:v]crop=ih*3/4:ih:(iw-ih*3/4)*{cx}:0,scale=1080:1440,setsar=1[game];"
+              f"[bg][game]overlay=0:330[b1];[b1]ass={ass}[v]")
+    elif cam:   # small source facecams: a 600 px box (no blurry 4x upscale), gameplay large underneath
         x, y, w, h = cam
         ch = int(round(600 * h / w / 2)) * 2
         gy = 460 + ch + 16
@@ -128,7 +148,8 @@ def cut(path, start, end, hook, credit, cam=None, out=None):
               f"[bg][game]overlay=0:{gy}[b1];[b1][cam]overlay=236:456[b2];[b2]ass={ass}[v]")
     else:     # no facecam: big gameplay window
         fc = (bg + f"[0:v]scale=-2:1000,crop=1080:1000,setsar=1[game];[bg][game]overlay=0:460[b1];[b1]ass={ass}[v]")
-    sh(["ffmpeg", "-v", "error", "-y", "-ss", str(start), "-t", str(dur), "-i", path, "-filter_complex", fc, "-map", "[v]", "-map", "0:a",
+    ins = ["-ss", str(start), "-t", str(dur), "-i", path] + (["-i", aud] if aud else [])
+    sh(["ffmpeg", "-v", "error", "-y"] + ins + ["-filter_complex", fc, "-map", "[v]", "-map", "1:a" if aud else "0:a", "-shortest",
         "-c:v", "libx264", "-crf", "19", "-preset", "medium", "-pix_fmt", "yuv420p", "-r", "30",
         "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", out])
     print(out)
@@ -147,6 +168,8 @@ if __name__ == "__main__":
     ap.add_argument("--credit", default="")
     ap.add_argument("--cam", default=None)
     ap.add_argument("--out", default=None)
+    ap.add_argument("--gameplay", action="store_true", help="pure gameplay: crop out facecam/chat, remove all voices, no captions")
+    ap.add_argument("--cx", type=float, default=0.5, help="horizontal position of the gameplay window (0 = left … 1 = right)")
     A = ap.parse_args()
     if A.cmd == "find": find(A.video, A.top, A.len)
-    else: cut(A.video, A.start, A.end, A.hook, A.credit, [int(v) for v in A.cam.split(",")] if A.cam else None, A.out)
+    else: cut(A.video, A.start, A.end, A.hook, A.credit, [int(v) for v in A.cam.split(",")] if A.cam else None, A.out, A.gameplay, A.cx)
