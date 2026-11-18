@@ -31,11 +31,19 @@ def frames(path, fps):
 
 
 def text_mask(f):
-    """bright white or gold pixels ~ text, numbers, labels"""
+    """bright white or gold pixels with sharp edges next to them ~ text, numbers, labels.
+    Large smooth bright areas (a sunset sky, a sun disc, a lit wall) have no sharp edges and are not counted."""
     r, g, b = f[..., 0], f[..., 1], f[..., 2]
     white = (r > 200) & (g > 200) & (b > 200)
     gold = (r > 210) & (g > 160) & (b < 140)
-    return white | gold
+    lum = f[..., :3].astype(np.float32).mean(-1)
+    gx = np.zeros_like(lum); gy = np.zeros_like(lum)
+    gx[:, 1:] = np.abs(lum[:, 1:] - lum[:, :-1]); gy[1:, :] = np.abs(lum[1:, :] - lum[:-1, :])
+    edge = (gx > 60) | (gy > 60)
+    near = edge.copy()
+    for d in (1, 2, 3):   # pixels within 3 px of a sharp edge (glyph strokes are thin)
+        near[d:, :] |= edge[:-d, :]; near[:-d, :] |= edge[d:, :]; near[:, d:] |= edge[:, :-d]; near[:, :-d] |= edge[:, d:]
+    return (white | gold) & near
 
 
 def colourfulness(f):

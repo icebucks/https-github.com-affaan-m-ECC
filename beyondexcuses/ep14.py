@@ -119,13 +119,17 @@ def bag(c, x, y, ang, col, a=1.0):
 
 
 def frame(c, t):
-    c.save(); c.translate(540, G + DY); c.scale(SC, SC); c.translate(-540, -G)
+    sway = 1 + 0.018 * math.sin(t * 0.9) + 0.10 * seg(t, 13.6, T_END)   # slow handheld drift, slow push-in on the pair at the end
+    c.save(); c.translate(540 + 10 * math.sin(t * 0.6), G + DY); c.scale(SC * sway, SC * sway); c.translate(-540, -G)
     u = world(c, t)
     lo = (1, -0.4)
     # the others, empty-handed
     for name, i in OTHERS:
         o = smooth(lambda tt: other(i, tt), t)
+        fade = 1 - seg(o["x"], 690, 780)   # they walk off and vanish over the ridge before the right-hand UI
+        c.saveLayerAlpha(None, int(255 * max(fade, 0.0)))
         jo = figure(c, o["x"], o["y"], o["p"], s=0.82, facing=o["f"], body=OTHER_BODY, light=lo)
+        c.restore()
         if i == 1: head1 = jo["head"]
     if t < 3.2:   # one label for the group: they handed him their bags
         plate_label(c, "EVERYONE ELSE", min(head1[0] + 30, 560), head1[1] - 60, GREY, 0.75 * (1 - seg(t, 2.6, 3.2)))
