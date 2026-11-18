@@ -60,11 +60,11 @@ Zeilen nach Nummer sortiert. Nächster Uploadtermin = Tag nach dem **spätesten*
 | 1 | Di 17.11. | How many Earths fit in the Sun? | FILL | cinematic 100 | warm | Contrarian Flip (73) | 1.3 Mio Erden (Volumen), 109 Erden breit, ~10 Jupiter breit, 1.000 Erden in Jupiter, 99,8 % Masse | `ss1.py` → `SS1_SunEarths_EN.mp4` |
 | 2 | Mo 16.11. (vorgezogen, heute Nacht) | The 5 biggest moons in the Solar System | RANK | synthwave 112 | blau | The Question (76) | Durchmesser Ganymed 5.268, Titan 5.150, Kallisto 4.821, Io 3.643, Mond 3.475 km; Merkur 4.879 km | `ss2.py` → `SS2_BiggestMoons_EN.mp4` |
 | 3 | Mi 18.11. | Earth vs. the Moon in 3 rounds | VS | trap 144 | grün-türkis | The Comparison (76) | ≈ 49 Monde füllen das Erdvolumen (Verhältnis 0,0203), ≈ 81 Monde = Erdmasse (0,0123), Dichte Mond 3.344 vs. Erde 5.514 kg/m³ (≈ 60 %), Schwerkraft 1,62 vs. 9,80 m/s² (≈ 1/6) → gleicher Wurf ≈ 6× höher | `ss3.py` → `SS3_EarthVsMoon_EN.mp4` |
+| 4 | Do 19.11. | Saturn would float in water | WHAT IF | lofi 86 | violett | The Question (82) | Dichte Saturn 0,687 g/cm³ (687 kg/m³) vs. Wasser 1,0 → schwimmt mit 68,7 % unter Wasser, Masse 95 Erden, Volumen ≈ 764 Erden, Durchmesser 120.536 km ≈ 9,4 Erden, einziger Planet leichter als Wasser, v. a. Wasserstoff + Helium | `ss4.py` → `SS4_SaturnFloats_EN.mp4` |
 
 ## Themen-Backlog (oben = als Nächstes; vor dem Bauen gegen `reserved.json` prüfen)
 2. **VS** · Olympus Mons vs. Mount Everest (Höhe, Fläche, Vulkan) – Achtung: Höhenangaben schwanken je nach Bezugslinie (NASA/ESA ≈ 25 km über der Ebene, andere 21,9–27 km). Nur „about 25 km above the plains around it“ sagen und die Bezugslinie nennen; Fläche „about the size of Arizona“ (NASA-Grafik „How big is it“).
-3. **YOU** · What would you weigh on every planet? – Mond weglassen (≈ 1/6 schon in #3). Achtung: NASA nennt zwei Schwerkraft-Konventionen (Übersichtstabelle mit Rotation, z. B. Jupiter 23,1 / Saturn 9,0 m/s²; Einzelblätter ohne Rotation, 24,79 / 10,44). EINE Quelle durchgehend nehmen und nennen; keine Pointe, die nur in einer Konvention stimmt (z. B. „auf Saturn wiegst du weniger“). Skala unitless: „if your scale shows 100 at home …“.
-5. **WHAT IF** · Saturn would float in water – Dichte 0,687 g/cm³ (NASA)
+3. **YOU** · What would you weigh on every planet? *(18.11. übersprungen: Saturn-Wert kippt je nach NASA-Konvention 9,0 vs. 10,44 m/s² – nur ohne Saturn oder mit erklärter Konvention bauen)* – Mond weglassen (≈ 1/6 schon in #3). Achtung: NASA nennt zwei Schwerkraft-Konventionen (Übersichtstabelle mit Rotation, z. B. Jupiter 23,1 / Saturn 9,0 m/s²; Einzelblätter ohne Rotation, 24,79 / 10,44). EINE Quelle durchgehend nehmen und nennen; keine Pointe, die nur in einer Konvention stimmt (z. B. „auf Saturn wiegst du weniger“). Skala unitless: „if your scale shows 100 at home …“.
 6. **ZOOM** · A teaspoon of neutron star – Masse aus NASA-Quelle, Vergleich mit Bergen/Gebäuden
 7. **VS** · The Great Red Spot vs. Earth – aktuelle Breite (NASA/Hubble, Jahr angeben), schrumpft
 8. **RANK** · Planets by number of moons – IAU/NASA-Zählung mit Datum (Saturn vorn)
@@ -159,3 +159,30 @@ Datei `SS3_EarthVsMoon_EN.mp4` (41,8 s, −14,2 LUFS, Audit: alles ✅ – nicht
 
 Suchanfragen: „earth vs moon size comparison“, „how big is the moon compared to earth“, „how many moons fit in earth“.
 Mittwoch – kein Samstags-Hinweis nötig.
+
+---
+
+## SS4 Upload – Do 19.11. · TikTok 17:00 · YouTube 16:30
+Datei `SS4_SaturnFloats_EN.mp4` (38,9 s, −14,2 LUFS, Audit: alles ✅ – nichts unter der TikTok-Oberfläche, keine bewegungsarmen Sekunden, Loop nahtlos), Titelbild `Cover_SS4.jpg`. Hook 82/100 STRONG (The Question). Whisper-Transkript geprüft: alle Zahlen richtig gesprochen. Überschneidungs-Check mit den langen Videos: OK.
+
+**TikTok-Caption**
+> Would Saturn float in water? It weighs 95 Earths – and it still wouldn't sink 🪐🌊
+> Guess: which planet is the densest of all? 👇
+> #bythenumbers #space #astronomy #saturn #solarsystem
+
+**Pin-Kommentar:** Earth! 🌍 It's the densest planet in the Solar System – Mercury is a close second (NASA). Saturn is the only one less dense than water. Who got it? 🪐
+
+**YouTube-Titel (title.py 98/100, mit Titelbild 100/100):** Why would Saturn float in water if it weighs 95 Earths?
+**Titelbild-Text:** IT / FLOATS
+
+**YouTube-Beschreibung**
+> Would Saturn float in water? Saturn's density is only 0.687 g/cm³ – less than water's 1.0 – so in a big enough ocean it would float.
+> How big is Saturn compared to Earth: about 9.4 Earths across and 764 Earths of volume, yet only 95 Earths of mass.
+>
+> Saturn is over 120,000 km wide (120,536 km at the equator) · about 764 Earths would fill its volume · its mass is about 95 Earths · average density 0.687 g/cm³ vs. water 1.0 g/cm³ · the only planet less dense than water, made mostly of hydrogen and helium. A floating object sinks by its density ratio: about 69% of Saturn would sit below the waterline. Hypothetical – no ocean is that big.
+> Sources: NASA NSSDC Saturn Fact Sheet (updated 18 Mar 2025); JPL Horizons physical data (Saturn 699); NASA Science – Saturn Facts; NASA Science – Mercury Facts (checked 18 Nov 2026). Narration: synthetic voice.
+>
+> #bythenumbers #space #astronomy #saturn #solarsystem #shorts
+
+Suchanfragen: „would saturn float in water“, „saturn density“, „how big is saturn compared to earth“.
+Donnerstag – kein Samstags-Hinweis nötig.
