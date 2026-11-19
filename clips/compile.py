@@ -11,8 +11,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import clipper
 
 FADE = 0.3
-INTRO = 3.0
-OUTRO = 4.0
+INTRO = 4.0
+OUTRO = 12.0                    # room for YouTube end-screen elements (5–20 s)
 FONT = "Poppins"
 
 
@@ -110,7 +110,8 @@ def main(spec_path, out):
     tmp = tempfile.mkdtemp()
     segs = spec["segments"]
     first = segs[0]
-    parts = [card(spec["title"], spec.get("subtitle", ""), INTRO, first["file"], first["start"] + 2, tmp, "intro")]
+    import cards
+    parts = [cards.intro(first["file"], first["start"] + 2, spec["title"], spec.get("subtitle", ""), os.path.join(tmp, "intro.mp4"), INTRO)]
     chapters = [("0:00", "Intro")]
     pos = INTRO
     for n, s in enumerate(segs, 1):
@@ -118,7 +119,8 @@ def main(spec_path, out):
         chapters.append((f"{int(pos // 60)}:{int(pos % 60):02d}", f"#{n} {s['label']}"))
         parts.append(p); pos += d
         print(f"segment {n}/{len(segs)} ok", file=sys.stderr)
-    parts.append(card("SUBSCRIBE FOR MORE", "new GTA 6 moments every day", OUTRO, segs[-1]["file"], segs[-1]["start"] + 2, tmp, "outro"))
+    bright = max(segs, key=lambda s: s["end"] - s["start"])           # end-screen background: a frame from the longest section
+    parts.append(cards.outro(bright["file"], bright["start"] + 5, os.path.join(tmp, "outro.mp4"), OUTRO))
     lst = os.path.join(tmp, "list.txt")
     open(lst, "w").write("".join(f"file '{p}'\n" for p in parts))
     joined = ["-f", "concat", "-safe", "0", "-i", lst]      # read the parts directly: no extra full-length copy on disk
