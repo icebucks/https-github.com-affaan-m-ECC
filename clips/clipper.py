@@ -329,12 +329,13 @@ LOGO_WM = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "lo
 CX = {"xqc": 0.66, "darkviperau": 0.37}     # window position per streamer (0 = left … 1 = right) to dodge the facecam
 
 
-def cut(path, start, end, hook, credit, cam=None, out=None, gameplay=False, cx=0.5, dialog=False, hide=None):
+def cut(path, start, end, hook, credit, cam=None, out=None, gameplay=False, cx=0.5, dialog=False, hide=None, raw=False):
     dur = end - start
     out = out or os.path.splitext(path)[0] + f"_clip_{int(start)}.mp4"
     tmp = tempfile.mkdtemp()
     if gameplay:     # pure gameplay: no facecam, no chat, no streamer voice; the game's own subtitles stay in the picture
-        aud = remove_streamer(path, start, dur, tmp)[0] if dialog else remove_voices(path, start, dur, tmp)
+        # raw: no-commentary source, the original game sound stays untouched (separation would also strip game dialogue)
+        aud = None if raw else remove_streamer(path, start, dur, tmp)[0] if dialog else remove_voices(path, start, dur, tmp)
         words = []
     else:
         a = audio(path, start=start, dur=dur)
@@ -411,7 +412,8 @@ if __name__ == "__main__":
     ap.add_argument("--gameplay", action="store_true", help="pure gameplay: crop out facecam/chat, remove all voices, no captions")
     ap.add_argument("--cx", type=float, default=0.5, help="horizontal position of the gameplay window (0 = left … 1 = right)")
     ap.add_argument("--dialog", action="store_true", help="with --gameplay: mute only the streamer's voice, keep in-game dialogue")
+    ap.add_argument("--raw", action="store_true", help="with --gameplay: no-commentary source, keep the original sound")
     A = ap.parse_args()
     if A.cmd == "find": find(A.video, A.top, A.len)
     elif A.cmd == "cats": find_cats(A.video, max(1, A.top // 2), A.len)
-    else: cut(A.video, A.start, A.end, A.hook, A.credit, [int(v) for v in A.cam.split(",")] if A.cam else None, A.out, A.gameplay, A.cx, A.dialog)
+    else: cut(A.video, A.start, A.end, A.hook, A.credit, [int(v) for v in A.cam.split(",")] if A.cam else None, A.out, A.gameplay, A.cx, A.dialog, raw=A.raw)
