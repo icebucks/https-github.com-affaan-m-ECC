@@ -8,6 +8,7 @@
 | Mi 18.11. | 21:00 | 19:30 | #2 Tallest buildings, to scale | `BN2_Tallest_EN.mp4` | `Cover_BN2.jpg` | synthwave 140 |
 | Do 19.11. | 21:00 | 19:30 | #3 How long to walk around the Earth? | `BN3_WalkEarth_EN.mp4` | `Cover_BN3.jpg` | upbeat 120 (Seed 3) |
 | Fr 20.11. | 21:00 | 22:00 | #4 Blue whale heart rate vs yours | `BN4_WhaleHeart_EN.mp4` | `Cover_BN4.jpg` | cinematic 90 (Seed 4) |
+| Sa 21.11. | 17:00 | 17:30 | #5 How big is a blue whale? Animals to scale | `BN5_AnimalsScale_EN.mp4` | `Cover_BN5.jpg` | lofi 88 (Seed 5) |
 
 ## Lange Videos
 Jeden **Samstag 17:30** (YouTube) ein langes Video der Reihe „Cosmic Scale“ – Konzept und Pilot: `../space/LONGFORM.md`, `../space/pilot_script.md`. Shorts der Woche zum selben Thema verlinken per „Ähnliches Video“ darauf.
@@ -39,6 +40,7 @@ Nach 2 Wochen mit den eigenen Analytics prüfen und anpassen.
 | Zeit & Geschwindigkeit | `#bythenumbers #facts #learnontiktok #science #speed` | `#bythenumbers #science #speed #facts #shorts` |
 | Reisen & Erde (zu Fuß, Strecken) | `#bythenumbers #comparison #didyouknow #walking #earth` | `#bythenumbers #walking #earth #facts #shorts` |
 | Tierkörper & Herz (Wal vs. Mensch) | `#bythenumbers #comparison #didyouknow #bluewhale #heartrate` | `#bythenumbers #bluewhale #heartrate #facts #shorts` |
+| Tiere im Größenvergleich | `#bythenumbers #comparison #didyouknow #animals #sizecomparison` | `#bythenumbers #animals #sizecomparison #facts #shorts` |
 
 **Wichtiger als Hashtags:** Das Suchwort (z. B. „tallest buildings“) gehört vorne in die Caption und einmal groß ins Video. TikTok liest Caption und Bildtext und ordnet das Video danach in der Suche ein.
 
@@ -185,4 +187,34 @@ Sources: Goldbogen et al. 2019, PNAS "Extreme bradycardia and tachycardia in the
 
 What's your resting heart rate? 👇
 #bythenumbers #bluewhale #heartrate #facts #shorts
+```
+
+## #5 – How big is a blue whale? Animals to scale
+**Format:** B · Maßstabs-Zoom (Ameise → Mensch → Giraffe → Walhai → Blauwal, Lineal am Boden, Gesamtansicht am Ende, Loop zurück zur Ameise) · **Musik:** lofi 88 BPM, Seed 5 (build 8,9 s, drop 10,9 s = 29.9 m, outro 13,6 s)
+**Hook:** „You are *1.75 m* tall.“ / „How many of you = *1 blue whale*?“ (hookscore 72 STRONG, „The Question“: „You stand 1.75 m tall. How many of you would it take to match a blue whale before the end?“)
+**Suchanfragen (yt-seo):** „animals to scale“ · „how big is a blue whale“ · „blue whale size comparison“
+**TikTok-Caption:**
+```
+Animals to scale: how big is a blue whale? 🐋 You're 1.75 m tall – how many of you fit along one? Guess BEFORE the end 👀
+Comment your guess 👇
+#bythenumbers #comparison #didyouknow #animals #sizecomparison
+```
+**Pin-Kommentar:** `How many did you guess? 🐜 = under 10 · 🦒 = 10–15 · 🐋 = 17 or more`
+**YouTube-Titel:** `How big is a blue whale? 5 animals to scale` (title.py: 94/100, mit Titelbild 98/100)
+**Titelbild-Text:** `17 OF YOU` (Cover_BN5.jpg – andere Wörter als der Titel, gleiches Versprechen)
+**YouTube-Beschreibung:**
+```
+How big is a blue whale? Animals to scale – from a 5 mm ant to the longest blue whale ever measured: 29.9 m, or 17 of you.
+Blue whale size comparison with a human, a giraffe and the whale shark, the largest fish.
+
+• Black garden ant (worker): up to 5 mm
+• You: 1.75 m
+• Giraffe, tallest on record ("George", 1969): 5.8 m
+• Whale shark, largest scientifically documented (2001): 18.8 m
+• Blue whale, longest scientifically measured: 29.9 m
+Math: 29.9 ÷ 1.75 = 17 of you · 29.9 m ÷ 5 mm = 5,980 ants · 29.9 ÷ 18.8 = 1.6x the largest fish.
+Sources: Wikipedia "Blue whale" (longest measured, rostrum tip to tail notch); Guinness World Records "Largest fish" and "Tallest mammal"; NatureSpot / Collingwood 1979 (Lasius niger workers 3.4–5 mm). As of November 2026.
+
+What's the biggest animal you've seen in real life? 👇
+#bythenumbers #animals #sizecomparison #facts #shorts
 ```

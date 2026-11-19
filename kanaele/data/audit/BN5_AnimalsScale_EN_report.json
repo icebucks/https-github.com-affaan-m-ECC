@@ -1,0 +1,59 @@
+{
+ "video": "BN5_AnimalsScale_EN",
+ "duration": 17.25,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.028985507246376812,
+   "seconds": [
+    4.0,
+    4.25
+   ]
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  7.12,
+  2.34,
+  3.99,
+  7.47,
+  8.49,
+  2.92,
+  5.7,
+  3.37,
+  2.68,
+  4.34,
+  3.96,
+  2.88,
+  3.03,
+  10.34,
+  1.22,
+  6.92,
+  5.96
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 84.33380126953125,
+  "contrast": 41.469871520996094,
+  "colourfulness": 46.76786136627197
+ },
+ "loop_difference": 8.5,
+ "font_sizes": [
+  30,
+  32,
+  88,
+  120
+ ],
+ "audio": {
+  "first_half_s_db": -9.7334623336792,
+  "median_db": -15.545530319213867,
+  "silent_windows": 0,
+  "lufs": -13.8
+ }
+}
