@@ -1,0 +1,73 @@
+{
+ "video": "SS5_NeutronSugarCube_EN",
+ "duration": 39.25,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  9.64,
+  2.57,
+  2.41,
+  2.54,
+  1.63,
+  2.09,
+  7.26,
+  1.89,
+  3.34,
+  3.29,
+  3.1,
+  3.57,
+  2.94,
+  2.78,
+  4.84,
+  1.84,
+  3.31,
+  6.3,
+  4.81,
+  3.16,
+  4.02,
+  10.32,
+  3.32,
+  34.44,
+  2.35,
+  3.23,
+  6.31,
+  10.11,
+  8.84,
+  3.81,
+  3.64,
+  3.82,
+  3.24,
+  14.8,
+  9.46,
+  13.59,
+  9.56,
+  6.85,
+  10.71
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 61.58434295654297,
+  "contrast": 45.919334411621094,
+  "colourfulness": 33.22765254974365
+ },
+ "loop_difference": 4.8,
+ "font_sizes": [],
+ "audio": {
+  "first_half_s_db": -10.625892639160156,
+  "median_db": -13.87974739074707,
+  "silent_windows": 0,
+  "lufs": -14.4
+ }
+}
