@@ -1,0 +1,55 @@
+{
+ "video": "Folge18_EarlyRiser_EN",
+ "duration": 16.75,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.029850746268656716,
+   "seconds": [
+    0.0,
+    0.25
+   ]
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  11.45,
+  1.98,
+  2.74,
+  2.57,
+  4.24,
+  3.94,
+  3.87,
+  3.82,
+  2.77,
+  2.9,
+  2.51,
+  1.88,
+  1.45,
+  15.24,
+  2.73,
+  1.4
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 91.13211059570312,
+  "contrast": 28.78472328186035,
+  "colourfulness": 45.99539756774902
+ },
+ "loop_difference": 48.4,
+ "font_sizes": [
+  38
+ ],
+ "audio": {
+  "first_half_s_db": -15.37661075592041,
+  "median_db": -14.216812133789062,
+  "silent_windows": 0,
+  "lufs": -14.4
+ }
+}

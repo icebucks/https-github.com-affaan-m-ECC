@@ -76,7 +76,8 @@ if __name__ == "__main__":
     d = os.path.dirname(os.path.abspath(__file__))
     files = [cover(n, f"{d}/covers/Cover_{n:02d}.jpg") for n in nums]
     # profile grid preview: TikTok shows covers cropped to 3:4 (y 240..1680)
-    th = [Image.open(f).crop((0, 240, 1080, 1680)).resize((300, 400)) for f in files]
+    allf = [f"{d}/covers/Cover_{n:02d}.jpg" for n in sorted(EPS, reverse=True) if os.path.exists(f"{d}/covers/Cover_{n:02d}.jpg")]   # newest first, like the profile
+    th = [Image.open(f).crop((0, 240, 1080, 1680)).resize((300, 400)) for f in allf]
     cols = 3; rows = (len(th) + 2) // 3
     sheet = Image.new("RGB", (cols * 304, rows * 404), (255, 255, 255))
     for i, im in enumerate(th): sheet.paste(im, ((i % cols) * 304, (i // cols) * 404))
