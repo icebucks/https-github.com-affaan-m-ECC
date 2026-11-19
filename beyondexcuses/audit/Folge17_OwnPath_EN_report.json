@@ -1,0 +1,50 @@
+{
+ "video": "Folge17_OwnPath_EN",
+ "duration": 16.75,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  11.37,
+  3.33,
+  3.74,
+  2.95,
+  5.19,
+  3.85,
+  3.63,
+  4.17,
+  3.41,
+  3.79,
+  3.86,
+  2.48,
+  1.61,
+  15.84,
+  2.42,
+  1.35
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 164.4586181640625,
+  "contrast": 32.82046890258789,
+  "colourfulness": 65.88813877105713
+ },
+ "loop_difference": 59.5,
+ "font_sizes": [],
+ "audio": {
+  "first_half_s_db": -15.277936935424805,
+  "median_db": -13.939210891723633,
+  "silent_windows": 0,
+  "lufs": -14.0
+ }
+}

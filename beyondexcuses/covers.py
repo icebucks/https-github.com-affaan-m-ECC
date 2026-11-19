@@ -23,6 +23,7 @@ EPS = {  # num: (module, scene time, negative, positive)
     14: ("ep14", 7.2, "PEOPLE PLEASER", "BOUNDARIES", "NONE|WERE HIS", 11),
     15: ("ep15", 13.1, "TALKER", "WALKER", "SHE'S|ALREADY UP", 12, 400),   # 7th field: scene shift (summit below the title band)
     16: ("ep16", 10.25, "FEAR", "COURAGE", "10 M|BACK DOWN", 13, 260),
+    17: ("ep17", 9.85, "COMPARER", "OWN PATH", "3 LOOKS|1 FALL", 14, 230),
 }
 
 

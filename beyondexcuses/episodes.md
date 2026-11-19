@@ -23,17 +23,18 @@ Render: `VID_LANG=en python3 epN.py render` → `FolgeN_<Name>_EN.mp4`. Stills: 
 | 14 | People Pleaser, Part 2 (**TikTok: Part 11**) | autumn hill at sunset (sequel to #7, from a viewer comment) | You carry 4 bags for everyone else. Why do you never stop before you lose your own? (caption hook 77) | Put some bags down. | `ep14.py` → `Folge14_PleaserPart2_EN.mp4` |
 | 15 | Talker vs. Walker (**TikTok: Part 12**) | alpine trailhead below a snow-capped peak, blue pre-dawn mist → pink alpenglow → sunrise over the summit | You keep announcing the climb. Why is the quiet one already at the top before you take 1 step? (hookscore 72) | Talk less. Walk more. | `ep15.py` → `Folge15_TalkerWalker_EN.mp4` |
 | 16 | Fear of Failure vs. Courage (**TikTok: Part 13**) | outdoor pool with two 10 m diving towers, bright midday summer, turquoise water | You climbed 10 meters up. Why do you always walk back down before you jump and lose your chance? (hookscore 76) | Jump scared. Laugh after. | `ep16.py` → `Folge16_Courage_EN.mp4` |
+| 17 | Comparer vs. Own Path (**TikTok: Part 14**) | beach race on two lanes in wet sand, pink sunrise over the sea, tracking camera | You looked sideways 3 times in 10 seconds. That's exactly why you lost the race. What were you watching? (hookscore 76) | Eyes on your lane. | `ep17.py` → `Folge17_OwnPath_EN.mp4` |
 
 ## Nummerierung auf TikTok (Stand 17.11.2026)
 Die Person nummeriert auf TikTok fortlaufend nach Upload-Reihenfolge, nicht nach Dateinummer: intern #11 = **TikTok Part 8**, intern #12 = **TikTok Part 9**. Ab jetzt gilt: **angezeigte Nummer = letzte TikTok-Nummer + 1** (nächste Folge = Part 10). Im Video `SHOWN` als Nummer an `finish_v2` geben (Serien-Tag + Cliffhanger), in `covers.py` als 6. Feld eintragen, im Cliffhanger den nächsten Teil mit dieser Nummer ankündigen. Dateinamen bleiben intern (`ep13.py`, `Folge13_…`).
 Stand 18.11.: intern #13 = Part 10 (Perfectionist), intern #14 = Part 11 (People Pleaser 2).
 Stand 18.11. (Tagesproduktion): intern #15 = Part 12 (Talker vs. Walker).
 Stand 19.11. (Tagesproduktion): intern #16 = Part 13 (Fear of Failure vs. Courage).
-**Versprochen in Part 13:** „Part 14 tomorrow: the one who keeps looking sideways“ → die nächste Folge MUSS „Comparer vs. Own Path“ (Rennen auf getrennten Bahnen) sein, angezeigt als **Part 14**.
+Stand 19.11.: intern #17 = Part 14 (Comparer vs. Own Path).
+**Versprochen in Part 14:** „Part 15 tomorrow: the one who hits snooze“ → die nächste Folge MUSS „Excuse Clock vs. Early Riser“ (Schlafzimmer bei Sonnenaufgang) sein, angezeigt als **Part 15**.
 
 ## Ideas (not made yet)
 
-- **Comparer vs. Own Path**: a race on separate lanes. One keeps looking sideways and trips; the other only looks ahead.
 - **Excuse Clock vs. Early Riser**: a bedroom at dawn. One hits snooze; the other is already on the sunrise run.
 - **Lone Wolf vs. Team**: a heavy boulder on a hill. One pushes alone and fails; the other calls friends.
 - **Consumer vs. Creator**: a market. One buys everything; the other builds a stall and sells.

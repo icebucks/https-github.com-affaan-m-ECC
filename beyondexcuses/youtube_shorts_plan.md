@@ -23,6 +23,7 @@ Danach in der YouTube-App bei jedem Short unter „Ähnliches Video“ die **nä
 | Sa 28.11. | 17:30 | #14 People Pleaser, Part 2 (im Video: Part 11) | `Folge14_PleaserPart2_EN.mp4` | `covers/Cover_14.jpg` |
 | So 29.11. | 15:30 | #15 Talker vs Walker (im Video: Part 12) | `Folge15_TalkerWalker_EN.mp4` | `covers/Cover_15.jpg` |
 | Mo 30.11. | 19:30 | #16 Fear of Failure vs Courage (im Video: Part 13) | `Folge16_Courage_EN.mp4` | `covers/Cover_16.jpg` |
+| Di 01.12. | 19:30 | #17 Comparer vs Own Path (im Video: Part 14) | `Folge17_OwnPath_EN.mp4` | `covers/Cover_17.jpg` |
 
 Neue Folgen kommen jeweils am nächsten freien Tag dazu, zu den Zeiten aus der Tabelle unten.
 
@@ -349,4 +350,27 @@ Send this to someone who's been standing at the edge way too long 👇
 
 Mindset Series – Part 13. Part 14 tomorrow: the one who keeps looking sideways.
 #beyondexcuses #fearoffailure #courage #mindset #shorts
+```
+
+## #17 – Comparer vs Own Path (TikTok: Part 14)
+**TikTok:** So 22.11., 20:00 · **YouTube:** Di 01.12. 19:30 · **Titelbild:** `covers/Cover_17.jpg` („3 LOOKS / 1 FALL“, #14) · **Hook im Video:** „Looked sideways 3 times.“ / „Watch what's in his lane.“
+**Suchanfragen:** „stop comparing yourself to others“ · „run your own race“ · „comparison is the thief of joy“
+**TikTok-Caption:**
+```
+You looked sideways 3 times in 10 seconds. That's exactly why you lost the race. What were you watching? 🏃‍♂️👀
+Send this to someone who keeps checking everyone else's progress 👀
+Comment "LANE" if you're focusing on your own race.
+#comparison #mindset #psychology #motivation #beyondexcuses
+```
+**Pin-Kommentar:** `Whose lane do you keep checking? 👀 = way too often · 🏁 = only mine now`
+**Titel (title.py 98, mit Titelbild 100):** `Comparer vs Own Path (Part 14): what were you watching?`
+**Beschreibung:**
+```
+Stop comparing yourself to others: he checks her lane 3 times in 10 seconds and runs straight into the sandcastle in his own.
+Run your own race – comparison is the thief of joy, and of your finish line. Eyes on your lane.
+
+Send this to someone who keeps checking everyone else's progress 👇
+
+Mindset Series – Part 14. Part 15 tomorrow: the one who hits snooze.
+#beyondexcuses #comparison #selfimprovement #mindset #shorts
 ```
