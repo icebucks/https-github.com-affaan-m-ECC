@@ -61,11 +61,12 @@ Zeilen nach Nummer sortiert. Nächster Uploadtermin = Tag nach dem **spätesten*
 | 2 | Mo 16.11. (vorgezogen, heute Nacht) | The 5 biggest moons in the Solar System | RANK | synthwave 112 | blau | The Question (76) | Durchmesser Ganymed 5.268, Titan 5.150, Kallisto 4.821, Io 3.643, Mond 3.475 km; Merkur 4.879 km | `ss2.py` → `SS2_BiggestMoons_EN.mp4` |
 | 3 | Mi 18.11. | Earth vs. the Moon in 3 rounds | VS | trap 144 | grün-türkis | The Comparison (76) | ≈ 49 Monde füllen das Erdvolumen (Verhältnis 0,0203), ≈ 81 Monde = Erdmasse (0,0123), Dichte Mond 3.344 vs. Erde 5.514 kg/m³ (≈ 60 %), Schwerkraft 1,62 vs. 9,80 m/s² (≈ 1/6) → gleicher Wurf ≈ 6× höher | `ss3.py` → `SS3_EarthVsMoon_EN.mp4` |
 | 4 | Do 19.11. | Saturn would float in water | WHAT IF | lofi 86 | violett | The Question (82) | Dichte Saturn 0,687 g/cm³ (687 kg/m³) vs. Wasser 1,0 → schwimmt mit 68,7 % unter Wasser, Masse 95 Erden, Volumen ≈ 764 Erden, Durchmesser 120.536 km ≈ 9,4 Erden, einziger Planet leichter als Wasser, v. a. Wasserstoff + Helium | `ss4.py` → `SS4_SaturnFloats_EN.mp4` |
+| 5 | Fr 20.11. | A sugar cube of neutron star | ZOOM | cinematic 100 | rot | The Statistic (75) | 1 Zuckerwürfel Neutronenstern ≈ 1 Billion kg (1 Mrd. t) ≈ ein Berg, Neutronenstern ≈ 20 km breit (Größe einer Stadt), ≈ Sonnenmasse, Sonne ≈ 1,4 Mio. km breit → 70.000× schmaler | `ss5.py` → `SS5_NeutronSugarCube_EN.mp4` |
 
 ## Themen-Backlog (oben = als Nächstes; vor dem Bauen gegen `reserved.json` prüfen)
 2. **VS** · Olympus Mons vs. Mount Everest (Höhe, Fläche, Vulkan) – Achtung: Höhenangaben schwanken je nach Bezugslinie (NASA/ESA ≈ 25 km über der Ebene, andere 21,9–27 km). Nur „about 25 km above the plains around it“ sagen und die Bezugslinie nennen; Fläche „about the size of Arizona“ (NASA-Grafik „How big is it“).
-3. **YOU** · What would you weigh on every planet? *(18.11. übersprungen: Saturn-Wert kippt je nach NASA-Konvention 9,0 vs. 10,44 m/s² – nur ohne Saturn oder mit erklärter Konvention bauen)* – Mond weglassen (≈ 1/6 schon in #3). Achtung: NASA nennt zwei Schwerkraft-Konventionen (Übersichtstabelle mit Rotation, z. B. Jupiter 23,1 / Saturn 9,0 m/s²; Einzelblätter ohne Rotation, 24,79 / 10,44). EINE Quelle durchgehend nehmen und nennen; keine Pointe, die nur in einer Konvention stimmt (z. B. „auf Saturn wiegst du weniger“). Skala unitless: „if your scale shows 100 at home …“.
-6. **ZOOM** · A teaspoon of neutron star – Masse aus NASA-Quelle, Vergleich mit Bergen/Gebäuden
+3. **YOU** · What would you weigh on every planet? *(19.11. erneut übersprungen: Jupiter 23,1 vs. 24,79, Saturn 9,0 vs. 10,44 m/s² je nach Quelle) (18.11. übersprungen: Saturn-Wert kippt je nach NASA-Konvention 9,0 vs. 10,44 m/s² – nur ohne Saturn oder mit erklärter Konvention bauen)* – Mond weglassen (≈ 1/6 schon in #3). Achtung: NASA nennt zwei Schwerkraft-Konventionen (Übersichtstabelle mit Rotation, z. B. Jupiter 23,1 / Saturn 9,0 m/s²; Einzelblätter ohne Rotation, 24,79 / 10,44). EINE Quelle durchgehend nehmen und nennen; keine Pointe, die nur in einer Konvention stimmt (z. B. „auf Saturn wiegst du weniger“). Skala unitless: „if your scale shows 100 at home …“.
+6. ~~**ZOOM** · A teaspoon of neutron star~~ → erledigt als SS5 (NASA-Zuckerwürfel statt Teelöffel: Teelöffel-Werte schwanken zwischen 10 Mio. und mehreren Mrd. t)
 7. **VS** · The Great Red Spot vs. Earth – aktuelle Breite (NASA/Hubble, Jahr angeben), schrumpft
 8. **RANK** · Planets by number of moons – IAU/NASA-Zählung mit Datum (Saturn vorn)
 9. **YOU** · Astronauts on the ISS see 16 sunrises a day – NASA (Umläufe pro Tag)
@@ -186,3 +187,30 @@ Datei `SS4_SaturnFloats_EN.mp4` (38,9 s, −14,2 LUFS, Audit: alles ✅ – nich
 
 Suchanfragen: „would saturn float in water“, „saturn density“, „how big is saturn compared to earth“.
 Donnerstag – kein Samstags-Hinweis nötig.
+
+---
+
+## SS5 Upload – Fr 20.11. · TikTok 17:00 · YouTube 16:30
+Datei `SS5_NeutronSugarCube_EN.mp4` (39,2 s, −14,4 LUFS, Audit: alles ✅ – nichts unter der TikTok-Oberfläche, keine bewegungsarmen Sekunden, Loop nahtlos), Titelbild `Cover_SS5.jpg`. Hook 75/100 STRONG (The Statistic). Whisper-Transkript geprüft: alle Zahlen richtig gesprochen. Überschneidungs-Check mit den langen Videos: OK.
+
+**TikTok-Caption**
+> Neutron star density: you'd lose any bet against this sugar cube 🧊⚖️ About 1 trillion kg – as much as a mountain
+> What's the heaviest thing you've ever lifted? 👇
+> #bythenumbers #space #astronomy #neutronstar #stars
+
+**Pin-Kommentar:** Whatever you lifted – one sugar cube of neutron star beats it by about a billion tons (NASA) 😅 What was yours? 🏋️
+
+**YouTube-Titel (title.py 94/100, mit Titelbild 98/100):** How dense is a neutron star? 1 sugar cube = 1 trillion kg
+**Titelbild-Text:** ONE / MOUNTAIN
+
+**YouTube-Beschreibung**
+> How dense is a neutron star? Neutron star density in one picture: a single sugar cube of it would weigh about 1 trillion kg on Earth.
+> The neutron star sugar cube weighs about as much as a mountain – and the whole star packs about the Sun's mass into a ball 20 km across.
+>
+> One sugar cube of neutron star material ≈ 1 trillion kilograms (1 billion tons) on Earth, about as much as a mountain · a neutron star is about 20 km across – the size of a city – with about the mass of the Sun · the Sun is about 1.4 million km wide, so that's squeezing it about 70,000 times narrower.
+> Sources: NASA Goddard – Imagine the Universe: Neutron Stars; NASA Science – Sun Facts (checked 19 Nov 2026). Narration: synthetic voice.
+>
+> #bythenumbers #space #astronomy #neutronstar #stars #shorts
+
+Suchanfragen: „neutron star density“, „how dense is a neutron star“, „neutron star sugar cube“.
+Freitag – kein Samstags-Hinweis nötig.
