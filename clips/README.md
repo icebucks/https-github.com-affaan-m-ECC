@@ -2,12 +2,19 @@
 
 Neuer Account der Person, nur echtes Gameplay aus englischen Twitch-Streams. Ziel: in der Launch-Phase (ab 18.11.2026, zuerst nur Neuseeland) möglichst schnell viele virale Szenen posten, bevor andere Clip-Kanäle sie haben.
 
+## Grundregel (19.11.2026, Wunsch der Person)
+**Nur noch reines Gameplay** von No-Commentary-Kanälen (kein Streamer im Bild, keine Streamer-Stimme): besserer Ton und besseres Bild, nichts muss mehr herausgerechnet werden.
+- Suche: Twitch-GQL `streams(options: {freeformTags: ["NoCommentary"]})`, Kategorie GTA VI, Sprache en. Bewährt: **skrimskeez** (Free Roam, Lucia), **mrperfectog91** (Story, Jason). Meiden: Kanäle mit fremdsprachiger Spiel-Oberfläche.
+- Schnitt mit `--gameplay --raw` (Originalton, keine Stimmtrennung).
+- **YouTube-Compilations mindestens 8 Minuten**, Abschnitte 60–120 s (`compile.py`, `"audio": "raw"`), Kapitel aus `<out>.chapters.txt`.
+
 ## Werkzeuge
 - `twitch_find.py` – Live-Streams einer Kategorie (Standard „Grand Theft Auto VI“, Sprache en) nach Zuschauern.
 - `pick_streamer.py` – hört bei den Top-Streams 30–45 s rein, misst den Sprechanteil, speichert ein Standbild je Stream (Facecam-Check).
 - `record_loop.sh <kanal> <ordner> [min] [anzahl]` – Daueraufnahme in Blöcken; fertiger Block bekommt `.done`.
 - `clipper.py cats <video>` – beste Momente je Kategorie (funny / action / secrets).
-- `clipper.py cut <video> <start> <ende> --gameplay --dialog --hook "ZEILE 1|zeile 2" --out <datei>` – fertiger 9:16-Clip.
+- `clipper.py cut <video> <start> <ende> --gameplay --raw --hook "Zeile" --credit "via <kanal>" --out <datei>` – fertiger 9:16-Clip aus No-Commentary-Material (`--dialog` nur noch für alte Streamer-Aufnahmen).
+- `compile.py <spec.json> <out.mp4>` – 16:9-Compilation mit Intro/Outro, Kapiteln, Logo, −14 LUFS (2 Durchgänge).
 
 ## Clip-Regeln
 - **Bild (v2, 18.11. nach Feedback „schneidet zu viel aus“):** breites 1,2:1-Fenster (67 % der Breite, volle Höhe, fast ohne Hochskalierung) mittig im 9:16-Bild, dunkel-unscharfer Rand. Die echten GTA-Untertitel bleiben im Bild. Overlays, die ins Fenster ragen (`HIDE`, z. B. Peanut-Avatar), werden unscharf gemacht und mit einem weichen Badge „GTA 6 DAILY CLIPS“ überdeckt; bei Facecams am Rand wird das Fenster verschoben (`CX`: xqc 0.66, darkviperau 0.37).
@@ -38,4 +45,4 @@ Story-Zwischensequenzen nur mit ⚠️-Spoiler-Hinweis in der Caption.
 KI-Label: nicht nötig (echtes Material). Quelle nennen senkt das Strike-Risiko.
 
 ## Speicher
-Ein 15-min-Block 720p ≈ 500 MB. Nach dem Schneiden Block löschen, `/tmp/tmp*` (Stimmtrennung) leeren. Unter 2 GB frei → Aufnahme pausieren.
+Ein 15-min-Block ≈ 400 MB (skrimskeez) bis 700 MB (mrperfectog91). Die Platte fasst nur wenige Blöcke: höchstens 2 Kanäle × 4 Blöcke aufnehmen, dann schneiden und löschen. Nach dem Schneiden Block löschen, `/tmp/tmp*` (Stimmtrennung) leeren. Unter 2 GB frei → Aufnahme pausieren.

@@ -121,16 +121,15 @@ def main(spec_path, out):
     parts.append(card("SUBSCRIBE FOR MORE", "new GTA 6 moments every day", OUTRO, segs[-1]["file"], segs[-1]["start"] + 2, tmp, "outro"))
     lst = os.path.join(tmp, "list.txt")
     open(lst, "w").write("".join(f"file '{p}'\n" for p in parts))
-    joined = os.path.join(tmp, "joined.mp4")
-    clipper.sh(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", joined])
+    joined = ["-f", "concat", "-safe", "0", "-i", lst]      # read the parts directly: no extra full-length copy on disk
     # two-pass loudness normalisation (one pass lands ~1 LU off on long files)
     import re as _re
-    r = subprocess.run(["ffmpeg", "-hide_banner", "-i", joined, "-af", "loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"],
+    r = subprocess.run(["ffmpeg", "-hide_banner"] + joined + ["-af", "loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"],
                        capture_output=True, text=True).stderr
     m = json.loads(r[r.rindex("{"):r.rindex("}") + 1])
     ln = (f"loudnorm=I=-14:TP=-1.5:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:measured_LRA={m['input_lra']}"
           f":measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true")
-    clipper.sh(["ffmpeg", "-v", "error", "-y", "-i", joined, "-c:v", "copy", "-af", ln,
+    clipper.sh(["ffmpeg", "-v", "error", "-y"] + joined + ["-c:v", "copy", "-af", ln,
                 "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-movflags", "+faststart", out])
     open(out + ".chapters.txt", "w").write("\n".join(f"{a} {b}" for a, b in chapters) + "\n")
     print(out)
