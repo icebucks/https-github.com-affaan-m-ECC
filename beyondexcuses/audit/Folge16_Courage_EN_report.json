@@ -1,0 +1,50 @@
+{
+ "video": "Folge16_Courage_EN",
+ "duration": 16.75,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  17.87,
+  2.49,
+  1.82,
+  2.1,
+  3.34,
+  2.92,
+  3.8,
+  3.9,
+  2.48,
+  4.02,
+  2.87,
+  2.31,
+  2.0,
+  16.16,
+  3.48,
+  1.91
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 180.61181640625,
+  "contrast": 43.34116744995117,
+  "colourfulness": 71.07620048522949
+ },
+ "loop_difference": 80.4,
+ "font_sizes": [],
+ "audio": {
+  "first_half_s_db": -15.521251678466797,
+  "median_db": -13.918098449707031,
+  "silent_windows": 0,
+  "lufs": -14.0
+ }
+}

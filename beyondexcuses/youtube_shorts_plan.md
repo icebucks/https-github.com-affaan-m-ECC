@@ -22,6 +22,7 @@ Danach in der YouTube-App bei jedem Short unter „Ähnliches Video“ die **nä
 | Fr 27.11. | 22:00 | #13 Perfectionist vs Finisher (im Video: Part 10) | `Folge13_Finisher_EN.mp4` | `covers/Cover_13.jpg` |
 | Sa 28.11. | 17:30 | #14 People Pleaser, Part 2 (im Video: Part 11) | `Folge14_PleaserPart2_EN.mp4` | `covers/Cover_14.jpg` |
 | So 29.11. | 15:30 | #15 Talker vs Walker (im Video: Part 12) | `Folge15_TalkerWalker_EN.mp4` | `covers/Cover_15.jpg` |
+| Mo 30.11. | 19:30 | #16 Fear of Failure vs Courage (im Video: Part 13) | `Folge16_Courage_EN.mp4` | `covers/Cover_16.jpg` |
 
 Neue Folgen kommen jeweils am nächsten freien Tag dazu, zu den Zeiten aus der Tabelle unten.
 
@@ -325,4 +326,27 @@ Send this to someone who's been "starting tomorrow" for months 👇
 
 Mindset Series – Part 12. Part 13 tomorrow: the one who never jumps.
 #beyondexcuses #goals #discipline #mindset #shorts
+```
+
+## #16 – Fear of Failure vs Courage (TikTok: Part 13)
+**TikTok:** Sa 21.11., 20:00 (Teil-Rhythmus „tomorrow“ wie Part 9–12) · **YouTube:** Mo 30.11. 19:30 · **Titelbild:** `covers/Cover_16.jpg` („10 M / BACK DOWN“, #13) · **Hook im Video:** „10 meters up. Then back down.“ / „Watch who actually jumps.“
+**Suchanfragen:** „fear of failure“ · „how to be brave“ · „jump scared“
+**TikTok-Caption:**
+```
+You climbed 10 meters up. Why do you always walk back down before you jump and lose your chance? 🏊‍♂️😨
+Send this to someone who's been standing at the edge way too long 👀
+Comment "JUMP" if you're doing the scary thing this week.
+#fearoffailure #mindset #psychology #motivation #beyondexcuses
+```
+**Pin-Kommentar:** `Be honest: what's your 10 meter board right now? 🪜 = still climbing down · 🌊 = already jumped`
+**Titel (title.py 94, mit Titelbild 98):** `Fear of Failure vs Courage (Part 13): jump scared anyway`
+**Beschreibung:**
+```
+Fear of failure vs courage: both climb the 10 meter board. One walks back down – the other jumps scared and comes up laughing.
+How to be brave isn't about not being afraid. Jump scared. Laugh after.
+
+Send this to someone who's been standing at the edge way too long 👇
+
+Mindset Series – Part 13. Part 14 tomorrow: the one who keeps looking sideways.
+#beyondexcuses #fearoffailure #courage #mindset #shorts
 ```
