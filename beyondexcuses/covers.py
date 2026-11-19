@@ -24,6 +24,7 @@ EPS = {  # num: (module, scene time, negative, positive)
     15: ("ep15", 13.1, "TALKER", "WALKER", "SHE'S|ALREADY UP", 12, 400),   # 7th field: scene shift (summit below the title band)
     16: ("ep16", 10.25, "FEAR", "COURAGE", "10 M|BACK DOWN", 13, 260),
     17: ("ep17", 9.85, "COMPARER", "OWN PATH", "3 LOOKS|1 FALL", 14, 230),
+    18: ("ep18", 13.1, "EXCUSE CLOCK", "EARLY RISER", "3 SNOOZES|0 KM", 15, 150, 56),   # 8th field: scene x-shift
 }
 
 
@@ -40,7 +41,13 @@ def cover(num, out):
     surf = skia.Surface(W, H); c = surf.getCanvas(); c.clear(skia.ColorBLACK)
     lib.NOW = t
     dy = EPS[num][6] if len(EPS[num]) > 6 else 190
-    c.save(); c.translate(0, dy); m.frame(c, t); c.restore()
+    dx = EPS[num][7] if len(EPS[num]) > 7 else 0
+    c.save(); c.translate(dx, dy); m.frame(c, t); c.restore()
+    if dx > 0:   # fill the strip the x-shift uncovers with the background column next to it
+        import numpy as np
+        arr = surf.makeImageSnapshot().toarray(colorType=skia.kRGBA_8888_ColorType)
+        arr[:, :dx + 4] = arr[:, dx + 4:dx + 5]
+        c.drawImage(skia.Image.fromarray(np.ascontiguousarray(arr), colorType=skia.kRGBA_8888_ColorType), 0, 0)
     # calm dark band for the title; fades into the scene below
     c.drawRect(skia.Rect.MakeWH(W, 860), P((14, 16, 26), 0.93))
     sh = skia.Paint(Shader=skia.GradientShader.MakeLinear([(0, 860), (0, 1120)], [C((14, 16, 26), 0.93), C((14, 16, 26), 0.0)]))

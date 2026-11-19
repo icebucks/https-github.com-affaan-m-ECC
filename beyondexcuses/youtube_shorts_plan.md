@@ -24,6 +24,7 @@ Danach in der YouTube-App bei jedem Short unter „Ähnliches Video“ die **nä
 | So 29.11. | 15:30 | #15 Talker vs Walker (im Video: Part 12) | `Folge15_TalkerWalker_EN.mp4` | `covers/Cover_15.jpg` |
 | Mo 30.11. | 19:30 | #16 Fear of Failure vs Courage (im Video: Part 13) | `Folge16_Courage_EN.mp4` | `covers/Cover_16.jpg` |
 | Di 01.12. | 19:30 | #17 Comparer vs Own Path (im Video: Part 14) | `Folge17_OwnPath_EN.mp4` | `covers/Cover_17.jpg` |
+| Mi 02.12. | 19:30 | #18 Excuse Clock vs Early Riser (im Video: Part 15) | `Folge18_EarlyRiser_EN.mp4` | `covers/Cover_18.jpg` |
 
 Neue Folgen kommen jeweils am nächsten freien Tag dazu, zu den Zeiten aus der Tabelle unten.
 
@@ -373,4 +374,27 @@ Send this to someone who keeps checking everyone else's progress 👇
 
 Mindset Series – Part 14. Part 15 tomorrow: the one who hits snooze.
 #beyondexcuses #comparison #selfimprovement #mindset #shorts
+```
+
+## #18 – Excuse Clock vs Early Riser (TikTok: Part 15)
+**TikTok:** Mo 23.11., 20:00 · **YouTube:** Mi 02.12. 19:30 · **Titelbild:** `covers/Cover_18.jpg` („3 SNOOZES / 0 KM“, #15) · **Hook im Video:** „Snooze. Snooze. Snooze.“ / „She ran 5 km meanwhile.“
+**Suchanfragen:** „how to stop hitting snooze“ · „how to wake up early“ · „morning routine motivation“
+**TikTok-Caption:**
+```
+You keep saying you'll start Monday. Why do you lose every morning before 7 am? ⏰😴
+Send this to someone who hits snooze way too often 👀
+Comment "6AM" if you're getting up first tomorrow.
+#wakeupearly #mindset #psychology #motivation #beyondexcuses
+```
+**Pin-Kommentar:** `Be honest: how many snoozes this morning? 😴 = 3 or more · ⏰ = up on the first one`
+**Titel (title.py 94, mit Titelbild 98):** `Excuse Clock vs Early Riser (Part 15): stop hitting snooze`
+**Beschreibung:**
+```
+How to stop hitting snooze: he hits it 3 times – "5 more minutes", "too cold", "I'll start Monday". She gets up at 6:00 and runs 5 km before he opens his eyes at 7:45.
+How to wake up early isn't about motivation. It's the first decision of the day. Win the morning. Win the day.
+
+Send this to someone who hits snooze way too often 👇
+
+Mindset Series – Part 15. Part 16 tomorrow: the one who won't ask for help.
+#beyondexcuses #wakeupearly #morningroutine #mindset #shorts
 ```
