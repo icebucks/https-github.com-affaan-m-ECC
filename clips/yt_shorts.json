@@ -1,0 +1,12 @@
+{
+ "_doc": "YouTube-Shorts-Warteschlange (9:16-Clips aus reinem Gameplay). Hochladen mit clips/yt_upload.py, sobald der YouTube-Zugang funktioniert. 'done' = hochgeladen (Video-ID).",
+ "shorts": [
+  {"file": "G1_Seaplane.mp4", "title": "GTA 6: escaping the swamp by seaplane #Shorts", "credit": "mrperfectog91", "done": null},
+  {"file": "G2_CopChase.mp4", "title": "GTA 6 cops do NOT give up #Shorts", "credit": "mrperfectog91", "done": null},
+  {"file": "G3_Wasted.mp4", "title": "This GTA 6 shootout went wrong #Shorts", "credit": "skrimskeez", "done": null},
+  {"file": "G4_StoreRobbery.mp4", "title": "Robbing a corner store in GTA 6 #Shorts", "credit": "skrimskeez", "done": null},
+  {"file": "G5_TowTruck.mp4", "title": "GTA 6: stealing a car off a tow truck #Shorts", "credit": "mrperfectog91", "done": null},
+  {"file": "G6_OffRoad.mp4", "title": "GTA 6: losing the cops off-road #Shorts", "credit": "mrperfectog91", "done": null}
+ ],
+ "description": "{title_plain}\n\nPure GTA 6 gameplay – no commentary. New clips every day.\n🎥 Gameplay footage: {credit} (Twitch)\n\n#gta6 #gta6gameplay #shorts"
+}
