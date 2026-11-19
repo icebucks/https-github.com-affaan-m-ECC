@@ -25,6 +25,7 @@ Danach in der YouTube-App bei jedem Short unter „Ähnliches Video“ die **nä
 | Mo 30.11. | 19:30 | #16 Fear of Failure vs Courage (im Video: Part 13) | `Folge16_Courage_EN.mp4` | `covers/Cover_16.jpg` |
 | Di 01.12. | 19:30 | #17 Comparer vs Own Path (im Video: Part 14) | `Folge17_OwnPath_EN.mp4` | `covers/Cover_17.jpg` |
 | Mi 02.12. | 19:30 | #18 Excuse Clock vs Early Riser (im Video: Part 15) | `Folge18_EarlyRiser_EN.mp4` | `covers/Cover_18.jpg` |
+| Do 03.12. | 19:30 | #19 Lone Wolf vs Team Player (im Video: Part 16) | `Folge19_LoneWolf_EN.mp4` | `covers/Cover_19.jpg` |
 
 Neue Folgen kommen jeweils am nächsten freien Tag dazu, zu den Zeiten aus der Tabelle unten.
 
@@ -397,4 +398,27 @@ Send this to someone who hits snooze way too often 👇
 
 Mindset Series – Part 15. Part 16 tomorrow: the one who won't ask for help.
 #beyondexcuses #wakeupearly #morningroutine #mindset #shorts
+```
+
+## #19 – Lone Wolf vs Team Player (TikTok: Part 16)
+**TikTok:** Di 24.11., 20:00 · **YouTube:** Do 03.12. 19:30 · **Titelbild:** `covers/Cover_19.jpg` („ROLLED BACK / TWICE“, #16) · **Hook im Video:** „Pushed alone. Rolled back twice.“ / „Watch who reaches the top.“
+**Suchanfragen:** „how to ask for help“ · „asking for help is strength“ · „lone wolf mentality“
+**TikTok-Caption:**
+```
+You'd rather fail alone than ask for help. Why do you think that makes you strong? 🪨🐺
+Send this to the friend who never asks for help 👀
+Comment "TEAM" if you're asking for help this week.
+#askforhelp #mindset #psychology #motivation #beyondexcuses
+```
+**Pin-Kommentar:** `Be honest: when did you last ask for help? 🐺 = can't remember · 🤝 = this week`
+**Titel (title.py 94, mit Titelbild 98):** `Lone Wolf vs Team Player (Part 16): she asked once`
+**Beschreibung:**
+```
+Lone wolf mentality vs asking for help: he pushes his boulder alone – "I don't need help" – and gets rolled back down twice. She asks once, two friends throw a rope, and her boulder is on the summit.
+Asking for help is strength, not weakness. Nobody gets the heavy ones up alone.
+
+Send this to the friend who never asks for help 👇
+
+Mindset Series – Part 16. Part 17 tomorrow: the one who blames the oven.
+#beyondexcuses #askforhelp #teamwork #mindset #shorts
 ```

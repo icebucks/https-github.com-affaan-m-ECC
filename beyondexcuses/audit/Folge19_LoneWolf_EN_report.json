@@ -1,0 +1,52 @@
+{
+ "video": "Folge19_LoneWolf_EN",
+ "duration": 16.75,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.014925373134328358,
+   "seconds": [
+    0.0
+   ]
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  9.55,
+  1.45,
+  1.68,
+  2.02,
+  3.32,
+  2.1,
+  2.57,
+  2.49,
+  2.07,
+  2.36,
+  1.57,
+  1.47,
+  1.31,
+  12.35,
+  2.42,
+  1.29
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 138.9059295654297,
+  "contrast": 45.73564910888672,
+  "colourfulness": 68.81366729736328
+ },
+ "loop_difference": 58.2,
+ "font_sizes": [],
+ "audio": {
+  "first_half_s_db": -14.268909454345703,
+  "median_db": -14.4677152633667,
+  "silent_windows": 0,
+  "lufs": -14.1
+ }
+}

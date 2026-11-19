@@ -25,6 +25,7 @@ EPS = {  # num: (module, scene time, negative, positive)
     16: ("ep16", 10.25, "FEAR", "COURAGE", "10 M|BACK DOWN", 13, 260),
     17: ("ep17", 9.85, "COMPARER", "OWN PATH", "3 LOOKS|1 FALL", 14, 230),
     18: ("ep18", 13.1, "EXCUSE CLOCK", "EARLY RISER", "3 SNOOZES|0 KM", 15, 150, 56),   # 8th field: scene x-shift
+    19: ("ep19", 12.2, "LONE WOLF", "TEAM PLAYER", "ROLLED BACK|TWICE", 16, 60, 30),
 }
 
 

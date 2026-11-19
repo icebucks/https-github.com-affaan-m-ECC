@@ -25,6 +25,7 @@ Render: `VID_LANG=en python3 epN.py render` → `FolgeN_<Name>_EN.mp4`. Stills: 
 | 16 | Fear of Failure vs. Courage (**TikTok: Part 13**) | outdoor pool with two 10 m diving towers, bright midday summer, turquoise water | You climbed 10 meters up. Why do you always walk back down before you jump and lose your chance? (hookscore 76) | Jump scared. Laugh after. | `ep16.py` → `Folge16_Courage_EN.mp4` |
 | 17 | Comparer vs. Own Path (**TikTok: Part 14**) | beach race on two lanes in wet sand, pink sunrise over the sea, tracking camera | You looked sideways 3 times in 10 seconds. That's exactly why you lost the race. What were you watching? (hookscore 76) | Eyes on your lane. | `ep17.py` → `Folge17_OwnPath_EN.mp4` |
 | 18 | Excuse Clock vs. Early Riser (**TikTok: Part 15**) | two bedrooms side by side at dawn, alarm clocks, sunrise through the window, she runs past outside | You keep saying you'll start Monday. Why do you lose every morning before 7 am? (hookscore 79) | Win the morning. Win the day. | `ep18.py` → `Folge18_EarlyRiser_EN.mp4` |
+| 19 | Lone Wolf vs. Team Player (**TikTok: Part 16**) | one grassy hill at golden hour, flag on the summit, a boulder on each slope; two friends pull with a rope | You'd rather fail alone than ask for help. Why do you think that makes you strong? | Asking for help is strength. | `ep19.py` → `Folge19_LoneWolf_EN.mp4` |
 
 ## Nummerierung auf TikTok (Stand 17.11.2026)
 Die Person nummeriert auf TikTok fortlaufend nach Upload-Reihenfolge, nicht nach Dateinummer: intern #11 = **TikTok Part 8**, intern #12 = **TikTok Part 9**. Ab jetzt gilt: **angezeigte Nummer = letzte TikTok-Nummer + 1** (nächste Folge = Part 10). Im Video `SHOWN` als Nummer an `finish_v2` geben (Serien-Tag + Cliffhanger), in `covers.py` als 6. Feld eintragen, im Cliffhanger den nächsten Teil mit dieser Nummer ankündigen. Dateinamen bleiben intern (`ep13.py`, `Folge13_…`).
@@ -33,11 +34,11 @@ Stand 18.11. (Tagesproduktion): intern #15 = Part 12 (Talker vs. Walker).
 Stand 19.11. (Tagesproduktion): intern #16 = Part 13 (Fear of Failure vs. Courage).
 Stand 19.11.: intern #17 = Part 14 (Comparer vs. Own Path).
 Stand 19.11.: intern #18 = Part 15 (Excuse Clock vs. Early Riser).
-**Versprochen in Part 15:** „Part 16 tomorrow: the one who won't ask for help“ → die nächste Folge MUSS „Lone Wolf vs. Team“ (Felsbrocken am Hang) sein, angezeigt als **Part 16**.
+Stand 19.11.: intern #19 = Part 16 (Lone Wolf vs. Team Player).
+**Versprochen in Part 16:** „Part 17 tomorrow: the one who blames the oven“ → die nächste Folge MUSS „Blamer vs. Learner“ (verbrannter Kuchen in der Küche) sein, angezeigt als **Part 17**.
 
 ## Ideas (not made yet)
 
-- **Lone Wolf vs. Team**: a heavy boulder on a hill. One pushes alone and fails; the other calls friends.
 - **Consumer vs. Creator**: a market. One buys everything; the other builds a stall and sells.
 - **Quitter vs. Finisher (Marathon)**: mile 20 of a marathon in the rain. One sits down on the curb; the other walks, then jogs, then crosses the line.
 - **Blamer vs. Learner**: a burnt cake in a kitchen. One blames the oven; the other reads the recipe again and bakes a second one.
