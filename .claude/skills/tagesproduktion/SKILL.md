@@ -68,7 +68,11 @@ Leitfaden mit Recherche und Genres: **`clips/COMPILATION_STYLE.md`** – vor jed
     draft <short.mp4>` (Login aus `TIKTOK_REFRESH_TOKEN_VIRLIX`; `--account virlix whoami` muss VirlixYT zeigen). Captions nach
     Vorlage in `clips/README.md` (Hook + Frage + „🎥 via <kanal>“ + 5 Hashtags), kein KI-Label, Zeiten 30 min vor dem YouTube-Short,
     Paket in `clips/tiktok_paket/<YYYY-MM-DD>.md`.
-11. **Protokoll:** `clips/compilations.md` (Quellen, Link, Termin), `clips/yt_shorts.json`. Person erinnern:
+11. **Link-Kommentar unter Shorts, die heute online gingen** (vorher geht es nicht: private/geplante Videos → HTTP 403):
+    `commentThreads.insert` mit „Full 10-minute GTA 6 compilation (<Name>) 👉 https://youtu.be/<id> \nWhat should we clip next? 👇“.
+    In `clips/yt_shorts.json` beim Short `"comment": "<comment-id>"` eintragen (nie doppelt kommentieren). Anpinnen geht nur in der App →
+    Person im Bericht daran erinnern. Erledigt: IMTOsLca1og (21.11.). Offen: lUSvzl9VYss (ab 21.11. 17:00), ZK8HhemFBWo, Ed42CNBR8Ng (ab 22.11.).
+12. **Protokoll:** `clips/compilations.md` (Quellen, Link, Termin), `clips/yt_shorts.json`. Person erinnern:
     „Ähnliches Video“ bei den Shorts setzen (nicht per API möglich).
 
 ## 4. BeyondExcuses (TikTok): 3 Folgen pro Tag
