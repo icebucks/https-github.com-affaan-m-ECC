@@ -64,6 +64,8 @@ Leitfaden mit Recherche und Genres: **`clips/COMPILATION_STYLE.md`** – vor jed
    (sonst 403 → Datei der Person geben).
 9. **Upload:** `clips/yt_upload.py … --privacy private --publish-at <Datum>T19:00:00+01:00` (Shorts 13:00 / 17:00,
    Titel mit `#Shorts`, Beschreibung mit Link zur Compilation). Ausgabe **nicht** abschneiden – die Video-ID steht darin.
+9b. **Cover für jeden Short (Pflicht):** `python3 clips/thumb.py <short.mp4> <sek> "ZEILE 1" "ZEILE 2" clips/covers/Cover_<name>.jpg --vertical`
+    (Text oben im dunklen Band, Logo unten; ansehen!). Im Paket nennen + der Person schicken – sie wählt es beim Posten auf TikTok.
 10. **Shorts zusätzlich auf TikTok (VirlixYT):** jeden Short auch als Entwurf: `python3 clips/tiktok_upload.py --account virlix
     draft <short.mp4>` (Login aus `TIKTOK_REFRESH_TOKEN_VIRLIX`; `--account virlix whoami` muss VirlixYT zeigen). Captions nach
     Vorlage in `clips/README.md` (Hook + Frage + „🎥 via <kanal>“ + 5 Hashtags), kein KI-Label, Zeiten 30 min vor dem YouTube-Short,

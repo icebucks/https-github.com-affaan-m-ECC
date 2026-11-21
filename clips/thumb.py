@@ -1,5 +1,6 @@
 """YouTube thumbnail (1280x720 JPEG, < 2 MB) from one gameplay frame: darkened left side, 2 big text lines, logo badge.
-  python3 clips/thumb.py <video> <second> "LINE ONE" "LINE TWO" <out.jpg>
+  python3 clips/thumb.py <video> <second> "LINE ONE" "LINE TWO" <out.jpg> [--vertical]
+  --vertical: 1080x1920 cover for TikTok / Shorts (frame of a 9:16 short, text in the safe band y 330–760)
 Line 1 white, line 2 neon red (Virlix style, see banner.py). Keep it to ≤ 4 words in total – it must read at phone size."""
 import os, subprocess, sys
 import numpy as np
@@ -49,5 +50,32 @@ def main(video, sec, l1, l2, out):
     print(out, os.path.getsize(out) // 1024, "KB")
 
 
+def vertical(video, sec, l1, l2, out):
+    """9:16 cover from a finished short: keep its picture, darken the top band, big text there, logo bottom-left"""
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-ss", str(sec), "-i", video, "-frames:v", "1", "-vf", "scale=1080:1920",
+                          "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], capture_output=True, check=True).stdout
+    a = np.asarray(Image.frombytes("RGB", (1080, 1920), raw)).astype(np.float32) / 255
+    a = np.clip((a - 0.5) * 1.12 + 0.5, 0, 1)
+    y = np.linspace(0, 1, 1920)
+    shade = np.clip(1 - np.abs(y - 0.19) / 0.12, 0, 1) ** 0.8            # dark band behind the text (y ~ 140–600)
+    a *= (1 - 0.7 * shade)[:, None, None]
+    im = Image.fromarray((a * 255).astype(np.uint8)); d = ImageDraw.Draw(im)
+    yy = 250
+    for s_, col in ((l1, (255, 255, 255)), (l2, (255, 59, 92))):
+        f = fit(d, s_, 980, 138)
+        w = d.textlength(s_, font=f)
+        d.text(((1080 - w) / 2, yy), s_, font=f, fill=col, stroke_width=10, stroke_fill=(0, 0, 0))
+        yy += f.size + 14
+    f = ImageFont.truetype(FONT, 44); t = "GTA 6 · NO COMMENTARY"; w = d.textlength(t, font=f)
+    d.text(((1080 - w) / 2, 1500), t, font=f, fill=(255, 210, 120), stroke_width=5, stroke_fill=(0, 0, 0))
+    logo = os.path.join(HERE, "assets", "logo_badge.png")
+    if os.path.exists(logo):
+        lg = Image.open(logo).convert("RGBA"); lg.thumbnail((150, 150)); im.paste(lg, ((1080 - lg.width) // 2, 1580), lg)
+    im.save(out, quality=92); print(out, os.path.getsize(out) // 1024, "KB")
+
+
 if __name__ == "__main__":
-    main(*sys.argv[1:6])
+    if "--vertical" in sys.argv:
+        sys.argv.remove("--vertical"); vertical(*sys.argv[1:6])
+    else:
+        main(*sys.argv[1:6])
