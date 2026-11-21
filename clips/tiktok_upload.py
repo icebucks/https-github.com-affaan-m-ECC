@@ -9,13 +9,20 @@ The owner finishes and posts it in the TikTok app (inbox notification) – nothi
   python3 clips/tiktok_upload.py draft <video.mp4>     -> uploads as draft, polls the status
 Config from environment variables: TIKTOK_CLIENT_KEY, TIKTOK_CLIENT_SECRET (owner sets it in the environment settings),
 TIKTOK_REDIRECT_URI (default http://localhost:8080/callback). Tokens: ~/.config/tiktok/token.json (chmod 600, never in git).
-Access tokens last 24 h and are refreshed automatically with the refresh token (valid ~365 days)."""
+Access tokens last 24 h and are refreshed automatically with the refresh token (valid ~365 days).
+Several accounts: add  --account <name>  to any command (e.g. --account virlix for the GTA account). Default account =
+BeyondExcuses (token.json, TIKTOK_REFRESH_TOKEN); others use token_<name>.json and TIKTOK_REFRESH_TOKEN_<NAME>."""
 import hashlib, json, os, secrets, sys, time, urllib.parse
 import requests
 
 API = "https://open.tiktokapis.com/v2"
-TOKEN_FILE = os.path.expanduser("~/.config/tiktok/token.json")
-PKCE_FILE = os.path.expanduser("~/.config/tiktok/pkce.json")   # code_verifier between login and exchange
+ACCOUNT = ""
+if "--account" in sys.argv:                                      # pick the account before anything else reads the paths
+    i = sys.argv.index("--account"); ACCOUNT = sys.argv[i + 1].lower(); del sys.argv[i:i + 2]
+SUF = f"_{ACCOUNT}" if ACCOUNT else ""
+TOKEN_FILE = os.path.expanduser(f"~/.config/tiktok/token{SUF}.json")
+PKCE_FILE = os.path.expanduser(f"~/.config/tiktok/pkce{SUF}.json")   # code_verifier between login and exchange
+RT_ENV = "TIKTOK_REFRESH_TOKEN" + SUF.upper()
 SCOPES = "user.info.basic,video.upload"
 
 
@@ -46,8 +53,8 @@ def token_request(data):
 
 def access_token():
     if not os.path.exists(TOKEN_FILE):
-        rt = os.environ.get("TIKTOK_REFRESH_TOKEN")       # fresh session: log in from the stored refresh token (valid 365 days)
-        if not rt: sys.exit("not logged in yet: run 'login' and 'exchange' first (or set TIKTOK_REFRESH_TOKEN)")
+        rt = os.environ.get(RT_ENV)       # fresh session: log in from the stored refresh token (valid 365 days)
+        if not rt: sys.exit(f"not logged in yet: run 'login' and 'exchange' first (or set {RT_ENV})")
         save(token_request({"grant_type": "refresh_token", "refresh_token": rt}))
     tok = json.load(open(TOKEN_FILE))
     if time.time() > tok["obtained_at"] + tok.get("expires_in", 86400) - 300:
