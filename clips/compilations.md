@@ -28,4 +28,5 @@ New GTA 6 videos every day – subscribe!
 
 #gta6 #gta6gameplay #nocommentary
 ```
-Kein KI-Label (echtes Gameplay). Endbildschirm ab 11:31. Datei für neue Sitzungen: `clips/transfer/`.
+Kein KI-Label (echtes Gameplay). Endbildschirm ab 11:31.
+**Hochgeladen 21.11. per API:** privat mit geplanter Veröffentlichung 21.11. 19:00 (MEZ), Kategorie Gaming, Kapitel in der Beschreibung. Eigenes Thumbnail (`clips/thumb.py`, Neon-Fahrt bei 8:12, „NIGHT / MISSIONS“) wurde von YouTube abgelehnt: Kanal muss erst unter youtube.com/verify verifiziert werden, dann Thumbnail in YouTube Studio von Hand setzen. Übergabe-Teile in `clips/transfer/` gelöscht.
