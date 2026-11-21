@@ -5,9 +5,16 @@ description: Tägliche Produktion und Veröffentlichung für Virlix (YouTube, GT
 
 # Tagesproduktion Virlix + BeyondExcuses
 
-**Auftrag der Person (21.11.2026):** Jeden Tag **1 neue Compilation + 1–2 Shorts** auf YouTube (Virlix) und
-**3 neue TikTok-Videos** (BeyondExcuses). Laufen lassen, Resonanz beobachten, und nebenbei laufend verbessern:
-Reichweite, Viralität, Videoqualität. Antworten und Protokolle auf Deutsch.
+**Auftrag der Person (neu 22.11.2026, ersetzt 21.11.):** Ziel ist **Monetarisierung** von Virlix, bei schonendem Umgang
+mit dem Claude-Wochenlimit („nur das Nötigste“, keine Doppelarbeit, kein Blackout durch zu viel auf einmal):
+- **BeyondExcuses (TikTok):** 2–3 Shorts pro Tag (Entwürfe).
+- **Virlix (YouTube):** 1–2 Shorts pro Tag · **Compilations 2× pro Woche** · **Walkthroughs 3× pro Woche** · **Ambient 1× pro Woche**.
+- **VirlixYT (TikTok):** 1–2 GTA-Shorts pro Tag (Entwürfe).
+Laufen lassen, Resonanz beobachten, nebenbei verbessern. Antworten und Protokolle auf Deutsch.
+
+**Budget-Regeln (Wochenlimit):** pro Lauf nur das, was laut Wochenplan heute fällig ist. Kontaktbögen klein (≤ 1600 px breit)
+und nur so viele wie nötig ansehen; Material aus einer Aufnahme mehrfach nutzen (Compilation-/Walkthrough-Aufnahme liefert
+auch die Shorts). Lieber einen Teil sauber liefern und den Rest im Bericht nennen, als alles halb.
 
 ## 0. Regeln, die nie gebrochen werden
 - **Geheimnisse:** Werte von `YOUTUBE_*` / `TIKTOK_*` nie ausgeben – auch nicht Login-Links (enthalten den Client-Key).
@@ -19,16 +26,35 @@ Reichweite, Viralität, Videoqualität. Antworten und Protokolle auf Deutsch.
 - **Keine Szene zweimal** in Compilations (Protokoll `clips/compilations.md`). Nur No-Commentary-Quellen, Credit nennen.
 - Branch: `claude/focused-lovelace-4vw9gu` (kein PR). Commit + Push am Ende jedes Laufs.
 
-## 1. Tagesplan (MEZ)
-| Zeit | Kanal | Was |
+## 1. Wochenplan (MEZ)
+| Tag | YouTube Virlix (19:00 Langvideo) | Shorts |
 |---|---|---|
-| 13:00 | YouTube | Short 1 (aus der Compilation des Tages) |
-| 17:00 | YouTube | Short 2 |
-| 19:00 | YouTube | Compilation (9–11 min) |
-| Mo–Fr 12:30 · 17:00 · 21:00 / Sa–So 11:00 · 15:00 · 20:00 | TikTok | 3 BeyondExcuses-Folgen (Entwürfe; Person postet) |
-| 12:30 · 16:30 | TikTok | die 2 GTA-Shorts auf **VirlixYT** (Entwürfe; Person postet) |
+| Mo | **Walkthrough** (1 Mission) | täglich: YouTube 1–2 Shorts (13:00 / 17:00), VirlixYT-TikTok 1–2 Entwürfe (12:30 / 16:30), BeyondExcuses 2–3 Entwürfe (Mo–Fr 12:30 · 17:00 · 21:00 / Sa–So 11:00 · 15:00 · 20:00) |
+| Di | – | ″ |
+| Mi | **Walkthrough** + **Compilation** (Compilation 19:00, Walkthrough 21:00) | ″ |
+| Do | – | ″ |
+| Fr | **Walkthrough** | ″ |
+| Sa | **Compilation** | ″ |
+| So | **Ambient** (30–60 min, ruhig) | ″ |
 
-Produktion am Vortag oder bis spätestens 11:30 am selben Tag. Ein Tageslauf dauert ~2–3 h (Aufnahme 1 h, Render, Upload).
+Ein Lauf produziert für den **nächsten** Tag laut dieser Tabelle. Shorts kommen bevorzugt aus der Aufnahme des
+Langvideos (eine Aufnahme, mehrere Videos).
+
+### Walkthroughs (Mo/Mi/Fr) – Titel `GTA 6 Walkthrough – Mission: <Name> (No Commentary)`, Playlist „GTA 6 Walkthrough“
+1. Quelle: Story-Stream ohne Kommentar mit englischer Oberfläche (21.11. gut: **itzradflemix** „Walkthrough 4K PS5 Pro“).
+   Aufnahme 4 × 15 min reicht meist für eine Mission.
+2. `python3 clips/walkthrough.py scan <block.ts>` (≈ 1,5 min pro Block): MENU-Zeiten (Karte/Pause/Brief), NAME (Missionsname
+   aus Spielstand „Pipework (6%)“), PASS/FAIL, TEXT (Titelkarten). **Missionsname nur vom Bildschirm**, nie raten; ist keiner
+   lesbar, Titel nach dem Ort/Ziel der Mission („Airboat Escape“) und im Bericht nennen.
+3. Missionsgrenzen festlegen (Start = Missionsbeginn/Titelkarte, Ende = PASS bzw. Abschluss-Szene), dann
+   `python3 clips/walkthrough.py clean <block.ts> <start> <ende> --label "<NAME>"` → Segmente ohne Menüs für compile.py.
+   Fehlversuche (FAIL) und Wiederholungen herausschneiden. Kapitel = Missionsabschnitte (`"cont": false` mit Label je Ziel).
+4. Länge = Missionslänge (ohne Totzeit), mindestens 8 min; kürzere Missionen zu „Mission X & Y“ zusammenfassen.
+5. Prüfen wie Compilations (Kontaktbogen, freezedetect, −14 LUFS), Beschreibung mit Kapiteln + Credit, privat mit Termin.
+
+### Ambient (So) – Titel `GTA 6 Relaxing <Night Drive|Ocean|Sunset> – <Dauer> (No Commentary)`, Playlist „GTA 6 Ambient“
+Nur ruhige Fahrten/Natur ohne Menüs, Schießereien, Dialog-Zwischensequenzen; lange Stücke, weiche Übergänge, keine
+Punch-Texte, kein Countdown. 30–60 min. Gleiche Marke (Intro/Outro), damit der Kanal einheitlich bleibt.
 
 ## 2. Einrichtung in einer frischen Sitzung
 ```bash
