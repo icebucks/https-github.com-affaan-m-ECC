@@ -97,7 +97,12 @@ def render_segment(seg, n, total, tmp):
     clipper.sh(["ffmpeg", "-v", "error", "-y"] + ins + ["-filter_complex", fc, "-map", "[v]", "-map", am, "-shortest",
                 "-af", f"aresample=48000,afade=t=in:st=0:d=0.03,afade=t=out:st={dur - 0.03}:d=0.03",
                 "-c:v", "libx264", "-crf", "20", "-preset", "veryfast", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2", out])
-    return out, dur
+    # use the REAL length: a source that starts late (cut file with start_time > 0, stream gap) gives a shorter part, and an
+    # xfade offset past the end of a part silently ends the whole video there (21.11.: 9:48 planned, 7:36 written)
+    real = float(subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v", "-show_entries", "stream=duration",
+                                 "-of", "csv=p=0", out], capture_output=True, text=True).stdout.strip() or dur)
+    if real < dur - 0.2: print(f"  segment {n}: {real:.2f} s instead of {dur:.2f} s (source shorter)", file=sys.stderr)
+    return out, min(dur, real)
 
 
 def card(text1, text2, dur, still_src, still_t, tmp, name):
@@ -211,6 +216,10 @@ def main(spec_path, out):
     mid = os.path.join(tmp, "mid.mp4")
     clipper.sh(["ffmpeg", "-v", "error", "-y"] + ins + ["-filter_complex", ";".join(fc), "-map", cur_v, "-map", "[aout]",
                 "-c:v", "libx264", "-crf", "19", "-preset", "veryfast", "-pix_fmt", "yuv420p", "-c:a", "pcm_s16le", mid])
+    got = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", mid],
+                               capture_output=True, text=True).stdout.strip() or 0)
+    if abs(got - end) > 1.0:                                         # never ship a silently truncated video
+        sys.exit(f"joined video is {got:.1f} s, expected {end:.1f} s – check the parts in {tmp}")
     # two-pass loudness normalisation (one pass lands ~1 LU off on long files)
     r = subprocess.run(["ffmpeg", "-hide_banner", "-i", mid, "-af", "loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"],
                        capture_output=True, text=True).stderr
