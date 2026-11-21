@@ -1,0 +1,57 @@
+{
+ "video": "BN6_CountBillion_EN",
+ "duration": 16.75,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  8.88,
+  2.64,
+  3.06,
+  4.52,
+  2.29,
+  2.53,
+  4.52,
+  2.97,
+  2.49,
+  4.67,
+  3.83,
+  10.29,
+  1.43,
+  3.66,
+  7.33,
+  4.39
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 67.9488296508789,
+  "contrast": 28.092941284179688,
+  "colourfulness": 33.39529037475586
+ },
+ "loop_difference": 11.9,
+ "font_sizes": [
+  28,
+  30,
+  44,
+  50,
+  64,
+  230
+ ],
+ "audio": {
+  "first_half_s_db": -13.015129089355469,
+  "median_db": -14.448994636535645,
+  "silent_windows": 0,
+  "lufs": -14.5
+ }
+}

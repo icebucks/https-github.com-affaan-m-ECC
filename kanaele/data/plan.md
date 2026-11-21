@@ -9,6 +9,7 @@
 | Do 19.11. | 21:00 | 19:30 | #3 How long to walk around the Earth? | `BN3_WalkEarth_EN.mp4` | `Cover_BN3.jpg` | upbeat 120 (Seed 3) |
 | Fr 20.11. | 21:00 | 22:00 | #4 Blue whale heart rate vs yours | `BN4_WhaleHeart_EN.mp4` | `Cover_BN4.jpg` | cinematic 90 (Seed 4) |
 | Sa 21.11. | 17:00 | 17:30 | #5 How big is a blue whale? Animals to scale | `BN5_AnimalsScale_EN.mp4` | `Cover_BN5.jpg` | lofi 88 (Seed 5) |
+| So 22.11. | 15:00 | 15:30 | #6 How long to count to 1 billion? | `BN6_CountBillion_EN.mp4` | `Cover_BN6.jpg` | synthwave 128 (Seed 6) |
 
 ## Lange Videos
 Jeden **Samstag 17:30** (YouTube) ein langes Video der Reihe „Cosmic Scale“ – Konzept und Pilot: `../space/LONGFORM.md`, `../space/pilot_script.md`. Shorts der Woche zum selben Thema verlinken per „Ähnliches Video“ darauf.
@@ -41,6 +42,7 @@ Nach 2 Wochen mit den eigenen Analytics prüfen und anpassen.
 | Reisen & Erde (zu Fuß, Strecken) | `#bythenumbers #comparison #didyouknow #walking #earth` | `#bythenumbers #walking #earth #facts #shorts` |
 | Tierkörper & Herz (Wal vs. Mensch) | `#bythenumbers #comparison #didyouknow #bluewhale #heartrate` | `#bythenumbers #bluewhale #heartrate #facts #shorts` |
 | Tiere im Größenvergleich | `#bythenumbers #comparison #didyouknow #animals #sizecomparison` | `#bythenumbers #animals #sizecomparison #facts #shorts` |
+| Zahlen & Mathe (Zählen, große Zahlen) | `#bythenumbers #facts #learnontiktok #math #numbers` | `#bythenumbers #math #numbers #facts #shorts` |
 
 **Wichtiger als Hashtags:** Das Suchwort (z. B. „tallest buildings“) gehört vorne in die Caption und einmal groß ins Video. TikTok liest Caption und Bildtext und ordnet das Video danach in der Suche ein.
 
@@ -217,4 +219,32 @@ Sources: Wikipedia "Blue whale" (longest measured, rostrum tip to tail notch); G
 
 What's the biggest animal you've seen in real life? 👇
 #bythenumbers #animals #sizecomparison #facts #shorts
+```
+
+## #6 – How long to count to 1 billion?
+**Format:** A · Zählerkarten (4 Karten, Zähler laufen hoch, Zeit landet, Log-Balken; Loop zurück zum tickenden Zähler) · **Musik:** synthwave 128 BPM, Seed 6 (build 9,4 s, drop 11,25 s = 95 YEARS, outro 14,1 s)
+**Hook:** „Count to 1,000: *16 minutes*.“ / „How long to *1 BILLION*?“ (hookscore 77 STRONG, „The Statistic“: „You could count to 1,000 in 16 minutes. How long before you reach 1 billion?“)
+**Suchanfragen (yt-seo):** „how long to count to 1 billion“ · „how long to count to a million“ · „1 million vs 1 billion“
+**TikTok-Caption:**
+```
+How long to count to 1 billion? 1 number per second, 8 hours a day ⏱️🔢 You'd hit 1,000 in 16 minutes – guess the billion BEFORE the end
+Comment your guess in years 👇
+#bythenumbers #facts #learnontiktok #math #numbers
+```
+**Pin-Kommentar:** `How far would YOU get? 🔢 = 1,000 · 📅 = 1 million · 👴 = all the way to 1 billion`
+**YouTube-Titel:** `How long to count to 1 million vs 1 billion?` (title.py: 98/100, mit Titelbild 100/100)
+**Titelbild-Text:** `95 YEARS` (Cover_BN6.jpg – andere Wörter als der Titel, gleiches Versprechen)
+**YouTube-Beschreibung:**
+```
+How long to count to 1 billion? At 1 number per second, 8 hours a day: 95 years. How long to count to a million: 34.7 days.
+1 million vs 1 billion – the counting test, from 1,000 to 1,000,000,000.
+
+• Count to 1,000: 16 minutes 40 seconds
+• Count to 100,000: 3.5 days
+• Count to 1,000,000: 34.7 days (about 5 weeks)
+• Count to 1,000,000,000: 95 years – start at 5, finish at 100
+Math: 8 hours a day = 28,800 numbers a day. 1,000,000,000 ÷ 28,800 = 34,722 days = 95.1 years (365.25-day years). Exact arithmetic, no estimates.
+
+How far would you get? 👇
+#bythenumbers #math #numbers #facts #shorts
 ```

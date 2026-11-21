@@ -84,7 +84,7 @@ Umsetzung mit `dlib.finish_data(...)` (Rendern) und `dlib.preview(...)` (Kontakt
 8. **E** · What happens on the internet in one minute (nur mit aktueller, belegter Quelle)
 9. ~~**D** · Your heart vs. a whale's heart: beats, weight, size~~ → erledigt als BN4 (nur Herzfrequenz; Herzgewicht ist uneinheitlich belegt)
 10. **C** · Longest rivers in the world (Wikipedia, km)
-12. **A** · How long to count to 1 million / 1 billion (1 Zahl pro Sekunde, exakte Mathematik)
+12. ~~**A** · How long to count to 1 million / 1 billion~~ → erledigt als BN6 (8 Stunden am Tag; „Most visited countries“ am 21.11. übersprungen: China 2024 nur geschätzt, Plätze 4–10 je nach Quelle verschieden)
 13. **C** · Highest mountains – the Seven Summits with flags
 15. **D** · Cheetah vs. Usain Bolt vs. car: 100 m
 
