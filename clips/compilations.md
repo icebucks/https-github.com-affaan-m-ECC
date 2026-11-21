@@ -30,10 +30,10 @@ New GTA 6 videos every day – subscribe!
 #gta6 #gta6gameplay #nocommentary
 ```
 Kein KI-Label (echtes Gameplay). Endbildschirm ab 11:31.
-**Hochgeladen 21.11. per API:** privat mit geplanter Veröffentlichung 21.11. 19:00 (MEZ), Kategorie Gaming, Kapitel in der Beschreibung. Eigenes Thumbnail (`clips/thumb.py`, Neon-Fahrt bei 8:12, „NIGHT / MISSIONS“) wurde von YouTube abgelehnt: Kanal muss erst unter youtube.com/verify verifiziert werden, dann Thumbnail in YouTube Studio von Hand setzen. Übergabe-Teile in `clips/transfer/` gelöscht.
+**Hochgeladen 21.11. per API (2. Upload, der erste wurde gelöscht):** https://youtu.be/TKqzaindjjc – privat mit geplanter Veröffentlichung 21.11. 19:00 (MEZ), Kategorie Gaming, Kapitel in der Beschreibung. Eigenes Thumbnail (`clips/thumb.py`, Neon-Fahrt bei 8:12, „NIGHT / MISSIONS“) wurde von YouTube abgelehnt: Kanal muss erst unter youtube.com/verify verifiziert werden, dann Thumbnail in YouTube Studio von Hand setzen. Übergabe-Teile in `clips/transfer/` gelöscht.
 
 ## 21.11. – Upload-Texte „Robbery & Police Escape“ (für So 22.11.)
 **Titel:** `GTA 6 Pure Gameplay – Pawn Shop Robbery & Police Escape (No Commentary)`
 **Beschreibung:** wie hochgeladen – Kapitel 0:00 Intro · 0:04 Pawn Shop Robbery · 1:34 Losing the Cops · 3:24 Sneaking into the Compound · 5:09 Clearing the Building · 6:31 Shootout & Car Getaway · 8:21 Escape Through the Woods · Credit: 🎥 Gameplay via 00mute (Twitch).
-**Hochgeladen 21.11. per API:** https://youtu.be/xHefpHP6V48 – privat, geplante Veröffentlichung So 22.11. 19:00 (MEZ). Thumbnail („PAWN SHOP / ROBBERY“, Bild bei 0:47) nach der Kanal-Verifizierung in YouTube Studio von Hand setzen.
+~~v1 https://youtu.be/xHefpHP6V48~~ (gelöscht). **v2 (compile.py v2: Cold Open, Übergänge, Countdown #6→#1, Masken-Menü herausgeschnitten):** https://youtu.be/C-hyJkLLr74 – privat ohne Termin; die Person stellt in YouTube Studio So 22.11. 19:00 ein. Kapitel: 0:00 Intro · 0:10 #6 Compound · 1:55 #5 Building · 3:16 #4 Woods · 5:06 #3 Cops · 6:55 #2 Shootout & Getaway · 8:45 #1 Pawn Shop Robbery. Thumbnail („PAWN SHOP / ROBBERY“, Bild bei 0:47) nach der Kanal-Verifizierung in YouTube Studio von Hand setzen.
 Quelle 00mute: 24-h-Stream „NO COMMENTARY“, Whisper-Check ergab nur Spieldialog und Polizeifunk, keine Streamer-Stimme. Achtung: in Block 0856 sind 765–795 s komplett schwarz (Licht aus) – nicht verwenden.
