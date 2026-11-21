@@ -1,0 +1,81 @@
+{
+ "video": "Folge21_Finisher_EN",
+ "duration": 16.75,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.014925373134328358,
+   "seconds": [
+    0.0
+   ]
+  },
+  "right buttons": {
+   "share_of_frames": 0.3283582089552239,
+   "seconds": [
+    4.5,
+    4.75,
+    5.0,
+    5.25,
+    5.5,
+    7.75,
+    8.0,
+    8.25,
+    8.5,
+    8.75,
+    10.5,
+    10.75,
+    11.0,
+    11.25,
+    11.5,
+    11.75,
+    12.0,
+    12.25,
+    12.5,
+    12.75,
+    13.0,
+    13.25
+   ]
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  15.31,
+  6.89,
+  5.29,
+  5.38,
+  6.68,
+  6.06,
+  4.98,
+  5.3,
+  5.37,
+  12.0,
+  6.4,
+  2.89,
+  2.11,
+  10.11,
+  2.11,
+  1.37
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 90.87313842773438,
+  "contrast": 37.87156295776367,
+  "colourfulness": 35.93309545516968
+ },
+ "loop_difference": 34.3,
+ "font_sizes": [
+  28,
+  30,
+  34,
+  60,
+  66
+ ],
+ "audio": {
+  "first_half_s_db": -16.694992065429688,
+  "median_db": -15.62226676940918,
+  "silent_windows": 0,
+  "lufs": -14.7
+ }
+}

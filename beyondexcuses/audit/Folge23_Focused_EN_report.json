@@ -1,0 +1,78 @@
+{
+ "video": "Folge23_Focused_EN",
+ "duration": 16.75,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.014925373134328358,
+   "seconds": [
+    0.0
+   ]
+  },
+  "right buttons": {
+   "share_of_frames": 0.29850746268656714,
+   "seconds": [
+    0.0,
+    0.25,
+    0.5,
+    9.0,
+    9.25,
+    9.5,
+    10.0,
+    10.25,
+    10.5,
+    10.75,
+    11.0,
+    11.25,
+    11.5,
+    11.75,
+    12.0,
+    12.25,
+    12.5,
+    12.75,
+    13.0,
+    13.25
+   ]
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  16.13,
+  2.18,
+  1.97,
+  3.42,
+  3.13,
+  2.04,
+  1.54,
+  1.63,
+  1.92,
+  2.89,
+  1.61,
+  2.75,
+  1.1,
+  5.98,
+  1.83,
+  1.01
+ ],
+ "dead_seconds": [
+  12,
+  15
+ ],
+ "first_second": {
+  "brightness": 71.21321868896484,
+  "contrast": 40.366424560546875,
+  "colourfulness": 25.809866428375244
+ },
+ "loop_difference": 36.1,
+ "font_sizes": [
+  30
+ ],
+ "audio": {
+  "first_half_s_db": -14.615043640136719,
+  "median_db": -14.289299011230469,
+  "silent_windows": 0,
+  "lufs": -14.0
+ }
+}

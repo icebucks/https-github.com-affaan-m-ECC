@@ -27,6 +27,9 @@ EPS = {  # num: (module, scene time, negative, positive)
     18: ("ep18", 13.1, "EXCUSE CLOCK", "EARLY RISER", "3 SNOOZES|0 KM", 15, 150, 56),   # 8th field: scene x-shift
     19: ("ep19", 12.2, "LONE WOLF", "TEAM PLAYER", "ROLLED BACK|TWICE", 16, 60, 30),
     20: ("ep20", 12.0, "BLAMER", "LEARNER", "180|NOT 250", 17, 80, 0),
+    21: ("ep21", 4.2, "QUITTER", "FINISHER", "MILE 20|SAT DOWN", 18, 80, 0),
+    22: ("ep22", 8.9, "WAITER", "BUILDER", "3 MONTHS|WAITING", 19, 80, 0),
+    23: ("ep23", 9.0, "DISTRACTED", "FOCUSED", "2 HOURS|PAGE 1", 20, 80, 0),
 }
 
 
