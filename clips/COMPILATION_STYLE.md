@@ -35,7 +35,9 @@ Technik: `clips/compile.py` (v2), Thumbnail `clips/thumb.py`, Protokoll `clips/c
 - **Titel:** Genre/Ereignis vorn, „GTA 6“ im ersten Drittel, „(No Commentary)“ hinten. ≤ 70 Zeichen.
 - **Thumbnail** (`clips/thumb.py`): echtes Spielbild mit klarer Aktion (kein Menü, keine Karte, nicht zu dunkel), 2 Zeilen à 1–2 Wörter, Zeile 2 neonrot. Kanal muss für eigene Thumbnails verifiziert sein (youtube.com/verify).
 - **Beschreibung:** 1 Satz mit Suchbegriff („GTA 6 gameplay no commentary …“), Kapitel, Credits „🎥 Gameplay via <Kanal> (Twitch)“, 3 Hashtags.
-- **Rhythmus:** 1 Compilation pro Tag, 19:00 MEZ, Reihen abwechseln.
+- **Rhythmus (ab 22.11.):** täglich **Short 13:00 · Short 17:00 · Compilation 19:00** (MEZ) – passt zum Banner „2 new videos every day“.
+- **Shorts:** 1–2 pro Compilation, aus deren stärksten Momenten (#1/#2), `clipper.py cut <block> <a> <b> --gameplay --raw --hook "…|…" --credit "via <kanal>"`, 25–35 s, Pointe am Ende. Nicht in den ersten ~8 s eines Aufnahmeblocks starten (Standbild bis zum ersten Keyframe). Beschreibung mit Link zur Compilation; in YouTube Studio zusätzlich „Ähnliches Video“ = Compilation setzen (geht nicht per API). Protokoll: `yt_shorts.json`.
+- **Warum Shorts:** Reichweite bei Nicht-Abonnenten (neuer Kanal), GTA-6-Launch-Welle, schnelle Rückmeldung, welche Szenen ziehen; Shorts schaden langen Videos nicht. Nach 2 Wochen in den Analysen prüfen, ob sie Abonnenten bringen.
 
 ## Quellen
 - https://blog.eklipse.gg/streaming-tips/gta-5-funny-moments.html
