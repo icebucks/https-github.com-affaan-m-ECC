@@ -45,11 +45,11 @@ Stand 21.11.: intern #20 = Part 17 (Blamer vs. Learner).
 Stand 21.11.: intern #21 = Part 18 (Quitter vs. Finisher), #22 = Part 19 (Waiter vs. Builder), #23 = Part 20 (Distracted vs. Focused).
 **Ab 21.11.: 3 Folgen pro Tag** (Wunsch der Person). Cliffhanger deshalb „Part N next:“ statt „tomorrow“.
 Stand 21.11.: intern #24 = Part 21 (Consumer vs. Creator), #25 = Part 22 (Idea Hoarder vs. Shipper).
-**Versprochen in Part 22:** „Part 23 next: the one who saves $1 a day“ → die nächste Folge MUSS „Spender vs. Saver“ (Sparschwein, Zinseszins) sein, angezeigt als **Part 23**.
+Stand 21.11. abends (geplanter Tageslauf, **nur als Dateien an die Person geliefert, NICHT im Repo** – Push war dort gesperrt): #26 = Part 23 Spender vs. Saver, #27 = Part 24 Day 1 Hero vs. Daily 1 %, #28 = Part 25 Spectator vs. Player (Tagespaket 23.11., Mo 12:30/17:00/21:00). Die Person postet sie aus ihrer Galerie.
+**Versprochen in Part 25:** „Part 26 next: soda every day vs water every day“ → nächste Folge = intern **#29**, angezeigt als **Part 26** (Soda vs. Water). Nummern 26–28 NICHT neu vergeben.
 
 ## Ideas (not made yet)
 
-- **Spender vs. Saver** (promised as Part 23): both get $1 a day. He spends it daily on snacks; she drops it into a jar – a year later her jar (with interest) buys something big.
 
 
 ## Look bleibt (Entscheidung 17.11.2026)
