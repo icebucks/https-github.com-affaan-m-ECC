@@ -34,7 +34,7 @@ def uploads(tok):
         if not page: break
     vids = []
     for k in range(0, len(ids), 50):
-        vids += get(f"{API}/videos", tok, part="snippet,status,statistics,contentDetails", id=",".join(ids[k:k + 50]))["items"]
+        vids += get(f"{API}/videos", tok, part="snippet,status,statistics,contentDetails,liveStreamingDetails", id=",".join(ids[k:k + 50]))["items"]
     return ch, vids
 
 
@@ -63,6 +63,9 @@ def main():
         st = v["status"]
         when = st.get("publishAt") or v["snippet"]["publishedAt"]
         state = "geplant" if st["privacyStatus"] == "private" and st.get("publishAt") else st["privacyStatus"]
+        prem = v.get("liveStreamingDetails", {}).get("scheduledStartTime")
+        if v["snippet"].get("liveBroadcastContent") == "upcoming" and prem:     # premiere: "public" but not live yet
+            state, when = "Premiere", prem
         s = v.get("statistics", {})
         a = an.get(v["id"], [None] * 4) if "_error" not in an else [None] * 4
         rows.append(["Short" if short else "Video", v["snippet"]["title"][:48], state, when[:16].replace("T", " ") + " UTC",

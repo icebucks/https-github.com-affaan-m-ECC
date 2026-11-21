@@ -118,6 +118,6 @@ Serie und Regeln: **`beyondexcuses/episodes.md`** (Nummerierung, Look, Ideen), C
 - **Ausgabe von `yt_upload.py` nicht mit `tail` kürzen** – sonst ist die Video-ID weg (passiert am 21.11.).
 - Push abgelehnt → `git fetch origin <branch> && git merge --no-edit FETCH_HEAD` (andere Sitzungen schreiben mit).
 - `clips/transfer/`: große Videos für andere Sitzungen in 95-MB-Teilen; nach Upload löschen.
-- **Ein einmal öffentliches Video lässt sich nicht mehr einplanen** (publishAt → HTTP 503). Status vor jeder Planung mit `python3 clips/yt_stats.py` prüfen; was schon öffentlich ist, zählt für den Tag, an dem es live ging.
+- **Premieren:** Die Person plant Compilations teils als Premiere. Die API zeigt dann `privacyStatus: public` + `liveBroadcastContent: upcoming` + `liveStreamingDetails.scheduledStartTime` – das ist **noch nicht live**. `yt_stats.py` zeigt „Premiere <Zeit>“. Premieren nicht per `publishAt` umplanen (HTTP 503). Am 21.11. führte das fast zu einer doppelten Compilation.
 - **Status-Check:** `python3 clips/yt_stats.py` zeigt alle Uploads mit Status/Termin/Zahlen (Token mit `youtube.force-ssl` + `yt-analytics.readonly`, siehe `clips/yt_auth.py`). Termine/Status lassen sich jetzt per `videos.update` korrigieren – nur bei Videos, die noch nie öffentlich waren.
 - Schwarzes Bild in Quellen (Licht aus im Spiel) und Waffen-/Masken-Menüs sind Totzeit → schneiden.
