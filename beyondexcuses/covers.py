@@ -26,6 +26,7 @@ EPS = {  # num: (module, scene time, negative, positive)
     17: ("ep17", 9.85, "COMPARER", "OWN PATH", "3 LOOKS|1 FALL", 14, 230),
     18: ("ep18", 13.1, "EXCUSE CLOCK", "EARLY RISER", "3 SNOOZES|0 KM", 15, 150, 56),   # 8th field: scene x-shift
     19: ("ep19", 12.2, "LONE WOLF", "TEAM PLAYER", "ROLLED BACK|TWICE", 16, 60, 30),
+    20: ("ep20", 12.0, "BLAMER", "LEARNER", "180|NOT 250", 17, 80, 0),
 }
 
 
@@ -39,6 +40,7 @@ def cover(num, out):
     thumb = EPS[num][4] if len(EPS[num]) > 4 else None
     shown = EPS[num][5] if len(EPS[num]) > 5 else num        # TikTok numbering can differ from the file number
     m = importlib.import_module(mod)
+    m.COVER = True                                           # episodes that support it drop their speech bubbles
     surf = skia.Surface(W, H); c = surf.getCanvas(); c.clear(skia.ColorBLACK)
     lib.NOW = t
     dy = EPS[num][6] if len(EPS[num]) > 6 else 190

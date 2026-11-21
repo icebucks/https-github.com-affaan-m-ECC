@@ -1,0 +1,60 @@
+{
+ "video": "Folge20_Learner_EN",
+ "duration": 16.75,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.014925373134328358,
+   "seconds": [
+    0.0
+   ]
+  },
+  "right buttons": {
+   "share_of_frames": 0.04477611940298507,
+   "seconds": [
+    0.0,
+    0.25,
+    0.5
+   ]
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  19.24,
+  2.18,
+  1.29,
+  2.13,
+  4.02,
+  2.89,
+  2.71,
+  1.86,
+  1.99,
+  1.91,
+  2.85,
+  2.29,
+  2.69,
+  8.68,
+  2.74,
+  1.83
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 94.72411346435547,
+  "contrast": 41.688011169433594,
+  "colourfulness": 40.70242786407471
+ },
+ "loop_difference": 46.8,
+ "font_sizes": [
+  28,
+  30,
+  44
+ ],
+ "audio": {
+  "first_half_s_db": -10.956390380859375,
+  "median_db": -14.19182014465332,
+  "silent_windows": 0,
+  "lufs": -14.1
+ }
+}

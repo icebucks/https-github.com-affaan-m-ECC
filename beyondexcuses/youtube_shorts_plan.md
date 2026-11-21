@@ -26,6 +26,7 @@ Danach in der YouTube-App bei jedem Short unter „Ähnliches Video“ die **nä
 | Di 01.12. | 19:30 | #17 Comparer vs Own Path (im Video: Part 14) | `Folge17_OwnPath_EN.mp4` | `covers/Cover_17.jpg` |
 | Mi 02.12. | 19:30 | #18 Excuse Clock vs Early Riser (im Video: Part 15) | `Folge18_EarlyRiser_EN.mp4` | `covers/Cover_18.jpg` |
 | Do 03.12. | 19:30 | #19 Lone Wolf vs Team Player (im Video: Part 16) | `Folge19_LoneWolf_EN.mp4` | `covers/Cover_19.jpg` |
+| Fr 04.12. | 22:00 | #20 Blamer vs Learner (im Video: Part 17) | `Folge20_Learner_EN.mp4` | `covers/Cover_20.jpg` |
 
 Neue Folgen kommen jeweils am nächsten freien Tag dazu, zu den Zeiten aus der Tabelle unten.
 
@@ -421,4 +422,27 @@ Send this to the friend who never asks for help 👇
 
 Mindset Series – Part 16. Part 17 tomorrow: the one who blames the oven.
 #beyondexcuses #askforhelp #teamwork #mindset #shorts
+```
+
+## #20 – Blamer vs Learner (TikTok: Part 17)
+**TikTok:** Mi 25.11., 20:00 · **YouTube:** Fr 04.12. 22:00 · **Titelbild:** `covers/Cover_20.jpg` („180 / NOT 250“, #17) · **Hook im Video:** „Both cakes burned.“ / „Only one blamed the oven.“
+**Suchanfragen:** „learn from your mistakes“ · „stop blaming others“ · „growth mindset“
+**TikTok-Caption:**
+```
+You burned it once and blamed the oven. What did you never check before you tried again? 🎂🔥
+Send this to someone who always blames the oven 👀
+Comment "AGAIN" if you're giving it a second try.
+#growthmindset #mindset #psychology #motivation #beyondexcuses
+```
+**Pin-Kommentar:** `Be honest: what do you blame first? 🔥 = the oven · 📖 = I check the recipe`
+**Titel (title.py 98, mit Titelbild 100):** `Blamer vs Learner (Part 17): who tried again?`
+**Beschreibung:**
+```
+Learn from your mistakes: both cakes burn. He blames the oven, the recipe and himself – she reads the recipe again: 180°, not 250°.
+Stop blaming others and the oven – a growth mindset turns one burnt cake into a second, golden one.
+
+Send this to someone who always blames the oven 👇
+
+Mindset Series – Part 17. Part 18 tomorrow: the one who sits down at mile 20.
+#beyondexcuses #growthmindset #learnfrommistakes #mindset #shorts
 ```
