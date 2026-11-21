@@ -97,9 +97,11 @@ Serie und Regeln: **`beyondexcuses/episodes.md`** (Nummerierung, Look, Ideen), C
 ## 6. Laufend verbessern (Reichweite, Viralität, Qualität)
 - **Jeder Lauf:** eine konkrete Verbesserung ausprobieren und in `.claude/skills/tagesproduktion/learnings.md`
   eintragen (Datum, was, warum, woran gemessen). Bewährtes in diesen Skill bzw. die Leitfäden übernehmen.
-- **Daten:** Die API hat keinen Analytics-Zugriff → die Person um Screenshots bitten (YouTube Studio: Aufrufe,
-  Zuschauerbindung, CTR, Abos je Video; TikTok: Aufrufe, Wiedergabedauer, Shares). Auswertung mit den Skills
-  `yt-retention`, `yt-audit`, `yt-package`, `tiktok-viral-creator`. Erste Auswertung nach ~2 Wochen (ab 05.12.).
+- **Daten (Virlix, automatisch):** jeder Lauf zuerst `python3 clips/yt_stats.py --md clips/stats/<YYYY-MM-DD>.md` (Status, Termine,
+  Aufrufe, Likes, Kommentare, Ø Wiedergabedauer, Ø gesehen %, +Abos je Video; Analytics hängen 1–2 Tage nach) und committen.
+  Daraus ableiten: welches Genre/welcher Hook/welche Uhrzeit zieht → im Tagesbericht 1–2 Sätze dazu.
+  **TikTok** hat keine Statistik-API → die Person um Screenshots bitten (Aufrufe, Wiedergabedauer, Shares). Auswertung mit
+  `yt-retention`, `yt-audit`, `yt-package`, `tiktok-viral-creator`. Größere Auswertung nach ~2 Wochen (ab 05.12.).
 - **Hebel, die zu testen sind:** Hook-Formulierungen, Titel-/Thumbnail-Varianten, Genre-Reihen, Shorts-Länge
   (20 vs. 35 s), Countdown vs. chronologisch, Uhrzeiten, Serien-Cliffhanger, Pin-Kommentare.
 - **Trends:** GTA-6-Launch-Phase – „Erste/Neue/Krasseste X in GTA 6“ zieht (Recherche im Leitfaden). Wöchentlich kurz
