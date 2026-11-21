@@ -48,6 +48,38 @@ Stand 21.11.: intern #24 = Part 21 (Consumer vs. Creator), #25 = Part 22 (Idea H
 Stand 21.11. abends (geplanter Tageslauf, **nur als Dateien an die Person geliefert, NICHT im Repo** – Push war dort gesperrt): #26 = Part 23 Spender vs. Saver, #27 = Part 24 Day 1 Hero vs. Daily 1 %, #28 = Part 25 Spectator vs. Player (Tagespaket 23.11., Mo 12:30/17:00/21:00). Die Person postet sie aus ihrer Galerie.
 **Versprochen in Part 25:** „Part 26 next: soda every day vs water every day“ → nächste Folge = intern **#29**, angezeigt als **Part 26** (Soda vs. Water). Nummern 26–28 NICHT neu vergeben.
 
+## Retention-Standard v2 (PFLICHT ab Part 26, freigegeben von der Person am 22.11.2026)
+**Beleg (TikTok Studio, Part 19 Waiter vs Builder):** nach 3 s nur noch **53 %** der Zuschauer, danach Abfall ~2–3 %/s,
+am Ende (statischer Endtext + CTA, 15–17 s) noch ein steiler Abfall. Ø-Wiedergabe 7 s von 17 s (41 %), 99,5 % „Für dich“.
+→ Das Problem sind die **ersten 3 Sekunden** und das **statische Ende**, nicht die Geschichte in der Mitte.
+
+**Regeln (jede Folge):**
+1. **Hook = offene Frage/Gegensatz, nie die Pointe.** Nicht „He waited. She built.“, sondern z. B. „Same empty lot. / 90 days.“,
+   „Same desk. Same 30 days.“ Der Ausgang bleibt offen, bis die Auflösung kommt.
+2. **Erstes Bild schon in Bewegung, mit Aktion der Geschichte** (Aufprall, Griff, Geste + Ton) – nicht nur Kamera-Push auf stehende Figuren.
+3. **Auflösung (TURN) spätestens bei 6,0–7,0 s**, danach eine **zweite Wendung** (meist: die graue Figur reagiert/beginnt selbst).
+4. **Länge 11–13 s.** Mindestens jede Sekunde ändert sich etwas; kein Standbild > 1 s, keine Ruhe nach dem Höhepunkt.
+5. **Fortschrittsanzeige** bei Zeit-Geschichten: Zähler-Chip (`DAY 1 → DAY 90`, Uhr, Balken), der im Beat hochzählt;
+   Zeitsprünge als Vollbild-Zeitraffer statt kleinem „3 MONTHS LATER“-Chip. Warten/Stillstand der grauen Figur **visuell** zeigen
+   (Blätter, Spinnweben, Vogel), nicht per Blase erklären.
+6. **Größer:** Kamera so nah, dass die Figuren **≥ 35 % der Bildhöhe** haben (≈ 1,7× näher als Part 19; Himmel/Boden beschneiden).
+   **Höchstens 3 Blasen, je ≤ 4 Wörter, `bubble(..., size=44)`**. Namensschilder (WAITER/BUILDER) nur in den ersten 2 s.
+7. **Ende:** EINE amberfarbene Merkzeile über laufender Handlung mit `lib.end_line(c, t, t0, "…")` (statt `end_text` mit 3 Zeilen);
+   CTA „Part N next: …“ nur noch **≤ 1,2 s** am Schluss parallel zur Handlung (`end_at` = T_END − 1.2); der Cliffhanger steht
+   ausführlich in **Caption und Pin-Kommentar**.
+8. **Loop:** die letzten 0,5 s = Bildaufbau und Ton der ersten 0,5 s (die Geschichte endet dort, wo sie anfängt – z. B. die graue
+   Figur setzt jetzt selbst den ersten Ziegel).
+9. **Prüfen:** `python3 retention_qa.py FolgeN_…_EN.mp4 --payoff <TURN>` muss überall ✅ zeigen (Länge, Bewegung in 0,5 s,
+   kein Stillstand > 1 s, Loop, Auflösung ≤ 7 s) – zusätzlich zu figure-QA und audit.py.
+10. **Messen:** Die Person schickt Retention-Kurven (TikTok Studio → Video → Übersicht). Ziel: **≥ 70 % nach 3 s**, Ø-Wiedergabe
+    ≥ 60 % der Länge. Nach 3 Folgen im v2-Format mit Part 17–25 vergleichen und die Regeln anpassen.
+
+**Bleibt unverändert:** warmer Serien-Look, graue vs. amberfarbene Figuren, „X vs. Y“, Nummerierung, Cliffhanger-Kette.
+
+**Beat-Vorlage (12,5 s):** 0–0,8 Aufprall + Hook-Frage + Zähler · 0,8–2,2 Gegensatz (1 Blase) · 2,2–5,2 Zeitraffer im Beat,
+graue Figur visuell wartend (1 Blase) · 5,2–6,2 Spannung (Zeitlupe, Stille) · 6,2–7,4 Auflösung groß · 7,4–9,6 zweite Wendung
+(Reaktion, Angebot) · 9,6–11,6 Merkzeile über Handlung + CTA-Chip · 11,6–12,5 Rückführung ins Anfangsbild (Loop).
+
 ## Ideas (not made yet)
 
 

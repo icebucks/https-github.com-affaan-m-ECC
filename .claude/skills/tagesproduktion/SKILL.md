@@ -103,12 +103,16 @@ Leitfaden mit Recherche und Genres: **`clips/COMPILATION_STYLE.md`** – vor jed
 12. **Protokoll:** `clips/compilations.md` (Quellen, Link, Termin), `clips/yt_shorts.json`. Person erinnern:
     „Ähnliches Video“ bei den Shorts setzen (nicht per API möglich).
 
-## 4. BeyondExcuses (TikTok): 3 Folgen pro Tag
-Serie und Regeln: **`beyondexcuses/episodes.md`** (Nummerierung, Look, Ideen), Captions: `beyondexcuses/youtube_shorts_plan.md`.
+## 4. BeyondExcuses (TikTok): 2–3 Folgen pro Tag
+Serie und Regeln: **`beyondexcuses/episodes.md`** (Nummerierung, Look, Ideen, **Retention-Standard v2 = PFLICHT ab Part 26**),
+Captions: `beyondexcuses/youtube_shorts_plan.md`.
 1. **Thema:** Die letzte Folge verspricht die nächste („Part N next: …“) → die MUSS kommen. Dann Ideenliste in
    `episodes.md`; jede neue Folge verspricht die übernächste. Angezeigte Nummer = letzte TikTok-Nummer + 1.
-2. **Bauen:** `beyondexcuses/epNN.py` nach Vorlage `ep21.py`–`ep23.py` (grau = negativ, amber = positiv, Hook 2 Zeilen,
-   TALK-Blasen, Zeitsprung-Chip, TURN-Moment, `end_text`, CTA `"Part N next:\n…"` – bei 3/Tag nie „tomorrow“).
+2. **Bauen nach Retention-Standard v2** (`episodes.md`): Hook als offene Frage (nie die Pointe), erstes Bild mit Aktion,
+   Auflösung ≤ 7 s, 11–13 s, Zähler/Zeitraffer, Kamera ≈ 1,7× näher (Figuren ≥ 35 % Bildhöhe), ≤ 3 Blasen à ≤ 4 Wörter
+   (`size=44`), Ende mit `lib.end_line` über laufender Handlung, CTA-Chip ≤ 1,2 s, Loop ins Anfangsbild. Grau = negativ,
+   amber = positiv; CTA `"Part N next:\n…"` – nie „tomorrow“. Die erste v2-Folge dient als Vorlage für die nächsten.
+   Prüfung zusätzlich: `python3 retention_qa.py FolgeNN_*_EN.mp4 --payoff <TURN>` → alles ✅.
 3. **Standbilder prüfen:** `VID_LANG=en python3 epNN.py still` → `check/epNN_sheet.jpg` ansehen: nichts abgeschnitten,
    keine Blase über Schild/Label/anderer Blase, Szene nicht zu klein, nichts über x > 900 (rechte TikTok-Buttons).
 4. **Render:** `VID_LANG=en python3 epNN.py render` (~4 min, 3 parallel ok bei 4 Kernen). Sound-Ereignis `"step"`

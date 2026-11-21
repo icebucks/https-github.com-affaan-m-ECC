@@ -200,6 +200,14 @@ END_Y_MAX = 1290   # the last line must stay above TikTok's caption/username are
 END_MAXW = 660
 
 
+def end_line(c, t, t0, line, y=1380, size=62):
+    """Retention standard v2: ONE amber save-worthy line over the running action (no full-screen dimming, no static end card)"""
+    if t < t0: return
+    a = ease((t - t0) / 0.35)
+    w_ = skia.Font(F_CAP, size).measureText(tr(line))
+    text(c, line, 540, min(y, END_Y_MAX), F_CAP, size * min(1.0, END_MAXW / w_) if w_ > 0 else size, AMBER, a, stroke=12)
+
+
 def end_text(c, t, t0, l1, l2, l3, y=1420):
     """two white lines + one amber punchline in the ground area (kept above TikTok's caption zone)"""
     if t < t0: return
