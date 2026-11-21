@@ -130,7 +130,8 @@ def main(spec_path, out):
                        capture_output=True, text=True).stderr
     m = json.loads(r[r.rindex("{"):r.rindex("}") + 1])
     ln = (f"loudnorm=I=-14:TP=-1.5:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:measured_LRA={m['input_lra']}"
-          f":measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true")
+          f":measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true"
+          ",alimiter=limit=0.84:level=false,aresample=48000")      # hard ceiling: without it the 21.11 file peaked at +2.4 dBFS
     clipper.sh(["ffmpeg", "-v", "error", "-y"] + joined + ["-c:v", "copy", "-af", ln,
                 "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-movflags", "+faststart", out])
     open(out + ".chapters.txt", "w").write("\n".join(f"{a} {b}" for a, b in chapters) + "\n")
