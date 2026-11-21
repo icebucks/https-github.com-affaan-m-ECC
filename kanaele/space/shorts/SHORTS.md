@@ -62,6 +62,7 @@ Zeilen nach Nummer sortiert. Nächster Uploadtermin = Tag nach dem **spätesten*
 | 3 | Mi 18.11. | Earth vs. the Moon in 3 rounds | VS | trap 144 | grün-türkis | The Comparison (76) | ≈ 49 Monde füllen das Erdvolumen (Verhältnis 0,0203), ≈ 81 Monde = Erdmasse (0,0123), Dichte Mond 3.344 vs. Erde 5.514 kg/m³ (≈ 60 %), Schwerkraft 1,62 vs. 9,80 m/s² (≈ 1/6) → gleicher Wurf ≈ 6× höher | `ss3.py` → `SS3_EarthVsMoon_EN.mp4` |
 | 4 | Do 19.11. | Saturn would float in water | WHAT IF | lofi 86 | violett | The Question (82) | Dichte Saturn 0,687 g/cm³ (687 kg/m³) vs. Wasser 1,0 → schwimmt mit 68,7 % unter Wasser, Masse 95 Erden, Volumen ≈ 764 Erden, Durchmesser 120.536 km ≈ 9,4 Erden, einziger Planet leichter als Wasser, v. a. Wasserstoff + Helium | `ss4.py` → `SS4_SaturnFloats_EN.mp4` |
 | 5 | Fr 20.11. | A sugar cube of neutron star | ZOOM | cinematic 100 | rot | The Statistic (75) | 1 Zuckerwürfel Neutronenstern ≈ 1 Billion kg (1 Mrd. t) ≈ ein Berg, Neutronenstern ≈ 20 km breit (Größe einer Stadt), ≈ Sonnenmasse, Sonne ≈ 1,4 Mio. km breit → 70.000× schmaler | `ss5.py` → `SS5_NeutronSugarCube_EN.mp4` |
+| 6 | Sa 21.11. | 16 sunrises a day on the space station | YOU | synthwave 112 | blau | The Question (73) | ISS umrundet die Erde etwa alle 90 Minuten → etwa 16 Sonnenaufgänge/-untergänge pro Tag, Woche 7 vs. 112, Jahr ≈ 5.840, 8 h Schlaf ≈ 5 Sonnenaufgänge verschlafen | `ss6.py` → `SS6_SixteenSunrises_EN.mp4` |
 
 ## Themen-Backlog (oben = als Nächstes; vor dem Bauen gegen `reserved.json` prüfen)
 2. **VS** · Olympus Mons vs. Mount Everest (Höhe, Fläche, Vulkan) – Achtung: Höhenangaben schwanken je nach Bezugslinie (NASA/ESA ≈ 25 km über der Ebene, andere 21,9–27 km). Nur „about 25 km above the plains around it“ sagen und die Bezugslinie nennen; Fläche „about the size of Arizona“ (NASA-Grafik „How big is it“).
@@ -69,7 +70,7 @@ Zeilen nach Nummer sortiert. Nächster Uploadtermin = Tag nach dem **spätesten*
 6. ~~**ZOOM** · A teaspoon of neutron star~~ → erledigt als SS5 (NASA-Zuckerwürfel statt Teelöffel: Teelöffel-Werte schwanken zwischen 10 Mio. und mehreren Mrd. t)
 7. **VS** · The Great Red Spot vs. Earth – aktuelle Breite (NASA/Hubble, Jahr angeben), schrumpft
 8. **RANK** · Planets by number of moons – IAU/NASA-Zählung mit Datum (Saturn vorn)
-9. **YOU** · Astronauts on the ISS see 16 sunrises a day – NASA (Umläufe pro Tag)
+9. ~~**YOU** · Astronauts on the ISS see 16 sunrises a day~~ → erledigt als SS6 (ohne Geschwindigkeit/Höhe; 21.11. Olympus Mons erneut übersprungen: 21–26 km und 585–600 km je nach Quelle)
 10. **FILL** · Valles Marineris vs. the width of the USA – NASA (≈ 4.000 km)
 11. **WHAT IF** · The Moon drifts away 3.8 cm per year – NASA/Lunar Laser Ranging, Vergleich Fingernagel
 12. **VS** · Pluto vs. the United States – Durchmesser 2.377 km (NASA)
@@ -214,3 +215,30 @@ Datei `SS5_NeutronSugarCube_EN.mp4` (39,2 s, −14,4 LUFS, Audit: alles ✅ – 
 
 Suchanfragen: „neutron star density“, „how dense is a neutron star“, „neutron star sugar cube“.
 Freitag – kein Samstags-Hinweis nötig.
+
+---
+
+## SS6 Upload – Sa 21.11. · TikTok 13:00 · YouTube 12:30
+Datei `SS6_SixteenSunrises_EN.mp4` (40,9 s, −14,2 LUFS, Audit: alles ✅ – nichts unter der TikTok-Oberfläche, keine bewegungsarmen Sekunden, Loop nahtlos), Titelbild `Cover_SS6.jpg`. Hook 73/100 STRONG (The Question). Whisper-Transkript geprüft: alle Zahlen richtig gesprochen. Überschneidungs-Check mit den langen Videos: OK.
+**Samstag:** den Short in YouTube Studio per „Ähnliches Video“ mit dem neuesten langen Video verknüpfen.
+
+**TikTok-Caption**
+> ISS sunrise: astronauts see about 16 a day 🌅🛰️ You get 365 a year – they get about 5,840
+> How many sunrises did you actually watch this year? 👇
+> #bythenumbers #space #astronomy #iss #astronaut
+
+**Pin-Kommentar:** On a normal 8-hour night the crew sleeps through about 5 sunrises – the station circles Earth about every 90 minutes (NASA) 😴🌅 How many did you see?
+
+**YouTube-Titel (title.py 100/100, mit Titelbild 100/100):** Why astronauts see 16 sunrises every day
+**Titelbild-Text:** 5,840 / A YEAR
+
+**YouTube-Beschreibung**
+> Why do astronauts see 16 sunrises every day? The space station circles the Earth about every 90 minutes, so the crew gets about 16 sunrises a day on the ISS.
+> How many sunrises in space per day, per week and per year – and how many astronauts sleep through.
+>
+> One orbit about every 90 minutes · about 16 sunrises and 16 sunsets in 24 hours · your week: 7 sunrises, theirs: about 112 · a year: about 5,840 · an 8-hour night ≈ 5 sunrises slept through. (NASA notes the exact count is usually a little under 16.)
+> Sources: NASA – Space Station Facts and Figures; NASA Scientific Visualization Studio – HD Earth Views; NASA Earth Observatory orbit tutorial (checked 21 Nov 2026). Narration: synthetic voice.
+>
+> #bythenumbers #space #astronomy #iss #astronaut #shorts
+
+Suchanfragen: „how many sunrises do astronauts see“, „sunrise on the iss“, „how many sunrises in space per day“.

@@ -1,0 +1,75 @@
+{
+ "video": "SS6_SixteenSunrises_EN",
+ "duration": 41.0,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  9.33,
+  2.1,
+  1.48,
+  1.96,
+  1.64,
+  1.42,
+  1.37,
+  2.64,
+  2.48,
+  7.57,
+  2.18,
+  1.98,
+  1.78,
+  4.19,
+  1.36,
+  2.48,
+  2.14,
+  1.6,
+  1.8,
+  34.45,
+  2.58,
+  1.91,
+  1.92,
+  1.92,
+  3.57,
+  3.88,
+  3.73,
+  5.86,
+  7.51,
+  5.89,
+  4.88,
+  7.17,
+  4.74,
+  7.18,
+  3.81,
+  10.64,
+  11.02,
+  13.06,
+  6.33,
+  5.97,
+  14.98
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 66.83952331542969,
+  "contrast": 40.105857849121094,
+  "colourfulness": 36.42225170135498
+ },
+ "loop_difference": 5.0,
+ "font_sizes": [],
+ "audio": {
+  "first_half_s_db": -11.255477905273438,
+  "median_db": -13.635894775390625,
+  "silent_windows": 0,
+  "lufs": -14.2
+ }
+}
