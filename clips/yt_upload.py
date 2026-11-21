@@ -18,8 +18,10 @@ def access_token():
     missing = [k for k in need if not os.environ.get(k)]
     if missing:
         sys.exit(f"missing environment variables: {', '.join(missing)} (set them in the environment settings)")
+    local = os.path.expanduser("~/.config/youtube/refresh_token")      # newer token from clips/yt_auth.py (this session)
+    rt = open(local).read().strip() if os.path.exists(local) else os.environ["YOUTUBE_REFRESH_TOKEN"]
     r = requests.post(TOKEN_URL, data={"client_id": os.environ["YOUTUBE_CLIENT_ID"], "client_secret": os.environ["YOUTUBE_CLIENT_SECRET"],
-                                       "refresh_token": os.environ["YOUTUBE_REFRESH_TOKEN"], "grant_type": "refresh_token"}, timeout=30)
+                                       "refresh_token": rt, "grant_type": "refresh_token"}, timeout=30)
     if r.status_code != 200:
         sys.exit(f"token refresh failed: HTTP {r.status_code} {r.json().get('error', '')} {r.json().get('error_description', '')}")
     return r.json()["access_token"]
