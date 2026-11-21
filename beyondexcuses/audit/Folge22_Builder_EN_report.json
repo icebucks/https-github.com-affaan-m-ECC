@@ -1,0 +1,59 @@
+{
+ "video": "Folge22_Builder_EN",
+ "duration": 16.75,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.014925373134328358,
+   "seconds": [
+    0.0
+   ]
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  13.42,
+  2.02,
+  3.59,
+  2.75,
+  3.43,
+  4.04,
+  2.11,
+  3.37,
+  8.54,
+  2.64,
+  2.03,
+  2.25,
+  1.2,
+  10.05,
+  1.92,
+  1.02
+ ],
+ "dead_seconds": [
+  12,
+  15
+ ],
+ "first_second": {
+  "brightness": 159.33778381347656,
+  "contrast": 50.266910552978516,
+  "colourfulness": 28.10111379623413
+ },
+ "loop_difference": 90.3,
+ "font_sizes": [
+  30,
+  38,
+  40
+ ],
+ "audio": {
+  "first_half_s_db": -14.950950622558594,
+  "median_db": -14.411861419677734,
+  "silent_windows": 0,
+  "lufs": -14.2
+ }
+}

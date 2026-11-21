@@ -446,3 +446,127 @@ Send this to someone who always blames the oven 👇
 Mindset Series – Part 17. Part 18 tomorrow: the one who sits down at mile 20.
 #beyondexcuses #growthmindset #learnfrommistakes #mindset #shorts
 ```
+
+## #21 – Quitter vs Finisher (TikTok: Part 18)
+**TikTok:** Sa 21.11. (3 Folgen/Tag, siehe unten) · **Titelbild:** `covers/Cover_21.jpg` („MILE 20 / SAT DOWN“, #18) · **Hook im Video:** „Mile 20. Pouring rain.“ / „Only one sat down.“
+**Suchanfragen:** „how to not give up“ · „keep going when it's hard“ · „marathon motivation“
+**TikTok-Caption:**
+```
+Mile 20, pouring rain, legs done. Do you sit down – or walk the next mile? 🏃‍♀️🌧️
+Send this to someone who's at their mile 20 right now 👀
+Comment "WALK" if you're not quitting.
+#nevergiveup #mindset #psychology #motivation #beyondexcuses
+```
+**Pin-Kommentar:** `Be honest: what's your mile 20 right now? 🪑 = I sat down · 🚶 = still walking`
+**Titel:** `Quitter vs Finisher (Part 18): who sat down at mile 20?`
+**Beschreibung:**
+```
+How to not give up: at mile 20, in pouring rain, both runners are done. He sits down on the curb – "I'll never make it." She walks one more mile, then jogs, then breaks the finish tape.
+Slow is still forward. You don't have to run – you just can't sit down.
+
+Send this to someone who's at their mile 20 right now 👇
+
+Mindset Series – Part 18. Part 19 next: the one who waits for a sign.
+#beyondexcuses #nevergiveup #marathon #mindset #shorts
+```
+
+## #22 – Waiter vs Builder (TikTok: Part 19)
+**TikTok:** Sa 21.11. · **Titelbild:** `covers/Cover_22.jpg` („3 MONTHS / WAITING“, #19) · **Hook im Video:** „He waited for a sign.“ / „She laid the first brick.“
+**Suchanfragen:** „stop waiting and start“ · „how to start a business“ · „waiting for the right time“
+**TikTok-Caption:**
+```
+He sat next to the "Coming Soon" sign for 3 months. She laid one brick a day. Who are you? 🧱⏳
+Send this to someone who's still waiting for a sign 👀
+Comment "BRICK" if you're starting today.
+#startnow #mindset #psychology #motivation #beyondexcuses
+```
+**Pin-Kommentar:** `What are you still waiting to start? 🪑 = waiting for a sign · 🧱 = laying bricks`
+**Titel:** `Waiter vs Builder (Part 19): stop waiting for a sign`
+**Beschreibung:**
+```
+Stop waiting for the right time: an empty lot, a "Coming Soon" sign. He sits on the bench – "Someone should build here." She picks up one brick. 3 months later her little shop lights up "OPEN". He's still waiting for a sign.
+Be the sign. One brick a day is enough.
+
+Send this to someone who's still waiting for a sign 👇
+
+Mindset Series – Part 19. Part 20 next: the one who checks his phone.
+#beyondexcuses #startnow #buildsomething #mindset #shorts
+```
+
+## #23 – Distracted vs Focused (TikTok: Part 20)
+**TikTok:** So 22.11. · **Titelbild:** `covers/Cover_23.jpg` („2 HOURS / PAGE 1“, #20) · **Hook im Video:** „Same book. Same night.“ / „Only one turned the page.“
+**Suchanfragen:** „how to focus while studying“ · „phone addiction“ · „stop procrastinating“
+**TikTok-Caption:**
+```
+Same book, same night. 2 hours later he's still on page 1. Where did your last 2 hours go? 📱📖
+Send this to your study buddy who "just checks one thing" 👀
+Comment "AWAY" if your phone goes in the drawer tonight.
+#studymotivation #mindset #psychology #focus #beyondexcuses
+```
+**Pin-Kommentar:** `Be honest: how many pages did you read today? 📱 = page 1 · 📖 = whole chapter`
+**Titel:** `Distracted vs Focused (Part 20): 2 hours, still page 1`
+**Beschreibung:**
+```
+How to focus while studying: two students, the same book, the same night. He picks up his phone – "just one quick check." She puts hers in the drawer. 2 hours later: PAGE 1 vs DONE.
+Guard your focus. The phone can wait – the chapter can't.
+
+Send this to your study buddy who "just checks one thing" 👇
+
+Mindset Series – Part 20. Part 21 next: the one who buys everything.
+#beyondexcuses #focus #studymotivation #mindset #shorts
+```
+
+## TikTok-Takt ab 21.11.: 3 Folgen pro Tag
+| Tag | 1. Folge | 2. Folge | 3. Folge |
+|---|---|---|---|
+| Mo–Fr | 12:30 | 17:00 | 21:00 |
+| Sa/So | 11:00 | 15:00 | 20:00 |
+
+Plan: **Sa 21.11.** Part 17 (#20, liegt schon als Entwurf in der Inbox) · Part 18 (#21) · Part 19 (#22) – **So 22.11.** Part 20 (#23) + die nächsten zwei neuen Folgen.
+Mindestens 3–4 Stunden Abstand, damit jede Folge ihre eigene Testgruppe bekommt. Nach einer Woche mit den TikTok-Analytics prüfen, ob die Mittagsfolge mithält.
+
+## #24 – Consumer vs Creator (TikTok: Part 21)
+**TikTok:** So 22.11. · **Titelbild:** `covers/Cover_24.jpg` („$0 / VS $400“, #21) · **Hook im Video:** „Same market. Same weekend.“ / „Only one went home richer.“
+**Suchanfragen:** „consumer vs creator mindset“ · „how to make money from a side hustle“ · „stop impulse buying“
+**TikTok-Caption:**
+```
+He spent $500 at the SALE stall. She built her own stall. Guess whose jar his last $40 ended up in? 🛍️🏺
+Send this to someone who can't walk past a sale 👀
+Comment "CREATE" if you're building something this year.
+#creatormindset #mindset #psychology #motivation #beyondexcuses
+```
+**Pin-Kommentar:** `Be honest: this month you were more… 🛍️ = consumer · 🛠️ = creator`
+**Titel:** `Consumer vs Creator (Part 21): who went home richer?`
+**Beschreibung:**
+```
+Consumer vs creator mindset: same market, same weekend. He buys bag after bag at the SALE stall. She builds her own stall and sells handmade mugs. In the end his last $40 lands in her jar.
+Create more than you consume.
+
+Send this to someone who can't walk past a sale 👇
+
+Mindset Series – Part 21. Part 22 next: the one with 100 unfinished ideas.
+#beyondexcuses #creatormindset #sidehustle #mindset #shorts
+```
+
+## #25 – Idea Hoarder vs Shipper (TikTok: Part 22)
+**TikTok:** So 22.11. · **Titelbild:** `covers/Cover_25.jpg` („100 IDEAS / 0 DONE“, #22) · **Hook im Video:** „100 ideas. 0 finished.“ / „She finished just one.“
+**Suchanfragen:** „how to finish what you start“ · „too many ideas“ · „shiny object syndrome“
+**TikTok-Caption:**
+```
+A robot with no head. A bike with one wheel. 100 ideas, 0 finished. She built ONE lamp – and shipped it. 💡📦
+Send this to the friend with 100 unfinished projects 👀
+Comment "SHIP" if you're finishing one thing this week.
+#finishwhatyoustart #mindset #productivity #motivation #beyondexcuses
+```
+**Pin-Kommentar:** `How many unfinished projects do you have right now? 💡 = more than 5 · 📦 = I finish what I start`
+**Titel:** `Idea Hoarder vs Shipper (Part 22): 100 ideas, 0 done`
+**Beschreibung:**
+```
+How to finish what you start: he starts a robot, a bike, a drone – a month later: 100 ideas, 0 finished. She builds one desk lamp until it's done, and ships it.
+Shiny object syndrome is real. Finish one thing, then the next.
+
+Send this to the friend with 100 unfinished projects 👇
+
+Mindset Series – Part 22. Part 23 next: the one who saves $1 a day.
+#beyondexcuses #finishwhatyoustart #productivity #mindset #shorts
+```

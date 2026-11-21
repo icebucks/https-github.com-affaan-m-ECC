@@ -4,7 +4,7 @@ GitHub nimmt nur Dateien bis 100 MB, darum liegen große Videos hier in 95-MB-Te
 
 | Datei | Länge | Größe | sha256 |
 |---|---|---|---|
-| GTA6_NightMissions_11min.mp4 | 11:43 | 355359653 Bytes | `7f4ea41efe0e1a53012724ed5af4ed3b5579a7bbd00022b7dc768d0b78842cf7` |
+| (leer – NightMissions am 21.11. hochgeladen und gelöscht) | | | |
 
 Zusammensetzen und prüfen:
 ```

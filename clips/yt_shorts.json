@@ -1,12 +1,79 @@
 {
  "_doc": "YouTube-Shorts-Warteschlange (9:16-Clips aus reinem Gameplay). Hochladen mit clips/yt_upload.py, sobald der YouTube-Zugang funktioniert. 'done' = hochgeladen (Video-ID).",
  "shorts": [
-  {"file": "G1_Seaplane.mp4", "title": "GTA 6: escaping the swamp by seaplane #Shorts", "credit": "mrperfectog91", "done": null},
-  {"file": "G2_CopChase.mp4", "title": "GTA 6 cops do NOT give up #Shorts", "credit": "mrperfectog91", "done": null},
-  {"file": "G3_Wasted.mp4", "title": "This GTA 6 shootout went wrong #Shorts", "credit": "skrimskeez", "done": null},
-  {"file": "G4_StoreRobbery.mp4", "title": "Robbing a corner store in GTA 6 #Shorts", "credit": "skrimskeez", "done": null},
-  {"file": "G5_TowTruck.mp4", "title": "GTA 6: stealing a car off a tow truck #Shorts", "credit": "mrperfectog91", "done": null},
-  {"file": "G6_OffRoad.mp4", "title": "GTA 6: losing the cops off-road #Shorts", "credit": "mrperfectog91", "done": null}
+  {
+   "file": "G1_Seaplane.mp4",
+   "title": "GTA 6: escaping the swamp by seaplane #Shorts",
+   "credit": "mrperfectog91",
+   "done": null
+  },
+  {
+   "file": "G2_CopChase.mp4",
+   "title": "GTA 6 cops do NOT give up #Shorts",
+   "credit": "mrperfectog91",
+   "done": null
+  },
+  {
+   "file": "G3_Wasted.mp4",
+   "title": "This GTA 6 shootout went wrong #Shorts",
+   "credit": "skrimskeez",
+   "done": null
+  },
+  {
+   "file": "G4_StoreRobbery.mp4",
+   "title": "Robbing a corner store in GTA 6 #Shorts",
+   "credit": "skrimskeez",
+   "done": null
+  },
+  {
+   "file": "G5_TowTruck.mp4",
+   "title": "GTA 6: stealing a car off a tow truck #Shorts",
+   "credit": "mrperfectog91",
+   "done": null
+  },
+  {
+   "file": "G6_OffRoad.mp4",
+   "title": "GTA 6: losing the cops off-road #Shorts",
+   "credit": "mrperfectog91",
+   "done": null
+  },
+  {
+   "file": "Short_PawnShop.mp4",
+   "title": "Robbing a pawn shop in GTA 6 #Shorts",
+   "credit": "00mute",
+   "source": "00mute_20261121_0856: 92–124",
+   "publish": "2026-11-22 13:00",
+   "links_to": "C-hyJkLLr74",
+   "done": "ZK8HhemFBWo",
+   "note": "v1 hPTvqP9R6JU hatte 3 s Standbild am Anfang (Keyframe-Seek) – neu geschnitten mit clipper.exact_src, v1 von der Person gelöscht"
+  },
+  {
+   "file": "Short_Shootout.mp4",
+   "title": "GTA 6 alley shootout, then a car getaway #Shorts",
+   "credit": "00mute",
+   "source": "00mute_20261121_0911: 10–42",
+   "publish": "2026-11-22 17:00",
+   "links_to": "C-hyJkLLr74",
+   "done": "Ed42CNBR8Ng"
+  },
+  {
+   "file": "Short_Hazmat.mp4",
+   "title": "GTA 6 hazmat mission at night #Shorts",
+   "credit": "thenocommentarychannel",
+   "source": "GTA6_NightMissions_11min.mp4: 44–76",
+   "publish": "2026-11-21 13:00",
+   "links_to": "TKqzaindjjc",
+   "done": "IMTOsLca1og"
+  },
+  {
+   "file": "Short_NightRide.mp4",
+   "title": "Late-night scooter ride in GTA 6… then the bus #Shorts",
+   "credit": "funnybone3214",
+   "source": "GTA6_NightMissions_11min.mp4: 540–565",
+   "publish": "2026-11-21 17:00",
+   "links_to": "TKqzaindjjc",
+   "done": "lUSvzl9VYss"
+  }
  ],
  "description": "{title_plain}\n\nPure GTA 6 gameplay – no commentary. New clips every day.\n🎥 Gameplay footage: {credit} (Twitch)\n\n#gta6 #gta6gameplay #shorts"
 }

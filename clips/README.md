@@ -6,7 +6,7 @@ Neuer Account der Person, nur echtes Gameplay aus englischen Twitch-Streams. Zie
 **Nur noch reines Gameplay** von No-Commentary-Kanälen (kein Streamer im Bild, keine Streamer-Stimme): besserer Ton und besseres Bild, nichts muss mehr herausgerechnet werden.
 - Suche: Twitch-GQL `streams(options: {freeformTags: ["NoCommentary"]})`, Kategorie GTA VI, Sprache en. Bewährt: **skrimskeez** (Free Roam, Lucia), **mrperfectog91** (Story, Jason). Meiden: Kanäle mit fremdsprachiger Spiel-Oberfläche.
 - Schnitt mit `--gameplay --raw` (Originalton, keine Stimmtrennung).
-- **YouTube-Compilations mindestens 8 Minuten**, Abschnitte 60–120 s (`compile.py`, `"audio": "raw"`), Kapitel aus `<out>.chapters.txt`.
+- **YouTube-Compilations mindestens 8 Minuten**, Abschnitte 60–120 s (`compile.py` v2, `"audio": "raw"`), Kapitel aus `<out>.chapters.txt`. **Stil-Leitfaden: `clips/COMPILATION_STYLE.md`** (Cold Open, kurze Übergänge, Totzeit schneiden, Countdown, Genres).
 
 ## Werkzeuge
 - `twitch_find.py` – Live-Streams einer Kategorie (Standard „Grand Theft Auto VI“, Sprache en) nach Zuschauern.

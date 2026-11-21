@@ -329,6 +329,20 @@ LOGO_WM = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "lo
 CX = {"xqc": 0.66, "darkviperau": 0.37}     # window position per streamer (0 = left … 1 = right) to dodge the facecam
 
 
+PREROLL = 8.0
+
+
+def exact_src(path, start, dur, tmp):
+    """frame-exact excerpt as an intermediate file. Seeking straight to `start` in a Twitch .ts recording lands between
+    keyframes: ffmpeg then repeats the first frame for up to ~4 s (frozen start, seen in the 22.11 pawn-shop short).
+    Fix: seek PREROLL s earlier, decode, and cut exactly at `start` on the output side."""
+    pre = min(PREROLL, start)
+    out = os.path.join(tmp, f"exact_{int(start * 1000)}.mkv")
+    sh(["ffmpeg", "-v", "error", "-y", "-ss", f"{start - pre:.3f}", "-i", path, "-ss", f"{pre:.3f}", "-t", f"{dur:.3f}",
+        "-map", "0:v:0", "-map", "0:a:0?", "-c:v", "libx264", "-preset", "ultrafast", "-crf", "12", "-c:a", "pcm_s16le", out])
+    return out
+
+
 def cut(path, start, end, hook, credit, cam=None, out=None, gameplay=False, cx=0.5, dialog=False, hide=None, raw=False):
     dur = end - start
     out = out or os.path.splitext(path)[0] + f"_clip_{int(start)}.mp4"
@@ -389,7 +403,7 @@ def cut(path, start, end, hook, credit, cam=None, out=None, gameplay=False, cx=0
               f"[bg][game]overlay=0:{gy}[b1];[b1][cam]overlay=236:456[b2];[b2]ass={ass}[v]")
     else:     # no facecam: big gameplay window
         fc = (bg + f"[0:v]scale=-2:1000,crop=1080:1000,setsar=1[game];[bg][game]overlay=0:460[b1];[b1]ass={ass}[v]")
-    ins = ["-ss", str(start), "-t", str(dur), "-i", path] + (["-i", aud] if aud else []) + extra
+    ins = ["-i", exact_src(path, start, dur, tmp)] + (["-i", aud] if aud else []) + extra
     sh(["ffmpeg", "-v", "error", "-y"] + ins + ["-filter_complex", fc, "-map", "[v]", "-map", "1:a" if aud else "0:a", "-shortest",
         "-c:v", "libx264", "-crf", "20", "-preset", "veryfast", "-pix_fmt", "yuv420p", "-r", "30",
         "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", out])

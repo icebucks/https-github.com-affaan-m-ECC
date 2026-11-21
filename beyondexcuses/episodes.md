@@ -27,6 +27,11 @@ Render: `VID_LANG=en python3 epN.py render` → `FolgeN_<Name>_EN.mp4`. Stills: 
 | 18 | Excuse Clock vs. Early Riser (**TikTok: Part 15**) | two bedrooms side by side at dawn, alarm clocks, sunrise through the window, she runs past outside | You keep saying you'll start Monday. Why do you lose every morning before 7 am? (hookscore 79) | Win the morning. Win the day. | `ep18.py` → `Folge18_EarlyRiser_EN.mp4` |
 | 19 | Lone Wolf vs. Team Player (**TikTok: Part 16**) | one grassy hill at golden hour, flag on the summit, a boulder on each slope; two friends pull with a rope | You'd rather fail alone than ask for help. Why do you think that makes you strong? | Asking for help is strength. | `ep19.py` → `Folge19_LoneWolf_EN.mp4` |
 | 20 | Blamer vs. Learner (**TikTok: Part 17**) | kitchen in the evening, warm pendant lamps, smoke alarm, two ovens; recipe card 180°; time skip to a golden cake | You burned it once and blamed the oven. What did you never check before you tried again? (hookscore 63) | Every mistake is a lesson. | `ep20.py` → `Folge20_Learner_EN.mp4` |
+| 21 | Quitter vs. Finisher (**TikTok: Part 18**) | marathon at mile 20 in pouring rain, grey city → rain stops at the finish arch, golden light | Mile 20. Pouring rain. Only one sat down. | Slow is still forward. | `ep21.py` → `Folge21_Finisher_EN.mp4` |
+| 22 | Waiter vs. Builder (**TikTok: Part 19**) | empty lot with a "COMING SOON" sign, morning → 3 months later dusk, a little brick shop lights up "OPEN" | He waited for a sign. She laid the first brick. | Be the sign. Start building. | `ep22.py` → `Folge22_Builder_EN.mp4` |
+| 23 | Distracted vs. Focused (**TikTok: Part 20**) | library at night, two desks, wall clock 10 → 12, page counters PAGE 1 vs PAGE 212 | Same book. Same night. Only one turned the page. | Guard your focus. | `ep23.py` → `Folge23_Focused_EN.mp4` |
+| 24 | Consumer vs. Creator (**TikTok: Part 21**) | weekend market with string lights, SALE stall vs. her self-built HANDMADE stall, wallet counters $500 → $0 vs $0 → $400 | Same market. Same weekend. Only one went home richer. | Create more than you consume. | `ep24.py` → `Folge24_Creator_EN.mp4` |
+| 25 | Idea Hoarder vs. Shipper (**TikTok: Part 22**) | garage at night, sticky-note wall, half-finished robot/bike/drone vs. one desk lamp that lights up + SHIPPED stamp | 100 ideas. 0 finished. She finished just one. | Finish what you start. | `ep25.py` → `Folge25_Shipper_EN.mp4` |
 
 ## Nummerierung auf TikTok (Stand 17.11.2026)
 Die Person nummeriert auf TikTok fortlaufend nach Upload-Reihenfolge, nicht nach Dateinummer: intern #11 = **TikTok Part 8**, intern #12 = **TikTok Part 9**. Ab jetzt gilt: **angezeigte Nummer = letzte TikTok-Nummer + 1** (nächste Folge = Part 10). Im Video `SHOWN` als Nummer an `finish_v2` geben (Serien-Tag + Cliffhanger), in `covers.py` als 6. Feld eintragen, im Cliffhanger den nächsten Teil mit dieser Nummer ankündigen. Dateinamen bleiben intern (`ep13.py`, `Folge13_…`).
@@ -37,15 +42,15 @@ Stand 19.11.: intern #17 = Part 14 (Comparer vs. Own Path).
 Stand 19.11.: intern #18 = Part 15 (Excuse Clock vs. Early Riser).
 Stand 19.11.: intern #19 = Part 16 (Lone Wolf vs. Team Player).
 Stand 21.11.: intern #20 = Part 17 (Blamer vs. Learner).
-**Versprochen in Part 17:** „Part 18 tomorrow: the one who sits down at mile 20“ → die nächste Folge MUSS „Quitter vs. Finisher (Marathon)“ (Meile 20 im Regen) sein, angezeigt als **Part 18**.
+Stand 21.11.: intern #21 = Part 18 (Quitter vs. Finisher), #22 = Part 19 (Waiter vs. Builder), #23 = Part 20 (Distracted vs. Focused).
+**Ab 21.11.: 3 Folgen pro Tag** (Wunsch der Person). Cliffhanger deshalb „Part N next:“ statt „tomorrow“.
+Stand 21.11.: intern #24 = Part 21 (Consumer vs. Creator), #25 = Part 22 (Idea Hoarder vs. Shipper).
+**Versprochen in Part 22:** „Part 23 next: the one who saves $1 a day“ → die nächste Folge MUSS „Spender vs. Saver“ (Sparschwein, Zinseszins) sein, angezeigt als **Part 23**.
 
 ## Ideas (not made yet)
 
-- **Consumer vs. Creator**: a market. One buys everything; the other builds a stall and sells.
-- **Quitter vs. Finisher (Marathon)**: mile 20 of a marathon in the rain. One sits down on the curb; the other walks, then jogs, then crosses the line.
-- **Waiter vs. Builder**: an empty lot and a "Coming Soon" sign. One waits for someone to build something; the other starts laying bricks.
-- **Distracted vs. Focused**: two students in a library at night. One checks the phone every few seconds; the other closes it and finishes the page.
-- **Hoarder of Ideas vs. Shipper**: a garage full of half-finished inventions vs. one small working gadget on a market table.
+- **Spender vs. Saver** (promised as Part 23): both get $1 a day. He spends it daily on snacks; she drops it into a jar – a year later her jar (with interest) buys something big.
+
 
 ## Look bleibt (Entscheidung 17.11.2026)
 Der warme Serien-Look bleibt (Holz/Licht, amberfarbene vs. graue Figuren mit Kontur). Ein Test mit flachen weißen Figuren auf dunkler Bühne wurde verworfen – `FIG_STYLE="clean"` NICHT verwenden.

@@ -3,6 +3,8 @@ The owner finishes and posts it in the TikTok app (inbox notification) – nothi
 
   python3 clips/tiktok_upload.py login                 -> prints the authorization link (open it, allow, copy the address it redirects to)
   python3 clips/tiktok_upload.py exchange "<redirect address or code>"   -> stores the tokens (never printed)
+  python3 clips/tiktok_upload.py export-refresh <file>  -> writes the refresh token into <file> for the env var TIKTOK_REFRESH_TOKEN
+  New sessions: with TIKTOK_REFRESH_TOKEN set in the environment settings no login is needed (valid 365 days).
   python3 clips/tiktok_upload.py whoami                -> shows the connected account's display name
   python3 clips/tiktok_upload.py draft <video.mp4>     -> uploads as draft, polls the status
 Config from environment variables: TIKTOK_CLIENT_KEY, TIKTOK_CLIENT_SECRET (owner sets it in the environment settings),
@@ -43,7 +45,10 @@ def token_request(data):
 
 
 def access_token():
-    if not os.path.exists(TOKEN_FILE): sys.exit("not logged in yet: run 'login' and 'exchange' first")
+    if not os.path.exists(TOKEN_FILE):
+        rt = os.environ.get("TIKTOK_REFRESH_TOKEN")       # fresh session: log in from the stored refresh token (valid 365 days)
+        if not rt: sys.exit("not logged in yet: run 'login' and 'exchange' first (or set TIKTOK_REFRESH_TOKEN)")
+        save(token_request({"grant_type": "refresh_token", "refresh_token": rt}))
     tok = json.load(open(TOKEN_FILE))
     if time.time() > tok["obtained_at"] + tok.get("expires_in", 86400) - 300:
         tok = token_request({"grant_type": "refresh_token", "refresh_token": tok["refresh_token"]}); save(tok)
@@ -119,4 +124,7 @@ if __name__ == "__main__":
     elif cmd == "exchange": exchange(sys.argv[2])
     elif cmd == "whoami": whoami()
     elif cmd == "draft": draft(sys.argv[2])
+    elif cmd == "export-refresh":                                    # writes the refresh token to a FILE (never printed)
+        with open(sys.argv[2], "w") as f: f.write(json.load(open(TOKEN_FILE))["refresh_token"] + "\n")
+        os.chmod(sys.argv[2], 0o600); print(f"refresh token written to {sys.argv[2]}")
     else: print(__doc__)
