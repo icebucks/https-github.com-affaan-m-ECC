@@ -30,6 +30,8 @@ EPS = {  # num: (module, scene time, negative, positive)
     21: ("ep21", 4.2, "QUITTER", "FINISHER", "MILE 20|SAT DOWN", 18, 80, 0),
     22: ("ep22", 8.9, "WAITER", "BUILDER", "3 MONTHS|WAITING", 19, 80, 0),
     23: ("ep23", 9.0, "DISTRACTED", "FOCUSED", "2 HOURS|PAGE 1", 20, 80, 0),
+    24: ("ep24", 10.4, "CONSUMER", "CREATOR", "$0|VS $400", 21, 80, 0),
+    25: ("ep25", 10.4, "IDEA HOARDER", "SHIPPER", "100 IDEAS|0 DONE", 22, 80, 0),
 }
 
 

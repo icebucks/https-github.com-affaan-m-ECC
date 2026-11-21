@@ -524,3 +524,49 @@ Mindset Series – Part 20. Part 21 next: the one who buys everything.
 
 Plan: **Sa 21.11.** Part 17 (#20, liegt schon als Entwurf in der Inbox) · Part 18 (#21) · Part 19 (#22) – **So 22.11.** Part 20 (#23) + die nächsten zwei neuen Folgen.
 Mindestens 3–4 Stunden Abstand, damit jede Folge ihre eigene Testgruppe bekommt. Nach einer Woche mit den TikTok-Analytics prüfen, ob die Mittagsfolge mithält.
+
+## #24 – Consumer vs Creator (TikTok: Part 21)
+**TikTok:** So 22.11. · **Titelbild:** `covers/Cover_24.jpg` („$0 / VS $400“, #21) · **Hook im Video:** „Same market. Same weekend.“ / „Only one went home richer.“
+**Suchanfragen:** „consumer vs creator mindset“ · „how to make money from a side hustle“ · „stop impulse buying“
+**TikTok-Caption:**
+```
+He spent $500 at the SALE stall. She built her own stall. Guess whose jar his last $40 ended up in? 🛍️🏺
+Send this to someone who can't walk past a sale 👀
+Comment "CREATE" if you're building something this year.
+#creatormindset #mindset #psychology #motivation #beyondexcuses
+```
+**Pin-Kommentar:** `Be honest: this month you were more… 🛍️ = consumer · 🛠️ = creator`
+**Titel:** `Consumer vs Creator (Part 21): who went home richer?`
+**Beschreibung:**
+```
+Consumer vs creator mindset: same market, same weekend. He buys bag after bag at the SALE stall. She builds her own stall and sells handmade mugs. In the end his last $40 lands in her jar.
+Create more than you consume.
+
+Send this to someone who can't walk past a sale 👇
+
+Mindset Series – Part 21. Part 22 next: the one with 100 unfinished ideas.
+#beyondexcuses #creatormindset #sidehustle #mindset #shorts
+```
+
+## #25 – Idea Hoarder vs Shipper (TikTok: Part 22)
+**TikTok:** So 22.11. · **Titelbild:** `covers/Cover_25.jpg` („100 IDEAS / 0 DONE“, #22) · **Hook im Video:** „100 ideas. 0 finished.“ / „She finished just one.“
+**Suchanfragen:** „how to finish what you start“ · „too many ideas“ · „shiny object syndrome“
+**TikTok-Caption:**
+```
+A robot with no head. A bike with one wheel. 100 ideas, 0 finished. She built ONE lamp – and shipped it. 💡📦
+Send this to the friend with 100 unfinished projects 👀
+Comment "SHIP" if you're finishing one thing this week.
+#finishwhatyoustart #mindset #productivity #motivation #beyondexcuses
+```
+**Pin-Kommentar:** `How many unfinished projects do you have right now? 💡 = more than 5 · 📦 = I finish what I start`
+**Titel:** `Idea Hoarder vs Shipper (Part 22): 100 ideas, 0 done`
+**Beschreibung:**
+```
+How to finish what you start: he starts a robot, a bike, a drone – a month later: 100 ideas, 0 finished. She builds one desk lamp until it's done, and ships it.
+Shiny object syndrome is real. Finish one thing, then the next.
+
+Send this to the friend with 100 unfinished projects 👇
+
+Mindset Series – Part 22. Part 23 next: the one who saves $1 a day.
+#beyondexcuses #finishwhatyoustart #productivity #mindset #shorts
+```
