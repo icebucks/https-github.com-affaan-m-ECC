@@ -26,6 +26,7 @@ Reichweite, Viralität, Videoqualität. Antworten und Protokolle auf Deutsch.
 | 17:00 | YouTube | Short 2 |
 | 19:00 | YouTube | Compilation (9–11 min) |
 | Mo–Fr 12:30 · 17:00 · 21:00 / Sa–So 11:00 · 15:00 · 20:00 | TikTok | 3 BeyondExcuses-Folgen (Entwürfe; Person postet) |
+| 12:30 · 16:30 | TikTok | die 2 GTA-Shorts auf **VirlixYT** (Entwürfe; Person postet) |
 
 Produktion am Vortag oder bis spätestens 11:30 am selben Tag. Ein Tageslauf dauert ~2–3 h (Aufnahme 1 h, Render, Upload).
 
@@ -63,7 +64,11 @@ Leitfaden mit Recherche und Genres: **`clips/COMPILATION_STYLE.md`** – vor jed
    (sonst 403 → Datei der Person geben).
 9. **Upload:** `clips/yt_upload.py … --privacy private --publish-at <Datum>T19:00:00+01:00` (Shorts 13:00 / 17:00,
    Titel mit `#Shorts`, Beschreibung mit Link zur Compilation). Ausgabe **nicht** abschneiden – die Video-ID steht darin.
-10. **Protokoll:** `clips/compilations.md` (Quellen, Link, Termin), `clips/yt_shorts.json`. Person erinnern:
+10. **Shorts zusätzlich auf TikTok (VirlixYT):** jeden Short auch als Entwurf: `python3 clips/tiktok_upload.py --account virlix
+    draft <short.mp4>` (Login aus `TIKTOK_REFRESH_TOKEN_VIRLIX`; `--account virlix whoami` muss VirlixYT zeigen). Captions nach
+    Vorlage in `clips/README.md` (Hook + Frage + „🎥 via <kanal>“ + 5 Hashtags), kein KI-Label, Zeiten 30 min vor dem YouTube-Short,
+    Paket in `clips/tiktok_paket/<YYYY-MM-DD>.md`.
+11. **Protokoll:** `clips/compilations.md` (Quellen, Link, Termin), `clips/yt_shorts.json`. Person erinnern:
     „Ähnliches Video“ bei den Shorts setzen (nicht per API möglich).
 
 ## 4. BeyondExcuses (TikTok): 3 Folgen pro Tag
