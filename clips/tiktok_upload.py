@@ -8,11 +8,12 @@ The owner finishes and posts it in the TikTok app (inbox notification) – nothi
 Config from environment variables: TIKTOK_CLIENT_KEY, TIKTOK_CLIENT_SECRET (owner sets it in the environment settings),
 TIKTOK_REDIRECT_URI (default http://localhost:8080/callback). Tokens: ~/.config/tiktok/token.json (chmod 600, never in git).
 Access tokens last 24 h and are refreshed automatically with the refresh token (valid ~365 days)."""
-import json, os, secrets, sys, time, urllib.parse
+import hashlib, json, os, secrets, sys, time, urllib.parse
 import requests
 
 API = "https://open.tiktokapis.com/v2"
 TOKEN_FILE = os.path.expanduser("~/.config/tiktok/token.json")
+PKCE_FILE = os.path.expanduser("~/.config/tiktok/pkce.json")   # code_verifier between login and exchange
 SCOPES = "user.info.basic,video.upload"
 
 
@@ -50,8 +51,14 @@ def access_token():
 
 
 def login():
+    # TikTok requires PKCE (S256). Its docs use the HEX-encoded SHA256 of the verifier as code_challenge.
+    verifier = secrets.token_urlsafe(48)[:64]
+    os.makedirs(os.path.dirname(PKCE_FILE), exist_ok=True)
+    with open(PKCE_FILE, "w") as f: json.dump({"code_verifier": verifier}, f)
+    os.chmod(PKCE_FILE, 0o600)
     q = {"client_key": cfg("TIKTOK_CLIENT_KEY"), "scope": SCOPES, "response_type": "code", "redirect_uri": redirect(),
-         "state": secrets.token_urlsafe(12)}
+         "state": secrets.token_urlsafe(12), "code_challenge": hashlib.sha256(verifier.encode()).hexdigest(),
+         "code_challenge_method": "S256"}
     print("https://www.tiktok.com/v2/auth/authorize/?" + urllib.parse.urlencode(q))
 
 
@@ -59,8 +66,10 @@ def exchange(arg):
     code = arg
     if "code=" in arg:
         code = urllib.parse.parse_qs(urllib.parse.urlparse(arg).query)["code"][0]
-    tok = token_request({"grant_type": "authorization_code", "code": code, "redirect_uri": redirect()})
-    save(tok)
+    if not os.path.exists(PKCE_FILE): sys.exit("no pending login: run 'login' first and use the new link")
+    verifier = json.load(open(PKCE_FILE))["code_verifier"]
+    tok = token_request({"grant_type": "authorization_code", "code": code, "redirect_uri": redirect(), "code_verifier": verifier})
+    save(tok); os.remove(PKCE_FILE)
     print(f"logged in (scopes: {tok.get('scope')}); tokens stored in {TOKEN_FILE}")
 
 
