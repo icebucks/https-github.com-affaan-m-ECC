@@ -5,7 +5,9 @@ Neuer Account der Person, nur echtes Gameplay aus englischen Twitch-Streams. Zie
 ## Grundregel (19.11.2026, Wunsch der Person)
 **Nur noch reines Gameplay** von No-Commentary-Kanälen (kein Streamer im Bild, keine Streamer-Stimme): besserer Ton und besseres Bild, nichts muss mehr herausgerechnet werden.
 - Suche: Twitch-GQL `streams(options: {freeformTags: ["NoCommentary"]})`, Kategorie GTA VI, Sprache en. Bewährt: **skrimskeez** (Free Roam, Lucia), **mrperfectog91** (Story, Jason). Meiden: Kanäle mit fremdsprachiger Spiel-Oberfläche.
+  Suche mit `python3 clips/twitch_find.py --tag NoCommentary`. **Vor dem Aufnehmen 20 s probeweise ziehen** (`streamlink --hls-duration 00:00:20`) und 3 Standbilder ansehen: Facecam? Rahmen/schwarze Ränder? **Sprache der Spiel-Oberfläche** (21.11.: steinbrandt = Deutsch, kuzmanix_v = Russisch → ungeeignet; 00mute und optimus_789 = Englisch).
 - Schnitt mit `--gameplay --raw` (Originalton, keine Stimmtrennung).
+- **Speicher:** compile.py braucht für Zwischendateien etwa so viel Platz wie das ganze Rohmaterial der benutzten Blöcke (am 21.11. lief die Platte voll). Darum die gewählten Fenster vorher verlustfrei ausschneiden (`ffmpeg -ss <start-15> -i block.ts -t <dauer> -c copy cut.ts`), die Zeiten in der Spec umrechnen und die großen Blöcke löschen. optimus_789 sendet ~700 MB pro 15 min.
 - **YouTube-Compilations mindestens 8 Minuten**, Abschnitte 60–120 s (`compile.py` v2, `"audio": "raw"`), Kapitel aus `<out>.chapters.txt`. **Stil-Leitfaden: `clips/COMPILATION_STYLE.md`** (Cold Open, kurze Übergänge, Totzeit schneiden, Countdown, Genres).
 
 ## Werkzeuge
