@@ -44,7 +44,8 @@
    "source": "00mute_20261121_0856: 92–124",
    "publish": "2026-11-22 13:00",
    "links_to": "C-hyJkLLr74",
-   "done": "hPTvqP9R6JU"
+   "done": "ZK8HhemFBWo",
+   "note": "v1 hPTvqP9R6JU hatte 3 s Standbild am Anfang (Keyframe-Seek) – neu geschnitten mit clipper.exact_src, v1 von der Person gelöscht"
   },
   {
    "file": "Short_Shootout.mp4",

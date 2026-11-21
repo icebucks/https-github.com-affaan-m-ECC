@@ -81,7 +81,7 @@ def render_segment(seg, n, total, tmp):
         X, Y, Wb, Hb = int(x * sx), int(y * sy), int(w * sx), int(h * sy)
         src += f"[s{k}]split[s{k}a][s{k}b];[s{k}b]crop={Wb}:{Hb}:{X}:{Y},gblur=sigma=26[h{k}];[s{k}a][h{k}]overlay={X}:{Y}[s{k + 1}];"
     cur = f"[s{len(boxes)}]"
-    ins = ["-ss", str(a), "-t", str(dur), "-i", path] + (["-i", aud] if aud else []) + ["-i", clipper.LOGO_BADGE, "-i", clipper.LOGO_WM]
+    ins = ["-i", clipper.exact_src(path, a, dur, tmp)] + (["-i", aud] if aud else []) + ["-i", clipper.LOGO_BADGE, "-i", clipper.LOGO_WM]   # exact: no frozen start
     li = 2 if aud else 1
     fc = src
     for k, (x, y, w, h) in enumerate(boxes):                 # logo over each hidden overlay
