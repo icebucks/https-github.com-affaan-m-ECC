@@ -26,6 +26,7 @@ Reichweite, Viralität, Videoqualität. Antworten und Protokolle auf Deutsch.
 | 17:00 | YouTube | Short 2 |
 | 19:00 | YouTube | Compilation (9–11 min) |
 | Mo–Fr 12:30 · 17:00 · 21:00 / Sa–So 11:00 · 15:00 · 20:00 | TikTok | 3 BeyondExcuses-Folgen (Entwürfe; Person postet) |
+| 12:30 · 16:30 | TikTok | die 2 GTA-Shorts auf **VirlixYT** (Entwürfe; Person postet) |
 
 Produktion am Vortag oder bis spätestens 11:30 am selben Tag. Ein Tageslauf dauert ~2–3 h (Aufnahme 1 h, Render, Upload).
 
@@ -63,7 +64,15 @@ Leitfaden mit Recherche und Genres: **`clips/COMPILATION_STYLE.md`** – vor jed
    (sonst 403 → Datei der Person geben).
 9. **Upload:** `clips/yt_upload.py … --privacy private --publish-at <Datum>T19:00:00+01:00` (Shorts 13:00 / 17:00,
    Titel mit `#Shorts`, Beschreibung mit Link zur Compilation). Ausgabe **nicht** abschneiden – die Video-ID steht darin.
-10. **Protokoll:** `clips/compilations.md` (Quellen, Link, Termin), `clips/yt_shorts.json`. Person erinnern:
+10. **Shorts zusätzlich auf TikTok (VirlixYT):** jeden Short auch als Entwurf: `python3 clips/tiktok_upload.py --account virlix
+    draft <short.mp4>` (Login aus `TIKTOK_REFRESH_TOKEN_VIRLIX`; `--account virlix whoami` muss VirlixYT zeigen). Captions nach
+    Vorlage in `clips/README.md` (Hook + Frage + „🎥 via <kanal>“ + 5 Hashtags), kein KI-Label, Zeiten 30 min vor dem YouTube-Short,
+    Paket in `clips/tiktok_paket/<YYYY-MM-DD>.md`.
+11. **Link-Kommentar unter Shorts, die heute online gingen** (vorher geht es nicht: private/geplante Videos → HTTP 403):
+    `commentThreads.insert` mit „Full 10-minute GTA 6 compilation (<Name>) 👉 https://youtu.be/<id> \nWhat should we clip next? 👇“.
+    In `clips/yt_shorts.json` beim Short `"comment": "<comment-id>"` eintragen (nie doppelt kommentieren). Anpinnen geht nur in der App →
+    Person im Bericht daran erinnern. Erledigt: IMTOsLca1og (21.11.). Offen: lUSvzl9VYss (ab 21.11. 17:00), ZK8HhemFBWo, Ed42CNBR8Ng (ab 22.11.).
+12. **Protokoll:** `clips/compilations.md` (Quellen, Link, Termin), `clips/yt_shorts.json`. Person erinnern:
     „Ähnliches Video“ bei den Shorts setzen (nicht per API möglich).
 
 ## 4. BeyondExcuses (TikTok): 3 Folgen pro Tag
@@ -97,9 +106,11 @@ Serie und Regeln: **`beyondexcuses/episodes.md`** (Nummerierung, Look, Ideen), C
 ## 6. Laufend verbessern (Reichweite, Viralität, Qualität)
 - **Jeder Lauf:** eine konkrete Verbesserung ausprobieren und in `.claude/skills/tagesproduktion/learnings.md`
   eintragen (Datum, was, warum, woran gemessen). Bewährtes in diesen Skill bzw. die Leitfäden übernehmen.
-- **Daten:** Die API hat keinen Analytics-Zugriff → die Person um Screenshots bitten (YouTube Studio: Aufrufe,
-  Zuschauerbindung, CTR, Abos je Video; TikTok: Aufrufe, Wiedergabedauer, Shares). Auswertung mit den Skills
-  `yt-retention`, `yt-audit`, `yt-package`, `tiktok-viral-creator`. Erste Auswertung nach ~2 Wochen (ab 05.12.).
+- **Daten (Virlix, automatisch):** jeder Lauf zuerst `python3 clips/yt_stats.py --md clips/stats/<YYYY-MM-DD>.md` (Status, Termine,
+  Aufrufe, Likes, Kommentare, Ø Wiedergabedauer, Ø gesehen %, +Abos je Video; Analytics hängen 1–2 Tage nach) und committen.
+  Daraus ableiten: welches Genre/welcher Hook/welche Uhrzeit zieht → im Tagesbericht 1–2 Sätze dazu.
+  **TikTok** hat keine Statistik-API → die Person um Screenshots bitten (Aufrufe, Wiedergabedauer, Shares). Auswertung mit
+  `yt-retention`, `yt-audit`, `yt-package`, `tiktok-viral-creator`. Größere Auswertung nach ~2 Wochen (ab 05.12.).
 - **Hebel, die zu testen sind:** Hook-Formulierungen, Titel-/Thumbnail-Varianten, Genre-Reihen, Shorts-Länge
   (20 vs. 35 s), Countdown vs. chronologisch, Uhrzeiten, Serien-Cliffhanger, Pin-Kommentare.
 - **Trends:** GTA-6-Launch-Phase – „Erste/Neue/Krasseste X in GTA 6“ zieht (Recherche im Leitfaden). Wöchentlich kurz
@@ -111,4 +122,6 @@ Serie und Regeln: **`beyondexcuses/episodes.md`** (Nummerierung, Look, Ideen), C
 - **Ausgabe von `yt_upload.py` nicht mit `tail` kürzen** – sonst ist die Video-ID weg (passiert am 21.11.).
 - Push abgelehnt → `git fetch origin <branch> && git merge --no-edit FETCH_HEAD` (andere Sitzungen schreiben mit).
 - `clips/transfer/`: große Videos für andere Sitzungen in 95-MB-Teilen; nach Upload löschen.
+- **Premieren:** Die Person plant Compilations teils als Premiere. Die API zeigt dann `privacyStatus: public` + `liveBroadcastContent: upcoming` + `liveStreamingDetails.scheduledStartTime` – das ist **noch nicht live**. `yt_stats.py` zeigt „Premiere <Zeit>“. Premieren nicht per `publishAt` umplanen (HTTP 503). Am 21.11. führte das fast zu einer doppelten Compilation.
+- **Status-Check:** `python3 clips/yt_stats.py` zeigt alle Uploads mit Status/Termin/Zahlen (Token mit `youtube.force-ssl` + `yt-analytics.readonly`, siehe `clips/yt_auth.py`). Termine/Status lassen sich jetzt per `videos.update` korrigieren – nur bei Videos, die noch nie öffentlich waren.
 - Schwarzes Bild in Quellen (Licht aus im Spiel) und Waffen-/Masken-Menüs sind Totzeit → schneiden.
