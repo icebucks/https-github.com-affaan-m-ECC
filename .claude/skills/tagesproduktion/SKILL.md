@@ -59,6 +59,7 @@ Punch-Texte, kein Countdown. 30–60 min. Gleiche Marke (Intro/Outro), damit der
 ## 2. Einrichtung in einer frischen Sitzung
 ```bash
 python3 -m pip install -q streamlink            # Twitch-Aufnahme
+apt-get install -y -qq tesseract-ocr tesseract-ocr-eng   # OCR für walkthrough.py scan
 python3 clips/tiktok_upload.py whoami           # muss "BeyondExcuses" ausgeben
 ```
 - TikTok-Login kommt aus `TIKTOK_REFRESH_TOKEN` (Umgebungseinstellungen, 365 Tage gültig). Fehlt er:

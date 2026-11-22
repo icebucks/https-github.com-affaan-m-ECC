@@ -2,6 +2,9 @@
 
 Format: Datum · Kanal · was geändert/ausprobiert · warum · woran messen · Ergebnis (nachtragen)
 
+- **22.11.2026 · Virlix · erster Walkthrough + Playlist:** „Whitetail Doe Night Hunt“ (Mo 23.11. 19:00), neue Playlist „GTA 6 Walkthrough (No Commentary)“; eigenes Thumbnail jetzt erlaubt (Kanal verifiziert). Qualität vor Menge: nur 1 Short statt 2 (zweiter hatte keine Pointe). Messen: Aufrufe/Ø Wiedergabe Walkthrough vs. Compilations nach 7 Tagen, Herkunft „Suche“ (Walkthroughs sollten über Suche wachsen). Ergebnis: _offen_
+- **22.11.2026 · Werkzeug:** `walkthrough.py scan` braucht `tesseract` (`apt-get install -y tesseract-ocr tesseract-ocr-eng`) – in frischen Containern zuerst installieren.
+
 - **21.11.2026 · Virlix · compile.py v2:** Cold Open („COMING UP“, 3–4 × 1,8 s), xfade-Übergänge 0,15–0,45 s mit Whoosh,
   Jump-Cuts (`cont`), Countdown #6→#1. Warum: Recherche (Hook in den ersten Sekunden, Totzeit raus, kurze Übergänge).
   Messen: Zuschauerbindung nach 30 s und durchschnittliche Wiedergabedauer – Night Missions (v1-Stil, 21.11.) vs.

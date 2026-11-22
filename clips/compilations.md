@@ -10,6 +10,13 @@ Regeln: nur reines Gameplay von No-Commentary-Kanälen (Originalton), mindestens
 | 21.11.2026 | GTA6_RobberyEscape_10min.mp4 | 10:23 | 00mute_20261121_0856: 58–148, 148–258, 545–650, 680–762 · 00mute_20261121_0911: 0–110, 500–610 |
 | 21.11.2026 | GTA6_Cinematic_OceanNeon.mp4 | 9:44 | 00mute_20261121_1229: 130–172, 290–362, 690–800 · 00mute_20261121_1214: 390–455 · 00mute_20261121_1144: 205–300 · optimus_789_20261121_1222: 1–43, 75–100 · optimus_789_20261121_1237: 345–386, 440–515 (Zeiten ±2 s, aus verlustfrei geschnittenen Fenstern) – nicht hochgeladen (Sitzung ohne YouTube-Zugang), Datei an die Person geschickt |
 
+| 22.11.2026 | GTA6_Walkthrough_WhitetailHunt.mp4 (Walkthrough) | 8:27 | silentcontrollertv_20261122_1945: 265–355, 355–575, 575–690, 690–752 |
+
+## 22.11. – Walkthrough „Whitetail Doe Night Hunt“ (für Mo 23.11. 19:00)
+**Titel:** `GTA 6 Walkthrough – Whitetail Doe Night Hunt (No Commentary)` · https://youtu.be/_kLTxO4nE2w – privat, Termin Mo 23.11. 19:00, eigenes Thumbnail gesetzt („NIGHT / HUNT“), Playlist „GTA 6 Walkthrough (No Commentary)“ (`PLFmrWR4DSDlQ`).
+Kapitel: 0:00 Intro · 0:10 The Job · 1:39 Tracking the Blood Trail · 5:19 Loading the Doe · 7:14 Processing the Doe. Credit: silentcontrollertv (Twitch, „Full Story Playthrough – No Commentary“; Whisper-Stichprobe = nur Spieldialog).
+Missionsname war auf dem Bildschirm nicht lesbar → Titel nach dem Ziel („Process Whitetail Doe“). Short daraus: „Night hunt…“ Mo 13:00 (https://youtu.be/oc1K8tksmzE). Zweiter Short (Blutspur) verworfen: nur dunkles Gehen, keine Pointe.
+
 ## 21.11. – Upload-Texte „Night Missions“
 **Titel:** `GTA 6 Pure Gameplay – Night Missions (No Commentary)`
 **Beschreibung:**
