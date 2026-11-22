@@ -1,0 +1,49 @@
+{
+ "video": "Folge25_Shipper_v2_EN",
+ "duration": 12.5,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  7.9,
+  4.28,
+  7.61,
+  6.2,
+  5.43,
+  3.74,
+  4.5,
+  3.98,
+  7.17,
+  3.13,
+  2.07,
+  5.44
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 105.38491821289062,
+  "contrast": 34.37548828125,
+  "colourfulness": 27.361777782440186
+ },
+ "loop_difference": 16.8,
+ "font_sizes": [
+  30,
+  32
+ ],
+ "audio": {
+  "first_half_s_db": -14.729162216186523,
+  "median_db": -14.253129959106445,
+  "silent_windows": 0,
+  "lufs": -14.1
+ }
+}

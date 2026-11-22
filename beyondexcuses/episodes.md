@@ -45,6 +45,7 @@ Stand 21.11.: intern #20 = Part 17 (Blamer vs. Learner).
 Stand 21.11.: intern #21 = Part 18 (Quitter vs. Finisher), #22 = Part 19 (Waiter vs. Builder), #23 = Part 20 (Distracted vs. Focused).
 **Ab 21.11.: 3 Folgen pro Tag** (Wunsch der Person). Cliffhanger deshalb „Part N next:“ statt „tomorrow“.
 Stand 21.11.: intern #24 = Part 21 (Consumer vs. Creator), #25 = Part 22 (Idea Hoarder vs. Shipper).
+Stand 22.11.: Part 20–22 als v2 neu gebaut (epNN_v2.py: ep23_v2.py, ep24_v2.py, ep25_v2.py; Helfer `lib_v2.py`) – 12,5 s, TURN 6,4–6,6 s, alle Prüfungen ✅.
 Stand 21.11. abends (geplanter Tageslauf, **nur als Dateien an die Person geliefert, NICHT im Repo** – Push war dort gesperrt): #26 = Part 23 Spender vs. Saver, #27 = Part 24 Day 1 Hero vs. Daily 1 %, #28 = Part 25 Spectator vs. Player (Tagespaket 23.11., Mo 12:30/17:00/21:00). Die Person postet sie aus ihrer Galerie.
 **Versprochen in Part 25:** „Part 26 next: soda every day vs water every day“ → nächste Folge = intern **#29**, angezeigt als **Part 26** (Soda vs. Water). Nummern 26–28 NICHT neu vergeben.
 
