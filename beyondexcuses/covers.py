@@ -33,6 +33,13 @@ EPS = {  # num: (module, scene time, negative, positive)
     24: ("ep24", 10.4, "CONSUMER", "CREATOR", "$0|VS $400", 21, 80, 0),
     25: ("ep25", 10.4, "IDEA HOARDER", "SHIPPER", "100 IDEAS|0 DONE", 22, 80, 0),
 }
+# Retention v2 (22.11.): same cover style, but the words are the open question (never the result) and the scene is taken
+# BEFORE the turn. Output covers/Cover_<N>_v2.jpg:  python3 covers.py v2
+EPS_V2 = {
+    23: ("ep23_v2", 3.0, "DISTRACTED", "FOCUSED", "2 HOURS.|WHO FINISHES?", 20, 10, 0),
+    24: ("ep24_v2", 3.4, "CONSUMER", "CREATOR", "SAME $500.|WHO WINS?", 21, 80, 0),
+    25: ("ep25_v2", 3.9, "IDEA HOARDER", "SHIPPER", "30 DAYS.|WHO SHIPS?", 22, 80, 0),
+}
 
 
 def fit(s, maxw, size):
@@ -78,6 +85,16 @@ def cover(num, out):
     Image.fromarray(arr).save(out, quality=92)
     return out
 
+
+if __name__ == "__main__" and sys.argv[1:2] == ["v2"]:
+    d = os.path.dirname(os.path.abspath(__file__))
+    EPS.update(EPS_V2)
+    files = [cover(n, f"{d}/covers/Cover_{n:02d}_v2.jpg") for n in EPS_V2]
+    th = [Image.open(f).crop((0, 240, 1080, 1680)).resize((300, 400)) for f in files[::-1]]
+    sheet = Image.new("RGB", (3 * 304, 404), (255, 255, 255))
+    for i, im in enumerate(th): sheet.paste(im, (i * 304, 0))
+    sheet.save(f"{d}/covers/raster_vorschau_v2.jpg", quality=88)
+    sys.exit()
 
 if __name__ == "__main__":
     nums = [int(a) for a in sys.argv[1:]] or list(EPS)
