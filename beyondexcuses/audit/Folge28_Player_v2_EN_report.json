@@ -1,0 +1,50 @@
+{
+ "video": "Folge28_Player_v2_EN",
+ "duration": 12.5,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.06,
+   "seconds": [
+    0.0,
+    0.25,
+    4.5
+   ]
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  9.23,
+  3.25,
+  4.88,
+  3.13,
+  3.12,
+  4.09,
+  3.99,
+  3.72,
+  4.13,
+  6.24,
+  1.35,
+  5.7
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 138.0843963623047,
+  "contrast": 36.982784271240234,
+  "colourfulness": 59.35944938659668
+ },
+ "loop_difference": 20.3,
+ "font_sizes": [],
+ "audio": {
+  "first_half_s_db": -13.630998611450195,
+  "median_db": -14.423118591308594,
+  "silent_windows": 0,
+  "lufs": -14.1
+ }
+}

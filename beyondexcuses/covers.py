@@ -39,6 +39,9 @@ EPS_V2 = {
     23: ("ep23_v2", 3.0, "DISTRACTED", "FOCUSED", "2 HOURS.|WHO FINISHES?", 20, 10, 0),
     24: ("ep24_v2", 3.4, "CONSUMER", "CREATOR", "SAME $500.|WHO WINS?", 21, 80, 0),
     25: ("ep25_v2", 3.9, "IDEA HOARDER", "SHIPPER", "30 DAYS.|WHO SHIPS?", 22, 80, 0),
+    26: ("ep26_v2", 3.6, "SPENDER", "SAVER", "SAME $1.|WHO WINS?", 23, 80, 0),
+    27: ("ep27_v2", 3.6, "DAY 1 HERO", "DAILY 1%", "100 DAYS.|WHO LIFTS MORE?", 24, 80, 0),
+    28: ("ep28_v2", 3.6, "SPECTATOR", "PLAYER", "60 DAYS.|WHO CAN SHOOT?", 25, 80, 0),
 }
 
 

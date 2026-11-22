@@ -46,7 +46,7 @@ Stand 21.11.: intern #21 = Part 18 (Quitter vs. Finisher), #22 = Part 19 (Waiter
 **Ab 21.11.: 3 Folgen pro Tag** (Wunsch der Person). Cliffhanger deshalb „Part N next:“ statt „tomorrow“.
 Stand 21.11.: intern #24 = Part 21 (Consumer vs. Creator), #25 = Part 22 (Idea Hoarder vs. Shipper).
 Stand 22.11.: Part 20–22 als v2 neu gebaut (epNN_v2.py: ep23_v2.py, ep24_v2.py, ep25_v2.py; Helfer `lib_v2.py`) – 12,5 s, TURN 6,4–6,6 s, alle Prüfungen ✅.
-Stand 21.11. abends (geplanter Tageslauf, **nur als Dateien an die Person geliefert, NICHT im Repo** – Push war dort gesperrt): #26 = Part 23 Spender vs. Saver, #27 = Part 24 Day 1 Hero vs. Daily 1 %, #28 = Part 25 Spectator vs. Player (Tagespaket 23.11., Mo 12:30/17:00/21:00). Die Person postet sie aus ihrer Galerie.
+Stand 22.11. spät: Part 23–25 (Tageslauf 21.11.) kamen nie an → **neu gebaut im v2-Standard** und ins Repo: #26 = Part 23 Spender vs. Saver (`ep26_v2.py`), #27 = Part 24 Day 1 Hero vs. Daily 1 % (`ep27_v2.py`), #28 = Part 25 Spectator vs. Player (`ep28_v2.py`); alle retention_qa ✅, als Entwürfe hochgeladen, Tagespaket 23.11.
 **Versprochen in Part 25:** „Part 26 next: soda every day vs water every day“ → nächste Folge = intern **#29**, angezeigt als **Part 26** (Soda vs. Water). Nummern 26–28 NICHT neu vergeben.
 
 ## Retention-Standard v2 (PFLICHT ab Part 26, freigegeben von der Person am 22.11.2026)

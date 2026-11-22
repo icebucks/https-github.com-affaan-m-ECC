@@ -1,0 +1,46 @@
+{
+ "video": "Folge26_Saver_v2_EN",
+ "duration": 12.5,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  9.98,
+  5.01,
+  6.36,
+  4.95,
+  5.0,
+  5.01,
+  4.41,
+  4.27,
+  4.07,
+  3.07,
+  1.3,
+  4.69
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 153.55958557128906,
+  "contrast": 42.903987884521484,
+  "colourfulness": 40.70942401885986
+ },
+ "loop_difference": 19.3,
+ "font_sizes": [],
+ "audio": {
+  "first_half_s_db": -14.649652481079102,
+  "median_db": -14.406866073608398,
+  "silent_windows": 0,
+  "lufs": -14.1
+ }
+}
