@@ -13,7 +13,7 @@ Regeln: nur reines Gameplay von No-Commentary-Kanälen (Originalton), mindestens
 | 22.11.2026 | GTA6_Walkthrough_WhitetailHunt.mp4 (Walkthrough) | 8:27 | silentcontrollertv_20261122_1945: 265–355, 355–575, 575–690, 690–752 |
 
 ## 22.11. – Walkthrough „Whitetail Doe Night Hunt“ (für Mo 23.11. 19:00)
-**Titel:** `GTA 6 Walkthrough – Whitetail Doe Night Hunt (No Commentary)` · https://youtu.be/_kLTxO4nE2w – privat, Termin Mo 23.11. 19:00, eigenes Thumbnail gesetzt („NIGHT / HUNT“), Playlist „GTA 6 Walkthrough (No Commentary)“ (`PLFmrWR4DSDlQ`).
+**ZURÜCKGEZOGEN (Doppel):** Eine andere Sitzung hat dieselbe Mission als „GTA 6 Walkthrough – Mission: Deer Hunt with Bret“ (https://youtu.be/75yHpH_wekY, Mo 19:00) + Short https://youtu.be/EnNd5VIA9m8 (Mo 13:00) hochgeladen – deren Version bleibt (echter Missionsname). Meine Version `_kLTxO4nE2w` und Short `oc1K8tksmzE` am 22.11. auf Wunsch der Person auf privat ohne Termin gestellt, Playlist getauscht. Ursprünglich: **Titel:** `GTA 6 Walkthrough – Whitetail Doe Night Hunt (No Commentary)` · https://youtu.be/_kLTxO4nE2w – eigenes Thumbnail gesetzt („NIGHT / HUNT“), Playlist „GTA 6 Walkthrough (No Commentary)“ (`PLFmrWR4DSDlQ`).
 Kapitel: 0:00 Intro · 0:10 The Job · 1:39 Tracking the Blood Trail · 5:19 Loading the Doe · 7:14 Processing the Doe. Credit: silentcontrollertv (Twitch, „Full Story Playthrough – No Commentary“; Whisper-Stichprobe = nur Spieldialog).
 Missionsname war auf dem Bildschirm nicht lesbar → Titel nach dem Ziel („Process Whitetail Doe“). Short daraus: „Night hunt…“ Mo 13:00 (https://youtu.be/oc1K8tksmzE). Zweiter Short (Blutspur) verworfen: nur dunkles Gehen, keine Pointe.
 

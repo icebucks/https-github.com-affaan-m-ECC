@@ -151,6 +151,7 @@ Captions: `beyondexcuses/youtube_shorts_plan.md`.
   recherchieren, was im Nischen-Umfeld läuft (`yt-viral`).
 
 ## 7. Bekannte Stolperfallen (aus echten Fehlern)
+- **Parallele Sitzungen:** Mehrere Sitzungen arbeiten im selben Repo/Kanal. Vor JEDEM YouTube-Upload `python3 clips/yt_stats.py` prüfen, ob für den Ziel-Termin schon etwas geplant ist (gleiche Mission/Szene?), und direkt nach dem Upload committen + pushen. Am 22.11. lagen sonst zwei Walkthroughs derselben Mission auf demselben Termin.
 - **Standbild am Clip-Anfang:** Twitch-.ts nur alle paar Sekunden ein Keyframe → `clipper.exact_src` (8 s Vorlauf)
   ist eingebaut; trotzdem immer freezedetect.
 - **Ausgabe von `yt_upload.py` nicht mit `tail` kürzen** – sonst ist die Video-ID weg (passiert am 21.11.).
