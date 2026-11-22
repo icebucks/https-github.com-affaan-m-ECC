@@ -2,6 +2,8 @@
 
 Format: Datum · Kanal · was geändert/ausprobiert · warum · woran messen · Ergebnis (nachtragen)
 
+- **22.11.2026 · VirlixYT · TEST „Waffen vs. ohne Waffen“ (läuft bis ~29.11.):** Pawn Shop / Shootout 0 Aufrufe, laut TikTok-Analyse aber **nicht eingeschränkt**. Hypothese: realistische Waffengewalt wird still weniger verteilt. Ab 23.11. pro Tag 1 VirlixYT-Short **ohne Waffen** (Crash/Stunt/NPC-Chaos) + 1 **mit Action**; im Tagespaket markieren („Test: ohne Waffen“ / „Test: Action“). Auswerten: Ø Aufrufe nach 48 h je Gruppe. Bis dahin Pawn Shop/Shootout nicht löschen/neu posten.
+
 - **22.11.2026 · VirlixYT (TikTok) · erste Zahlen (22:56):** „Scooter vs City Bus“ (25 s, Fail/Crash, Hook mit Spannung „…then the bus showed up“) **503 Aufrufe, 18 Likes (3,6 %)** · „Hazmat Suits“ (dunkel, ruhig, keine Pointe) 3 · Pawn Shop 0 / Shootout 0 (erst 3–6 h alt, Schübe abwarten; Shootout ohne Titelbild gepostet).
   → **Regel:** VirlixYT-/YouTube-Shorts bevorzugt **Fails, Crashes, Fahrzeug-Missgeschicke, NPC-Chaos**; hell und klar lesbar; Hook als Spannungs-/Neugier-Satz statt Beschreibung; 20–30 s, Pointe am Ende. Nachtszenen nur mit gut sichtbarer Pointe.
 
