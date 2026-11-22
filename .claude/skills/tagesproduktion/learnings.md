@@ -2,6 +2,9 @@
 
 Format: Datum · Kanal · was geändert/ausprobiert · warum · woran messen · Ergebnis (nachtragen)
 
+- **22.11.2026 · VirlixYT (TikTok) · erste Zahlen (22:56):** „Scooter vs City Bus“ (25 s, Fail/Crash, Hook mit Spannung „…then the bus showed up“) **503 Aufrufe, 18 Likes (3,6 %)** · „Hazmat Suits“ (dunkel, ruhig, keine Pointe) 3 · Pawn Shop 0 / Shootout 0 (erst 3–6 h alt, Schübe abwarten; Shootout ohne Titelbild gepostet).
+  → **Regel:** VirlixYT-/YouTube-Shorts bevorzugt **Fails, Crashes, Fahrzeug-Missgeschicke, NPC-Chaos**; hell und klar lesbar; Hook als Spannungs-/Neugier-Satz statt Beschreibung; 20–30 s, Pointe am Ende. Nachtszenen nur mit gut sichtbarer Pointe.
+
 - **22.11.2026 · Virlix · erster Walkthrough + Playlist:** „Whitetail Doe Night Hunt“ (Mo 23.11. 19:00), neue Playlist „GTA 6 Walkthrough (No Commentary)“; eigenes Thumbnail jetzt erlaubt (Kanal verifiziert). Qualität vor Menge: nur 1 Short statt 2 (zweiter hatte keine Pointe). Messen: Aufrufe/Ø Wiedergabe Walkthrough vs. Compilations nach 7 Tagen, Herkunft „Suche“ (Walkthroughs sollten über Suche wachsen). Ergebnis: _offen_
 - **22.11.2026 · Werkzeug:** `walkthrough.py scan` braucht `tesseract` (`apt-get install -y tesseract-ocr tesseract-ocr-eng`) – in frischen Containern zuerst installieren.
 

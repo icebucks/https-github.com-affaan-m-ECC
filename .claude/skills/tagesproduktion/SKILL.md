@@ -83,6 +83,7 @@ Leitfaden mit Recherche und Genres: **`clips/COMPILATION_STYLE.md`** – vor jed
 5. **Render:** `python3 clips/compile.py spec.json out.mp4` (~10 min).
 6. **Prüfen vor Upload (Pflicht):** Kontaktbogen 1 Bild / 25 s; `freezedetect=n=0.003:d=1` (nur Intro/Outro dürfen
    stehen); −14 LUFS ±1; Kapitel aus `<out>.chapters.txt` stimmen mit Bild überein.
+7. **Shorts – Auswahl (Daten 22.11.: Fail-Clip 503 Aufrufe vs. ruhige Nachtszene 3):** zuerst **Fails, Crashes, Fahrzeug-Missgeschicke, NPC-Chaos** suchen, hell und klar; Hook = Spannungssatz („…then the bus showed up“), nicht Beschreibung.
 7. **Shorts:** 2 Momente aus der Compilation (#1/#2): `python3 clips/clipper.py cut <block.ts> <a> <b> --gameplay --raw
    --hook "Zeile 1|Zeile 2" --credit "via <kanal>" --out …` – 25–35 s, Pointe am Ende, Clip endet kurz nach der Pointe,
    Hook ehrlich (nur was passiert). Prüfen: Bild ab Sekunde 0 in Bewegung, Hook sichtbar, freezedetect leer.
