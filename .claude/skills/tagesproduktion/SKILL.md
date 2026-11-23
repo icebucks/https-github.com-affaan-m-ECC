@@ -7,7 +7,7 @@ description: Tägliche Produktion und Veröffentlichung für Virlix (YouTube, GT
 
 **Auftrag der Person (neu 22.11.2026, ersetzt 21.11.):** Ziel ist **Monetarisierung** von Virlix, bei schonendem Umgang
 mit dem Claude-Wochenlimit („nur das Nötigste“, keine Doppelarbeit, kein Blackout durch zu viel auf einmal):
-- **BeyondExcuses (TikTok):** 2–3 Shorts pro Tag (Entwürfe).
+- **BeyondExcuses (TikTok):** **2 Folgen pro Tag** (Entwürfe; ab 23.11. – bei 3/Tag teilten sich die Folgen das Tageskontingent: ~2.000 Aufrufe/Tag blieben gleich, pro Folge nur ~700).
 - **Virlix (YouTube):** 1–2 Shorts pro Tag · **Compilations 2× pro Woche** · **Walkthroughs 3× pro Woche** · **Ambient 1× pro Woche**.
 - **VirlixYT (TikTok):** 1–2 GTA-Shorts pro Tag (Entwürfe).
 Laufen lassen, Resonanz beobachten, nebenbei verbessern. Antworten und Protokolle auf Deutsch.
@@ -29,7 +29,7 @@ auch die Shorts). Lieber einen Teil sauber liefern und den Rest im Bericht nenne
 ## 1. Wochenplan (MEZ)
 | Tag | YouTube Virlix (19:00 Langvideo) | Shorts |
 |---|---|---|
-| Mo | **Walkthrough** (1 Mission) | täglich: YouTube 1–2 Shorts (13:00 / 17:00), VirlixYT-TikTok 1–2 Entwürfe (12:30 / 16:30), BeyondExcuses 2–3 Entwürfe (Mo–Fr 12:30 · 17:00 · 21:00 / Sa–So 11:00 · 15:00 · 20:00) |
+| Mo | **Walkthrough** (1 Mission) | täglich: YouTube 1–2 Shorts (13:00 / 17:00), VirlixYT-TikTok 1–2 Entwürfe (12:30 / 16:30), BeyondExcuses 2 Entwürfe (Mo–Fr 12:30 · 19:00 / Sa–So 11:00 · 18:00, ≥ 6 h Abstand) |
 | Di | – | ″ |
 | Mi | **Walkthrough** + **Compilation** (Compilation 19:00, Walkthrough 21:00) | ″ |
 | Do | – | ″ |
@@ -105,7 +105,13 @@ Leitfaden mit Recherche und Genres: **`clips/COMPILATION_STYLE.md`** – vor jed
 12. **Protokoll:** `clips/compilations.md` (Quellen, Link, Termin), `clips/yt_shorts.json`. Person erinnern:
     „Ähnliches Video“ bei den Shorts setzen (nicht per API möglich).
 
-## 4. BeyondExcuses (TikTok): 2–3 Folgen pro Tag
+## 4. BeyondExcuses (TikTok): 2 Folgen pro Tag
+**Neu ab 23.11. (Daten Part 24: 1,5K Aufrufe/2 h, 79 % Ø, aber 0 Follower, größter Abbruch bei 0:01):**
+- **Pro Tag mindestens 1 teilbares Thema** (Freunde, Paare, Mitbewohner, Kollegen, Geschwister – man denkt sofort an EINE Person) + 1 Sport/Disziplin-Thema (läuft am besten). Liste „Teilbar“ in `episodes.md`.
+- **Frame 0 = Höhepunkt der Anfangsszene** (etwas fällt/knallt/kippt sofort mit Ton), kein Anlauf.
+- **Follow-Grund:** CTA-Chip am Ende „Follow · Part N next:“ + Teaser; Pin-Kommentar = Frage + „Follow – 2 people, 1 situation, every day“.
+- **Posen realistisch** (Sport, Kochen, Alltag) – sonst kommentieren Leute den Fehler statt der Botschaft.
+
 Serie und Regeln: **`beyondexcuses/episodes.md`** (Nummerierung, Look, Ideen, **Retention-Standard v2 = PFLICHT ab Part 26**),
 Captions: `beyondexcuses/youtube_shorts_plan.md`.
 1. **Thema:** Die letzte Folge verspricht die nächste („Part N next: …“) → die MUSS kommen. Dann Ideenliste in

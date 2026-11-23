@@ -57,7 +57,7 @@ am Ende (statischer Endtext + CTA, 15–17 s) noch ein steiler Abfall. Ø-Wieder
 **Regeln (jede Folge):**
 1. **Hook = offene Frage/Gegensatz, nie die Pointe.** Nicht „He waited. She built.“, sondern z. B. „Same empty lot. / 90 days.“,
    „Same desk. Same 30 days.“ Der Ausgang bleibt offen, bis die Auflösung kommt.
-2. **Erstes Bild schon in Bewegung, mit Aktion der Geschichte** (Aufprall, Griff, Geste + Ton) – nicht nur Kamera-Push auf stehende Figuren.
+2. **Erstes Bild = Höhepunkt der Anfangsszene** (seit 23.11.: Abbruch bei 0:01 war der größte – etwas fällt/knallt/kippt in Frame 0, mit Ton); **in Bewegung, mit Aktion der Geschichte** (Aufprall, Griff, Geste + Ton) – nicht nur Kamera-Push auf stehende Figuren.
 3. **Auflösung (TURN) spätestens bei 6,0–7,0 s**, danach eine **zweite Wendung** (meist: die graue Figur reagiert/beginnt selbst).
 4. **Länge 11–13 s.** Mindestens jede Sekunde ändert sich etwas; kein Standbild > 1 s, keine Ruhe nach dem Höhepunkt.
 5. **Fortschrittsanzeige** bei Zeit-Geschichten: Zähler-Chip (`DAY 1 → DAY 90`, Uhr, Balken), der im Beat hochzählt;
@@ -65,7 +65,7 @@ am Ende (statischer Endtext + CTA, 15–17 s) noch ein steiler Abfall. Ø-Wieder
    (Blätter, Spinnweben, Vogel), nicht per Blase erklären.
 6. **Größer:** Kamera so nah, dass die Figuren **≥ 35 % der Bildhöhe** haben (≈ 1,7× näher als Part 19; Himmel/Boden beschneiden).
    **Höchstens 3 Blasen, je ≤ 4 Wörter, `bubble(..., size=44)`**. Namensschilder (WAITER/BUILDER) nur in den ersten 2 s.
-7. **Ende:** EINE amberfarbene Merkzeile über laufender Handlung mit `lib.end_line(c, t, t0, "…")` (statt `end_text` mit 3 Zeilen);
+7. **Ende (ab 23.11.):** CTA-Chip „Follow · Part N next: …“ (Follow-Grund!). EINE amberfarbene Merkzeile über laufender Handlung mit `lib.end_line(c, t, t0, "…")` (statt `end_text` mit 3 Zeilen);
    CTA „Part N next: …“ nur noch **≤ 1,2 s** am Schluss parallel zur Handlung (`end_at` = T_END − 1.2); der Cliffhanger steht
    ausführlich in **Caption und Pin-Kommentar**.
 8. **Loop:** die letzten 0,5 s = Bildaufbau und Ton der ersten 0,5 s (die Geschichte endet dort, wo sie anfängt – z. B. die graue
@@ -82,6 +82,14 @@ graue Figur visuell wartend (1 Blase) · 5,2–6,2 Spannung (Zeitlupe, Stille) �
 (Reaktion, Angebot) · 9,6–11,6 Merkzeile über Handlung + CTA-Chip · 11,6–12,5 Rückführung ins Anfangsbild (Loop).
 
 ## Ideas (not made yet)
+
+**Teilbar (Priorität ab 23.11. – man schickt es EINER Person):**
+- **Always Late vs Always Early** (Freunde): Treffpunkt Kino, er „5 min away“ (liegt im Bett), sie wartet; Wendung: Film ohne ihn.
+- **Phone at Dinner vs Present** (Paar): beide am Tisch, er scrollt, sie redet; Kerze geht aus, sie geht – Wendung: er legt das Handy weg.
+- **Group Project Ghost vs Carrier** (Kollegen/Uni): 4 Namen auf der Folie, eine macht alles; Wendung: Präsentation, der Ghost wird gefragt.
+- **Dishes Tomorrow vs Dishes Now** (Mitbewohner): Turm aus Tellern wächst; Wendung: kein sauberer Teller mehr.
+- **"I'll text back" vs Replies** (Freunde): ungelesene Nachrichten-Zähler 1 → 99.
+- **Borrower vs Lender** (Geschwister): „Can I borrow $20?“ – Zähler läuft.
 
 
 

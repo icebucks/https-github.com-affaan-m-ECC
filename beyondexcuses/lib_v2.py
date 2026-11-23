@@ -46,6 +46,7 @@ def overlay(c, t, dur, num, hook, cta, end_t0, end_txt):
     if t >= t0 and cta:
         b = seg(t, t0, t0 + 0.2) * (1 - seg(t, dur - 0.3, dur - 0.04)); pop = 1 + 0.12 * (1 - ease((t - t0) / 0.25))
         l1, l2 = (cta.split("\n") + [""])[:2]
+        if not l1.lower().startswith("follow"): l1 = "Follow · " + l1       # 23.11.: give a reason to follow (0 new followers so far)
         c.save(); c.translate(540, 420); c.scale(pop, pop)
         w_ = max(skia.Font(F_CAP, 46).measureText(tr(l1)), skia.Font(F_CAP, 40).measureText(tr(l2))) + 70
         w_ = min(w_, 900); sc = min(1.0, 830 / (w_ - 70))
