@@ -47,7 +47,8 @@ Stand 21.11.: intern #21 = Part 18 (Quitter vs. Finisher), #22 = Part 19 (Waiter
 Stand 21.11.: intern #24 = Part 21 (Consumer vs. Creator), #25 = Part 22 (Idea Hoarder vs. Shipper).
 Stand 22.11.: Part 20–22 als v2 neu gebaut (epNN_v2.py: ep23_v2.py, ep24_v2.py, ep25_v2.py; Helfer `lib_v2.py`) – 12,5 s, TURN 6,4–6,6 s, alle Prüfungen ✅.
 Stand 22.11. spät: Part 23–25 (Tageslauf 21.11.) kamen nie an → **neu gebaut im v2-Standard** und ins Repo: #26 = Part 23 Spender vs. Saver (`ep26_v2.py`), #27 = Part 24 Day 1 Hero vs. Daily 1 % (`ep27_v2.py`), #28 = Part 25 Spectator vs. Player (`ep28_v2.py`); alle retention_qa ✅, als Entwürfe hochgeladen, Tagespaket 23.11.
-**Versprochen in Part 25:** „Part 26 next: soda every day vs water every day“ → nächste Folge = intern **#29**, angezeigt als **Part 26** (Soda vs. Water). Nummern 26–28 NICHT neu vergeben.
+Stand 23.11.: #29 = Part 26 Soda vs. Water (`ep29_v2.py`), #30 = Part 27 Always Late vs. Always Early (`ep30_v2.py`, erstes teilbares Thema, Split-Screen); Tagespaket 24.11. (2 Folgen/Tag).
+**Versprochen in Part 27:** „Part 28 next: the one on his phone at dinner“ → nächste Folge = intern **#31**, **Part 28 – Phone at Dinner vs Present** (teilbar, Paar).
 
 ## Retention-Standard v2 (PFLICHT ab Part 26, freigegeben von der Person am 22.11.2026)
 **Beleg (TikTok Studio, Part 19 Waiter vs Builder):** nach 3 s nur noch **53 %** der Zuschauer, danach Abfall ~2–3 %/s,
@@ -84,7 +85,6 @@ graue Figur visuell wartend (1 Blase) · 5,2–6,2 Spannung (Zeitlupe, Stille) �
 ## Ideas (not made yet)
 
 **Teilbar (Priorität ab 23.11. – man schickt es EINER Person):**
-- **Always Late vs Always Early** (Freunde): Treffpunkt Kino, er „5 min away“ (liegt im Bett), sie wartet; Wendung: Film ohne ihn.
 - **Phone at Dinner vs Present** (Paar): beide am Tisch, er scrollt, sie redet; Kerze geht aus, sie geht – Wendung: er legt das Handy weg.
 - **Group Project Ghost vs Carrier** (Kollegen/Uni): 4 Namen auf der Folie, eine macht alles; Wendung: Präsentation, der Ghost wird gefragt.
 - **Dishes Tomorrow vs Dishes Now** (Mitbewohner): Turm aus Tellern wächst; Wendung: kein sauberer Teller mehr.

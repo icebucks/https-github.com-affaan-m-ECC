@@ -1,0 +1,46 @@
+{
+ "video": "Folge29_Water_v2_EN",
+ "duration": 12.5,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  9.09,
+  4.64,
+  6.34,
+  4.22,
+  4.64,
+  6.17,
+  4.95,
+  3.04,
+  3.85,
+  1.41,
+  2.41,
+  4.65
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 161.209716796875,
+  "contrast": 44.34186935424805,
+  "colourfulness": 33.373297691345215
+ },
+ "loop_difference": 18.9,
+ "font_sizes": [],
+ "audio": {
+  "first_half_s_db": -14.926774978637695,
+  "median_db": -14.370368003845215,
+  "silent_windows": 0,
+  "lufs": -14.1
+ }
+}

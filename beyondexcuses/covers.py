@@ -42,6 +42,8 @@ EPS_V2 = {
     26: ("ep26_v2", 3.6, "SPENDER", "SAVER", "SAME $1.|WHO WINS?", 23, 80, 0),
     27: ("ep27_v2", 3.6, "DAY 1 HERO", "DAILY 1%", "100 DAYS.|WHO LIFTS MORE?", 24, 80, 0),
     28: ("ep28_v2", 3.6, "SPECTATOR", "PLAYER", "60 DAYS.|WHO CAN SHOOT?", 25, 80, 0),
+    29: ("ep29_v2", 3.6, "SODA", "WATER", "30 DAYS.|WHO HAS ENERGY?", 26, 80, 0),
+    30: ("ep30_v2", 3.2, "ALWAYS LATE", "ALWAYS EARLY", "MOVIE AT 8.|WHO MAKES IT?", 27, 80, 0),
 }
 
 
