@@ -2,6 +2,9 @@
 
 Format: Datum · Kanal · was geändert/ausprobiert · warum · woran messen · Ergebnis (nachtragen)
 
+- **23.11.2026 · Quellen-Check:** 00mute (Titel „Funny Moments | Epic Fails | WTF“) sendet zeitweise einen **„WTF Recap“ mit Clips ANDERER Streamer** (Facecams, Kick/Twitch-Wasserzeichen) → **nicht verwendbar**. Vor jeder Nutzung Kontaktbogen prüfen: Facecam/fremde Logos = verwerfen. Ersatz-Quelle für Shorts diesmal die Story-Aufnahme (silentcontrollertv).
+- **23.11.2026 · Verbesserung des Tages:** BeyondExcuses erstes **teilbares** Thema (Part 27 „Always Late vs Always Early“, Split-Screen) + Umstellung auf 2 Folgen/Tag + „Follow ·“ im CTA. Messen: Shares und neue Follower von Part 27 vs. Part 26 (gleicher Tag). Ergebnis: _offen_
+
 - **23.11.2026 · BeyondExcuses · Zuschauer-Kommentar Part 24:** „bro front raises 100 kg ☠️“ – die Figur hebt 100 kg mit gestreckten Armen vor dem Körper. **Regel:** Alltags-/Sportbewegungen realistisch posen (Schulterdrücken = Ellbogen gebeugt, Stange über dem Kopf; Kniebeuge, Kreuzheben korrekt), sonst wird der Fehler zum Thema. Kommentar selbst = gutes Engagement → mit Humor antworten („100 days of 1% = superhuman shoulders 😤💪“).
 - **23.11.2026 · BeyondExcuses · Posting:** Caption wurde als Kommentar statt in die Beschreibung gepostet → im Tagespaket klarer trennen („Beschreibung“ vs. „Pin-Kommentar“).
 
