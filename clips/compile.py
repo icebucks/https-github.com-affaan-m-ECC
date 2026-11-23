@@ -19,7 +19,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import clipper
 
 FADE = 0.3
-INTRO = 4.0
+INTRO = 4.0                     # (old static card, no longer used)
+TEASE = 1.5                     # cold-open clip length
+TITLE = 2.2                     # live title card length
 OUTRO = 12.0                    # room for YouTube end-screen elements (5–20 s)
 FONT = "Poppins"
 
@@ -37,13 +39,17 @@ PlayResY: 1080
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Big,%s,110,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,1,0,0,0,100,100,0,0,1,8,3,5,60,60,0,1
+Style: Tease,%s,96,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,1,0,0,0,100,100,1,0,1,9,4,2,60,60,0,1
+Style: TeaseR,%s,96,&H005C3BFF,&H005C3BFF,&H00000000,&H80000000,1,0,0,0,100,100,1,0,1,9,4,2,60,60,0,1
+Style: Title,%s,150,&H00FFFFFF,&H00FFFFFF,&H00000000,&H80000000,1,0,0,0,100,100,1,0,1,11,5,4,90,60,0,1
+Style: TitleR,%s,150,&H005C3BFF,&H005C3BFF,&H00000000,&H80000000,1,0,0,0,100,100,1,0,1,11,5,4,90,60,0,1
 Style: Sub,%s,52,&H0050C8FF,&H0050C8FF,&H00000000,&H80000000,1,0,0,0,100,100,2,0,1,5,2,5,60,60,0,1
 Style: Lower,%s,46,&H00FFFFFF,&H00FFFFFF,&H00000000,&H90000000,1,0,0,0,100,100,1,0,3,14,0,7,70,60,60,1
 Style: Num,%s,46,&H00141414,&H00141414,&H0050C8FF,&H0050C8FF,1,0,0,0,100,100,0,0,3,14,0,7,70,60,60,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-""" % (FONT, FONT, FONT, FONT)
+""" % ((FONT,) * 8)
 
 
 def t(x):
@@ -70,8 +76,15 @@ def render_segment(seg, n, total, tmp):
             f.write(f"Dialogue: 1,{t(0.5)},{t(3.8)},Lower,,190,0,0,,{pop} {seg['label'].upper()} \n")
         for x in seg.get("text", []):                       # punch line (e.g. "5 STARS.")
             f.write(f"Dialogue: 2,{t(x['at'])},{t(x['at'] + 1.5)},Big,,0,0,0,,{{\\pos(960,540)\\fad(80,200)\\t(0,120,\\fscx112\\fscy112)\\t(120,240,\\fscx100\\fscy100)}}{x['text']}\n")
-        if seg.get("big"):                                  # teaser caption
-            f.write(f"Dialogue: 2,{t(0.05)},{t(dur)},Big,,0,0,0,,{{\\pos(960,900)\\fad(60,60)}}{seg['big']}\n")
+        if seg.get("big"):                                  # teaser caption: small "COMING UP" + the chapter name big, red
+            f.write(f"Dialogue: 3,{t(0.0)},{t(dur)},Sub,,0,0,0,,{{\\an8\\pos(960,70)\\fad(40,60)}}COMING UP\n")
+            f.write(f"Dialogue: 3,{t(0.0)},{t(dur)},TeaseR,,0,0,0,,{{\\an2\\pos(960,1010)\\fad(40,60)\\t(0,140,\\fscx108\\fscy108)\\t(140,260,\\fscx100\\fscy100)}}{seg['big']}\n")
+        if seg.get("title"):                                # title card over live gameplay (dark band left, 2 big lines)
+            l1, l2 = seg["title"]
+            f.write(f"Dialogue: 0,{t(0.0)},{t(dur)},Big,,0,0,0,,{{\\an7\\pos(0,0)\\bord0\\shad0\\1c&H101010&\\1a&H50&\\fad(120,120)\\p1}}m 0 0 l 1250 0 1050 1080 0 1080{{\\p0}}\n")
+            f.write(f"Dialogue: 3,{t(0.08)},{t(dur)},Title,,0,0,0,,{{\\an1\\pos(90,520)\\fad(80,120)\\move(40,520,90,520,0,220)}}{l1}\n")
+            f.write(f"Dialogue: 3,{t(0.22)},{t(dur)},TitleR,,0,0,0,,{{\\an1\\pos(90,700)\\fad(80,120)\\move(40,700,90,700,0,220)}}{l2}\n")
+            f.write(f"Dialogue: 3,{t(0.4)},{t(dur)},Sub,,0,0,0,,{{\\an1\\pos(96,800)\\fad(100,120)}}{seg.get('subtitle', 'Pure Gameplay · No Commentary')}\n")
     pr = clipper.sh(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height", "-of", "default=nw=1", path])
     import re
     iw, ih = int(re.search(r"width=(\d+)", pr).group(1)), int(re.search(r"height=(\d+)", pr).group(1))
@@ -139,6 +152,24 @@ def loudest(path, a, b, win=1.8):
     return a + max(0.0, k / 8000 - win * 0.45)
 
 
+def strongest(path, a, b, win=1.5):
+    """best ~win s window in [a, b]: z(motion) + z(loudness) (a gunshot in a dark room loses to a crash in daylight)"""
+    import numpy as np
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-ss", str(a), "-t", str(b - a), "-i", path, "-vf", "fps=4,scale=64:36,format=gray",
+                          "-f", "rawvideo", "-"], capture_output=True).stdout
+    v = np.frombuffer(raw, np.uint8).reshape(-1, 36, 64).astype(np.float32)
+    if len(v) < 10: return a, 0.0
+    mot = np.abs(np.diff(v, axis=0)).mean((1, 2)); bright = v.mean((1, 2))[1:]
+    au = np.frombuffer(subprocess.run(["ffmpeg", "-v", "error", "-ss", str(a), "-t", str(b - a), "-i", path, "-vn", "-ac", "1", "-ar", "8000",
+                                       "-f", "f32le", "-"], capture_output=True).stdout, np.float32)
+    n = len(mot); loud = np.array([np.sqrt(np.mean(au[int(i * 2000):int((i + 1) * 2000)] ** 2) + 1e-9) for i in range(n)])
+    z = lambda x: (x - x.mean()) / (x.std() + 1e-6)
+    score = z(mot) + z(loud) + 0.5 * z(bright)                       # prefer action that can be SEEN
+    w = max(1, int(win * 4)); s_ = np.convolve(score, np.ones(w) / w, "valid")
+    k = int(np.argmax(s_))
+    return a + k / 4, float(s_[k])
+
+
 def sfx_track(path, dur, hits):
     """whooshes / hits at the transition times, mixed under the game audio"""
     import numpy as np, soundfile as sf
@@ -170,21 +201,31 @@ def main(spec_path, out):
     import cards
     # ---- cold open: strongest moments first ("COMING UP")
     picks = spec.get("teaser")
-    if not picks:
-        cands = [(i, loudest(s["file"], s["start"] + 4, s["end"] - 2)) for i, s in enumerate(segs) if s["end"] - s["start"] > 12]
-        cands = sorted(cands, key=lambda c: -(segs[c[0]]["end"] - segs[c[0]]["start"]))[:6]
-        step = max(1, len(cands) // 4)
-        picks = [{"seg": i, "abs": t0} for i, t0 in cands[::step][:4]]
+    if not picks:                                                   # strongest moments = motion + loudness, from different chapters
+        cands = []
+        for i, sg in enumerate(segs):
+            if sg["end"] - sg["start"] > 12:
+                t0, sc = strongest(sg["file"], sg["start"] + 3, sg["end"] - 2)
+                cands.append((sc, i, t0))
+        cands.sort(reverse=True)
+        picks = [{"seg": i, "abs": t0} for sc, i, t0 in cands[:3]]
     parts = []                                                       # (file, duration, transition into it, length)
     for k, p in enumerate(picks):
         sg = segs[p["seg"]]
+        lab = next((x.get("label") for x in segs[:p["seg"] + 1][::-1] if x.get("label")), "")   # chapter of this moment
         t0 = p["abs"] if "abs" in p else sg["start"] + p["t"]
-        clip = dict(sg, start=t0, end=t0 + 1.8, label=None, cont=True, text=[], tag=f"t{k}", big="COMING UP" if k == 0 else None)
+        clip = dict(sg, start=t0, end=t0 + TEASE, label=None, cont=True, text=[], tag=f"t{k}", big=(lab or "COMING UP").upper())
         f, d = render_segment(clip, 90 + k, 0, tmp)
         parts.append((f, d, "fadewhite", D_TEASE))
+    # title card: the title over LIVE gameplay (start of chapter 1), 2 lines like the thumbnail
     first = segs[0]
-    parts.append((cards.intro(first["file"], first["start"] + 2, spec["title"], spec.get("subtitle", ""), os.path.join(tmp, "intro.mp4"), INTRO),
-                  INTRO, "fadewhite", D_TEASE))
+    words = spec["title"].replace("GTA 6 ", "").split()
+    cut = words.index("&") if "&" in words[1:] else (max(1, len(words) // 2) if len(words) > 1 else 1)   # break before "&"
+    l1, l2 = ("GTA 6 " + " ".join(words[:cut])).strip(), " ".join(words[cut:]) or words[-1]
+    tclip = dict(first, start=first["start"] + 1, end=first["start"] + 1 + TITLE, label=None, cont=True, text=[], tag="title",
+                 title=(l1, l2), subtitle=spec.get("subtitle", "Pure Gameplay · No Commentary"))
+    f, d = render_segment(tclip, 99, 0, tmp)
+    parts.append((f, d, "fadewhite", D_TEASE))
     chap_idx = []                                                    # part index where each chapter starts
     ci = 0
     for n, s in enumerate(segs, 1):

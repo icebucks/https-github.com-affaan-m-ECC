@@ -22,7 +22,7 @@ Technik: `clips/compile.py` (v2), Thumbnail `clips/thumb.py`, Protokoll `clips/c
 | **Night / Cinematic** | Neon-Fahrten, Sonnenuntergang, Wetter, Vice City | `GTA 6 Night Missions / Cinematic Drive (No Commentary)` |
 
 ## Schnitt-Regeln (compile.py v2)
-1. **Cold Open** (automatisch): 3–4 × 1,8 s der lautesten/stärksten Momente vor dem Intro, „COMING UP“, Weißblitz-Schnitte, Bass-Drop. Bessere Momente per `"teaser": [{"seg": i, "t": s}]` von Hand setzen.
+1. **Cold Open + Titel** (automatisch, seit 23.11.): 3 × 1,5 s der stärksten Momente (Bewegung + Lautstärke + Helligkeit, je aus einem anderen Kapitel), jeweils mit dem **Kapitelnamen groß in Neonrot** + kleinem „COMING UP“, Weißblitz-Schnitte, Bass-Drop; danach **Titel 2,2 s über laufendem Gameplay** (zweizeilig weiß/rot wie das Thumbnail) statt Standbild-Karte. Inhalt beginnt nach ~6 s (vorher 10 s). Bessere Momente per `"teaser": [{"seg": i, "t": s}]` von Hand setzen.
 2. **Kapitel 60–120 s**, je Kapitel genau eine Geschichte (Aufbau → Pointe). Mindestens 8 Min. gesamt, Ziel 9–11 Min.
 3. **Totzeit schneiden** mit `"cont": true`: Ein Kapitel aus mehreren Stücken zusammensetzen; dazwischen sitzt ein 0,18-s-Blitzschnitt. Karten, Menüs, Handy-Bildschirme und ereignislose Fahrten > 10 s immer raus.
 4. **Übergänge zwischen Kapiteln** (0,45 s, rotierend): Wischer links, Weißblitz, Zoom, Wischer rechts – jeweils mit Whoosh.
