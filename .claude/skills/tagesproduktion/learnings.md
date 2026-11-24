@@ -2,6 +2,9 @@
 
 Format: Datum · Kanal · was geändert/ausprobiert · warum · woran messen · Ergebnis (nachtragen)
 
+- **24.11.2026 · Quellen-Check Virlix:** Von 5 aufgenommenen No-Commentary-Kanälen waren nur 2 brauchbar: warypacelive = Streamer-Overlay-Banner (verworfen), rawgameplay67 = 2. Block 15 min nur Karte (AFK), shmotcollector = **russische UI/Untertitel** (nur Fahrszenen ohne Text nutzen), vicedetourlive nach 6 min offline. **Regel:** immer 3–4 Kanäle parallel aufnehmen, nach 5 min Kontaktbogen + 60-s-Whisper und sofort aussortieren; nicht-englische UI nur für textfreie Fahrszenen. Ungenutzte Blöcke älterer Aufnahmen (hier 00mute 21.11. 0926/1002) sind eine gute Reserve – vorher `compilations.md` auf Doppel prüfen.
+- **24.11.2026 · Verbesserung des Tages (BeyondExcuses):** Loop = **Moral als Bild** – Part 29 endet mit demselben Spiegel-Selfie wie Frame 0, aber erst NACH dem Satz („Lift first. Post later.“). Part 28: Gegenstand als Uhr (Kerze brennt ab statt Zähler-Chip allein). Messen: Ø-Wiedergabe > 100 % (Loops) und Shares Part 28 (Paare, teilbar) vs. Part 29 (Sport). Ergebnis: _offen_
+
 - **23.11.2026 · Quellen-Check:** 00mute (Titel „Funny Moments | Epic Fails | WTF“) sendet zeitweise einen **„WTF Recap“ mit Clips ANDERER Streamer** (Facecams, Kick/Twitch-Wasserzeichen) → **nicht verwendbar**. Vor jeder Nutzung Kontaktbogen prüfen: Facecam/fremde Logos = verwerfen. Ersatz-Quelle für Shorts diesmal die Story-Aufnahme (silentcontrollertv).
 - **23.11.2026 · Verbesserung des Tages:** BeyondExcuses erstes **teilbares** Thema (Part 27 „Always Late vs Always Early“, Split-Screen) + Umstellung auf 2 Folgen/Tag + „Follow ·“ im CTA. Messen: Shares und neue Follower von Part 27 vs. Part 26 (gleicher Tag). Ergebnis: _offen_
 

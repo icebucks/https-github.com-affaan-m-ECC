@@ -1,0 +1,68 @@
+{
+ "title": "GTA 6 HEIST BOAT ESCAPE & NIGHT CHASE",
+ "subtitle": "Pure Gameplay \u00b7 No Commentary",
+ "countdown": true,
+ "segments": [
+  {
+   "file": "/home/user/rec/00mute_20261121_1002.ts",
+   "start": 508,
+   "end": 600,
+   "label": "TOW TRUCK CAR THEFT",
+   "audio": "raw"
+  },
+  {
+   "file": "/home/user/rec/00mute_20261121_0926.ts",
+   "start": 614,
+   "end": 688,
+   "label": "DRIVING INTO A SANDSTORM",
+   "audio": "raw"
+  },
+  {
+   "file": "/home/user/rec/shmotcollector_20261124_1944.ts",
+   "start": 190,
+   "end": 300,
+   "label": "NIGHT POLICE CHASE",
+   "audio": "raw"
+  },
+  {
+   "file": "/home/user/rec/00mute_20261121_0926.ts",
+   "start": 140,
+   "end": 228,
+   "label": "STORE RUN GONE WRONG",
+   "audio": "raw",
+   "text": [
+    {
+     "at": 78,
+     "text": "WASTED."
+    }
+   ]
+  },
+  {
+   "file": "/home/user/rec/vicedetourlive_20261124_2000.ts",
+   "start": 60,
+   "end": 140,
+   "label": "MANSION HEIST",
+   "audio": "raw"
+  },
+  {
+   "file": "/home/user/rec/vicedetourlive_20261124_2000.ts",
+   "start": 140,
+   "end": 191,
+   "cont": true,
+   "audio": "raw",
+   "text": [
+    {
+     "at": 20,
+     "text": "TAKE THE BOAT."
+    }
+   ]
+  },
+  {
+   "file": "/home/user/rec/vicedetourlive_20261124_2000.ts",
+   "start": 199,
+   "end": 236,
+   "cont": true,
+   "audio": "raw"
+  }
+ ]
+}

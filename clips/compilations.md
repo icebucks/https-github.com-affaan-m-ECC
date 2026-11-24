@@ -11,6 +11,7 @@ Regeln: nur reines Gameplay von No-Commentary-Kanälen (Originalton), mindestens
 | 21.11.2026 | GTA6_Cinematic_OceanNeon.mp4 | 9:44 | 00mute_20261121_1229: 130–172, 290–362, 690–800 · 00mute_20261121_1214: 390–455 · 00mute_20261121_1144: 205–300 · optimus_789_20261121_1222: 1–43, 75–100 · optimus_789_20261121_1237: 345–386, 440–515 (Zeiten ±2 s, aus verlustfrei geschnittenen Fenstern) – nicht hochgeladen (Sitzung ohne YouTube-Zugang), Datei an die Person geschickt |
 
 | 22.11.2026 | GTA6_Walkthrough_WhitetailHunt.mp4 (Walkthrough) | 8:27 | silentcontrollertv_20261122_1945: 265–355, 355–575, 575–690, 690–752 |
+| 24.11.2026 | GTA6_HeistBoatEscape.mp4 | 9:07 | 00mute_20261121_1002: 508–600 · 00mute_20261121_0926: 614–688, 140–228 · shmotcollector_20261124_1944: 190–300 · vicedetourlive_20261124_2000: 60–140, 140–191, 199–236 |
 
 ## 22.11. – Walkthrough „Whitetail Doe Night Hunt“ (für Mo 23.11. 19:00)
 **ZURÜCKGEZOGEN (Doppel):** Eine andere Sitzung hat dieselbe Mission als „GTA 6 Walkthrough – Mission: Deer Hunt with Bret“ (https://youtu.be/75yHpH_wekY, Mo 19:00) + Short https://youtu.be/EnNd5VIA9m8 (Mo 13:00) hochgeladen – deren Version bleibt (echter Missionsname). Meine Version `_kLTxO4nE2w` und Short `oc1K8tksmzE` am 22.11. auf Wunsch der Person auf privat ohne Termin gestellt, Playlist getauscht. Ursprünglich: **Titel:** `GTA 6 Walkthrough – Whitetail Doe Night Hunt (No Commentary)` · https://youtu.be/_kLTxO4nE2w – eigenes Thumbnail gesetzt („NIGHT / HUNT“), Playlist „GTA 6 Walkthrough (No Commentary)“ (`PLFmrWR4DSDlQ`).
@@ -67,3 +68,10 @@ New GTA 6 videos every day – subscribe!
 #gta6 #gta6gameplay #nocommentary
 ```
 Reihe: Night / Cinematic. Kein KI-Label (echtes Gameplay). Endbildschirm ab 9:32.
+
+## 24.11. – „Heist Boat Escape & Night Police Chase“ (für Mi 25.11. 19:00)
+**YouTube:** https://youtu.be/LJXQKtSwgG0 – privat mit Termin **Mi 25.11. 19:00 (MEZ)**, Thumbnail „HEIST / BOAT ESCAPE“ (Bild bei 8:25) per API gesetzt.
+**Titel:** `GTA 6 – Heist Boat Escape & Night Police Chase (No Commentary)` · Countdown #5→#1 · Kapitel: 0:00 Intro · 0:06 #5 Tow Truck Car Theft · 1:37 #4 Driving into a Sandstorm · 2:51 #3 Night Police Chase · 4:40 #2 Store Run Gone Wrong · 6:08 #1 Mansion Heist & Boat Escape. Credit: vicedetourlive, shmotcollector & 00mute.
+Qualität: 3 Render-Durchgänge – v1 hatte 13 s Handy-Bildschirm im Sandsturm-Kapitel und 6 s Menü/Handy direkt nach dem Intro → herausgeschnitten. Ein Rennstrecken-Kapitel (rawgameplay67) entfiel (Quelldatei versehentlich gelöscht, ohnehin das schwächste: Solo-Runden). −13,9 LUFS.
+Hinweis: shmotcollector hat russische Untertitel/UI – im Verfolgungskapitel vereinzelt sichtbar.
+Shorts dazu: Tow Truck + Boat Escape (nur VirlixYT-TikTok 25.11.; YouTube-Shorts für 25.11. hatte die andere Sitzung schon geplant) → Reserve für YouTube.
