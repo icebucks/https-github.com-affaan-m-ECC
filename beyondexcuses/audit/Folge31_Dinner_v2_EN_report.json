@@ -1,0 +1,46 @@
+{
+ "video": "Folge31_Dinner_v2_EN",
+ "duration": 12.5,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  8.27,
+  1.81,
+  3.8,
+  3.32,
+  1.38,
+  1.59,
+  7.33,
+  7.21,
+  3.23,
+  6.89,
+  5.09,
+  3.63
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 73.89163208007812,
+  "contrast": 46.32370376586914,
+  "colourfulness": 34.06677532196045
+ },
+ "loop_difference": 13.9,
+ "font_sizes": [],
+ "audio": {
+  "first_half_s_db": -14.759544372558594,
+  "median_db": -14.534130096435547,
+  "silent_windows": 0,
+  "lufs": -14.2
+ }
+}

@@ -1,0 +1,64 @@
+{
+ "video": "Folge32_GymSelfie_v2_EN",
+ "duration": 12.5,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.34,
+   "seconds": [
+    0.0,
+    0.25,
+    1.5,
+    1.75,
+    2.25,
+    3.0,
+    3.25,
+    3.5,
+    5.0,
+    5.75,
+    6.0,
+    6.25,
+    6.5,
+    9.0,
+    9.25,
+    10.5,
+    12.25
+   ]
+  },
+  "right buttons": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  27.81,
+  2.69,
+  21.25,
+  19.2,
+  18.22,
+  8.16,
+  4.12,
+  3.74,
+  3.05,
+  2.56,
+  1.37,
+  4.71
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 86.83184051513672,
+  "contrast": 47.81549072265625,
+  "colourfulness": 19.912421226501465
+ },
+ "loop_difference": 33.4,
+ "font_sizes": [],
+ "audio": {
+  "first_half_s_db": -15.486455917358398,
+  "median_db": -14.505002975463867,
+  "silent_windows": 0,
+  "lufs": -14.2
+ }
+}

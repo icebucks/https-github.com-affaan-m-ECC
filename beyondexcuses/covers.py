@@ -44,6 +44,8 @@ EPS_V2 = {
     28: ("ep28_v2", 3.6, "SPECTATOR", "PLAYER", "60 DAYS.|WHO CAN SHOOT?", 25, 80, 0),
     29: ("ep29_v2", 3.6, "SODA", "WATER", "30 DAYS.|WHO HAS ENERGY?", 26, 80, 0),
     30: ("ep30_v2", 3.2, "ALWAYS LATE", "ALWAYS EARLY", "MOVIE AT 8.|WHO MAKES IT?", 27, 80, 0),
+    31: ("ep31_v2", 3.9, "PHONE AT DINNER", "PRESENT", "DINNER FOR 2.|WHO'S THERE?", 28, 80, 0),
+    32: ("ep32_v2", 4.4, "GYM SELFIE", "ACTUAL SET", "30 DAYS.|WHO CHANGED?", 29, 80, 0),
 }
 
 
