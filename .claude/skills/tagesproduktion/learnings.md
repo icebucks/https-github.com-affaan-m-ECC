@@ -2,6 +2,8 @@
 
 Format: Datum · Kanal · was geändert/ausprobiert · warum · woran messen · Ergebnis (nachtragen)
 
+- **25.11.2026 · Verbesserung des Tages:** Shorts doppelt verwerten – die VirlixYT-TikToks vom 25.11. (Tow Truck, Boat Escape) laufen am 26.11. als YouTube-Shorts (TikTok und YouTube haben verschiedene Publikum). Spart Sichtung/Schnitt. BeyondExcuses: Figuren **hinter** einer Theke (Unterkörper verdeckt) lösen Überschneidungen in engen Innenräumen; Loop per Schnitt auf „nächstes Rennen“ (Weißblitz) statt Rückweg. Messen: Aufrufe der YT-Shorts vs. die Erstveröffentlichung auf TikTok. Ergebnis: _offen_
+
 - **24.11.2026 · Quellen-Check Virlix:** Von 5 aufgenommenen No-Commentary-Kanälen waren nur 2 brauchbar: warypacelive = Streamer-Overlay-Banner (verworfen), rawgameplay67 = 2. Block 15 min nur Karte (AFK), shmotcollector = **russische UI/Untertitel** (nur Fahrszenen ohne Text nutzen), vicedetourlive nach 6 min offline. **Regel:** immer 3–4 Kanäle parallel aufnehmen, nach 5 min Kontaktbogen + 60-s-Whisper und sofort aussortieren; nicht-englische UI nur für textfreie Fahrszenen. Ungenutzte Blöcke älterer Aufnahmen (hier 00mute 21.11. 0926/1002) sind eine gute Reserve – vorher `compilations.md` auf Doppel prüfen.
 - **24.11.2026 · Verbesserung des Tages (BeyondExcuses):** Loop = **Moral als Bild** – Part 29 endet mit demselben Spiegel-Selfie wie Frame 0, aber erst NACH dem Satz („Lift first. Post later.“). Part 28: Gegenstand als Uhr (Kerze brennt ab statt Zähler-Chip allein). Messen: Ø-Wiedergabe > 100 % (Loops) und Shares Part 28 (Paare, teilbar) vs. Part 29 (Sport). Ergebnis: _offen_
 
