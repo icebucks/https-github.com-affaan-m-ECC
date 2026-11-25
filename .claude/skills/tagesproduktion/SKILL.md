@@ -19,7 +19,10 @@ auch die Shorts). Lieber einen Teil sauber liefern und den Rest im Bericht nenne
 ## 0. Regeln, die nie gebrochen werden
 - **Geheimnisse:** Werte von `YOUTUBE_*` / `TIKTOK_*` nie ausgeben – auch nicht Login-Links (enthalten den Client-Key).
   Geprüft wird nur Länge/Format. Links/Tokens für die Person nur als Datei im Scratchpad.
-- **TikTok: nur Entwürfe** (`tiktok_upload.py draft` → Inbox). Nie direkt posten. Die Person postet selbst mit Caption.
+- **TikTok (neu 25.11.):** Sobald **Postiz** eingerichtet ist (`clips/postiz.py me` antwortet), werden TikTok-Videos über Postiz
+  **direkt zur geplanten Uhrzeit veröffentlicht** (`postiz.py tiktok … --direct`, mit Caption; BeyondExcuses zusätzlich `--ai`) –
+  von der Person am 25.11. so entschieden. Den Pin-Kommentar setzt weiter die Person (Postiz/TikTok-API kann nicht anpinnen).
+  Solange Postiz nicht läuft: wie bisher nur Entwürfe (`tiktok_upload.py draft` → Inbox), nie direkt über die eigene Sandbox-App.
 - **YouTube: immer `--privacy private` + `--publish-at`** (Termin), nie sofort öffentlich. Ein Upload lässt sich per API
   nicht löschen/ändern (Token hat nur `youtube.upload`) → **vor dem Upload prüfen**, nicht danach.
   Muss eine Version ersetzt werden: neue Version **privat ohne Termin** hochladen, Person löscht die alte und setzt den Termin.
@@ -56,9 +59,23 @@ Langvideos (eine Aufnahme, mehrere Videos).
 Nur ruhige Fahrten/Natur ohne Menüs, Schießereien, Dialog-Zwischensequenzen; lange Stücke, weiche Übergänge, keine
 Punch-Texte, kein Countdown. 30–60 min. Gleiche Marke (Intro/Outro), damit der Kanal einheitlich bleibt.
 
+## 1b. Werkzeuge (seit 25.11.)
+| Werkzeug | Wofür | Aufruf |
+|---|---|---|
+| **yt-dlp** (`clips/vod_cut.py`) | Twitch-**VODs** statt nur Live-Aufnahmen: ganze Missionen für Walkthroughs (z. B. itzradflemix „Walkthrough 4K PS5 Pro – NO COMMENTARY“), beste Stellen aus 24-h-Streams (00mute) gezielt holen | `vod_cut.py list <kanal>` · `vod_cut.py cut <vod-id> <start> <ende> /home/user/vod/x.ts` (nur den Ausschnitt; danach wie eine Live-Aufnahme in compile.py/clipper.py/walkthrough.py) |
+| **ClipsAI** (venv `/home/user/.venv-clipsai`, Python 3.11) | Transkript-basierte Clip-Suche (Themenwechsel in gesprochenem Text) – nur sinnvoll bei **Story-Dialogen** (Walkthrough-Zwischensequenzen), nicht bei stummem Gameplay; `resize` (Gesichter-Tracking 9:16) braucht einen Hugging-Face-Token und bringt bei Gameplay wenig | `/home/user/.venv-clipsai/bin/python clips/clipsai_find.py <video>` |
+| **Postiz** (`clips/postiz.py`) | Planen/Veröffentlichen auf TikTok (BeyondExcuses, VirlixYT) und optional YouTube aus einem Werkzeug | siehe Kopf von `postiz.py`; Schlüssel = Netzwerk-Geheimnis für `api.postiz.com` (Header `Authorization`, **ohne** „Bearer“) |
+
+Regeln: yt-dlp nur für No-Commentary-Quellen mit Credit (wie Live-Aufnahmen), **nie fremde YouTube-Videos neu hochladen**.
+VOD-CDN-Host muss erlaubt sein (`d2nvs31859zcd8.cloudfront.net` ist freigegeben; anderer Host im Fehler → `update_environment`).
+ClipsAI frisch einrichten (falls die venv fehlt, ~8 GB): `python3.11 -m venv /home/user/.venv-clipsai` → `pip install clipsai "whisperx @ git+https://github.com/m-bain/whisperx.git" pynvml torch==2.8.0 torchaudio==2.8.0 torchvision==0.23.0`
+(torchaudio MUSS zur torch-Version passen, sonst `libcudart.so.13`-Fehler) und NLTK-Daten aus GitHub statt raw.githubusercontent:
+`git clone --depth 1 --filter=blob:none --sparse https://github.com/nltk/nltk_data` → `packages/tokenizers/punkt_tab.zip` nach `/root/nltk_data/tokenizers/` entpacken.
+Test 25.11.: 6 min Heist-Aufnahme → 3 Dialog-Clips (22–33 s) in ~3 min CPU.
+
 ## 2. Einrichtung in einer frischen Sitzung
 ```bash
-python3 -m pip install -q streamlink            # Twitch-Aufnahme
+python3 -m pip install -q streamlink yt-dlp     # Twitch-Aufnahme + VOD-Ausschnitte
 apt-get install -y -qq tesseract-ocr tesseract-ocr-eng   # OCR für walkthrough.py scan
 python3 clips/tiktok_upload.py whoami           # muss "BeyondExcuses" ausgeben
 ```
@@ -72,7 +89,7 @@ python3 clips/tiktok_upload.py whoami           # muss "BeyondExcuses" ausgeben
 
 ## 3. Virlix (YouTube): Compilation + Shorts
 Leitfaden mit Recherche und Genres: **`clips/COMPILATION_STYLE.md`** – vor jedem Schnitt lesen.
-1. **Quelle finden:** Twitch-GQL `streams(options:{freeformTags:["NoCommentary"]})`, GTA VI, Sprache EN.
+1. **Quelle finden:** zuerst **VODs** prüfen (`vod_cut.py list 00mute`, `… itzradflemix`) – gezielt, ohne 1 h Live-Aufnahme; sonst live: Twitch-GQL `streams(options:{freeformTags:["NoCommentary"]})`, GTA VI, Sprache EN.
    Bewährt: **00mute** (24h-Stream, kein Kommentar, gute Action). Vorher `clips/compilations.md` prüfen (Kanalwechsel = frische Szenen).
 2. **Aufnehmen:** `bash clips/record_loop.sh <kanal> /home/user/rec 15 4` (Hintergrund, ~1 h). Log auf 403 prüfen.
 3. **Sichten:** Kontaktbogen je Block (`fps=1/30,tile=5x6`), dann dichter um Kandidaten. Whisper (small.en) auf
