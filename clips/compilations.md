@@ -75,3 +75,9 @@ Reihe: Night / Cinematic. Kein KI-Label (echtes Gameplay). Endbildschirm ab 9:32
 Qualität: 3 Render-Durchgänge – v1 hatte 13 s Handy-Bildschirm im Sandsturm-Kapitel und 6 s Menü/Handy direkt nach dem Intro → herausgeschnitten. Ein Rennstrecken-Kapitel (rawgameplay67) entfiel (Quelldatei versehentlich gelöscht, ohnehin das schwächste: Solo-Runden). −13,9 LUFS.
 Hinweis: shmotcollector hat russische Untertitel/UI – im Verfolgungskapitel vereinzelt sichtbar.
 Shorts dazu: Tow Truck + Boat Escape (nur VirlixYT-TikTok 25.11.; YouTube-Shorts für 25.11. hatte die andere Sitzung schon geplant) → Reserve für YouTube.
+
+## 26.11. – Walkthrough „Just Like Paradise“ (für Fr 27.11. 19:00) – erster Walkthrough aus einem Twitch-VOD
+**YouTube:** https://youtu.be/f35edBgMXWE – privat mit Termin **Fr 27.11. 19:00 (MEZ)**, Thumbnail „JUST LIKE / PARADISE“ (Wasserflugzeug im Sonnenuntergang, 15:50), Playlist „GTA 6 Walkthrough (No Commentary)“.
+**Titel:** `GTA 6 Walkthrough – Mission: Just Like Paradise (No Commentary)` (Missionsname vom Titelbild im Spiel) · 19:08 · Kapitel: 0:00 Intro · 0:06 The Boat Trip · 4:06 Scouting the Swamp Camp · 6:45 Sneaking into the Camp · 13:05 Escape to the Dock · 15:11 Seaplane Escape. Credit itzradflemix.
+Quelle: VOD 2933987829 via `clips/vod_cut.py` – Teil a = VOD 10:00–40:00, Teil b = 40:00–55:00. Verwendet: a 649–790, 860–960, 1070–1121, 1131–1240, 1316–1345, 1640–1800 · b 0–192, 204–556. Herausgeschnitten: Strandszene vor der Mission (freizügig), Pausen-/PS-Menüs, Fehlversuch mit WASTED (a 1345–1640). Bekannt: ~10 s Waffenrad-Einblendungen beim Schleichen. −14,2 LUFS.
+Short dazu: Seaplane (Fr 17:00, https://youtu.be/hFgbmCeJw3g) + VirlixYT-Entwurf.
