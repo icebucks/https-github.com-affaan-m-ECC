@@ -50,7 +50,8 @@ Stand 22.11. spät: Part 23–25 (Tageslauf 21.11.) kamen nie an → **neu gebau
 Stand 23.11.: #29 = Part 26 Soda vs. Water (`ep29_v2.py`), #30 = Part 27 Always Late vs. Always Early (`ep30_v2.py`, erstes teilbares Thema, Split-Screen); Tagespaket 24.11. (2 Folgen/Tag).
 Stand 24.11.: #31 = Part 28 Phone at Dinner vs Present (`ep31_v2.py`, teilbar/Paare, Restaurant, Kerze brennt ab, Wendung: sie geht, er legt das Handy weg), #32 = Part 29 Gym Selfie vs Actual Set (`ep32_v2.py`, Sport, Hantel 5 → 12 KG, Loop: Selfie erst NACH dem Satz); beide retention_qa ✅, Entwürfe hochgeladen, Tagespaket 25.11.
 Stand 25.11.: #33 = Part 30 Dishes Tomorrow vs Dishes Now (`ep33_v2.py`, teilbar/Mitbewohner, Tellerturm DIRTY 3 → 41, Wendung: Schrank leer, Loop: Teller fällt = Frame 0), #34 = Part 31 All-Out Start vs Steady Pace (`ep34_v2.py`, Sport/5K, Loop: nächster Start mit Startschuss); retention_qa ✅, Entwürfe hochgeladen, Tagespaket 26.11.
-**Versprochen in Part 31:** „Part 32 next: the 'I'll text back' friend“ → nächste Folge = intern **#35**, **Part 32 – "I'll text back" vs Replies** (teilbar, Freunde). Danach Sport.
+Stand 26.11.: #35 = Part 32 "I'll Text Back" vs Replies (`ep35_v2.py`, teilbar/Freunde, Split-Screen, UNREAD 1 → 99, Wendung: Trip ohne ihn gebucht), #36 = Part 33 One More Rep vs Good Form (`ep36_v2.py`, Sport/Klimmzüge, Hände per IK an der Stange); retention_qa ✅, Entwürfe hochgeladen, Tagespaket 27.11.
+**Versprochen in Part 33:** „Part 34 next: the 'diet starts Monday' friend“ → nächste Folge = intern **#37**, **Part 34 – Diet Starts Monday vs Starts Today** (teilbar). Danach Sport.
 
 ## Retention-Standard v2 (PFLICHT ab Part 26, freigegeben von der Person am 22.11.2026)
 **Beleg (TikTok Studio, Part 19 Waiter vs Builder):** nach 3 s nur noch **53 %** der Zuschauer, danach Abfall ~2–3 %/s,
@@ -88,7 +89,6 @@ graue Figur visuell wartend (1 Blase) · 5,2–6,2 Spannung (Zeitlupe, Stille) �
 
 **Teilbar (Priorität ab 23.11. – man schickt es EINER Person):**
 - **Group Project Ghost vs Carrier** (Kollegen/Uni): 4 Namen auf der Folie, eine macht alles; Wendung: Präsentation, der Ghost wird gefragt.
-- **"I'll text back" vs Replies** (Freunde): ungelesene Nachrichten-Zähler 1 → 99.
 - **Borrower vs Lender** (Geschwister): „Can I borrow $20?“ – Zähler läuft.
 
 

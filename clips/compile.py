@@ -219,9 +219,12 @@ def main(spec_path, out):
         parts.append((f, d, "fadewhite", D_TEASE))
     # title card: the title over LIVE gameplay (start of chapter 1), 2 lines like the thumbnail
     first = segs[0]
-    words = spec["title"].replace("GTA 6 ", "").split()
-    cut = words.index("&") if "&" in words[1:] else (max(1, len(words) // 2) if len(words) > 1 else 1)   # break before "&"
-    l1, l2 = ("GTA 6 " + " ".join(words[:cut])).strip(), " ".join(words[cut:]) or words[-1]
+    if "|" in spec["title"]:                                                # explicit line break: "LINE 1|LINE 2"
+        l1, l2 = [x.strip() for x in spec["title"].split("|", 1)]
+    else:
+        words = spec["title"].replace("GTA 6 ", "").split()
+        cut = words.index("&") if "&" in words[1:] else (max(1, len(words) // 2) if len(words) > 1 else 1)   # break before "&"
+        l1, l2 = ("GTA 6 " + " ".join(words[:cut])).strip(), " ".join(words[cut:]) or words[-1]
     tclip = dict(first, start=first["start"] + 1, end=first["start"] + 1 + TITLE, label=None, cont=True, text=[], tag="title",
                  title=(l1, l2), subtitle=spec.get("subtitle", "Pure Gameplay · No Commentary"))
     f, d = render_segment(tclip, 99, 0, tmp)

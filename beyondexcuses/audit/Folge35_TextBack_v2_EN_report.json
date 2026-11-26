@@ -1,0 +1,46 @@
+{
+ "video": "Folge35_TextBack_v2_EN",
+ "duration": 12.5,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  7.8,
+  1.8,
+  4.69,
+  3.35,
+  2.94,
+  1.78,
+  3.02,
+  3.14,
+  2.34,
+  6.5,
+  4.64,
+  6.45
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 135.2146453857422,
+  "contrast": 59.906002044677734,
+  "colourfulness": 44.89690113067627
+ },
+ "loop_difference": 15.0,
+ "font_sizes": [],
+ "audio": {
+  "first_half_s_db": -14.781692504882812,
+  "median_db": -14.414508819580078,
+  "silent_windows": 0,
+  "lufs": -14.2
+ }
+}

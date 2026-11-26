@@ -1,0 +1,46 @@
+{
+ "video": "Folge36_OneMoreRep_v2_EN",
+ "duration": 12.5,
+ "ui_overlap": {
+  "top tabs": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "right buttons": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  },
+  "bottom caption": {
+   "share_of_frames": 0.0,
+   "seconds": []
+  }
+ },
+ "motion_per_second": [
+  11.53,
+  8.38,
+  10.27,
+  8.33,
+  7.78,
+  3.63,
+  4.88,
+  4.35,
+  4.92,
+  4.29,
+  2.36,
+  6.24
+ ],
+ "dead_seconds": [],
+ "first_second": {
+  "brightness": 79.77394104003906,
+  "contrast": 40.91492462158203,
+  "colourfulness": 21.158931732177734
+ },
+ "loop_difference": 15.7,
+ "font_sizes": [],
+ "audio": {
+  "first_half_s_db": -14.515869140625,
+  "median_db": -14.372762680053711,
+  "silent_windows": 0,
+  "lufs": -14.2
+ }
+}
